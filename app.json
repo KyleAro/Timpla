@@ -1,0 +1,45 @@
+{
+  "expo": {
+    "name": "Timpla",
+    "slug": "Timpla",
+    "scheme": "timpla",
+    "plugins": [
+      "expo-router",
+      "expo-system-ui",
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "Allow Timpla to take ingredient photos.",
+          "photosPermission": "Allow Timpla to select ingredient photos.",
+          "microphonePermission": false
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow Timpla to scan ingredients using your camera.",
+          "recordAudioAndroid": false,
+          "barcodeScannerEnabled": false
+        }
+      ]
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/brand/timpla-user-icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#C84B35",
+        "foregroundImage": "./assets/brand/timpla-user-icon.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "bundler": "metro",
+      "favicon": "./assets/brand/timpla-user-icon.png"
+    }
+  }
+}

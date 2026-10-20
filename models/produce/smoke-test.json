@@ -1,0 +1,692 @@
+[
+  {
+    "model": "author-yolov8m.pt",
+    "image": "000000000142.jpg",
+    "width": 480,
+    "height": 640,
+    "confidence_threshold": 0.35,
+    "inference_seconds": 26.358,
+    "detections": [
+      {
+        "class_id": 6,
+        "source_name": "banana",
+        "ingredient": "banana",
+        "confidence": 0.9679,
+        "bbox_xyxy": [
+          267.03,
+          474.02,
+          377.33,
+          552.54
+        ]
+      },
+      {
+        "class_id": 6,
+        "source_name": "banana",
+        "ingredient": "banana",
+        "confidence": 0.9619,
+        "bbox_xyxy": [
+          151.58,
+          488.52,
+          253.06,
+          568.42
+        ]
+      },
+      {
+        "class_id": 6,
+        "source_name": "banana",
+        "ingredient": "banana",
+        "confidence": 0.9606,
+        "bbox_xyxy": [
+          284.89,
+          387.0,
+          364.53,
+          455.65
+        ]
+      },
+      {
+        "class_id": 6,
+        "source_name": "banana",
+        "ingredient": "banana",
+        "confidence": 0.9479,
+        "bbox_xyxy": [
+          107.2,
+          451.56,
+          211.56,
+          516.7
+        ]
+      },
+      {
+        "class_id": 6,
+        "source_name": "banana",
+        "ingredient": "banana",
+        "confidence": 0.9462,
+        "bbox_xyxy": [
+          221.88,
+          435.33,
+          303.87,
+          504.18
+        ]
+      },
+      {
+        "class_id": 6,
+        "source_name": "banana",
+        "ingredient": "banana",
+        "confidence": 0.9388,
+        "bbox_xyxy": [
+          145.36,
+          386.73,
+          216.13,
+          453.33
+        ]
+      },
+      {
+        "class_id": 6,
+        "source_name": "banana",
+        "ingredient": "banana",
+        "confidence": 0.9375,
+        "bbox_xyxy": [
+          218.56,
+          375.96,
+          282.26,
+          425.92
+        ]
+      }
+    ],
+    "ingredients": [
+      "banana"
+    ]
+  },
+  {
+    "model": "author-yolov8m.pt",
+    "image": "000000000196.jpg",
+    "width": 640,
+    "height": 480,
+    "confidence_threshold": 0.35,
+    "inference_seconds": 0.245,
+    "detections": [
+      {
+        "class_id": 14,
+        "source_name": "carrot",
+        "ingredient": "carrot",
+        "confidence": 0.8985,
+        "bbox_xyxy": [
+          447.89,
+          363.18,
+          470.68,
+          405.24
+        ]
+      },
+      {
+        "class_id": 14,
+        "source_name": "carrot",
+        "ingredient": "carrot",
+        "confidence": 0.8789,
+        "bbox_xyxy": [
+          392.53,
+          376.8,
+          415.24,
+          428.39
+        ]
+      },
+      {
+        "class_id": 14,
+        "source_name": "carrot",
+        "ingredient": "carrot",
+        "confidence": 0.8178,
+        "bbox_xyxy": [
+          410.08,
+          404.03,
+          468.32,
+          434.72
+        ]
+      },
+      {
+        "class_id": 14,
+        "source_name": "carrot",
+        "ingredient": "carrot",
+        "confidence": 0.8061,
+        "bbox_xyxy": [
+          382.4,
+          415.95,
+          415.9,
+          443.07
+        ]
+      },
+      {
+        "class_id": 23,
+        "source_name": "edible corn/corn/maize",
+        "ingredient": "edible corn",
+        "confidence": 0.8025,
+        "bbox_xyxy": [
+          427.64,
+          237.67,
+          565.77,
+          317.81
+        ]
+      },
+      {
+        "class_id": 14,
+        "source_name": "carrot",
+        "ingredient": "carrot",
+        "confidence": 0.7727,
+        "bbox_xyxy": [
+          456.98,
+          399.02,
+          488.27,
+          432.16
+        ]
+      },
+      {
+        "class_id": 14,
+        "source_name": "carrot",
+        "ingredient": "carrot",
+        "confidence": 0.7704,
+        "bbox_xyxy": [
+          413.0,
+          419.34,
+          427.24,
+          449.91
+        ]
+      },
+      {
+        "class_id": 14,
+        "source_name": "carrot",
+        "ingredient": "carrot",
+        "confidence": 0.7368,
+        "bbox_xyxy": [
+          440.89,
+          374.69,
+          450.81,
+          402.12
+        ]
+      },
+      {
+        "class_id": 59,
+        "source_name": "tomato",
+        "ingredient": "tomato",
+        "confidence": 0.7321,
+        "bbox_xyxy": [
+          602.45,
+          179.07,
+          621.79,
+          190.74
+        ]
+      },
+      {
+        "class_id": 59,
+        "source_name": "tomato",
+        "ingredient": "tomato",
+        "confidence": 0.7292,
+        "bbox_xyxy": [
+          582.51,
+          183.16,
+          602.64,
+          192.73
+        ]
+      },
+      {
+        "class_id": 59,
+        "source_name": "tomato",
+        "ingredient": "tomato",
+        "confidence": 0.6654,
+        "bbox_xyxy": [
+          619.91,
+          163.33,
+          635.46,
+          177.83
+        ]
+      },
+      {
+        "class_id": 59,
+        "source_name": "tomato",
+        "ingredient": "tomato",
+        "confidence": 0.6625,
+        "bbox_xyxy": [
+          491.6,
+          125.88,
+          509.95,
+          135.38
+        ]
+      },
+      {
+        "class_id": 59,
+        "source_name": "tomato",
+        "ingredient": "tomato",
+        "confidence": 0.6605,
+        "bbox_xyxy": [
+          550.33,
+          182.26,
+          576.56,
+          190.94
+        ]
+      },
+      {
+        "class_id": 59,
+        "source_name": "tomato",
+        "ingredient": "tomato",
+        "confidence": 0.6372,
+        "bbox_xyxy": [
+          503.32,
+          156.93,
+          529.94,
+          171.85
+        ]
+      },
+      {
+        "class_id": 38,
+        "source_name": "lettuce",
+        "ingredient": "lettuce",
+        "confidence": 0.6339,
+        "bbox_xyxy": [
+          167.46,
+          268.42,
+          190.8,
+          298.45
+        ]
+      },
+      {
+        "class_id": 14,
+        "source_name": "carrot",
+        "ingredient": "carrot",
+        "confidence": 0.5889,
+        "bbox_xyxy": [
+          374.33,
+          398.72,
+          403.58,
+          417.05
+        ]
+      },
+      {
+        "class_id": 46,
+        "source_name": "pea/pea food",
+        "ingredient": "pea",
+        "confidence": 0.5607,
+        "bbox_xyxy": [
+          430.76,
+          425.5,
+          441.75,
+          435.33
+        ]
+      },
+      {
+        "class_id": 14,
+        "source_name": "carrot",
+        "ingredient": "carrot",
+        "confidence": 0.5591,
+        "bbox_xyxy": [
+          434.95,
+          445.78,
+          455.13,
+          455.61
+        ]
+      },
+      {
+        "class_id": 46,
+        "source_name": "pea/pea food",
+        "ingredient": "pea",
+        "confidence": 0.5428,
+        "bbox_xyxy": [
+          476.85,
+          437.12,
+          486.27,
+          446.92
+        ]
+      },
+      {
+        "class_id": 46,
+        "source_name": "pea/pea food",
+        "ingredient": "pea",
+        "confidence": 0.5422,
+        "bbox_xyxy": [
+          465.68,
+          436.5,
+          476.5,
+          447.78
+        ]
+      },
+      {
+        "class_id": 59,
+        "source_name": "tomato",
+        "ingredient": "tomato",
+        "confidence": 0.5135,
+        "bbox_xyxy": [
+          502.26,
+          197.14,
+          520.14,
+          209.43
+        ]
+      },
+      {
+        "class_id": 46,
+        "source_name": "pea/pea food",
+        "ingredient": "pea",
+        "confidence": 0.5105,
+        "bbox_xyxy": [
+          425.95,
+          441.25,
+          438.24,
+          450.73
+        ]
+      },
+      {
+        "class_id": 59,
+        "source_name": "tomato",
+        "ingredient": "tomato",
+        "confidence": 0.4985,
+        "bbox_xyxy": [
+          471.04,
+          205.73,
+          502.73,
+          224.7
+        ]
+      },
+      {
+        "class_id": 46,
+        "source_name": "pea/pea food",
+        "ingredient": "pea",
+        "confidence": 0.486,
+        "bbox_xyxy": [
+          482.76,
+          431.07,
+          492.85,
+          442.36
+        ]
+      },
+      {
+        "class_id": 46,
+        "source_name": "pea/pea food",
+        "ingredient": "pea",
+        "confidence": 0.4782,
+        "bbox_xyxy": [
+          468.1,
+          445.54,
+          479.54,
+          454.59
+        ]
+      },
+      {
+        "class_id": 46,
+        "source_name": "pea/pea food",
+        "ingredient": "pea",
+        "confidence": 0.4443,
+        "bbox_xyxy": [
+          574.52,
+          389.56,
+          583.67,
+          398.28
+        ]
+      },
+      {
+        "class_id": 46,
+        "source_name": "pea/pea food",
+        "ingredient": "pea",
+        "confidence": 0.4437,
+        "bbox_xyxy": [
+          440.32,
+          425.37,
+          450.22,
+          436.0
+        ]
+      },
+      {
+        "class_id": 38,
+        "source_name": "lettuce",
+        "ingredient": "lettuce",
+        "confidence": 0.4434,
+        "bbox_xyxy": [
+          213.63,
+          355.12,
+          262.04,
+          386.36
+        ]
+      },
+      {
+        "class_id": 46,
+        "source_name": "pea/pea food",
+        "ingredient": "pea",
+        "confidence": 0.4263,
+        "bbox_xyxy": [
+          566.3,
+          388.82,
+          574.81,
+          398.5
+        ]
+      },
+      {
+        "class_id": 59,
+        "source_name": "tomato",
+        "ingredient": "tomato",
+        "confidence": 0.4176,
+        "bbox_xyxy": [
+          564.32,
+          197.42,
+          583.17,
+          207.12
+        ]
+      },
+      {
+        "class_id": 46,
+        "source_name": "pea/pea food",
+        "ingredient": "pea",
+        "confidence": 0.4137,
+        "bbox_xyxy": [
+          568.44,
+          373.53,
+          577.78,
+          383.83
+        ]
+      },
+      {
+        "class_id": 59,
+        "source_name": "tomato",
+        "ingredient": "tomato",
+        "confidence": 0.4137,
+        "bbox_xyxy": [
+          489.56,
+          229.47,
+          526.81,
+          237.81
+        ]
+      },
+      {
+        "class_id": 46,
+        "source_name": "pea/pea food",
+        "ingredient": "pea",
+        "confidence": 0.4135,
+        "bbox_xyxy": [
+          444.0,
+          426.06,
+          456.22,
+          438.38
+        ]
+      },
+      {
+        "class_id": 59,
+        "source_name": "tomato",
+        "ingredient": "tomato",
+        "confidence": 0.4084,
+        "bbox_xyxy": [
+          483.94,
+          192.7,
+          500.57,
+          206.19
+        ]
+      },
+      {
+        "class_id": 59,
+        "source_name": "tomato",
+        "ingredient": "tomato",
+        "confidence": 0.4017,
+        "bbox_xyxy": [
+          81.42,
+          307.33,
+          104.87,
+          322.93
+        ]
+      },
+      {
+        "class_id": 46,
+        "source_name": "pea/pea food",
+        "ingredient": "pea",
+        "confidence": 0.4016,
+        "bbox_xyxy": [
+          454.13,
+          433.67,
+          462.06,
+          442.7
+        ]
+      },
+      {
+        "class_id": 59,
+        "source_name": "tomato",
+        "ingredient": "tomato",
+        "confidence": 0.3906,
+        "bbox_xyxy": [
+          548.08,
+          196.08,
+          562.82,
+          212.46
+        ]
+      },
+      {
+        "class_id": 59,
+        "source_name": "tomato",
+        "ingredient": "tomato",
+        "confidence": 0.3901,
+        "bbox_xyxy": [
+          593.37,
+          247.64,
+          614.29,
+          267.36
+        ]
+      },
+      {
+        "class_id": 59,
+        "source_name": "tomato",
+        "ingredient": "tomato",
+        "confidence": 0.3818,
+        "bbox_xyxy": [
+          95.44,
+          280.38,
+          115.08,
+          298.34
+        ]
+      },
+      {
+        "class_id": 46,
+        "source_name": "pea/pea food",
+        "ingredient": "pea",
+        "confidence": 0.3809,
+        "bbox_xyxy": [
+          457.09,
+          446.17,
+          468.29,
+          455.63
+        ]
+      },
+      {
+        "class_id": 14,
+        "source_name": "carrot",
+        "ingredient": "carrot",
+        "confidence": 0.3683,
+        "bbox_xyxy": [
+          433.58,
+          373.58,
+          441.16,
+          383.48
+        ]
+      },
+      {
+        "class_id": 46,
+        "source_name": "pea/pea food",
+        "ingredient": "pea",
+        "confidence": 0.3655,
+        "bbox_xyxy": [
+          469.2,
+          429.37,
+          478.51,
+          438.5
+        ]
+      },
+      {
+        "class_id": 59,
+        "source_name": "tomato",
+        "ingredient": "tomato",
+        "confidence": 0.3622,
+        "bbox_xyxy": [
+          539.17,
+          188.75,
+          552.87,
+          199.42
+        ]
+      },
+      {
+        "class_id": 14,
+        "source_name": "carrot",
+        "ingredient": "carrot",
+        "confidence": 0.3595,
+        "bbox_xyxy": [
+          383.84,
+          390.53,
+          400.27,
+          399.79
+        ]
+      },
+      {
+        "class_id": 46,
+        "source_name": "pea/pea food",
+        "ingredient": "pea",
+        "confidence": 0.3579,
+        "bbox_xyxy": [
+          433.15,
+          434.62,
+          451.81,
+          447.08
+        ]
+      },
+      {
+        "class_id": 38,
+        "source_name": "lettuce",
+        "ingredient": "lettuce",
+        "confidence": 0.3542,
+        "bbox_xyxy": [
+          115.85,
+          339.63,
+          156.15,
+          366.4
+        ]
+      },
+      {
+        "class_id": 46,
+        "source_name": "pea/pea food",
+        "ingredient": "pea",
+        "confidence": 0.3529,
+        "bbox_xyxy": [
+          429.12,
+          388.79,
+          441.05,
+          400.11
+        ]
+      },
+      {
+        "class_id": 46,
+        "source_name": "pea/pea food",
+        "ingredient": "pea",
+        "confidence": 0.3527,
+        "bbox_xyxy": [
+          583.97,
+          398.76,
+          591.46,
+          406.9
+        ]
+      }
+    ],
+    "ingredients": [
+      "carrot",
+      "edible corn",
+      "lettuce",
+      "pea",
+      "tomato"
+    ]
+  }
+]

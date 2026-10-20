@@ -1,0 +1,9 @@
+{
+  "exact": [],
+  "cross_split_similar_thumbnail_candidates": [
+    [
+      "C:\\Users\\User\\OneDrive - Innobyte\\Desktop\\Timpla\\datasets\\fruits_vegetables\\raw\\images\\train\\000000478652.jpg",
+      "C:\\Users\\User\\OneDrive - Innobyte\\Desktop\\Timpla\\datasets\\fruits_vegetables\\raw\\images\\val\\000000066348.jpg"
+    ]
+  ]
+}

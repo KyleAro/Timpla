@@ -1,0 +1,141 @@
+[
+  {
+    "image": "C:\\Users\\User\\OneDrive - Innobyte\\Desktop\\Timpla\\datasets\\fruits_vegetables\\raw\\images\\val\\000000000661.jpg",
+    "split": "val",
+    "classes": [
+      "onion"
+    ]
+  },
+  {
+    "image": "C:\\Users\\User\\OneDrive - Innobyte\\Desktop\\Timpla\\datasets\\fruits_vegetables\\raw\\images\\val\\000000000670.jpg",
+    "split": "val",
+    "classes": [
+      "apple",
+      "orange/orange fruit"
+    ]
+  },
+  {
+    "image": "C:\\Users\\User\\OneDrive - Innobyte\\Desktop\\Timpla\\datasets\\fruits_vegetables\\raw\\images\\val\\000000000715.jpg",
+    "split": "val",
+    "classes": [
+      "banana",
+      "orange/orange fruit",
+      "pineapple"
+    ]
+  },
+  {
+    "image": "C:\\Users\\User\\OneDrive - Innobyte\\Desktop\\Timpla\\datasets\\fruits_vegetables\\raw\\images\\val\\000000001064.jpg",
+    "split": "val",
+    "classes": [
+      "broccoli"
+    ]
+  },
+  {
+    "image": "C:\\Users\\User\\OneDrive - Innobyte\\Desktop\\Timpla\\datasets\\fruits_vegetables\\raw\\images\\val\\000000003794.jpg",
+    "split": "val",
+    "classes": [
+      "lettuce"
+    ]
+  },
+  {
+    "image": "C:\\Users\\User\\OneDrive - Innobyte\\Desktop\\Timpla\\datasets\\fruits_vegetables\\raw\\images\\val\\000000004936.jpg",
+    "split": "val",
+    "classes": [
+      "carrot",
+      "cauliflower",
+      "celery",
+      "green bean"
+    ]
+  },
+  {
+    "image": "C:\\Users\\User\\OneDrive - Innobyte\\Desktop\\Timpla\\datasets\\fruits_vegetables\\raw\\images\\val\\000000005540.jpg",
+    "split": "val",
+    "classes": [
+      "tomato"
+    ]
+  },
+  {
+    "image": "C:\\Users\\User\\OneDrive - Innobyte\\Desktop\\Timpla\\datasets\\fruits_vegetables\\raw\\images\\val\\000000005724.jpg",
+    "split": "val",
+    "classes": [
+      "carrot",
+      "potato",
+      "sweet potato"
+    ]
+  },
+  {
+    "image": "C:\\Users\\User\\OneDrive - Innobyte\\Desktop\\Timpla\\datasets\\fruits_vegetables\\raw\\images\\val\\000000007398.jpg",
+    "split": "val",
+    "classes": [
+      "bell pepper/capsicum",
+      "broccoli",
+      "lemon",
+      "zucchini/courgette"
+    ]
+  },
+  {
+    "image": "C:\\Users\\User\\OneDrive - Innobyte\\Desktop\\Timpla\\datasets\\fruits_vegetables\\raw\\images\\val\\000000009050.jpg",
+    "split": "val",
+    "classes": [
+      "asparagus",
+      "carrot"
+    ]
+  },
+  {
+    "image": "C:\\Users\\User\\OneDrive - Innobyte\\Desktop\\Timpla\\datasets\\fruits_vegetables\\raw\\images\\val\\000000009077.jpg",
+    "split": "val",
+    "classes": [
+      "apple",
+      "asparagus",
+      "banana",
+      "blueberry",
+      "orange/orange fruit",
+      "potato",
+      "strawberry",
+      "tomato"
+    ]
+  },
+  {
+    "image": "C:\\Users\\User\\OneDrive - Innobyte\\Desktop\\Timpla\\datasets\\fruits_vegetables\\raw\\images\\val\\000000011198.jpg",
+    "split": "val",
+    "classes": [
+      "garlic/ail",
+      "lettuce",
+      "mushroom",
+      "tomato"
+    ]
+  },
+  {
+    "image": "C:\\Users\\User\\OneDrive - Innobyte\\Desktop\\Timpla\\datasets\\fruits_vegetables\\raw\\images\\val\\000000011537.jpg",
+    "split": "val",
+    "classes": [
+      "pickle",
+      "tomato"
+    ]
+  },
+  {
+    "image": "C:\\Users\\User\\OneDrive - Innobyte\\Desktop\\Timpla\\datasets\\fruits_vegetables\\raw\\images\\val\\000000012326.jpg",
+    "split": "val",
+    "classes": [
+      "pumpkin"
+    ]
+  },
+  {
+    "image": "C:\\Users\\User\\OneDrive - Innobyte\\Desktop\\Timpla\\datasets\\fruits_vegetables\\raw\\images\\val\\000000012464.jpg",
+    "split": "val",
+    "classes": [
+      "grape",
+      "strawberry"
+    ]
+  },
+  {
+    "image": "C:\\Users\\User\\OneDrive - Innobyte\\Desktop\\Timpla\\datasets\\fruits_vegetables\\raw\\images\\val\\000000013991.jpg",
+    "split": "val",
+    "classes": [
+      "bean curd/tofu",
+      "broccoli",
+      "carrot",
+      "mushroom"
+    ]
+  }
+]

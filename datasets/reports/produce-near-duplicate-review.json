@@ -1,0 +1,12 @@
+{
+  "reviewed_groups": [
+    {
+      "images": [
+        "train/000000478652.jpg",
+        "val/000000066348.jpg"
+      ],
+      "finding": "Different photographs: sandwich inside a car versus a truck carrying oranges. Average-hash collision; no duplicate removal needed."
+    }
+  ],
+  "note": "This resolves the one same-average-hash cross-split candidate found by the audit. It is not an exhaustive perceptual-near-duplicate search."
+}

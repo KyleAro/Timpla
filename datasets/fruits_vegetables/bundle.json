@@ -1,0 +1,7 @@
+{
+  "file": "timpla-produce-colab.zip",
+  "bytes": 1438926674,
+  "sha256": "4d2f52e872b1e438c9fbde7e72d20f110f644c97dc45a00c2b17c902d9dbcc02",
+  "training_config_after_extraction": "timpla_produce/data.yaml",
+  "manual_label_review": "sample_only_not_exhaustive"
+}
