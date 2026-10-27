@@ -3,16 +3,30 @@ import { useCooking } from '../state/CookingContext';
 import { colors } from '../theme/colors';
 import { useTheme } from '../theme/ThemeContext';
 import { AppIcon } from './AppIcon';
+import { useState } from 'react';
 
-export function PeopleSelector() {
-  const { people, setPeople } = useCooking();
+export function PeopleSelector({ value, onChange }: { value?: number; onChange?: (value: number) => void } = {}) {
+  const { people: savedPeople, savePreferences } = useCooking();
+  const people = value ?? savedPeople;
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState('');
   const { palette } = useTheme();
+  async function change(next: number) {
+    if (onChange) { onChange(next); return; }
+    setBusy(true); setError('');
+    try { await savePreferences({ people: next }); }
+    catch { setError('Could not save servings.'); }
+    finally { setBusy(false); }
+  }
   return (
+    <View>
     <View style={[styles.container, { borderColor: palette.border }]}>
       <AppIcon name="people" size={20} />
-      <Pressable accessibilityRole="button" accessibilityLabel="Cook for one fewer person" disabled={people === 1} onPress={() => setPeople(people - 1)} style={[styles.control, people === 1 && styles.disabled]}><Text style={[styles.symbol, { color: palette.text }]}>−</Text></Pressable>
+      <Pressable accessibilityRole="button" accessibilityLabel="Cook for one fewer person" disabled={busy || people === 1} onPress={() => { void change(people - 1); }} style={[styles.control, (busy || people === 1) && styles.disabled]}><Text style={[styles.symbol, { color: palette.text }]}>−</Text></Pressable>
       <Text accessibilityLabel={`Cooking for ${people} ${people === 1 ? 'person' : 'people'}`} accessibilityLiveRegion="polite" style={[styles.count, { color: palette.text }]}>{people}</Text>
-      <Pressable accessibilityRole="button" accessibilityLabel="Cook for one more person" disabled={people === 20} onPress={() => setPeople(people + 1)} style={[styles.control, people === 20 && styles.disabled]}><Text style={[styles.symbol, { color: palette.text }]}>+</Text></Pressable>
+      <Pressable accessibilityRole="button" accessibilityLabel="Cook for one more person" disabled={busy || people === 20} onPress={() => { void change(people + 1); }} style={[styles.control, (busy || people === 20) && styles.disabled]}><Text style={[styles.symbol, { color: palette.text }]}>+</Text></Pressable>
+    </View>
+    {error ? <Text accessibilityRole="alert" style={{ color: palette.error, fontSize: 12, marginTop: 6 }}>{error}</Text> : null}
     </View>
   );
 }

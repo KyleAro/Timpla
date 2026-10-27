@@ -5,8 +5,7 @@ import { AppHeader } from '../components/AppHeader';
 import { AppIcon } from '../components/AppIcon';
 import { SaveRecipeButton } from '../components/SaveRecipeButton';
 import { BottomNav, useBottomNavPadding } from '../components/BottomNav';
-import { destinations } from '../data/cookingStyles';
-import { recipes } from '../data/recipes';
+import { CatalogStatus } from '../components/CatalogStatus';
 import { useCooking } from '../state/CookingContext';
 import { useTheme } from '../theme/ThemeContext';
 import { normalizeIngredient } from '../utils/ingredientMatch';
@@ -15,7 +14,7 @@ export default function ExploreScreen() {
   const bottomPadding = useBottomNavPadding();
   const { place, ingredient } = useLocalSearchParams<{ place?: string; ingredient?: string }>();
   const { palette } = useTheme();
-  const { allergies, exclusions } = useCooking();
+  const { allergies, exclusions, recipes, destinations, catalogLoading, catalogError } = useCooking();
   const destination = destinations.find((item) => item.name === place);
   const ingredientBrowse = ingredient === 'Eggplant';
   const title = destination?.name ?? (ingredientBrowse ? 'Cook with talong' : 'Explore the Philippines');
@@ -25,9 +24,10 @@ export default function ExploreScreen() {
     <AppHeader />
     <ScrollView contentContainerStyle={[styles.content, { paddingBottom: bottomPadding }]}>
       <View style={styles.heading}><Pressable accessibilityRole="button" accessibilityLabel="Back to Home" onPress={() => router.canGoBack() ? router.back() : router.replace('/home')} style={styles.back}><AppIcon name="back" /></Pressable><Text accessibilityRole="header" style={[styles.title, { color: palette.text }]}>{title}</Text></View>
+      <CatalogStatus />
       {!destination && !ingredientBrowse && destinations.map((item) => <Pressable key={item.name} accessibilityRole="button" accessibilityLabel={`Explore ${item.name} recipes`} onPress={() => router.push({ pathname: '/explore', params: { place: item.name } })} style={[styles.card, styles.destination, { backgroundColor: palette.surface, borderColor: palette.border }]}><AppIcon name="book" color={palette.accent} /><Text style={[styles.name, { color: palette.text, flex: 1 }]}>{item.name}</Text><AppIcon name="chevron" /></Pressable>)}
       {items.map((recipe) => <View key={recipe.id} style={[styles.card, { backgroundColor: palette.surface, borderColor: palette.border }]}><Pressable accessibilityRole="button" onPress={() => router.push({ pathname: '/recipe', params: { id: recipe.id } })}><Image source={recipe.image} style={styles.photo} accessibilityLabel={recipe.name} /><View style={styles.copy}><View style={{ flex: 1 }}><Text style={[styles.name, { color: palette.text }]}>{recipe.name}</Text><Text style={[styles.meta, { color: palette.muted }]}>{recipe.minutes} min</Text></View><AppIcon name="chevron" /></View></Pressable><SaveRecipeButton id={recipe.id} floating /></View>)}
-      {!items.length && (destination || ingredientBrowse) && <View style={styles.empty}><AppIcon name="book" size={40} color={palette.accent} /><Text style={[styles.emptyText, { color: palette.muted }]}>{destination ? 'Recipes coming soon' : 'No recipes available'}</Text></View>}
+      {!catalogLoading && !catalogError && !items.length && (destination || ingredientBrowse) && <View style={styles.empty}><AppIcon name="book" size={40} color={palette.accent} /><Text style={[styles.emptyText, { color: palette.muted }]}>{destination ? 'Recipes coming soon' : 'No recipes available'}</Text></View>}
     </ScrollView>
     <BottomNav active="home" />
   </SafeAreaView>;

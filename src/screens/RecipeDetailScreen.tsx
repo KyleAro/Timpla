@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { AppIcon } from '../components/AppIcon';
 import { PeopleSelector } from '../components/PeopleSelector';
 import { SaveRecipeButton } from '../components/SaveRecipeButton';
-import { recipes } from '../data/recipes';
+import { CatalogStatus } from '../components/CatalogStatus';
 import { useCooking } from '../state/CookingContext';
 import { useTheme } from '../theme/ThemeContext';
 import { ingredientMatch, normalizeIngredient } from '../utils/ingredientMatch';
@@ -12,12 +12,12 @@ import { recipeQuantity } from '../utils/recipeQuantity';
 
 export default function RecipeDetailScreen() {
   const { id, mode } = useLocalSearchParams<{ id: string; mode?: string }>();
+  const { ingredients, people, huntIngredients, toggleHuntIngredient, recipes, catalogLoading, catalogError } = useCooking();
   const recipe = recipes.find((item) => item.id === id);
-  const { ingredients, people, huntIngredients, toggleHuntIngredient } = useCooking();
   const { palette } = useTheme();
   const hunt = mode === 'hunt';
   const back = () => router.canGoBack() ? router.back() : router.replace(hunt ? '/reverse-cooking' : '/recipes');
-  if (!recipe) return <SafeAreaView style={[styles.screen, { backgroundColor: palette.background }]}><Text style={[styles.title, { color: palette.text }]}>Recipe unavailable</Text><Pressable accessibilityRole="button" onPress={back} style={styles.back}><AppIcon name="back" /></Pressable></SafeAreaView>;
+  if (!recipe) return <SafeAreaView style={[styles.screen, { backgroundColor: palette.background }]}><CatalogStatus />{!catalogLoading && !catalogError && <Text style={[styles.title, { color: palette.text }]}>Recipe unavailable</Text>}<Pressable accessibilityRole="button" accessibilityLabel="Go back" onPress={back} style={styles.back}><AppIcon name="back" /></Pressable></SafeAreaView>;
   const available = hunt ? huntIngredients[recipe.id] ?? [] : ingredients;
   const match = ingredientMatch(recipe.required, available);
   const availableNames = new Set(available.map(normalizeIngredient));

@@ -1,4 +1,5 @@
 import { CookingStyle } from './cookingStyles';
+import type { ImageSourcePropType } from 'react-native';
 
 export type Recipe = {
   cookingStyle?: Exclude<CookingStyle, 'Any style'>;
@@ -7,12 +8,12 @@ export type Recipe = {
   minutes: number;
   servings: number;
   required: string[];
-  image: number;
+  image: ImageSourcePropType;
   quantities: string[];
   steps: string[];
 };
 
-// Small starter catalog. Required ingredients define the match denominator.
+// Bundled preview data only. Signed-in accounts load the Supabase catalog.
 export const recipes: Recipe[] = [
   {
     id: 'ensaladang-talong', name: 'Ensaladang talong', minutes: 20, servings: 2,

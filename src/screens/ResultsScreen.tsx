@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { AppIcon } from '../components/AppIcon';
 import { SaveRecipeButton } from '../components/SaveRecipeButton';
 import { BottomNav, useBottomNavPadding } from '../components/BottomNav';
-import { recipes } from '../data/recipes';
+import { CatalogStatus } from '../components/CatalogStatus';
 import { useCooking } from '../state/CookingContext';
 import { useTheme } from '../theme/ThemeContext';
 import { ingredientMatch, normalizeIngredient } from '../utils/ingredientMatch';
@@ -13,7 +13,7 @@ import { ingredientMatch, normalizeIngredient } from '../utils/ingredientMatch';
 export default function ResultsScreen() {
   const bottomPadding = useBottomNavPadding();
   const { palette } = useTheme();
-  const { ingredients, setIngredients, photo, allergies, exclusions, selectDish, cookingStyle, detecting, detectionError, retryDetection } = useCooking();
+  const { ingredients, setIngredients, photo, allergies, exclusions, selectDish, cookingStyle, detecting, detectionError, retryDetection, recipes, catalogLoading, catalogError } = useCooking();
   const [editing, setEditing] = useState(false);
   const [entry, setEntry] = useState('');
   const [error, setError] = useState('');
@@ -50,7 +50,8 @@ export default function ResultsScreen() {
         {editing && <View style={[styles.entryRow, { backgroundColor: palette.surface, borderColor: palette.border }]}><TextInput ref={input} autoFocus accessibilityLabel="Ingredient name" placeholder="Ingredient name" placeholderTextColor={palette.muted} value={entry} onChangeText={(value) => { setEntry(value); setError(''); }} onSubmitEditing={addIngredient} returnKeyType="done" maxLength={60} style={[styles.input, { color: palette.text }]} /><Pressable accessibilityRole="button" accessibilityLabel="Save ingredient" disabled={!entry.trim()} onPress={addIngredient} style={styles.iconButton}><AppIcon name="check" color={palette.accent} /></Pressable></View>}
         {error ? <Text accessibilityLiveRegion="polite" style={{ color: palette.error, marginBottom: 12 }}>{error}</Text> : null}
         <Text accessibilityRole="header" style={[styles.recipeHeading, { color: palette.text }]}>Recipes</Text>
-        {!ingredients.length ? <View style={styles.empty}><AppIcon name="book" size={40} color={palette.accent} /><Text style={[styles.emptyText, { color: palette.muted }]}>Add ingredients to see recipes.</Text></View> : !matches.length ? <View style={styles.empty}><AppIcon name="book" size={40} color={palette.accent} /><Text style={[styles.emptyText, { color: palette.muted }]}>No matching recipes yet.</Text></View> : matches.map(({ recipe, matched, total, missing, percent }) => <View key={recipe.id} style={[styles.card, { backgroundColor: palette.surface, borderColor: palette.border }]}><Pressable accessibilityRole="button" accessibilityLabel={`${recipe.name}, ${percent}% match, ${matched} of ${total} ingredients`} onPress={() => { selectDish({ id: recipe.id, name: recipe.name, required: recipe.required }); router.push({ pathname: '/recipe', params: { id: recipe.id } }); }}>
+        <CatalogStatus />
+        {catalogLoading || catalogError ? null : !ingredients.length ? <View style={styles.empty}><AppIcon name="book" size={40} color={palette.accent} /><Text style={[styles.emptyText, { color: palette.muted }]}>Add ingredients to see recipes.</Text></View> : !matches.length ? <View style={styles.empty}><AppIcon name="book" size={40} color={palette.accent} /><Text style={[styles.emptyText, { color: palette.muted }]}>No matching recipes yet.</Text></View> : matches.map(({ recipe, matched, total, missing, percent }) => <View key={recipe.id} style={[styles.card, { backgroundColor: palette.surface, borderColor: palette.border }]}><Pressable accessibilityRole="button" accessibilityLabel={`${recipe.name}, ${percent}% match, ${matched} of ${total} ingredients`} onPress={() => { selectDish({ id: recipe.id, name: recipe.name, required: recipe.required }); router.push({ pathname: '/recipe', params: { id: recipe.id } }); }}>
           <Image source={recipe.image} accessibilityLabel={recipe.name} style={styles.recipePhoto} />
           <View style={styles.cardBody}>
             <View style={styles.cardTop}><Text style={[styles.dishName, { color: palette.text }]}>{recipe.name}</Text><View style={[styles.matchBadge, { backgroundColor: percent >= 60 ? palette.olive : palette.secondary }]}><Text style={[styles.matchText, { color: percent >= 60 ? palette.oliveText : palette.muted }]}>{percent}% match</Text></View></View>

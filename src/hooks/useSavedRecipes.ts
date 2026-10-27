@@ -1,16 +1,16 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
-const key = 'timpla.saved-recipes';
-export function useSavedRecipes() {
+export function useSavedRecipes(accountId: string) {
+  const key = `timpla.${accountId}.saved-recipes`;
   const [savedRecipeIds, setIds] = useState<string[]>([]);
   const current = useRef<string[]>([]);
   const hydrated = useRef(false);
   const edits = useRef(new Map<string, boolean>());
   const writes = useRef(Promise.resolve());
-  function persist(ids: string[]) {
+  const persist = useCallback((ids: string[]) => {
     writes.current = writes.current.then(() => AsyncStorage.setItem(key, JSON.stringify(ids))).catch(() => {});
-  }
+  }, [key]);
   useEffect(() => {
     let mounted = true;
     void AsyncStorage.getItem(key).then((raw) => {
@@ -31,7 +31,7 @@ export function useSavedRecipes() {
       edits.current.clear();
     });
     return () => { mounted = false; };
-  }, []);
+  }, [key, persist]);
   function toggleSavedRecipe(id: string) {
     const saved = !current.current.includes(id);
     current.current = saved ? [...current.current, id] : current.current.filter((item) => item !== id);

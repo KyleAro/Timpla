@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Confirm your email</title>
+  <style>
+    @media only screen and (max-width: 480px) {
+      .email-outer { padding: 24px 12px !important; }
+      .email-content { padding: 36px 24px !important; }
+      .email-title { font-size: 26px !important; }
+    }
+  </style>
+</head>
+<body style="margin:0;padding:0;background-color:#FFF8ED;color:#302A26;font-family:Arial,Helvetica,sans-serif;-webkit-text-size-adjust:100%;">
+  <div style="display:none;max-height:0;overflow:hidden;opacity:0;mso-hide:all;">Verify your email to finish creating your Timpla account.</div>
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFF8ED">
+    <tr>
+      <td class="email-outer" align="center" style="padding:40px 16px;">
+        <table role="presentation" width="536" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFCF6" style="width:100%;max-width:536px;border:1px solid #E9DED0;border-radius:18px;background-color:#FFFCF6;">
+          <tr>
+            <td class="email-content" align="center" style="padding:40px 38px 36px;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td align="center" style="padding:0 0 34px;">
+                    <img src="https://hkjngwjujjxzqrpluflh.supabase.co/storage/v1/object/public/branding/timpla-email-logo.png" alt="Timpla" width="180" height="45" style="display:block;width:180px;height:45px;border:0;outline:none;text-decoration:none;">
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <h1 class="email-title" style="margin:0 0 17px;font-size:28px;line-height:1.25;font-weight:700;letter-spacing:-0.6px;color:#302A26;">Confirm your email</h1>
+                    <p style="margin:0 auto 27px;max-width:330px;font-size:16px;line-height:1.65;color:#72675E;">Verify your email to finish creating your Timpla account.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="340" style="width:100%;max-width:340px;">
+                      <tr>
+                        <td align="center" bgcolor="#C84B35" style="background-color:#C84B35;border-radius:26px;mso-padding-alt:17px 26px;">
+                          <a href="{{ .ConfirmationURL }}" style="display:block;padding:17px 26px;border-radius:26px;background-color:#C84B35;color:#FFF8ED;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:18px;font-weight:700;text-align:center;text-decoration:none;">Confirm email</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" style="padding-top:24px;color:#72675E;font-size:13px;line-height:1.6;">
+                    Or enter this code in Timpla
+                    <div style="padding-top:10px;color:#302A26;font-family:monospace;font-size:26px;font-weight:700;letter-spacing:6px;">{{ .Token }}</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" style="padding-top:30px;">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="330" style="width:100%;max-width:330px;border-top:1px solid #E9DED0;">
+                      <tr>
+                        <td align="center" style="padding-top:24px;font-size:13px;line-height:1.65;color:#72675E;">If you didn't create an account, you can ignore this email.</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

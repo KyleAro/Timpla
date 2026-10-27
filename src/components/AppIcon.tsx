@@ -1,11 +1,12 @@
 import Svg, { Circle, Path, Rect } from 'react-native-svg';
+import { Platform } from 'react-native';
 import { useTheme } from '../theme/ThemeContext';
 
 export type IconName = 'bookmark' | 'camera' | 'upload' | 'plus' | 'people' | 'sliders' | 'home' | 'book' | 'user' | 'back' | 'trash' | 'leaf' | 'sun' | 'moon' | 'chevron' | 'edit' | 'settings' | 'check' | 'reverse' | 'history' | 'help' | 'flash' | 'flash-off' | 'close';
 export function AppIcon({ name, size = 24, color }: { name: IconName; size?: number; color?: string }) {
   const { palette } = useTheme();
   return (
-    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color ?? palette.text} strokeWidth={1.65} strokeLinecap="round" strokeLinejoin="round" accessible={false}>
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color ?? palette.text} strokeWidth={1.65} strokeLinecap="round" strokeLinejoin="round" accessible={Platform.OS === 'web' ? undefined : false}>
       {name === 'camera' && <><Path d="M4 7h3l2-3h6l2 3h3a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1Z" /><Circle cx="12" cy="13" r="4" /></>}
       {name === 'upload' && <><Rect x="3" y="3" width="18" height="18" rx="3" /><Circle cx="8" cy="8" r="1.5" /><Path d="m3 17 6-6 4 4 3-3 5 5" /></>}
       {name === 'plus' && <Path d="M12 4v16M4 12h16" />}

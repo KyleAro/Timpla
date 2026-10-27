@@ -1,13 +1,12 @@
 import { initialScanState, RecentScan, scanReducer, SelectedDish } from './scanHistory';
 import { createContext, PropsWithChildren, useContext, useEffect, useReducer, useRef, useState } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { CookingStyle, isCookingStyle } from '../data/cookingStyles';
 import { useSavedRecipes } from '../hooks/useSavedRecipes';
 import { detectIngredients } from '../services/detection';
+import { useAuth } from '../auth/AuthContext';
+import { useAccountSettings } from '../hooks/useAccountSettings';
+import { useRecipeCatalog } from '../hooks/useRecipeCatalog';
 
-type Diet = 'No preference' | 'Vegetarian' | 'Halal';
-
-type CookingState = {
+type CookingState = ReturnType<typeof useAccountSettings> & ReturnType<typeof useRecipeCatalog> & {
   detecting: boolean;
   detectionError: string;
   retryDetection: () => void;
@@ -15,21 +14,9 @@ type CookingState = {
   toggleHuntIngredient: (recipeId: string, ingredient: string) => void;
   savedRecipeIds: string[];
   toggleSavedRecipe: (id: string) => void;
-  cookingStyle: CookingStyle;
-  setCookingStyle: (value: CookingStyle) => void;
   recentScans: RecentScan[];
   selectDish: (dish: SelectedDish) => void;
   openRecentScan: (id: string) => void;
-  displayName: string;
-  setDisplayName: (value: string) => void;
-  people: number;
-  setPeople: (value: number) => void;
-  diet: Diet;
-  setDiet: (value: Diet) => void;
-  exclusions: string[];
-  setExclusions: (value: string[]) => void;
-  allergies: string[];
-  setAllergies: (value: string[]) => void;
   ingredients: string[];
   setIngredients: (value: string[]) => void;
   photo: string | null;
@@ -38,6 +25,10 @@ type CookingState = {
 const CookingContext = createContext<CookingState | null>(null);
 
 export function CookingProvider({ children }: PropsWithChildren) {
+  const { session, preview } = useAuth();
+  const accountId = preview ? 'preview' : session?.user.id ?? 'signed-out';
+  const account = useAccountSettings();
+  const catalog = useRecipeCatalog();
   const [huntIngredients, setHuntIngredients] = useState<Record<string, string[]>>({});
   function toggleHuntIngredient(recipeId: string, ingredient: string) {
     setHuntIngredients((current) => {
@@ -45,27 +36,7 @@ export function CookingProvider({ children }: PropsWithChildren) {
       return { ...current, [recipeId]: items.includes(ingredient) ? items.filter((name) => name !== ingredient) : [...items, ingredient] };
     });
   }
-  const savedRecipes = useSavedRecipes();
-  const [cookingStyle, updateCookingStyle] = useState<CookingStyle>('Any style');
-  const styleChanged = useRef(false);
-  const styleWrites = useRef(Promise.resolve());
-  useEffect(() => {
-    let mounted = true;
-    void AsyncStorage.getItem('timpla.cooking-style').then((value) => {
-      if (mounted && !styleChanged.current && isCookingStyle(value)) updateCookingStyle(value);
-    }).catch(() => {});
-    return () => { mounted = false; };
-  }, []);
-  function setCookingStyle(value: CookingStyle) {
-    styleChanged.current = true;
-    updateCookingStyle(value);
-    styleWrites.current = styleWrites.current.then(() => AsyncStorage.setItem('timpla.cooking-style', value)).catch(() => {});
-  }
-  const [displayName, setDisplayName] = useState('Juan Dela Cruz');
-  const [people, updatePeople] = useState(2);
-  const [diet, setDiet] = useState<Diet>('No preference');
-  const [exclusions, setExclusions] = useState<string[]>([]);
-  const [allergies, setAllergies] = useState<string[]>([]);
+  const savedRecipes = useSavedRecipes(accountId);
   const [scanState, dispatchScan] = useReducer(scanReducer, initialScanState);
   const { ingredients, photo, recentScans } = scanState;
   const [detection, setDetection] = useState({ id: '', pending: false, error: '' });
@@ -100,7 +71,7 @@ export function CookingProvider({ children }: PropsWithChildren) {
   function openRecentScan(id: string) { dispatchScan({ type: 'open', id }); }
   function selectDish(dish: SelectedDish) { dispatchScan({ type: 'select', dish }); }
   return (
-    <CookingContext.Provider value={{ detecting: detection.id === scanState.activeId && detection.pending, detectionError: detection.id === scanState.activeId ? detection.error : '', retryDetection, huntIngredients, toggleHuntIngredient, ...savedRecipes, cookingStyle, setCookingStyle, selectDish, exclusions, setExclusions, recentScans, openRecentScan, displayName, setDisplayName, people, setPeople: (value) => updatePeople(Math.max(1, Math.min(20, value))), diet, setDiet, allergies, setAllergies, ingredients, setIngredients, photo, setPhoto }}>
+    <CookingContext.Provider value={{ ...account, ...catalog, detecting: detection.id === scanState.activeId && detection.pending, detectionError: detection.id === scanState.activeId ? detection.error : '', retryDetection, huntIngredients, toggleHuntIngredient, ...savedRecipes, selectDish, recentScans, openRecentScan, ingredients, setIngredients, photo, setPhoto }}>
       {children}
     </CookingContext.Provider>
   );

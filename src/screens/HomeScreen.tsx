@@ -7,11 +7,11 @@ import { BottomNav, useBottomNavPadding } from '../components/BottomNav';
 import { useCooking } from '../state/CookingContext';
 import { ThemePalette } from '../theme/colors';
 import { useTheme } from '../theme/ThemeContext';
-import { destinations } from '../data/cookingStyles';
+import { CatalogStatus } from '../components/CatalogStatus';
 
 export default function HomeScreen() {
   const bottomPadding = useBottomNavPadding();
-  const { displayName, people, setPhoto, recentScans } = useCooking();
+  const { displayName, people, setPhoto, recentScans, destinations } = useCooking();
   const { palette } = useTheme();
   const styles = makeStyles(palette);
   const firstName = displayName.trim().split(/\s+/)[0] || 'there';
@@ -46,6 +46,7 @@ export default function HomeScreen() {
             <AppIcon name="leaf" size={58} color={palette.accent} />
           </Pressable>
           <View style={styles.sectionRow}><Text accessibilityRole="header" style={[styles.sectionTitle, { flex: 1 }]}>Explore the Philippines</Text><Pressable accessibilityRole="button" accessibilityLabel="View all Philippine destinations" onPress={() => router.push('/explore')} style={styles.viewAll}><Text style={styles.highlightLinkText}>View all</Text></Pressable></View>
+          <CatalogStatus />
           <View style={styles.places}>{destinations.map((place) => <Pressable key={place.name} accessibilityRole="button" accessibilityLabel={`Explore ${place.name} recipes`} onPress={() => router.push({ pathname: '/explore', params: { place: place.name } })} style={({ pressed }) => [styles.place, pressed && styles.pressed]}><AppIcon name="book" size={24} color={palette.accent} /><Text style={styles.placeName}>{place.name}</Text><AppIcon name="chevron" size={16} /></Pressable>)}</View>
           <View style={styles.sectionRow}><Text accessibilityRole="header" style={styles.sectionTitle}>Recent scans</Text><Pressable accessibilityRole="button" onPress={() => router.replace('/recents')} style={styles.viewAll}><Text style={styles.highlightLinkText}>View all</Text></Pressable></View>
           <View style={styles.recentGroup}>{[...recentScans].sort((a, b) => b.createdAt - a.createdAt).slice(0, 2).map((scan) => <Pressable key={scan.id} accessibilityRole="button" onPress={() => router.push({ pathname: '/scan-details', params: { id: scan.id } })} style={styles.recentRow}><View style={styles.copy}><Text numberOfLines={1} style={styles.placeName}>{scan.ingredients.map((item) => item.name).join(', ') || scan.selectedDish?.name || 'Ingredient scan'}</Text><Text style={styles.note}>{new Date(scan.createdAt).toLocaleString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}</Text></View><AppIcon name="chevron" size={18} /></Pressable>)}{!recentScans.length && <Text style={styles.emptyRecent}>No scans yet</Text>}</View>
