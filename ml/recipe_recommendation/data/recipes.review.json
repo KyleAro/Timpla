@@ -1,0 +1,150 @@
+[
+  {
+    "id": "tortang-talong",
+    "name": "Tortang Talong",
+    "source_url": "https://panlasangpinoy.com/filipino-vegetable-food-eggplant-omelet-tortang-talong-recipe/",
+    "source_accessed": "2026-10-28",
+    "source_author": "Vanjo Merano",
+    "major": [
+      "eggplant",
+      "egg"
+    ],
+    "supporting": [
+      "oil",
+      "salt"
+    ],
+    "optional": [],
+    "minutes": 40,
+    "region": "Filipino",
+    "reviewed_by": "",
+    "reviewed_at": "",
+    "provenance_note": "Ingredient facts normalized from linked recipe. Ingredient roles are Timpla proposals requiring human review; no full instructions or images copied. Source rights not assumed."
+  },
+  {
+    "id": "sinangag",
+    "name": "Sinangag",
+    "source_url": "https://www.kawalingpinoy.com/sinangag/",
+    "source_accessed": "2026-10-28",
+    "source_author": "Lalaine Manalo",
+    "major": [
+      "cooked_rice",
+      "garlic"
+    ],
+    "supporting": [
+      "oil",
+      "salt",
+      "pepper"
+    ],
+    "optional": [],
+    "minutes": 25,
+    "region": "Filipino",
+    "reviewed_by": "",
+    "reviewed_at": "",
+    "provenance_note": "Ingredient facts normalized from linked recipe. Ingredient roles are Timpla proposals requiring human review; no full instructions or images copied. Source rights not assumed."
+  },
+  {
+    "id": "kultyas",
+    "name": "Kultyas (Ginisang Kamatis at Itlog)",
+    "source_url": "https://www.kawalingpinoy.com/kultyas/",
+    "source_accessed": "2026-10-28",
+    "source_author": "Lalaine Manalo",
+    "major": [
+      "tomato",
+      "egg",
+      "onion",
+      "garlic"
+    ],
+    "supporting": [
+      "oil",
+      "all_in_one_seasoning",
+      "pepper"
+    ],
+    "optional": [],
+    "minutes": 20,
+    "region": "Kapampangan",
+    "reviewed_by": "",
+    "reviewed_at": "",
+    "provenance_note": "Ingredient facts normalized from linked recipe. Ingredient roles are Timpla proposals requiring human review; no full instructions or images copied. Source rights not assumed."
+  },
+  {
+    "id": "ginisang-repolyo-with-eggs",
+    "name": "Ginisang Repolyo with Eggs",
+    "source_url": "https://www.kawalingpinoy.com/ginisang-repolyo-with-eggs/",
+    "source_accessed": "2026-10-28",
+    "source_author": "Lalaine Manalo",
+    "major": [
+      "cabbage",
+      "egg",
+      "carrot",
+      "onion",
+      "garlic"
+    ],
+    "supporting": [
+      "oil",
+      "soy_sauce",
+      "sugar",
+      "all_in_one_seasoning",
+      "pepper"
+    ],
+    "optional": [],
+    "minutes": 30,
+    "region": "Filipino",
+    "reviewed_by": "",
+    "reviewed_at": "",
+    "provenance_note": "Ingredient facts normalized from linked recipe. Ingredient roles are Timpla proposals requiring human review; no full instructions or images copied. Source rights not assumed."
+  },
+  {
+    "id": "adobong-kangkong-with-pork",
+    "name": "Adobong Kangkong with Pork",
+    "source_url": "https://www.kawalingpinoy.com/adobong-kangkong/",
+    "source_accessed": "2026-10-28",
+    "source_author": "Lalaine Manalo",
+    "major": [
+      "kangkong",
+      "pork_belly",
+      "onion",
+      "garlic",
+      "soy_sauce",
+      "vinegar"
+    ],
+    "supporting": [
+      "oil",
+      "water",
+      "pepper"
+    ],
+    "optional": [],
+    "minutes": 35,
+    "region": "Filipino",
+    "reviewed_by": "",
+    "reviewed_at": "",
+    "provenance_note": "Ingredient facts normalized from linked recipe. Ingredient roles are Timpla proposals requiring human review; no full instructions or images copied. Source rights not assumed."
+  },
+  {
+    "id": "ginisang-sayote-with-egg",
+    "name": "Ginisang Sayote with Egg",
+    "source_url": "https://yummyfood.ph/recipe/ginisang-sayote-with-egg/",
+    "source_accessed": "2026-10-28",
+    "source_author": "Yummy Food PH",
+    "major": [
+      "chayote",
+      "egg",
+      "garlic",
+      "onion"
+    ],
+    "supporting": [
+      "chicken_bouillon",
+      "water",
+      "salt",
+      "pepper",
+      "oil"
+    ],
+    "optional": [
+      "tomato"
+    ],
+    "minutes": null,
+    "region": "Filipino",
+    "reviewed_by": "",
+    "reviewed_at": "",
+    "provenance_note": "Ingredient facts normalized from linked recipe. Ingredient roles are Timpla proposals requiring human review; no full instructions or images copied. Source rights not assumed."
+  }
+]

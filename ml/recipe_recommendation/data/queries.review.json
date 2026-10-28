@@ -1,0 +1,188 @@
+[
+  {
+    "id": "q01",
+    "available": [
+      "egg",
+      "eggplant",
+      "cooked_rice",
+      "garlic"
+    ],
+    "use_first": [
+      "eggplant"
+    ],
+    "excluded": [],
+    "max_minutes": null,
+    "preferred_region": "",
+    "split": "",
+    "leakage_group": "",
+    "origin": "draft researcher scenario; not collected user data",
+    "reviewed_by": ""
+  },
+  {
+    "id": "q02",
+    "available": [
+      "egg",
+      "tomato",
+      "onion",
+      "garlic",
+      "cooked_rice",
+      "oil",
+      "salt"
+    ],
+    "use_first": [
+      "tomato"
+    ],
+    "excluded": [],
+    "max_minutes": null,
+    "preferred_region": "",
+    "split": "",
+    "leakage_group": "",
+    "origin": "draft researcher scenario; not collected user data",
+    "reviewed_by": ""
+  },
+  {
+    "id": "q03",
+    "available": [
+      "egg",
+      "chayote",
+      "onion",
+      "garlic",
+      "cooked_rice",
+      "oil",
+      "salt",
+      "pepper"
+    ],
+    "use_first": [
+      "chayote"
+    ],
+    "excluded": [],
+    "max_minutes": null,
+    "preferred_region": "",
+    "split": "",
+    "leakage_group": "",
+    "origin": "draft researcher scenario; not collected user data",
+    "reviewed_by": ""
+  },
+  {
+    "id": "q04",
+    "available": [
+      "egg",
+      "cabbage",
+      "carrot",
+      "onion",
+      "garlic",
+      "tomato",
+      "soy_sauce"
+    ],
+    "use_first": [
+      "cabbage"
+    ],
+    "excluded": [],
+    "max_minutes": null,
+    "preferred_region": "",
+    "split": "",
+    "leakage_group": "",
+    "origin": "draft researcher scenario; not collected user data",
+    "reviewed_by": ""
+  },
+  {
+    "id": "q05",
+    "available": [
+      "egg",
+      "eggplant",
+      "chayote",
+      "onion",
+      "garlic",
+      "oil",
+      "salt"
+    ],
+    "use_first": [
+      "eggplant"
+    ],
+    "excluded": [],
+    "max_minutes": null,
+    "preferred_region": "",
+    "split": "",
+    "leakage_group": "",
+    "origin": "draft researcher scenario; not collected user data",
+    "reviewed_by": ""
+  },
+  {
+    "id": "q06",
+    "available": [
+      "egg",
+      "tomato",
+      "onion",
+      "garlic",
+      "cabbage",
+      "carrot",
+      "all_in_one_seasoning",
+      "oil",
+      "soy_sauce",
+      "pepper"
+    ],
+    "use_first": [
+      "tomato"
+    ],
+    "excluded": [],
+    "max_minutes": null,
+    "preferred_region": "",
+    "split": "",
+    "leakage_group": "",
+    "origin": "draft researcher scenario; not collected user data",
+    "reviewed_by": ""
+  },
+  {
+    "id": "q07",
+    "available": [
+      "pork_belly",
+      "kangkong",
+      "onion",
+      "garlic",
+      "soy_sauce",
+      "vinegar",
+      "cooked_rice",
+      "egg",
+      "oil",
+      "pepper",
+      "water"
+    ],
+    "use_first": [
+      "kangkong"
+    ],
+    "excluded": [],
+    "max_minutes": null,
+    "preferred_region": "",
+    "split": "",
+    "leakage_group": "",
+    "origin": "draft researcher scenario; not collected user data",
+    "reviewed_by": ""
+  },
+  {
+    "id": "q08",
+    "available": [
+      "egg",
+      "eggplant",
+      "chayote",
+      "cabbage",
+      "carrot",
+      "onion",
+      "garlic",
+      "cooked_rice",
+      "tomato",
+      "oil",
+      "salt",
+      "pepper"
+    ],
+    "use_first": [
+      "carrot"
+    ],
+    "excluded": [],
+    "max_minutes": null,
+    "preferred_region": "",
+    "split": "",
+    "leakage_group": "",
+    "origin": "draft researcher scenario; not collected user data",
+    "reviewed_by": ""
+  }
+]

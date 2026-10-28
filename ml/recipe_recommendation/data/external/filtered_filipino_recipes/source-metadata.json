@@ -1,0 +1,33 @@
+{
+  "_id": "67db9bf19d821d3890415add",
+  "id": "joackimagno/filtered-filipino-recipes",
+  "author": "joackimagno",
+  "sha": "b74802ba1cca1a65b7c82c931e1ab249ba3fa39a",
+  "lastModified": "2025-03-20T05:03:15Z",
+  "private": false,
+  "gated": false,
+  "disabled": false,
+  "tags": [
+    "size_categories:n<1K",
+    "format:csv",
+    "modality:tabular",
+    "modality:text",
+    "library:datasets",
+    "library:pandas",
+    "library:mlcroissant",
+    "library:polars",
+    "region:us"
+  ],
+  "downloads": 7,
+  "likes": 0,
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "filtered_data.csv"
+    }
+  ],
+  "createdAt": "2025-03-20T04:39:13Z",
+  "usedStorage": 104504
+}

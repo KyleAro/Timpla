@@ -3,7 +3,6 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { AppIcon } from '../components/AppIcon';
 import { useCooking } from '../state/CookingContext';
-import { savedRecipeMatch } from '../state/scanHistory';
 import { useTheme } from '../theme/ThemeContext';
 import { scanDate } from './RecentsScreen';
 
@@ -12,7 +11,6 @@ export default function ScanDetailsScreen() {
   const { recentScans, openRecentScan } = useCooking();
   const { palette } = useTheme();
   const scan = recentScans.find((item) => item.id === id);
-  const match = scan ? savedRecipeMatch(scan) : null;
   const back = () => router.canGoBack() ? router.back() : router.replace('/recents');
   return <SafeAreaView style={[styles.screen, { backgroundColor: palette.background }]}>
     <View style={styles.header}><Pressable accessibilityRole="button" accessibilityLabel="Back to recents" onPress={back} style={styles.back}><AppIcon name="back" size={25} /></Pressable><Text accessibilityRole="header" style={[styles.headerTitle, { color: palette.text }]}>Scan details</Text><View style={styles.back} /></View>
@@ -26,7 +24,6 @@ export default function ScanDetailsScreen() {
         </> : <Text style={[styles.body, { color: palette.muted }]}>No ingredients added</Text>}
         <Text style={[styles.dishLabel, { color: palette.muted }]}>Selected dish</Text>
         <Text style={[styles.dish, { color: palette.text }]}>{scan.selectedDish?.name ?? 'Not selected'}</Text>
-        {match && <View style={[styles.match, { backgroundColor: palette.olive }]}><Text style={[styles.matchTitle, { color: palette.oliveText }]}>{match.percent}% recipe match</Text><Text style={[styles.body, { color: palette.oliveText }]}>{match.matched} of {match.total} ingredients</Text></View>}
         <Pressable accessibilityRole="button" onPress={() => { openRecentScan(scan.id); router.push('/ingredients'); }} style={[styles.resultsButton, { borderColor: palette.text }]}><Text style={[styles.resultsText, { color: palette.text }]}>View results</Text></Pressable>
       </>}
     </ScrollView>

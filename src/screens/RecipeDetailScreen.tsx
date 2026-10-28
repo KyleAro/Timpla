@@ -4,38 +4,41 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { AppIcon } from '../components/AppIcon';
 import { PeopleSelector } from '../components/PeopleSelector';
 import { SaveRecipeButton } from '../components/SaveRecipeButton';
-import { CatalogStatus } from '../components/CatalogStatus';
+
 import { useCooking } from '../state/CookingContext';
 import { useTheme } from '../theme/ThemeContext';
-import { ingredientMatch, normalizeIngredient } from '../utils/ingredientMatch';
 import { recipeQuantity } from '../utils/recipeQuantity';
+import * as Linking from 'expo-linking';
+import { useState } from 'react';
 
 export default function RecipeDetailScreen() {
+  const [sourceError, setSourceError] = useState('');
   const { id, mode } = useLocalSearchParams<{ id: string; mode?: string }>();
-  const { ingredients, people, huntIngredients, toggleHuntIngredient, recipes, catalogLoading, catalogError } = useCooking();
+  const { people, huntIngredients, toggleHuntIngredient, recipes } = useCooking();
   const recipe = recipes.find((item) => item.id === id);
   const { palette } = useTheme();
   const hunt = mode === 'hunt';
   const back = () => router.canGoBack() ? router.back() : router.replace(hunt ? '/reverse-cooking' : '/recipes');
-  if (!recipe) return <SafeAreaView style={[styles.screen, { backgroundColor: palette.background }]}><CatalogStatus />{!catalogLoading && !catalogError && <Text style={[styles.title, { color: palette.text }]}>Recipe unavailable</Text>}<Pressable accessibilityRole="button" accessibilityLabel="Go back" onPress={back} style={styles.back}><AppIcon name="back" /></Pressable></SafeAreaView>;
-  const available = hunt ? huntIngredients[recipe.id] ?? [] : ingredients;
-  const match = ingredientMatch(recipe.required, available);
-  const availableNames = new Set(available.map(normalizeIngredient));
+  if (!recipe) return <SafeAreaView style={[styles.screen, { backgroundColor: palette.background }]}><Text style={[styles.title, { color: palette.text }]}>Recipe unavailable</Text><Pressable accessibilityRole="button" accessibilityLabel="Go back" onPress={back} style={styles.back}><AppIcon name="back" /></Pressable></SafeAreaView>;
+  const available = hunt ? huntIngredients[recipe.id] ?? [] : [];
   return <SafeAreaView style={[styles.screen, { backgroundColor: palette.background }]}>
     <View style={styles.header}><Pressable accessibilityRole="button" accessibilityLabel="Go back" onPress={back} style={styles.back}><AppIcon name="back" size={25} /></Pressable><Text style={[styles.headerTitle, { color: palette.text }]}>{hunt ? 'Reverse cooking' : 'Recipe'}</Text><SaveRecipeButton id={recipe.id} /></View>
     <ScrollView contentContainerStyle={styles.content}>
-      <Image source={recipe.image} accessibilityLabel={recipe.name} style={styles.photo} />
+      {recipe.image && <Image source={recipe.image} accessibilityLabel={recipe.name} style={styles.photo} />}
       <Text accessibilityRole="header" style={[styles.title, { color: palette.text }]}>{recipe.name}</Text>
-      <Text style={[styles.summary, { color: palette.muted }]}>{recipe.minutes} min{recipe.cookingStyle ? ` · ${recipe.cookingStyle}` : ''}</Text>
-      <View style={styles.servings}><Text style={[styles.servingLabel, { color: palette.text }]}>Servings</Text><PeopleSelector /></View>
-      <View style={[styles.match, { backgroundColor: palette.olive }]} accessibilityLiveRegion="polite"><Text style={[styles.matchTitle, { color: palette.oliveText }]}>{hunt ? `${match.matched} of ${match.total} ingredients ready` : `${match.percent}% ingredient match`}</Text><Text style={[styles.matchSub, { color: palette.oliveText }]}>{match.missing.length ? `${match.missing.length} missing` : 'Ready to cook'}</Text></View>
+      <Text style={[styles.summary, { color: palette.muted }]}>{recipe.minutes != null ? `${recipe.minutes} min` : 'Time not supplied'}{recipe.cookingStyle ? ` · ${recipe.cookingStyle}` : ''}</Text>
+      {<View style={styles.servings}><Text style={[styles.servingLabel, { color: palette.text }]}>Servings</Text><PeopleSelector /></View>}
       <View style={styles.sectionRow}><Text accessibilityRole="header" style={[styles.section, styles.inlineSection, { color: palette.text }]}>{hunt ? 'Ingredient hunt' : 'Ingredients'}</Text>{!hunt && <Pressable accessibilityRole="button" onPress={() => router.push({ pathname: '/recipe', params: { id: recipe.id, mode: 'hunt' } })} style={styles.huntButton}><Text style={{ color: palette.accent, fontWeight: '600', fontSize: 13 }}>Start hunt</Text></Pressable>}</View>
       {recipe.required.map((name, index) => {
-        const ready = availableNames.has(normalizeIngredient(name));
-        const row = <><View style={[styles.check, { borderColor: ready ? palette.accent : palette.border, backgroundColor: ready ? palette.chip : palette.surface }]}>{ready && <AppIcon name="check" size={17} color={palette.accent} />}</View><Text style={[styles.quantity, { color: palette.text }]}>{recipeQuantity(recipe.quantities[index], people, recipe.servings)}</Text><Text style={[styles.status, { color: ready ? palette.accent : palette.muted }]}>{ready ? 'Have' : 'Missing'}</Text></>;
+        const ready = available.includes(name);
+        const row = <><View style={[styles.check, { borderColor: ready ? palette.accent : palette.border, backgroundColor: ready ? palette.chip : palette.surface }]}>{ready && <AppIcon name="check" size={17} color={palette.accent} />}</View><Text style={[styles.quantity, { color: palette.text }]}>{recipeQuantity(recipe.quantities[index], people, recipe.servings)}</Text><Text style={[styles.status, { color: ready ? palette.accent : palette.muted }]}>{hunt ? (ready ? 'Checked' : 'Unchecked') : ''}</Text></>;
         return hunt ? <Pressable key={name} accessibilityRole="checkbox" accessibilityLabel={name} accessibilityState={{ checked: ready }} onPress={() => toggleHuntIngredient(recipe.id, name)} style={[styles.ingredientRow, { borderColor: palette.border }]}>{row}</Pressable> : <View key={name} style={[styles.ingredientRow, { borderColor: palette.border }]}>{row}</View>;
       })}
       <Text accessibilityRole="header" style={[styles.section, { color: palette.text }]}>Steps</Text>
+      {recipe.supporting?.length ? <Text style={{ color: palette.muted, marginBottom: 12 }}>Other recipe ingredients: {recipe.supporting.join(', ')}</Text> : null}
+      {recipe.optional?.length ? <Text style={{ color: palette.muted, marginBottom: 12 }}>Optional: {recipe.optional.join(', ')}</Text> : null}
+      {recipe.sourceUrl && <Pressable accessibilityRole="link" accessibilityLabel="Open original recipe and cooking instructions" onPress={() => { void Linking.openURL(recipe.sourceUrl!).catch(() => setSourceError('Could not open the source recipe. Try again.')); }} style={styles.huntButton}><Text style={{ color: palette.accent }}>Open original recipe and cooking instructions</Text></Pressable>}
+      {sourceError ? <Text style={{ color: palette.error }}>{sourceError}</Text> : null}
       {recipe.steps.map((step, index) => <View key={step} style={styles.step}><Text style={[styles.number, { color: palette.accent }]}>{index + 1}</Text><Text style={[styles.stepText, { color: palette.text }]}>{step}</Text></View>)}
     </ScrollView>
   </SafeAreaView>;

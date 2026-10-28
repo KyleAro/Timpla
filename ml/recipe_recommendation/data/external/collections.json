@@ -1,0 +1,20 @@
+[
+  {
+    "folder": "filipino_recipes_2k",
+    "dataset": "joackimagno/FILIPINO_RECIPES_2K",
+    "revision": "6abfd6921d5bede14e115be6e6ea2af2220b58fd",
+    "source_sha256": "3306a4790c2fac611ac50bf5dbfd47eef03f73e3f3b0fe880bca7d9abb5869a8",
+    "rows": 1988,
+    "source_url": "https://huggingface.co/datasets/joackimagno/FILIPINO_RECIPES_2K/resolve/6abfd6921d5bede14e115be6e6ea2af2220b58fd/data/train-00000-of-00001.parquet",
+    "training_status": "raw_unreviewed"
+  },
+  {
+    "folder": "filtered_filipino_recipes",
+    "dataset": "joackimagno/filtered-filipino-recipes",
+    "revision": "b74802ba1cca1a65b7c82c931e1ab249ba3fa39a",
+    "source_sha256": "196b2698bbb5c914a2ba1421729fc56567867db1d0fef62e9e1539b860774293",
+    "rows": 141,
+    "source_url": "https://huggingface.co/datasets/joackimagno/filtered-filipino-recipes/resolve/b74802ba1cca1a65b7c82c931e1ab249ba3fa39a/filtered_data.csv",
+    "training_status": "raw_unreviewed"
+  }
+]

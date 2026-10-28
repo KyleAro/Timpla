@@ -1,0 +1,32 @@
+[
+  {
+    "id": "nilagang-itlog",
+    "name": "Nilagang Itlog (Boiled Eggs)",
+    "source_url": "https://panlasangpinoy.com/how-to-boil-eggs/",
+    "source_author": "Vanjo Merano",
+    "source_accessed": "2026-10-28",
+    "major": ["egg"],
+    "supporting": ["water"],
+    "optional": [],
+    "minutes": null,
+    "region": "Filipino home cooking",
+    "reviewed_by": "",
+    "reviewed_at": "",
+    "provenance_note": "Basic boiled-egg method presented under its Filipino name. Ingredient facts only; original instructions are linked, not copied. Ingredient-role review is pending."
+  },
+  {
+    "id": "pritong-itlog",
+    "name": "Pritong Itlog (Fried Eggs)",
+    "source_url": "https://www.incredibleegg.org/recipes/cooking-school/how-to-make-fried-eggs/",
+    "source_author": "American Egg Board",
+    "source_accessed": "2026-10-28",
+    "major": ["egg"],
+    "supporting": ["oil", "salt", "pepper"],
+    "optional": [],
+    "minutes": null,
+    "region": "Basic preparation",
+    "reviewed_by": "",
+    "reviewed_at": "",
+    "provenance_note": "Basic fried-egg method presented under its Filipino name, not claimed to be an exclusively Filipino recipe. Ingredient facts only; original instructions are linked, not copied. Ingredient-role review is pending."
+  }
+]

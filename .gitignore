@@ -47,18 +47,29 @@ yarn-error.*
 /ios
 /android
 
-# Local model datasets and training artifacts
+# Python caches
+__pycache__/
+
+# Local temporary files
+/tmp/
+
+# Standalone collection tool environments and downloads
+/tools/ingredient-scraper/.venv/
+/ingredient-images/
+
+# Local dataset downloads and generated preparation outputs
 /datasets/**/raw/
 /datasets/**/prepared/
 /datasets/**/archives/
 /datasets/**/quarantine/
 /datasets/**/*.zip
 /datasets/reports/previews/
-/training/runs/
-*.pt
-__pycache__/
+
+# Model environment, weights and prediction outputs
 /.venv-model/
-/Ultralytics/
-/tmp/
 /models/**/*.pt
 /models/**/predictions/
+/training/runs/
+/Ultralytics/
+
+/datasets/**/reports/previews/

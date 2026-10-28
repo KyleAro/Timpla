@@ -29,8 +29,12 @@ export async function validatePhoto(uri: string, mediaType?: string | null, mime
   }
   validatePhotoSize(size);
   try {
-    const dimensions = await Image.getSize(uri);
-    if (dimensions.width <= 0 || dimensions.height <= 0) throw new Error('Empty image');
+    // React Native supports this callback overload, while react-native-web
+    // 0.21 requires it and does not return a Promise from Image.getSize.
+    const dimensions = await new Promise<{ width: number; height: number }>((resolve, reject) => {
+      Image.getSize(uri, (width, height) => resolve({ width, height }), reject);
+    });
+    if (![dimensions.width, dimensions.height].every(value => Number.isFinite(value) && value > 0)) throw new Error('Empty image');
   } catch {
     throw new PhotoValidationError('Choose a valid image.');
   }

@@ -1,0 +1,27 @@
+{
+  "rows": 1988,
+  "columns": [
+    "recipe_name",
+    "prep_time",
+    "cook_time",
+    "total_time",
+    "servings",
+    "ingredients",
+    "instructions",
+    "ingredient_names"
+  ],
+  "null_counts": {
+    "recipe_name": 0,
+    "prep_time": 0,
+    "cook_time": 0,
+    "total_time": 0,
+    "servings": 0,
+    "ingredients": 0,
+    "instructions": 0,
+    "ingredient_names": 0
+  },
+  "unique_recipe_names": 1890,
+  "duplicate_recipe_name_rows": 98,
+  "empty_ingredients": 0,
+  "inspection": "Actual downloaded Parquet read; no claim of ingredient correctness or deduplicated recipes"
+}

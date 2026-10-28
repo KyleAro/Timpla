@@ -1,0 +1,93 @@
+{
+  "_id": "68c16e030aa69c681852cacb",
+  "id": "joackimagno/FILIPINO_RECIPES_2K",
+  "author": "joackimagno",
+  "sha": "6abfd6921d5bede14e115be6e6ea2af2220b58fd",
+  "lastModified": "2025-09-10T14:28:05Z",
+  "private": false,
+  "gated": false,
+  "disabled": false,
+  "tags": [
+    "size_categories:1K<n<10K",
+    "format:parquet",
+    "modality:text",
+    "library:datasets",
+    "library:pandas",
+    "library:mlcroissant",
+    "library:polars",
+    "region:us"
+  ],
+  "downloads": 17,
+  "likes": 0,
+  "cardData": {
+    "dataset_info": {
+      "features": [
+        {
+          "name": "recipe_name",
+          "dtype": "string"
+        },
+        {
+          "name": "prep_time",
+          "dtype": "string"
+        },
+        {
+          "name": "cook_time",
+          "dtype": "string"
+        },
+        {
+          "name": "total_time",
+          "dtype": "string"
+        },
+        {
+          "name": "servings",
+          "dtype": "string"
+        },
+        {
+          "name": "ingredients",
+          "dtype": "string"
+        },
+        {
+          "name": "instructions",
+          "dtype": "string"
+        },
+        {
+          "name": "ingredient_names",
+          "dtype": "string"
+        }
+      ],
+      "splits": [
+        {
+          "name": "train",
+          "num_bytes": 2693791,
+          "num_examples": 1988
+        }
+      ],
+      "download_size": 1120010,
+      "dataset_size": 2693791
+    },
+    "configs": [
+      {
+        "config_name": "default",
+        "data_files": [
+          {
+            "split": "train",
+            "path": "data/train-*"
+          }
+        ]
+      }
+    ]
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "data/train-00000-of-00001.parquet"
+    }
+  ],
+  "createdAt": "2025-09-10T12:24:35Z",
+  "usedStorage": 3278913
+}

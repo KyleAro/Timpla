@@ -1,0 +1,10 @@
+{
+  "sha256": "3306a4790c2fac611ac50bf5dbfd47eef03f73e3f3b0fe880bca7d9abb5869a8",
+  "source_url": "https://huggingface.co/datasets/joackimagno/FILIPINO_RECIPES_2K/resolve/6abfd6921d5bede14e115be6e6ea2af2220b58fd/data/train-00000-of-00001.parquet",
+  "revision": "6abfd6921d5bede14e115be6e6ea2af2220b58fd",
+  "purpose": "Raw dataset candidate for inspection; not approved training data",
+  "retrieved_at": "2026-10-28T02:29:33.8564751Z",
+  "license_metadata": null,
+  "dataset": "joackimagno/FILIPINO_RECIPES_2K",
+  "bytes": 1120010
+}

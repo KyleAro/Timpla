@@ -1,0 +1,12 @@
+{
+  "source_rows": {
+    "filipino_recipes_2k": 1988,
+    "filtered_filipino_recipes": 141
+  },
+  "total_source_rows": 2129,
+  "merged_duplicate_rows": 55,
+  "output_records": 2074,
+  "records_with_review_flags": 1888,
+  "ingredient_roles_assigned": false,
+  "ready_for_training": false
+}

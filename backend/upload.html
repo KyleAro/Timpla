@@ -1,0 +1,18 @@
+<!doctype html>
+
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Timpla ingredient upload test</title>
+
+<style>body{font-family:system-ui;margin:32px auto;padding:0 20px;max-width:680px;background:#fff8ed;color:#32281f}button,input{font:inherit;margin:12px 0;padding:12px}img{max-width:100%;max-height:360px}pre{white-space:pre-wrap;overflow-wrap:anywhere}button{background:#bd4933;color:white;border:0;border-radius:10px}canvas{max-width:100%;height:auto}</style></head><body>
+
+<h1>Timpla ingredient detector</h1><p>Upload a photo to test the team's YOLOv12n and the restored fruit-and-vegetable YOLOv8m checkpoints. Uncertain predictions are omitted; an empty result is okay. Predictions can be corrected in the app. This page does not recommend recipes.</p>
+
+<form id="form"><input id="photo" type="file" accept="image/*" required><br><button id="submit">Detect ingredients</button></form><p id="status" role="status"></p><canvas id="preview"></canvas><pre id="result"></pre>
+
+<script>
+
+const form=document.querySelector('#form'),photo=document.querySelector('#photo'),button=document.querySelector('#submit'),status=document.querySelector('#status'),result=document.querySelector('#result'),canvas=document.querySelector('#preview');
+
+form.addEventListener('submit',async event=>{event.preventDefault();const file=photo.files[0];if(!file)return;if(file.size>5000000){status.textContent='Choose a photo 5 MB or smaller.';return;}button.disabled=true;status.textContent='Detecting ingredients…';result.textContent='';canvas.width=0;canvas.height=0;const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),120000);try{const body=new FormData();body.append('image',file);const response=await fetch('/detect',{method:'POST',body,signal:controller.signal});const responseText=await response.text();let payload;try{payload=JSON.parse(responseText);}catch{throw Error(response.ok?'The detector returned an unreadable response. Retry the upload.':`The detector encountered a server error (HTTP ${response.status}). Retry or choose another photo.`);}if(!response.ok)throw Error(typeof payload?.detail==='string'?payload.detail:`Detection failed (HTTP ${response.status}).`);if(!Array.isArray(payload?.ingredients)||!Array.isArray(payload?.detections))throw Error('The detector returned an invalid result. Retry the upload.');status.textContent=payload.ingredients.length?'Detected: '+payload.ingredients.map(item=>item.name).join(', '):'No ingredients detected reliably. Try a clearer photo or add ingredients manually in the app.';result.textContent=JSON.stringify(payload,null,2);let bitmap;try{bitmap=await createImageBitmap(file);}catch{result.textContent+='\n\nDetection completed, but this browser cannot preview this image format.';return;}canvas.width=bitmap.width;canvas.height=bitmap.height;const context=canvas.getContext('2d');context.drawImage(bitmap,0,0);const sx=bitmap.width/payload.width,sy=bitmap.height/payload.height;context.strokeStyle='#00c57d';context.fillStyle='#00c57d';context.lineWidth=Math.max(2,bitmap.width/400);context.font=`${Math.max(16,bitmap.width/45)}px system-ui`;for(const item of payload.detections){const [x1,y1,x2,y2]=item.bbox_xyxy;context.strokeRect(x1*sx,y1*sy,(x2-x1)*sx,(y2-y1)*sy);context.fillText(item.name+' '+Math.round(item.confidence*100)+'%',x1*sx,Math.max(20,y1*sy-5));}bitmap.close();}catch(error){status.textContent=error.name==='AbortError'?'Detection timed out. Retry the upload.':error.message;}finally{clearTimeout(timer);button.disabled=false;}});
+
+</script></body></html>
+

@@ -1,0 +1,14 @@
+{
+  "source_repository": "https://github.com/rainbowmole/timpla",
+  "role": "Team ingredient detector supplied by rainbowmole; YOLOv12n release",
+  "release_url": "https://github.com/rainbowmole/timpla/releases/tag/YOLOv12n",
+  "bytes": 5558810,
+  "download_url": "https://github.com/rainbowmole/timpla/releases/download/YOLOv12n/YOLOv12n_Best.pt",
+  "file": "YOLOv12n_Best.pt",
+  "sha256": "5eaa3205138c11d71cbbddda946a51aa92180bed8afeb7bbe0de23746aac9f2d",
+  "retrieved_at": "2026-10-28T02:48:08.7330689Z",
+  "verified_class_count": 66,
+  "verified_architecture": "YOLOv12n",
+  "class_mapping_source": "Checkpoint model.names; not the README class-count claim",
+  "source_readme_claimed_classes": 68
+}

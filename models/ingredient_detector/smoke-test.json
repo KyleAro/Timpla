@@ -1,0 +1,643 @@
+[
+  {
+    "file": "eggs.jpg",
+    "model": "YOLOv12n_Best.pt",
+    "architecture": "YOLOv12n + YOLOv8m",
+    "models": [
+      {
+        "file": "YOLOv12n_Best.pt",
+        "architecture": "YOLOv12n",
+        "classes": 66,
+        "role": "Ingredients not covered by the produce model"
+      },
+      {
+        "file": "author-yolov8m.pt",
+        "architecture": "YOLOv8m",
+        "classes": 63,
+        "excluded_labels": [
+          "Tomato",
+          "Strawberry"
+        ],
+        "role": "Fruit-and-vegetable model labels"
+      }
+    ],
+    "fusion_policy": "Produce-model labels are handled by YOLOv8m at confidence >= 0.50; the team model handles remaining labels at >= 0.10. No two-model agreement is required. Overlapping non-produce team predictions >= 0.5 block conflicting produce boxes (IoU > 0.3). Empty results are allowed. Thresholds are provisional, not calibrated.",
+    "rejected_detections": 16,
+    "width": 4160,
+    "height": 3088,
+    "inference_seconds": 0.952,
+    "detections": [
+      {
+        "class_id": 25,
+        "label": "egg",
+        "name": "egg",
+        "confidence": 0.957,
+        "source_model": "YOLOv12n_Best.pt",
+        "bbox_xyxy": [
+          1656.2,
+          1495.52,
+          2227.53,
+          2006.43
+        ]
+      },
+      {
+        "class_id": 25,
+        "label": "egg",
+        "name": "egg",
+        "confidence": 0.9565,
+        "source_model": "YOLOv12n_Best.pt",
+        "bbox_xyxy": [
+          2947.96,
+          1101.72,
+          3516.41,
+          1613.11
+        ]
+      },
+      {
+        "class_id": 25,
+        "label": "egg",
+        "name": "egg",
+        "confidence": 0.9509,
+        "source_model": "YOLOv12n_Best.pt",
+        "bbox_xyxy": [
+          2936.9,
+          2197.47,
+          3727.91,
+          2931.16
+        ]
+      },
+      {
+        "class_id": 44,
+        "label": "orange/orange fruit",
+        "name": "orange",
+        "confidence": 0.9484,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          1888.25,
+          629.47,
+          2348.84,
+          1077.15
+        ]
+      },
+      {
+        "class_id": 25,
+        "label": "egg",
+        "name": "egg",
+        "confidence": 0.9394,
+        "source_model": "YOLOv12n_Best.pt",
+        "bbox_xyxy": [
+          2947.68,
+          1618.87,
+          3596.48,
+          2180.46
+        ]
+      },
+      {
+        "class_id": 25,
+        "label": "egg",
+        "name": "egg",
+        "confidence": 0.9308,
+        "source_model": "YOLOv12n_Best.pt",
+        "bbox_xyxy": [
+          1188.44,
+          968.69,
+          1716.01,
+          1391.83
+        ]
+      },
+      {
+        "class_id": 25,
+        "label": "egg",
+        "name": "egg",
+        "confidence": 0.9253,
+        "source_model": "YOLOv12n_Best.pt",
+        "bbox_xyxy": [
+          1045.25,
+          1391.75,
+          1641.72,
+          1873.15
+        ]
+      },
+      {
+        "class_id": 25,
+        "label": "egg",
+        "name": "egg",
+        "confidence": 0.9177,
+        "source_model": "YOLOv12n_Best.pt",
+        "bbox_xyxy": [
+          2226.46,
+          2119.15,
+          2892.7,
+          2843.46
+        ]
+      },
+      {
+        "class_id": 25,
+        "label": "egg",
+        "name": "egg",
+        "confidence": 0.9109,
+        "source_model": "YOLOv12n_Best.pt",
+        "bbox_xyxy": [
+          1514.71,
+          2003.39,
+          2180.44,
+          2717.98
+        ]
+      },
+      {
+        "class_id": 44,
+        "label": "orange/orange fruit",
+        "name": "orange",
+        "confidence": 0.9047,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          1957.03,
+          239.81,
+          2387.2,
+          676.02
+        ]
+      },
+      {
+        "class_id": 25,
+        "label": "egg",
+        "name": "egg",
+        "confidence": 0.8982,
+        "source_model": "YOLOv12n_Best.pt",
+        "bbox_xyxy": [
+          2405.03,
+          620.29,
+          2890.95,
+          1075.99
+        ]
+      },
+      {
+        "class_id": 25,
+        "label": "egg",
+        "name": "egg",
+        "confidence": 0.8799,
+        "source_model": "YOLOv12n_Best.pt",
+        "bbox_xyxy": [
+          1340.12,
+          556.1,
+          1826.15,
+          952.47
+        ]
+      },
+      {
+        "class_id": 25,
+        "label": "egg",
+        "name": "egg",
+        "confidence": 0.876,
+        "source_model": "YOLOv12n_Best.pt",
+        "bbox_xyxy": [
+          2288.34,
+          1547.56,
+          2889.95,
+          2122.01
+        ]
+      },
+      {
+        "class_id": 25,
+        "label": "egg",
+        "name": "egg",
+        "confidence": 0.8688,
+        "source_model": "YOLOv12n_Best.pt",
+        "bbox_xyxy": [
+          2353.48,
+          1063.7,
+          2898.47,
+          1541.82
+        ]
+      },
+      {
+        "class_id": 25,
+        "label": "egg",
+        "name": "egg",
+        "confidence": 0.8599,
+        "source_model": "YOLOv12n_Best.pt",
+        "bbox_xyxy": [
+          1781.4,
+          1023.94,
+          2290.12,
+          1496.08
+        ]
+      },
+      {
+        "class_id": 25,
+        "label": "egg",
+        "name": "egg",
+        "confidence": 0.8579,
+        "source_model": "YOLOv12n_Best.pt",
+        "bbox_xyxy": [
+          777.57,
+          1918.41,
+          1465.42,
+          2639.2
+        ]
+      },
+      {
+        "class_id": 44,
+        "label": "orange/orange fruit",
+        "name": "orange",
+        "confidence": 0.855,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          2450.8,
+          277.29,
+          2894.34,
+          684.23
+        ]
+      },
+      {
+        "class_id": 44,
+        "label": "orange/orange fruit",
+        "name": "orange",
+        "confidence": 0.8353,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          1490.34,
+          217.03,
+          1911.68,
+          644.46
+        ]
+      },
+      {
+        "class_id": 44,
+        "label": "orange/orange fruit",
+        "name": "orange",
+        "confidence": 0.8031,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          44.35,
+          725.99,
+          311.82,
+          1198.37
+        ]
+      },
+      {
+        "class_id": 25,
+        "label": "egg",
+        "name": "egg",
+        "confidence": 0.7686,
+        "source_model": "YOLOv12n_Best.pt",
+        "bbox_xyxy": [
+          2969.65,
+          676.53,
+          3517.16,
+          1106.52
+        ]
+      },
+      {
+        "class_id": 44,
+        "label": "orange/orange fruit",
+        "name": "orange",
+        "confidence": 0.6601,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          525.41,
+          1181.79,
+          853.12,
+          1537.75
+        ]
+      },
+      {
+        "class_id": 44,
+        "label": "orange/orange fruit",
+        "name": "orange",
+        "confidence": 0.6163,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          58.0,
+          322.39,
+          528.58,
+          865.02
+        ]
+      },
+      {
+        "class_id": 44,
+        "label": "orange/orange fruit",
+        "name": "orange",
+        "confidence": 0.5376,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          578.56,
+          14.95,
+          752.05,
+          304.3
+        ]
+      },
+      {
+        "class_id": 25,
+        "label": "egg",
+        "name": "egg",
+        "confidence": 0.5271,
+        "source_model": "YOLOv12n_Best.pt",
+        "bbox_xyxy": [
+          2924.78,
+          243.87,
+          3510.47,
+          695.45
+        ]
+      },
+      {
+        "class_id": 25,
+        "label": "egg",
+        "name": "egg",
+        "confidence": 0.3535,
+        "source_model": "YOLOv12n_Best.pt",
+        "bbox_xyxy": [
+          1866.83,
+          624.75,
+          2350.63,
+          1039.0
+        ]
+      },
+      {
+        "class_id": 25,
+        "label": "egg",
+        "name": "egg",
+        "confidence": 0.1937,
+        "source_model": "YOLOv12n_Best.pt",
+        "bbox_xyxy": [
+          2407.02,
+          198.48,
+          2897.75,
+          636.16
+        ]
+      },
+      {
+        "class_id": 25,
+        "label": "egg",
+        "name": "egg",
+        "confidence": 0.1434,
+        "source_model": "YOLOv12n_Best.pt",
+        "bbox_xyxy": [
+          84.82,
+          236.78,
+          573.81,
+          704.3
+        ]
+      }
+    ],
+    "ingredients": [
+      {
+        "label": "egg",
+        "name": "egg",
+        "confidence": 0.957,
+        "source_model": "YOLOv12n_Best.pt"
+      },
+      {
+        "label": "orange/orange fruit",
+        "name": "orange",
+        "confidence": 0.9484,
+        "source_model": "author-yolov8m.pt"
+      }
+    ]
+  },
+  {
+    "file": "tomato-onion.jpg",
+    "model": "YOLOv12n_Best.pt",
+    "architecture": "YOLOv12n + YOLOv8m",
+    "models": [
+      {
+        "file": "YOLOv12n_Best.pt",
+        "architecture": "YOLOv12n",
+        "classes": 66,
+        "role": "Ingredients not covered by the produce model"
+      },
+      {
+        "file": "author-yolov8m.pt",
+        "architecture": "YOLOv8m",
+        "classes": 63,
+        "excluded_labels": [
+          "Tomato",
+          "Strawberry"
+        ],
+        "role": "Fruit-and-vegetable model labels"
+      }
+    ],
+    "fusion_policy": "Produce-model labels are handled by YOLOv8m at confidence >= 0.50; the team model handles remaining labels at >= 0.10. No two-model agreement is required. Overlapping non-produce team predictions >= 0.5 block conflicting produce boxes (IoU > 0.3). Empty results are allowed. Thresholds are provisional, not calibrated.",
+    "rejected_detections": 1,
+    "width": 1249,
+    "height": 895,
+    "inference_seconds": 0.27,
+    "detections": [
+      {
+        "class_id": 59,
+        "label": "tomato",
+        "name": "tomato",
+        "confidence": 0.9548,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          894.23,
+          277.47,
+          1022.05,
+          453.82
+        ]
+      },
+      {
+        "class_id": 59,
+        "label": "tomato",
+        "name": "tomato",
+        "confidence": 0.9435,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          784.12,
+          430.34,
+          970.88,
+          605.23
+        ]
+      },
+      {
+        "class_id": 59,
+        "label": "tomato",
+        "name": "tomato",
+        "confidence": 0.9354,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          614.02,
+          247.67,
+          773.15,
+          351.58
+        ]
+      },
+      {
+        "class_id": 59,
+        "label": "tomato",
+        "name": "tomato",
+        "confidence": 0.8968,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          523.17,
+          431.32,
+          731.73,
+          580.58
+        ]
+      },
+      {
+        "class_id": 59,
+        "label": "tomato",
+        "name": "tomato",
+        "confidence": 0.8893,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          676.73,
+          527.06,
+          821.41,
+          660.0
+        ]
+      },
+      {
+        "class_id": 59,
+        "label": "tomato",
+        "name": "tomato",
+        "confidence": 0.8874,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          426.73,
+          575.83,
+          648.17,
+          698.05
+        ]
+      },
+      {
+        "class_id": 59,
+        "label": "tomato",
+        "name": "tomato",
+        "confidence": 0.8555,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          411.3,
+          181.67,
+          522.36,
+          332.37
+        ]
+      },
+      {
+        "class_id": 59,
+        "label": "tomato",
+        "name": "tomato",
+        "confidence": 0.8492,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          778.12,
+          312.79,
+          884.59,
+          431.03
+        ]
+      },
+      {
+        "class_id": 59,
+        "label": "tomato",
+        "name": "tomato",
+        "confidence": 0.8443,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          262.76,
+          279.87,
+          388.79,
+          438.84
+        ]
+      },
+      {
+        "class_id": 59,
+        "label": "tomato",
+        "name": "tomato",
+        "confidence": 0.8394,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          591.55,
+          155.5,
+          709.49,
+          230.31
+        ]
+      },
+      {
+        "class_id": 59,
+        "label": "tomato",
+        "name": "tomato",
+        "confidence": 0.7903,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          500.89,
+          290.32,
+          676.28,
+          401.04
+        ]
+      },
+      {
+        "class_id": 59,
+        "label": "tomato",
+        "name": "tomato",
+        "confidence": 0.7642,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          714.73,
+          164.01,
+          858.08,
+          258.82
+        ]
+      },
+      {
+        "class_id": 59,
+        "label": "tomato",
+        "name": "tomato",
+        "confidence": 0.687,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          636.46,
+          216.43,
+          762.85,
+          275.13
+        ]
+      },
+      {
+        "class_id": 59,
+        "label": "tomato",
+        "name": "tomato",
+        "confidence": 0.6612,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          346.68,
+          197.56,
+          461.8,
+          303.71
+        ]
+      },
+      {
+        "class_id": 59,
+        "label": "tomato",
+        "name": "tomato",
+        "confidence": 0.5551,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          518.23,
+          193.43,
+          594.72,
+          279.33
+        ]
+      },
+      {
+        "class_id": 59,
+        "label": "tomato",
+        "name": "tomato",
+        "confidence": 0.5475,
+        "source_model": "author-yolov8m.pt",
+        "bbox_xyxy": [
+          373.76,
+          425.5,
+          527.15,
+          592.04
+        ]
+      }
+    ],
+    "ingredients": [
+      {
+        "label": "tomato",
+        "name": "tomato",
+        "confidence": 0.9548,
+        "source_model": "author-yolov8m.pt"
+      }
+    ]
+  }
+]

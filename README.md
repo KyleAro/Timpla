@@ -1,37 +1,28 @@
 # Timpla
 
-An Expo / React Native app for identifying ingredients from photos and finding Filipino recipes.
+Expo / React Native frontend for Filipino cooking, with authentication, account preferences, photo capture/upload and manual ingredient entry.
 
-## Run the app
+## Current scope
+
+The interface, authentication and account settings remain. Photo upload and confirmed camera captures now call the team's local YOLOv12n ingredient detector. Detections can be corrected and supplemented manually. The checkpoint has 66 verified ingredient classes; its provenance and class mapping are under `models/ingredient_detector/`.
+
+Recipe placeholders, catalog fetching and local recipe ranking remain removed. Recipe recommendation work is separate under `ml/recipe_recommendation/` and is not connected to the app yet.
+
+See [detector setup and upload testing](backend/README.md), [project layout](docs/project-layout.md), and [authentication setup](docs/auth.md).
+
+## Run
 
 ```powershell
 npm ci
-Copy-Item .env.example .env.local
 npx expo start --clear --lan
 ```
 
-Set `EXPO_PUBLIC_API_URL` in `.env.local` to the detector's address, for example `http://YOUR_PC_LAN_IP:8000`. The phone and computer must use the same Wi-Fi for local testing. Restart Expo after changing this value.
-
-## Run YOLOv8 detection
-
-The current prototype uses an existing author-trained fruit and vegetable YOLOv8m model. It is not yet a Timpla-trained model. Model weights and datasets are downloaded separately and are excluded from Git.
-
-```powershell
-python -m venv .venv-model
-.\.venv-model\Scripts\python.exe -m pip install -r backend\requirements.txt
-.\.venv-model\Scripts\python.exe training\download_baseline.py
-.\.venv-model\Scripts\python.exe -m uvicorn backend.main:app --host 0.0.0.0 --port 8000
-```
-
-Open `http://localhost:8000` to test photo uploads. The app's camera and upload flows use the same detector. See [backend setup and tests](backend/README.md) for details.
-
-## Training data
-
-See [datasets](datasets/README.md) for sources and preparation instructions. The Colab workflow is in [Timpla-YOLOv8-Colab.ipynb](training/Timpla-YOLOv8-Colab.ipynb). Dataset checks and sample reviews do not establish model accuracy; evaluation on independent images is still needed. Recipe matching currently uses a small local sample catalog.
+On a fresh checkout, copy `.env.example` to `.env.local` and configure Supabase. Preserve an existing `.env.local`. Restart Expo after configuration changes.
 
 ## Checks
 
 ```powershell
-npm run typecheck
 npm run lint
+npm run typecheck
+npm run test:detection
 ```

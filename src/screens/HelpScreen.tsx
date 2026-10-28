@@ -6,7 +6,7 @@ import { useTheme } from '../theme/ThemeContext';
 
 const tips = [
   ['Add ingredients', 'Tap the center Scan button to take or upload a photo. You can also choose Add manually on Home.'],
-  ['Check your list', 'Review your photo, add ingredient names, and edit or uncheck items before continuing. Automatic detection is still being built.'],
+  ['Check your list', 'Review your photo, add ingredient names, and edit or uncheck items before continuing. Review automatic detections and add any ingredients that were missed.'],
   ['Recent photos', 'Open Recents to revisit photos from this session. History currently resets when the app restarts.'],
   ['Profile and appearance', 'Open Profile to change your name, servings, and preferences. Settings & appearance contains the light and dark themes.'],
 ];

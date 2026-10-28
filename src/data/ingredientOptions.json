@@ -1,0 +1,617 @@
+[
+  {
+    "name": "Almond",
+    "aliases": [],
+    "category": "Others"
+  },
+  {
+    "name": "Ampalaya",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Annatto seeds",
+    "aliases": [],
+    "category": "Condiments"
+  },
+  {
+    "name": "Apple",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Apricot",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Artichoke",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Asparagus",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Avocado",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Banana",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Banana ketchup",
+    "aliases": [],
+    "category": "Condiments"
+  },
+  {
+    "name": "Bangus",
+    "aliases": [],
+    "category": "Seafood"
+  },
+  {
+    "name": "Bay leaves",
+    "aliases": [],
+    "category": "Condiments"
+  },
+  {
+    "name": "Beef",
+    "aliases": [],
+    "category": "Meat"
+  },
+  {
+    "name": "Beef cubes",
+    "aliases": [],
+    "category": "Condiments"
+  },
+  {
+    "name": "Bell pepper",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Blackberry",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Blueberry",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Broccoli",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Brussels sprouts",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Bulaw",
+    "aliases": [],
+    "category": "Seafood"
+  },
+  {
+    "name": "Butter",
+    "aliases": [],
+    "category": "Others"
+  },
+  {
+    "name": "Cabbage",
+    "aliases": [
+      "Repolyo"
+    ],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Calamansi",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Canned sardines",
+    "aliases": [],
+    "category": "Seafood"
+  },
+  {
+    "name": "Canned tuna",
+    "aliases": [],
+    "category": "Seafood"
+  },
+  {
+    "name": "Cantaloup",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Carrot",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Cauliflower",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Cayenne",
+    "aliases": [],
+    "category": "Condiments"
+  },
+  {
+    "name": "Celery",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Cherry",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Chicken",
+    "aliases": [
+      "Chicken generic",
+      "Manok"
+    ],
+    "category": "Meat"
+  },
+  {
+    "name": "Chicken breast",
+    "aliases": [],
+    "category": "Meat"
+  },
+  {
+    "name": "Chicken leg",
+    "aliases": [],
+    "category": "Meat"
+  },
+  {
+    "name": "Chicken thigh",
+    "aliases": [],
+    "category": "Meat"
+  },
+  {
+    "name": "Chicken wing",
+    "aliases": [],
+    "category": "Meat"
+  },
+  {
+    "name": "Chickpea",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Chili",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Clementine",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Coconut",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Coconut milk can",
+    "aliases": [],
+    "category": "Others"
+  },
+  {
+    "name": "Cooked rice",
+    "aliases": [
+      "Kanin",
+      "Leftover rice"
+    ],
+    "category": "Others"
+  },
+  {
+    "name": "Cooking oil",
+    "aliases": [
+      "Oil",
+      "Mantika"
+    ],
+    "category": "Condiments"
+  },
+  {
+    "name": "Corn",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Crab",
+    "aliases": [],
+    "category": "Seafood"
+  },
+  {
+    "name": "Cucumber",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Date",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Egg",
+    "aliases": [
+      "Eggs",
+      "Itlog"
+    ],
+    "category": "Others"
+  },
+  {
+    "name": "Eggplant",
+    "aliases": [
+      "Talong",
+      "Aubergine"
+    ],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Fig",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Fish sauce bottle",
+    "aliases": [],
+    "category": "Condiments"
+  },
+  {
+    "name": "Gabi",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Garlic",
+    "aliases": [
+      "Bawang"
+    ],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Ginger",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Gourd",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Grape",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Green bean",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Kalabasa",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Kangkong",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Kiwi fruit",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Knorr cube",
+    "aliases": [],
+    "category": "Condiments"
+  },
+  {
+    "name": "Lemon",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Lemon grass",
+    "aliases": [],
+    "category": "Condiments"
+  },
+  {
+    "name": "Lettuce",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Lime",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Malunggay",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Mandarin orange",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Melon",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Mushroom",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Okra",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Onion",
+    "aliases": [
+      "Sibuyas"
+    ],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Orange",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Papaya",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Pea",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Peach",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Pear",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Pechay",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Pepper",
+    "aliases": [
+      "Paminta"
+    ],
+    "category": "Condiments"
+  },
+  {
+    "name": "Pepper corn",
+    "aliases": [],
+    "category": "Condiments"
+  },
+  {
+    "name": "Persimmon",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Pickle",
+    "aliases": [],
+    "category": "Condiments"
+  },
+  {
+    "name": "Pineapple",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Pork",
+    "aliases": [
+      "Pork generic",
+      "Baboy"
+    ],
+    "category": "Meat"
+  },
+  {
+    "name": "Pork belly",
+    "aliases": [],
+    "category": "Meat"
+  },
+  {
+    "name": "Potato",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Prune",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Pumpkin",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Radish",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Raspberry",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Red onion",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Rice grains",
+    "aliases": [
+      "Uncooked rice",
+      "Bigas"
+    ],
+    "category": "Others"
+  },
+  {
+    "name": "Salt",
+    "aliases": [
+      "Asin"
+    ],
+    "category": "Condiments"
+  },
+  {
+    "name": "Sayote",
+    "aliases": [
+      "Chayote"
+    ],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Shrimp",
+    "aliases": [],
+    "category": "Seafood"
+  },
+  {
+    "name": "Sili haba",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Sili labuyo",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Sitaw",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Soy sauce",
+    "aliases": [
+      "Toyo"
+    ],
+    "category": "Condiments"
+  },
+  {
+    "name": "Spring onions",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Squid",
+    "aliases": [],
+    "category": "Seafood"
+  },
+  {
+    "name": "Strawberry",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "Sugar",
+    "aliases": [],
+    "category": "Condiments"
+  },
+  {
+    "name": "Sweet potato",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Taro leaves",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Tilapia",
+    "aliases": [],
+    "category": "Seafood"
+  },
+  {
+    "name": "Tofu",
+    "aliases": [],
+    "category": "Others"
+  },
+  {
+    "name": "Tomato",
+    "aliases": [
+      "Tomatoes",
+      "Kamatis"
+    ],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Turmeric powder",
+    "aliases": [],
+    "category": "Condiments"
+  },
+  {
+    "name": "Turnip",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Upo",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Vinegar",
+    "aliases": [
+      "Suka"
+    ],
+    "category": "Condiments"
+  },
+  {
+    "name": "Water",
+    "aliases": [],
+    "category": "Others"
+  },
+  {
+    "name": "Watermelon",
+    "aliases": [],
+    "category": "Fruits"
+  },
+  {
+    "name": "White onion",
+    "aliases": [],
+    "category": "Vegetables"
+  },
+  {
+    "name": "Zucchini",
+    "aliases": [],
+    "category": "Vegetables"
+  }
+]

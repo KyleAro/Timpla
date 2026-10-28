@@ -1,14 +1,8 @@
---extra-index-url https://download.pytorch.org/whl/cpu
-torch==2.5.1+cpu
-torchvision==0.20.1+cpu
-ultralytics==8.4.182
-numpy==1.26.4
-opencv-python==4.11.0.86
-sympy==1.13.1
-Pillow==11.2.1
-pillow-heif==1.1.1
-PyYAML==6.0.3
 fastapi==0.121.2
 uvicorn==0.38.0
 python-multipart==0.0.20
+ultralytics==8.4.182
+Pillow==11.2.1
+pillow-heif==1.1.1
+pillow-avif-plugin==1.5.5
 httpx==0.28.1

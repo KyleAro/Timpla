@@ -22,7 +22,7 @@ export default function VerifyEmailScreen() {
   if (session && recovery) return <Redirect href="/reset-password" />;
   if (session && kind === 'signup') return <Redirect href="/home" />;
   function submit() {
-    if (!/^\d{6}$/.test(token)) { setError('Enter the 6-digit code from your email.'); return; }
+    if (!/^\d{8}$/.test(token)) { setError('Enter the 8-digit code from your email.'); return; }
     void run(async () => { await verifyCode(email, token, kind); setToken(''); });
   }
   function resend() {
@@ -34,7 +34,7 @@ export default function VerifyEmailScreen() {
     });
   }
   return <AuthForm title={kind === 'recovery' ? 'Check your email' : 'Confirm your email'} subtitle={kind === 'recovery' ? `If an account exists for ${email}, you’ll receive a reset email. Enter its code here.` : `Enter the code sent to ${email}.`} error={error} notice={notice}>
-    <AuthInput accessibilityLabel="Email verification code" placeholder="6-digit code" value={token} onChangeText={value => setToken(value.replace(/\D/g, '').slice(0, 6))} keyboardType="number-pad" autoComplete="one-time-code" textContentType="oneTimeCode" maxLength={6} editable={!busy} returnKeyType="go" onSubmitEditing={submit} />
+    <AuthInput accessibilityLabel="Email verification code" placeholder="8-digit code" value={token} onChangeText={value => setToken(value.replace(/\D/g, '').slice(0, 8))} keyboardType="number-pad" autoComplete="one-time-code" textContentType="oneTimeCode" maxLength={8} editable={!busy} returnKeyType="go" onSubmitEditing={submit} />
     <AuthButton title="Verify code" onPress={submit} busy={busy} />
     <AuthLink title={seconds ? `Resend email in ${seconds}s` : 'Resend email'} onPress={resend} disabled={busy || seconds > 0} />
     <AuthLink title="Back to log in" onPress={() => router.replace('/')} disabled={busy} />

@@ -1,0 +1,10 @@
+{
+  "bytes": 215505,
+  "retrieved_at": "2026-10-28T02:44:36.6267049Z",
+  "source_url": "https://huggingface.co/datasets/joackimagno/filtered-filipino-recipes/resolve/b74802ba1cca1a65b7c82c931e1ab249ba3fa39a/filtered_data.csv",
+  "sha256": "196b2698bbb5c914a2ba1421729fc56567867db1d0fef62e9e1539b860774293",
+  "dataset": "joackimagno/filtered-filipino-recipes",
+  "revision": "b74802ba1cca1a65b7c82c931e1ab249ba3fa39a",
+  "license_metadata": null,
+  "purpose": "Raw source collection for inspection; not approved training data"
+}

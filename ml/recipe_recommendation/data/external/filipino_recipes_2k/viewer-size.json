@@ -1,0 +1,39 @@
+{
+  "size": {
+    "dataset": {
+      "dataset": "joackimagno/FILIPINO_RECIPES_2K",
+      "num_bytes_original_files": 1120010,
+      "num_bytes_parquet_files": 1120010,
+      "num_bytes_memory": 3069410,
+      "num_rows": 1988,
+      "estimated_num_rows": null
+    },
+    "configs": [
+      {
+        "dataset": "joackimagno/FILIPINO_RECIPES_2K",
+        "config": "default",
+        "num_bytes_original_files": 1120010,
+        "num_bytes_parquet_files": 1120010,
+        "num_bytes_memory": 3069410,
+        "num_rows": 1988,
+        "num_columns": 8,
+        "estimated_num_rows": null
+      }
+    ],
+    "splits": [
+      {
+        "dataset": "joackimagno/FILIPINO_RECIPES_2K",
+        "config": "default",
+        "split": "train",
+        "num_bytes_parquet_files": 1120010,
+        "num_bytes_memory": 3069410,
+        "num_rows": 1988,
+        "num_columns": 8,
+        "estimated_num_rows": null
+      }
+    ]
+  },
+  "pending": [],
+  "failed": [],
+  "partial": false
+}
