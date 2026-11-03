@@ -30,6 +30,7 @@ PRODUCE_WEIGHTS = ROOT/'models/produce/author-yolov8m.pt'
 PRODUCE_SHA256 = 'a18624d446e2fea08384949115de0b49446f0be2487fc954a37a9d962f71e5d3'
 TEAM_MIN_CONFIDENCE = 0.10
 PRODUCE_MIN_CONFIDENCE = 0.50
+INFERENCE_IMAGE_SIZE = 512
 FUSION_POLICY = ('Produce-model labels are handled by YOLOv8m at confidence >= 0.50; '
                  'the team model handles remaining labels at >= 0.10. No two-model agreement is required. '
                  'Overlapping non-produce team predictions >= 0.5 block conflicting produce boxes '
@@ -109,7 +110,13 @@ class IngredientDetector:
             raise FileNotFoundError(f'Download the team checkpoint first: {WEIGHTS}')
         if hashlib.sha256(WEIGHTS.read_bytes()).hexdigest() != EXPECTED_SHA256:
             raise ValueError('Checkpoint does not match the verified team release.')
-        torch.set_num_threads(min(4, os.cpu_count() or 1))
+        # Render Free has a strict memory cap and very limited CPU. Keep
+        # PyTorch's thread pools small to avoid per-thread workspace overhead.
+        torch.set_num_threads(1)
+        try:
+            torch.set_num_interop_threads(1)
+        except RuntimeError:
+            pass  # Another imported library may already have initialized it.
         self.model = YOLO(str(WEIGHTS), task='detect')
         self.names = {int(key):value for key,value in self.model.names.items()}
         if not self.names or not all(isinstance(value,str) and value.strip() for value in self.names.values()):
@@ -131,14 +138,14 @@ class IngredientDetector:
 
     def warmup(self):
         for model in (self.model,self.produce_model):
-            model.predict(Image.new('RGB',(64,64)),device=self.device,imgsz=640,conf=0.35,iou=0.5,verbose=False)
+            model.predict(Image.new('RGB',(64,64)),device=self.device,imgsz=INFERENCE_IMAGE_SIZE,conf=0.35,iou=0.5,verbose=False)
 
     def predict(self,content):
         picture = decode_image(content)
         start = time.perf_counter()
         candidates=[]
         for model,names,weights in ((self.model,self.names,WEIGHTS),(self.produce_model,self.produce_names,PRODUCE_WEIGHTS)):
-            result=model.predict(picture,device=self.device,imgsz=640,conf=TEAM_MIN_CONFIDENCE if weights==WEIGHTS else PRODUCE_MIN_CONFIDENCE,iou=0.5,verbose=False)[0]
+            result=model.predict(picture,device=self.device,imgsz=INFERENCE_IMAGE_SIZE,conf=TEAM_MIN_CONFIDENCE if weights==WEIGHTS else PRODUCE_MIN_CONFIDENCE,iou=0.5,verbose=False)[0]
             for box in result.boxes:
                 class_id=int(box.cls.item())
                 label=names[class_id]
