@@ -36,7 +36,7 @@ export async function detectIngredients(uri: string, signal: AbortSignal): Promi
   catch (error) {
     if (signal.aborted) throw error;
     const reason = error instanceof Error ? error.message : 'Unknown upload error';
-    throw new Error(`Scanner upload failed: ${reason}. Check Expo Go's Local Network access and that Expo is running on your PC.`);
+    throw new Error(`Scanner upload failed: ${reason}. Check your network connection and detector service status.`);
   }
   let payload: { detail?: unknown; ingredients?: unknown };
   try { payload = await response.json(); }

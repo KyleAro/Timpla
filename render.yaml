@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: timpla-ingredient-detector
+    runtime: python
+    region: singapore
+    plan: free
+    buildCommand: pip install -r backend/requirements-render.txt && python -m ml.ingredient_detector.prepare_render_models
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.11
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: YOLO_CONFIG_DIR
+        value: /tmp/ultralytics
+      - key: MPLCONFIGDIR
+        value: /tmp/matplotlib
