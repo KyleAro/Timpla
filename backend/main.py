@@ -2,6 +2,7 @@
 from contextlib import asynccontextmanager
 import json
 import logging
+import os
 from threading import Lock
 
 from fastapi import FastAPI, File, HTTPException, UploadFile
@@ -21,7 +22,9 @@ async def lifespan(app):
 
 
 app=FastAPI(title='Timpla team ingredient detector',lifespan=lifespan)
+allowed_origins=[origin.strip() for origin in os.environ.get('DETECTOR_ALLOWED_ORIGINS','').split(',') if origin.strip()]
 app.add_middleware(CORSMiddleware,
+    allow_origins=allowed_origins,
     allow_origin_regex=r'https?://(localhost|127\.0\.0\.1|192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+|172\.(1[6-9]|2\d|3[01])\.\d+\.\d+)(:\d+)?',
     allow_methods=['GET','POST'],allow_headers=['Content-Type'])
 
