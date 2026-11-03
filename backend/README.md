@@ -162,7 +162,7 @@ Restore the produce checkpoint on another computer with `.\.venv-model\Scripts\p
 
 ## Phone connection through Expo
 
-Expo Go now sends detection requests to `http://192.168.1.2:8081/timpla-detector/detect`. The Metro middleware in `metro.config.js` and `scripts/detectorProxy.cjs` forwards only POST /detect and GET /health to the Python service at 127.0.0.1:8000. This uses the same inbound connection that already serves the phone app. Browser development uses its current page origin. No extra firewall rule is needed for port 8000.
+Expo Go now sends detection requests to `http://192.168.1.2:8081/timpla-detector/detect`. The Metro middleware in `metro.config.js` and `scripts/detectorProxy.cjs` forwards POST /detect and GET /health to the Python service at 127.0.0.1:8000. The `/health` response includes the detector's `active` or `idle` state, so browser and phone development use the existing local proxy route instead of Render.
 
 Keep both Python and Expo running. After changing Metro configuration, restart Expo; after changing the public detector URL, reload the phone app. On the phone, `http://192.168.1.2:8081/timpla-detector/health` checks the complete route. If Python is stopped, the app receives an explicit service-unavailable message. This proxy is only part of the development server; production builds require a deployed detector URL.
 

@@ -5,8 +5,8 @@ import type { ScanIngredient } from '../state/scanHistory';
 
 export function getDetectorBaseUrl() {
   const configuredUrl = process.env.EXPO_PUBLIC_DETECTOR_URL?.trim().replace(/\/$/, '');
-  // Browser development uses the page's origin to avoid cross-origin LAN
-  // restrictions. Expo Go uses the configured LAN URL on the same Metro port.
+  // In web development, route through Metro so browser and phone uploads share
+  // the local detector proxy. Native builds use the configured detector URL.
   const baseUrl = typeof __DEV__ !== 'undefined' && __DEV__ && Platform.OS === 'web' && typeof window !== 'undefined'
     ? `${window.location.origin}/timpla-detector`
     : configuredUrl;
@@ -18,7 +18,9 @@ export type DetectorServiceStatus = 'active' | 'idle';
 export async function checkDetectorStatus(signal: AbortSignal): Promise<DetectorServiceStatus> {
   const baseUrl = getDetectorBaseUrl();
   if (!baseUrl) throw new Error('Scanner address is not configured.');
-  const response = await fetch(`${baseUrl}/status`, { signal });
+  // /health is already allowed by the existing local Metro proxy and also
+  // returns the detector's active/idle state.
+  const response = await fetch(`${baseUrl}/health`, { signal });
   if (!response.ok) throw new Error(`Scanner returned HTTP ${response.status}.`);
   const payload = await response.json() as { ready?: unknown; status?: unknown };
   if (payload?.ready !== true) throw new Error('Scanner is responding but not ready yet.');
