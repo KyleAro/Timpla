@@ -8,7 +8,7 @@ import { BottomNav, useBottomNavPadding } from '../components/BottomNav';
 import { useIngredientPhoto } from '../hooks/useIngredientPhoto';
 import { ThemePalette } from '../theme/colors';
 import { useTheme } from '../theme/ThemeContext';
-import { checkDetectorHealth } from '../services/detection';
+import { checkDetectorStatus } from '../services/detection';
 
 export default function ScanScreen() {
   const { palette } = useTheme();
@@ -29,7 +29,7 @@ export default function ScanScreen() {
     setScannerMessage('Waking the scanner on Render… this can take up to a minute.');
     const timeout = setTimeout(() => controller.abort(), 90_000);
     try {
-      await checkDetectorHealth(controller.signal);
+      await checkDetectorStatus(controller.signal);
       setScannerStatus('online');
       setScannerMessage('Scanner is online and ready. Try taking or uploading a photo.');
     } catch (reason) {

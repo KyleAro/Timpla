@@ -13,13 +13,16 @@ export function getDetectorBaseUrl() {
   return baseUrl;
 }
 
-export async function checkDetectorHealth(signal: AbortSignal): Promise<void> {
+export type DetectorServiceStatus = 'active' | 'idle';
+
+export async function checkDetectorStatus(signal: AbortSignal): Promise<DetectorServiceStatus> {
   const baseUrl = getDetectorBaseUrl();
   if (!baseUrl) throw new Error('Scanner address is not configured.');
-  const response = await fetch(`${baseUrl}/health`, { signal });
+  const response = await fetch(`${baseUrl}/status`, { signal });
   if (!response.ok) throw new Error(`Scanner returned HTTP ${response.status}.`);
-  const payload = await response.json() as { ready?: unknown };
+  const payload = await response.json() as { ready?: unknown; status?: unknown };
   if (payload?.ready !== true) throw new Error('Scanner is responding but not ready yet.');
+  return payload.status === 'active' ? 'active' : 'idle';
 }
 
 export async function detectIngredients(uri: string, signal: AbortSignal): Promise<ScanIngredient[]> {

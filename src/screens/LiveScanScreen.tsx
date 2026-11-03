@@ -11,7 +11,7 @@ import { useIngredientPhoto } from '../hooks/useIngredientPhoto';
 import { AppIcon } from '../components/AppIcon';
 import { useCooking } from '../state/CookingContext';
 import { useTheme } from '../theme/ThemeContext';
-import { checkDetectorHealth } from '../services/detection';
+import { checkDetectorStatus } from '../services/detection';
 
 export default function LiveScanScreen() {
   const { palette } = useTheme();
@@ -21,11 +21,11 @@ export default function LiveScanScreen() {
   const isFocused = useIsFocused();
   const { pick, busy, error: uploadError } = useIngredientPhoto();
   const [error, setError] = useState('');
-  const [scannerStatus, setScannerStatus] = useState<'checking' | 'online' | 'offline'>('checking');
+  const [scannerStatus, setScannerStatus] = useState<'checking' | 'active' | 'idle' | 'stopped'>('checking');
   const [scannerMessage, setScannerMessage] = useState('Waking the scanner on Render…');
   const healthRequest = useRef<AbortController | null>(null);
-  const scannerOnline = scannerStatus === 'online';
-  const scannerLight = scannerStatus === 'online' ? '#31B765' : scannerStatus === 'checking' ? '#E9B949' : '#D94A43';
+  const scannerOnline = scannerStatus === 'idle';
+  const scannerLight = scannerStatus === 'idle' ? '#31B765' : scannerStatus === 'stopped' ? '#D94A43' : '#E9B949';
   const askedPermission = useRef(false);
   useEffect(() => {
     if (!isFocused || !scannerOnline || !permission || permission.granted || permission.status !== 'undetermined' || askedPermission.current) return;
@@ -58,13 +58,13 @@ export default function LiveScanScreen() {
     setScannerMessage('Waking the scanner on Render… this can take up to a minute.');
     const timeout = setTimeout(() => controller.abort(), 90_000);
     try {
-      await checkDetectorHealth(controller.signal);
+      const status = await checkDetectorStatus(controller.signal);
       if (healthRequest.current !== controller) return;
-      setScannerStatus('online');
-      setScannerMessage('Scanner available. Camera and upload are ready.');
+      setScannerStatus(status);
+      setScannerMessage(status === 'active' ? 'Scanner is processing an image. Waiting for it to become idle.' : 'Scanner is idle and ready. Camera and upload are available.');
     } catch (reason) {
       if (healthRequest.current !== controller) return;
-      setScannerStatus('offline');
+      setScannerStatus('stopped');
       setScannerMessage(reason instanceof Error && reason.name !== 'AbortError'
         ? `Scanner unavailable: ${reason.message}`
         : 'No response from the scanner. Check the service and retry.');
@@ -77,17 +77,21 @@ export default function LiveScanScreen() {
   useEffect(() => {
     if (!isFocused || pendingPhoto) return;
     const startupCheck = setTimeout(() => { void checkScanner(); }, 0);
-    const keepAlive = setInterval(() => {
-      if (!healthRequest.current) void checkScanner();
-    }, 60_000);
     return () => {
       clearTimeout(startupCheck);
-      clearInterval(keepAlive);
       const activeRequest = healthRequest.current;
       healthRequest.current = null;
       activeRequest?.abort();
     };
   }, [checkScanner, isFocused, pendingPhoto]);
+
+  useEffect(() => {
+    if (!isFocused || pendingPhoto) return;
+    const keepAlive = setInterval(() => {
+      if (!healthRequest.current) void checkScanner();
+    }, scannerStatus === 'active' ? 5_000 : 60_000);
+    return () => clearInterval(keepAlive);
+  }, [checkScanner, isFocused, pendingPhoto, scannerStatus]);
 
   const assignCamera = useCallback((instance: CameraView | null) => {
     camera.current = instance;
@@ -152,19 +156,19 @@ export default function LiveScanScreen() {
           <View style={styles.topRight}>
             <View accessibilityLiveRegion="polite" style={styles.connectionBadge}>
               {scannerStatus === 'checking' ? <ActivityIndicator size="small" color={scannerLight} /> : <View style={[styles.connectionDot, { backgroundColor: scannerLight }]} />}
-              <Text style={styles.connectionText}>{scannerStatus === 'checking' ? 'Waking scanner' : scannerStatus === 'online' ? 'Scanner available' : 'Scanner unavailable'}</Text>
+              <Text style={styles.connectionText}>{scannerStatus === 'checking' ? 'Waking scanner' : scannerStatus === 'active' ? 'Scanner active' : scannerStatus === 'idle' ? 'Scanner idle · ready' : 'Scanner stopped'}</Text>
             </View>
             {scannerOnline && <Pressable accessibilityRole="switch" accessibilityLabel="Flashlight" accessibilityState={{ checked: torchOn, disabled: !ready || busy || capturing }} disabled={!ready || busy || capturing} onPress={() => setTorchOn((value) => !value)} style={[styles.close, torchOn && { backgroundColor: palette.accent }, (!ready || busy || capturing) && styles.disabled]}><AppIcon name={torchOn ? 'flash' : 'flash-off'} size={25} color="#FFFFFF" /></Pressable>}
           </View>
         </View>
         <View pointerEvents="box-none" style={styles.middle}>
           {scannerOnline && permission?.granted && isFocused && !busy ? <View ref={guide} collapsable={false} onLayout={measureGuide} pointerEvents="none" accessible={false} style={styles.scanGuide} /> : null}
-          {scannerStatus === 'checking' ? <View style={styles.message}><ActivityIndicator color={scannerLight} size="large" /><Text style={styles.title}>Waking up scanner</Text><Text style={styles.body}>{scannerMessage}</Text></View> : scannerStatus === 'offline' ? <View style={styles.message}>
+          {scannerStatus === 'checking' ? <View style={styles.message}><ActivityIndicator color={scannerLight} size="large" /><Text style={styles.title}>Waking up scanner</Text><Text style={styles.body}>{scannerMessage}</Text></View> : scannerStatus === 'stopped' ? <View style={styles.message}>
             <View style={[styles.connectionDot, { backgroundColor: scannerLight, width: 14, height: 14 }]} />
-            <Text style={styles.title}>Scanner unavailable</Text>
+            <Text style={styles.title}>Scanner stopped / unavailable</Text>
             <Text style={styles.body}>{scannerMessage}</Text>
             <Pressable accessibilityRole="button" onPress={() => void checkScanner()} style={[styles.permissionButton, { backgroundColor: palette.accent }]}><Text style={styles.buttonText}>Wake / retry</Text></Pressable>
-          </View> : !permission ? <View style={styles.message}><ActivityIndicator color="#FFFFFF" /><Text style={styles.body}>Preparing camera…</Text></View> : !permission.granted ? <View style={styles.message}>
+          </View> : scannerStatus === 'active' ? <View style={styles.message}><ActivityIndicator color={scannerLight} /><Text style={styles.title}>Scanner active</Text><Text style={styles.body}>{scannerMessage}</Text></View> : !permission ? <View style={styles.message}><ActivityIndicator color="#FFFFFF" /><Text style={styles.body}>Preparing camera…</Text></View> : !permission.granted ? <View style={styles.message}>
             <AppIcon name="camera" size={48} color="#FFFFFF" />
             <Text style={styles.title}>Camera access needed</Text>
             <Text style={styles.body}>{permission.canAskAgain ? 'Allow camera access to capture ingredients.' : 'Enable camera access in your phone settings, or upload a photo.'}</Text>
