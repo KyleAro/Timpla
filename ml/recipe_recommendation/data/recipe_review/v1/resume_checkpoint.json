@@ -1,0 +1,19 @@
+{
+  "phase": "Step4 full-corpus recipe semantic review",
+  "total_recipes": 2074,
+  "completed_at_resume": 770,
+  "remaining_at_resume": 1304,
+  "percent_at_resume": 37.13,
+  "agents_resumed": [
+    "recipe_step4_01",
+    "recipe_step4_02",
+    "recipe_step4_03"
+  ],
+  "normalization_snapshot": "data/normalization/v6",
+  "preparation_snapshot": "data/preparation/v6",
+  "draft_snapshot": "data/recipe_review/v1",
+  "intended_merged_snapshot": "data/recipe_review/v2",
+  "merge_command": "python ml/recipe_recommendation/merge_recipe_review.py --output ml/recipe_recommendation/data/recipe_review/v2",
+  "model_training_performed": false,
+  "note": "Do not merge incomplete partitions or label draft-only recipes semantically reviewed. Snapshot v1 has heuristic proposals for all2074; actual reviews are partial. Existing four owner reviews remain preserved. Tests43 passed, lint/typecheck passed before optional preflight addition; rerun relevant tests after finalchanges."
+}

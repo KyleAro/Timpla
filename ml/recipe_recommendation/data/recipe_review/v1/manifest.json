@@ -1,0 +1,16 @@
+{
+  "created_at": "2026-10-30T00:35:04.800677+00:00",
+  "input_sha256": {
+    "data\\processed\\recipes.cleaned.json": "bfb1725f6b3c0a16f3949cc827cb68a62263cd06d3a24e3cea1b28dc8cda3a78",
+    "data\\preparation\\v6\\recipes.prepared.json": "9b26d5c14b476cd9addd7307df4990e864ea502529dd3c2c1ca6259b9a6a5c36"
+  },
+  "script_sha256": "ff5c7d38f8bb5a246422cf76ec50d55eb784068f10a2f51a499cd379091056d3",
+  "output_sha256": {
+    "draft_report.json": "0bbb4fb6d147272e8eae76ab0b8e4d19ab263ab9ee0e09d9e5435b50a1043ce7",
+    "partition_01.json": "7829be01d7cb58ee42b48b7d9718311765a96d94a59477d23ba84f31e7113b04",
+    "partition_02.json": "5ffd9544918a543996c986e4d472cd556bbed5a6b53d2ed942612757bcb6794a",
+    "partition_03.json": "9941f2e8d52672631168df1e7ffc4ad571b50d7b92e1cc6d4bdfb8c300bdc5d3",
+    "recipes.draft.json": "b5d095880e2b0ed1b9c41de2ec9e2d440d05f80d49963e88ae2e2249637d6c26"
+  },
+  "model_training_performed": false
+}

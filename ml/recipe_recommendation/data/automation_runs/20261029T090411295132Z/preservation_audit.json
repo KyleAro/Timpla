@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-10-29T09:38:45.304832+00:00",
+  "preserved_original_owner_mappings": 3683,
+  "preserved_owner_deferrals": 16,
+  "current_flat_mapping_entries": 8646,
+  "structured_identity_resolved_occurrences": 19345,
+  "unresolved_occurrences": 3781,
+  "all_original_recipes_and_source_rows_retained": true,
+  "latest_input_and_output_hashes_valid": true,
+  "ready_for_training": false,
+  "model_training_performed": false,
+  "non_training_tests_passed": 30
+}

@@ -6,7 +6,7 @@ import { AuthProvider, useAuth } from '../auth/AuthContext';
 import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 import { useAuthAction } from '../auth/useAuthAction';
 
-const privateScreens = ['home', 'settings', 'scan', 'scan-details', 'saved-recipes', 'reverse-cooking', 'recipes', 'recipe', 'recents', 'profile', 'profile-details', 'photo', 'live-scan', 'ingredients', 'explore', 'cooking-preferences', 'allergies'] as const;
+const privateScreens = ['home', 'settings', 'scan', 'scan-details', 'saved-recipes', 'reverse-cooking', 'recipes', 'recipe', 'recents', 'profile', 'profile-details', 'photo', 'live-scan', 'ingredients', 'explore', 'cooking-preferences', 'allergies', 'suggestions-preview'] as const;
 
 function AppStack() {
   const { mode, palette } = useTheme();
@@ -14,7 +14,7 @@ function AppStack() {
   const { session, loading, recovery, preview, signOut } = useAuth();
   const { accountLoading, accountError, reloadAccount } = useCooking();
   const { busy, error, run } = useAuthAction();
-  const cameraOpen = pathname === '/scan' || pathname === '/live-scan' || pathname === '/photo';
+  const cameraOpen = pathname === '/live-scan' || pathname === '/photo';
   if (loading) return <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: palette.background }}><ActivityIndicator color={palette.accent} size="large" accessibilityLabel="Loading account" /></View>;
   if (session?.user.email_confirmed_at && !preview && !recovery && (accountLoading || accountError)) return <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 28, gap: 18, backgroundColor: palette.background }}>
     {accountLoading ? <ActivityIndicator color={palette.accent} accessibilityLabel="Loading profile" /> : <>

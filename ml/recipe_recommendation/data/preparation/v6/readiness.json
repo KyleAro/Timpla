@@ -1,0 +1,46 @@
+{
+  "scope": "entire cleaned corpus; not a pilot or demo",
+  "source_rows_preserved": 2129,
+  "recipes": 2074,
+  "ingredient_line_occurrences": 23135,
+  "distinct_ingredient_lines": 12698,
+  "approved_mapping_entries": 8646,
+  "automated_mapping_entries": 4963,
+  "owner_recorded_mapping_entries": 3683,
+  "approved_mapping_occurrences": 18505,
+  "approved_mapping_coverage_percent": 79.99,
+  "complete_ingredient_mappings": 293,
+  "recipes_with_approved_roles": 4,
+  "recipe_role_review_rows": 23219,
+  "recipes_with_source_comparison": 4,
+  "recipes_with_source_url": 80,
+  "quality_flag_counts": {
+    "original_recipe_url_missing": 1994,
+    "alternative_or_usage_note_requires_check": 569,
+    "short_list_check_not_proof_of_incompleteness": 19,
+    "ingredient_terminology_review_required": 80,
+    "referenced_subrecipe_requires_check": 1
+  },
+  "ready_for_training": false,
+  "model_training_performed": false,
+  "pending": [
+    "Check original recipe completeness and referenced subrecipes",
+    "Review essential/supporting/optional roles per recipe",
+    "Resolve ingredient alternatives and compatibility policies explicitly",
+    "Create and human-review realistic inventory ranking scenarios",
+    "Group related inventories into train/validation/test splits",
+    "Collect human relevance judgments and validate their coverage"
+  ],
+  "note": "Full corpus and original source references retained. Structured normalization status is separate from role/source/relevance review; no labels or model accuracy are invented.",
+  "structured_normalization_occurrence_counts": {
+    "resolved": 23094,
+    "non_ingredient": 41
+  },
+  "structured_identity_resolution_percent": 99.82,
+  "food_identity_resolution_percent": 100.0,
+  "complete_requirement_representations": 2074,
+  "review_disposition_percent": 100.0,
+  "recipes_with_ingredient_source_issues": 0,
+  "recipes_with_terminology_review_flags": 80,
+  "normalization_note": "Flat accepted mappings and structured any_of expressions have distinct counts. Non-ingredient fragments are accounted for but are not ingredient matches. No unknown text was forced into an ID."
+}

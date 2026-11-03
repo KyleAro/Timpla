@@ -1,0 +1,22 @@
+{
+  "input_sha256": {
+    "data\\normalization\\review_20261029\\baseline_requirements.json": "6a6ed654d394a6c0eafb38745d259ff380b0656886737172d4bfe49eac8670a5",
+    "data\\normalization\\review_20261029\\manifest.json": "96ca4111e683086c40f042b208b88ba8d1bd66cd897c5b43a7118a7516cb2a1b",
+    "data\\normalization\\review_20261029\\partition_01.json": "bc23e10e36dc34a10c6c510a6c32f9251239012b03f68e8d84adff86f74e35ef",
+    "data\\normalization\\review_20261029\\partition_01.decisions.json": "afd52d6b9d5605260c3f2a0840e767edf8c164c8603ea9409b29cdb18e496989",
+    "data\\normalization\\review_20261029\\partition_02.json": "0221a94410db035ff4e7469b6f1a06fccbb91b574168ddb8a2922a5261885c90",
+    "data\\normalization\\review_20261029\\partition_02.decisions.json": "ffe40e9fee35cb86ef11c7b1ae06cc34afe25c27e65549a834f38820ce41cf39",
+    "data\\normalization\\review_20261029\\partition_03.json": "1d126e34fe1d6aa2c44803ededaa87beac55ab3bdaccef616301d052ecf54cab",
+    "data\\normalization\\review_20261029\\partition_03.decisions.json": "0bf04a4f56ef553c27626e6f8ff2b0f282161f1eca971e67dc983534ba2b9b98",
+    "data\\normalization\\review_20261029\\identity_alignment.json": "22698372ec57175276cc5813837bbce4664802cb58387f32522d69836e10cb22"
+  },
+  "output_sha256": {
+    "identity_registry.json": "785bc9f92a527863e1744f4534211211e9ec9f9fdb13657694c96dc979d6d032",
+    "ingredient_requirements.json": "7c2e6c1bc34f9e3be88a0e068d90fb936a4165e338c0934b8ec04f90d72e3117",
+    "report.json": "5d080bc4960684ce4490dd14fc932dc5735850137598ce7fc6f7e36f65068217",
+    "source_issues.json": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "terminology_review.json": "336643a82a83a7355a23ad95790f72a6b68e3ad0950fe9002a8e98fcef0eecdb"
+  },
+  "script_sha256": "8c72b0f92773b8522a503b607d3a7ee069bb73de6acd3d84be1452427d8e8adc",
+  "model_training_performed": false
+}

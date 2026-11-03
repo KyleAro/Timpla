@@ -1,0 +1,1063 @@
+[
+  {
+    "recipe_id": "110aac3c71565d746c9610fc6e7ca301c5a046e15dbac94272f9cbb13c8da5bb",
+    "recipe_name": "Binagoongan Baboy sa Gata (Pork Belly in Coconut Milk and Shrimp Paste)",
+    "line_number": 7,
+    "ingredient_line": "2-3 Thai chili peppers siling labuyo, minced",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling labuyo",
+    "basis": "Retain the explicitly named main ingredient thai chili. The source gloss \"siling labuyo\" is not a universal identity alias or an authorized substitution. Its terminology discrepancy remains flagged for recipe/source review; quantities and original wording are preserved."
+  },
+  {
+    "recipe_id": "1eaa34fe23f541420d6cd67ee960953a5c6c7b595c9d85670de0e6cb4d066a73",
+    "recipe_name": "Lumpiang Sariwa (Fresh Filipino Spring Rolls)",
+    "line_number": 24,
+    "ingredient_line": "2 tablespoons peanut butter mantika ng mani",
+    "requirement": {
+      "ingredient_id": "peanut_butter"
+    },
+    "source_gloss": "mantika ng mani",
+    "basis": "The explicitly named peanut butter is supported by sauce context; erroneous \"mantika ng mani\" gloss does not turn it into peanut oil."
+  },
+  {
+    "recipe_id": "7f89bf2a8624434bdd31829ac9d68f2f32b382c96389d7a0006fc21a67a37dd3",
+    "recipe_name": "Ginataang Santol (Sinantolan)",
+    "line_number": 9,
+    "ingredient_line": "5 pieces Thai chili siling labuyo",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling labuyo",
+    "basis": "The explicit leading source food noun is thai chili; assign that identity only. Preserve the appended 'siling labuyo' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "a33fdb311ae2e837edceab3e2b7d7147a131dfb0fea36defe7667604f1a281d6",
+    "recipe_name": "Ginataang Talong (Eggplant and Pork in Coconut Milk)",
+    "line_number": 6,
+    "ingredient_line": "3 Thai chili peppers siling pangsigang, stemmed and minced",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling pangsigang",
+    "basis": "Retain the explicitly named main ingredient thai chili. The source gloss \"siling pangsigang\" is not a universal identity alias or an authorized substitution. Its terminology discrepancy remains flagged for recipe/source review; quantities and original wording are preserved."
+  },
+  {
+    "recipe_id": "ac78ab670fc8f50db20b9017021b452ea7182a698801dbb6fe62a7dd008f9f17",
+    "recipe_name": "Ginataang Puso ng Saging (Creamy Coconut Banana Heart Stew)",
+    "line_number": 6,
+    "ingredient_line": "2 Thai chili peppers siling labuyo, optional",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling labuyo",
+    "basis": "The explicit leading source food noun is thai chili; assign that identity only. Preserve the appended 'siling labuyo' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "27a9f9011a0e637ef78a468e8e50a05c82185ba3431814d709dbfdb7a630b4cb",
+    "recipe_name": "Tuslob Buwa: Cebu's Famous Street Delicacy",
+    "line_number": 3,
+    "ingredient_line": "2 tablespoons salted shrimp alamang",
+    "requirement": {
+      "ingredient_id": "salted_shrimp"
+    },
+    "source_gloss": "alamang",
+    "basis": "Semantic reading: salted shrimp. Quantities and ordinary cutting/serving directions remain in the retained source; explicitly named food forms and choices are represented here."
+  },
+  {
+    "recipe_id": "335a374c0da770a877c7b543c8cb810974bdac71747e0b7fa0744c71ec6aa175",
+    "recipe_name": "Filipino Pork Adobo (Adobong Baboy)",
+    "line_number": 11,
+    "ingredient_line": "2-3 Thai chilies siling labuyo for heat",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling labuyo",
+    "basis": "The explicit leading source food noun is thai chili; assign that identity only. Preserve the appended 'siling labuyo' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "07e0f4c44a0142ede9b4042d3388279afcb69b7f82d28f603df8d973570c7545",
+    "recipe_name": "Chicken Caldereta (Kalderetang Manok)",
+    "line_number": 8,
+    "ingredient_line": "1 green bell pepper cubed (berdeng siling pangsigang)",
+    "requirement": {
+      "ingredient_id": "green_bell_pepper"
+    },
+    "source_gloss": null,
+    "basis": "The source identifies green bell pepper. Amounts and ordinary cutting/use wording remain in the original description; the named form and any explicit ingredient choices are retained."
+  },
+  {
+    "recipe_id": "07e0f4c44a0142ede9b4042d3388279afcb69b7f82d28f603df8d973570c7545",
+    "recipe_name": "Chicken Caldereta (Kalderetang Manok)",
+    "line_number": 9,
+    "ingredient_line": "1 red bell pepper cubed (pulang siling pangsigang)",
+    "requirement": {
+      "ingredient_id": "red_bell_pepper"
+    },
+    "source_gloss": null,
+    "basis": "The source identifies red bell pepper. Amounts and ordinary cutting/use wording remain in the original description; the named form and any explicit ingredient choices are retained."
+  },
+  {
+    "recipe_id": "07e0f4c44a0142ede9b4042d3388279afcb69b7f82d28f603df8d973570c7545",
+    "recipe_name": "Chicken Caldereta (Kalderetang Manok)",
+    "line_number": 12,
+    "ingredient_line": "3 Thai chili peppers chopped (siling labuyo)",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling labuyo",
+    "basis": "The explicit leading source food noun is thai chili; assign that identity only. Preserve the appended 'siling labuyo' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "c092b0392fc106e1971540b3e102e7bfcb82c6217e484d089c493d606da4334a",
+    "recipe_name": "Filipino Crispy Pata (Crispy Pork Leg)",
+    "line_number": 13,
+    "ingredient_line": "3 Thai chilies chopped (siling labuyo)",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling labuyo",
+    "basis": "The explicit leading source food noun is thai chili; assign that identity only. Preserve the appended 'siling labuyo' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "f6c461f633d75da1bfc51e819e34b27e40258c686a30197a1f697228f7e205dc",
+    "recipe_name": "Adobo sa Gata (Pork Adobo in Coconut Milk)",
+    "line_number": 10,
+    "ingredient_line": "2-3 Thai chili peppers Siling Labuyo, chopped",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": null,
+    "basis": "The leading named ingredient is Thai chili, while the labuyo gloss remains available for terminology review rather than changing the source to another pepper."
+  },
+  {
+    "recipe_id": "de3250929afa9bcb836d4fcaf7516eefc9a1496b3ae805a1227c788c7087c3eb",
+    "recipe_name": "Authentic Mushroom Sisig",
+    "line_number": 11,
+    "ingredient_line": "Red Pepper Flakes Hot Sauce (sawsang maanghang), or Fresh Chopped Chili (siling tuyo) to taste (optional)",
+    "requirement": {
+      "any_of": [
+        {
+          "ingredient_id": "red_pepper_flake"
+        },
+        {
+          "ingredient_id": "hot_sauce"
+        },
+        {
+          "ingredient_id": "fresh_chili"
+        }
+      ]
+    },
+    "source_gloss": null,
+    "basis": "The same recipe mixing step explicitly enumerates red-pepper flakes, hot sauce, or fresh chilies. That clarifies the missing comma in the ingredient line; the fresh/dried gloss conflict is retained as a warning."
+  },
+  {
+    "recipe_id": "e28e21ffb9039e415c03cccca4e01ba28866f42a580a30c76908ba50f1352207",
+    "recipe_name": "Chicken Pochero (Pocherong Manok)",
+    "line_number": 13,
+    "ingredient_line": "1/2 Chinese cabbage repolyo, cut into wedges",
+    "requirement": {
+      "ingredient_id": "chinese_cabbage"
+    },
+    "source_gloss": "repolyo",
+    "basis": "Retain the explicitly named main ingredient chinese cabbage. The source gloss \"repolyo\" is not a universal identity alias or an authorized substitution. Its terminology discrepancy remains flagged for recipe/source review; quantities and original wording are preserved."
+  },
+  {
+    "recipe_id": "94763b5aafdf8911aae6a449581cb4f2a9a0168b2da202029628bb00d03b649b",
+    "recipe_name": "Adobong Paa ng Manok (Filipino Chicken Feet Adobo)",
+    "line_number": 11,
+    "ingredient_line": "2 Thai chili peppers siling pangsigang, minced",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": null,
+    "basis": "The leading named ingredient is Thai chili; the conflicting pangsigang gloss is retained for terminology review, without inventing a source substitution."
+  },
+  {
+    "recipe_id": "2f47f000e88652ed4d75e68b6a14328c45a6aeed36ec333e5ea7028a2118e9bb",
+    "recipe_name": "Filipino Sizzling Tofu Sisig",
+    "line_number": 4,
+    "ingredient_line": "1 red bell pepper diced (pulang siling pangsigang)",
+    "requirement": {
+      "ingredient_id": "red_bell_pepper"
+    },
+    "source_gloss": "pulang siling pangsigang",
+    "basis": "The explicit leading source food noun is red bell pepper; assign that identity only. Preserve the appended 'pulang siling pangsigang' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "2f47f000e88652ed4d75e68b6a14328c45a6aeed36ec333e5ea7028a2118e9bb",
+    "recipe_name": "Filipino Sizzling Tofu Sisig",
+    "line_number": 5,
+    "ingredient_line": "1 green bell pepper diced (berdeng siling pangsigang)",
+    "requirement": {
+      "ingredient_id": "green_bell_pepper"
+    },
+    "source_gloss": "berdeng siling pangsigang",
+    "basis": "The explicit leading source food noun is green bell pepper; assign that identity only. Preserve the appended 'berdeng siling pangsigang' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "2f47f000e88652ed4d75e68b6a14328c45a6aeed36ec333e5ea7028a2118e9bb",
+    "recipe_name": "Filipino Sizzling Tofu Sisig",
+    "line_number": 7,
+    "ingredient_line": "2 Thai chilies minced (siling labuyo)",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": null,
+    "basis": "The leading named ingredient is Thai chili; the labuyo gloss remains flagged, and no universal variety equivalence is asserted."
+  },
+  {
+    "recipe_id": "f063fe4cfd4e94c2673f8a826ad351f21ed5b8f81aae5e6099006aa11ca553ac",
+    "recipe_name": "Sinigang na Baka sa Bayabas (Filipino Beef and Guava Sour Soup)",
+    "line_number": 1,
+    "ingredient_line": "2 pounds boneless beef shanks Litid ng baka, cut into serving pieces",
+    "requirement": {
+      "ingredient_id": "boneless_beef_shank"
+    },
+    "source_gloss": "litid ng baka",
+    "basis": "Instructions repeatedly cook beef shanks, resolving the inaccurate litid gloss. Preserve boneless beef shank, not isolated tendon."
+  },
+  {
+    "recipe_id": "8152b9806e3a963f87b062aa32ffb4c8efae79a548bfb3e03e81a3ca9b08513d",
+    "recipe_name": "Filipino Beef Morcon",
+    "line_number": 2,
+    "ingredient_line": "Juice of 1 lemon katas ng dayap",
+    "requirement": {
+      "ingredient_id": "lemon_juice"
+    },
+    "source_gloss": "katas ng dayap",
+    "basis": "Retain the explicitly named main ingredient lemon juice. The source gloss \"katas ng dayap\" is not a universal identity alias or an authorized substitution. Its terminology discrepancy remains flagged for recipe/source review; quantities and original wording are preserved."
+  },
+  {
+    "recipe_id": "cde664dcea5851465179ed5c2330537b51dcccf46799a969cb5e15372205a775",
+    "recipe_name": "Inihaw na Liempo (Filipino Grilled Pork Belly)",
+    "line_number": 5,
+    "ingredient_line": "2 Thai chili peppers minced (siling labuyo)",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": null,
+    "basis": "The leading named ingredient is Thai chili; the conflicting labuyo gloss is retained for terminology review, without a universal Thai-to-labuyo alias."
+  },
+  {
+    "recipe_id": "cde664dcea5851465179ed5c2330537b51dcccf46799a969cb5e15372205a775",
+    "recipe_name": "Inihaw na Liempo (Filipino Grilled Pork Belly)",
+    "line_number": 14,
+    "ingredient_line": "2 Thai chili peppers chopped (siling labuyo)",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling labuyo",
+    "basis": "Retain the explicitly named main ingredient thai chili. The source gloss \"siling labuyo\" is not a universal identity alias or an authorized substitution. Its terminology discrepancy remains flagged for recipe/source review; quantities and original wording are preserved."
+  },
+  {
+    "recipe_id": "8e57afcd04d65a560d39a2ae59500483081163270b9f221b0b1c050d77b620ed",
+    "recipe_name": "Tinolang Halaan (Filipino Clam and Ginger Soup)",
+    "line_number": 12,
+    "ingredient_line": "Thai chilies siling pangsigang",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling pangsigang",
+    "basis": "The explicit leading source food noun is thai chili; assign that identity only. Preserve the appended 'siling pangsigang' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "d4eb2ec2c781cdb3a01981673afc9b12e1d0a25b91e617229108f0233f8f0640",
+    "recipe_name": "Authentic Daing na Bangus (Filipino Marinated Milkfish)",
+    "line_number": 7,
+    "ingredient_line": "Optional: 2-3 pieces Thai chilies siling labuyo",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": null,
+    "basis": "The leading Thai-chili name is retained while its labuyo gloss remains a terminology-review flag."
+  },
+  {
+    "recipe_id": "cabff34ddcee0c3e0a32790d7ecedf3891e71e66bdb912036de0e4c70bb0026e",
+    "recipe_name": "Filipino Pork Afritada (Afritadang Baboy)",
+    "line_number": 12,
+    "ingredient_line": "1 green bell pepper berdeng siling pangsigang, cubed",
+    "requirement": {
+      "ingredient_id": "green_bell_pepper"
+    },
+    "source_gloss": "berdeng siling pangsigang",
+    "basis": "The explicit leading source food noun is green bell pepper; assign that identity only. Preserve the appended 'berdeng siling pangsigang' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "cabff34ddcee0c3e0a32790d7ecedf3891e71e66bdb912036de0e4c70bb0026e",
+    "recipe_name": "Filipino Pork Afritada (Afritadang Baboy)",
+    "line_number": 13,
+    "ingredient_line": "1 red bell pepper pulang siling pangsigang, cubed",
+    "requirement": {
+      "ingredient_id": "red_bell_pepper"
+    },
+    "source_gloss": null,
+    "basis": "The source identifies red bell pepper. Amounts and ordinary cutting/use wording remain in the original description; the named form and any explicit ingredient choices are retained."
+  },
+  {
+    "recipe_id": "6e8038f2f50a297e389afb9b00d31af01c45c3ebe50e1476075e7007b80f2d55",
+    "recipe_name": "Filipino Bopis (Pulutok)",
+    "line_number": 10,
+    "ingredient_line": "1 green bell pepper chopped (berdeng siling pangsigang)",
+    "requirement": {
+      "ingredient_id": "green_bell_pepper"
+    },
+    "source_gloss": null,
+    "basis": "The source identifies green bell pepper. Amounts and ordinary cutting/use wording remain in the original description; the named form and any explicit ingredient choices are retained."
+  },
+  {
+    "recipe_id": "6e8038f2f50a297e389afb9b00d31af01c45c3ebe50e1476075e7007b80f2d55",
+    "recipe_name": "Filipino Bopis (Pulutok)",
+    "line_number": 11,
+    "ingredient_line": "1 red bell pepper chopped (pulang siling pangsigang)",
+    "requirement": {
+      "ingredient_id": "red_bell_pepper"
+    },
+    "source_gloss": null,
+    "basis": "The source identifies red bell pepper. Amounts and ordinary cutting/use wording remain in the original description; the named form and any explicit ingredient choices are retained."
+  },
+  {
+    "recipe_id": "6e8038f2f50a297e389afb9b00d31af01c45c3ebe50e1476075e7007b80f2d55",
+    "recipe_name": "Filipino Bopis (Pulutok)",
+    "line_number": 12,
+    "ingredient_line": "4-6 Thai chili peppers chopped (siling labuyo)",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling labuyo",
+    "basis": "The explicit leading source food noun is thai chili; assign that identity only. Preserve the appended 'siling labuyo' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "b214d887279f6019c898760550bed439d69fbb9d457e0bb887b75eb48af841fc",
+    "recipe_name": "Filipino Ukoy (Crispy Shrimp Fritters)",
+    "line_number": 12,
+    "ingredient_line": "2 Thai chilies chopped (siling labuyo)",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling labuyo",
+    "basis": "The explicit leading source food noun is thai chili; assign that identity only. Preserve the appended 'siling labuyo' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "be6c86cbb88825d4416667267c92d17178cb1ddfe8425a4f3415750ab889dbfb",
+    "recipe_name": "Filipino Pata Tim (Chinese-Style Braised Pork Leg)",
+    "line_number": 12,
+    "ingredient_line": "1 large bundle bok choy [Pechay Baguio]",
+    "requirement": {
+      "ingredient_id": "bok_choy"
+    },
+    "source_gloss": "pechay baguio",
+    "basis": "The explicit leading source food noun is bok choy; assign that identity only. Preserve the appended 'pechay baguio' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "cb7986a961fa293761f712b1a5ab389e8f0f398c8b5c432eddee31d4a02b3db3",
+    "recipe_name": "Chicken Sisig (Sizzling Filipino Chicken)",
+    "line_number": 5,
+    "ingredient_line": "2 Thai chili peppers chopped (siling pangsigang)",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling pangsigang",
+    "basis": "The explicit leading source food noun is thai chili; assign that identity only. Preserve the appended 'siling pangsigang' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "2d69b49cf39e77e054e8bac3194bbe488f43ba511373e487db60091fba96c468",
+    "recipe_name": "Menudo Soup Recipe (Pancita/Mondongo)",
+    "line_number": 12,
+    "ingredient_line": "Crushed piquin peppers siling labuyo",
+    "requirement": {
+      "ingredient_id": "crushed_piquin_pepper"
+    },
+    "source_gloss": "siling labuyo",
+    "basis": "Retain the explicitly named main ingredient crushed piquin pepper. The source gloss \"siling labuyo\" is not a universal identity alias or an authorized substitution. Its terminology discrepancy remains flagged for recipe/source review; quantities and original wording are preserved."
+  },
+  {
+    "recipe_id": "291c62cbaa8d5d4250a801a6d05873e1928588dcf73398fe09648818b0730aa2",
+    "recipe_name": "Kalderetang Kambing (Filipino Goat Caldereta)",
+    "line_number": 12,
+    "ingredient_line": "4-6 Thai chili peppers chopped (siling labuyo)",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling labuyo",
+    "basis": "The explicit leading source food noun is thai chili; assign that identity only. Preserve the appended 'siling labuyo' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "58fe4c526b13d59e57c66d317f6346559bef9a65404a4748ea5f6402f4b418c3",
+    "recipe_name": "Chicken Bicol Express (Manok na Bicol Express)",
+    "line_number": 7,
+    "ingredient_line": "10 pieces Thai chili peppers siling labuyo, stemmed and minced",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling labuyo",
+    "basis": "The explicit leading source food noun is thai chili; assign that identity only. Preserve the appended 'siling labuyo' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "7b189241202b4dbdee60505d9032c3c7eb774b7493220042f4e4eacd2b3dcfd5",
+    "recipe_name": "Authentic Ilonggo Kansi (Beef Shank Sour Soup)",
+    "line_number": 11,
+    "ingredient_line": "2 Thai chili peppers siling pansigang",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling pansigang",
+    "basis": "Retain the explicitly named main ingredient thai chili. The source gloss \"siling pansigang\" is not a universal identity alias or an authorized substitution. Its terminology discrepancy remains flagged for recipe/source review; quantities and original wording are preserved."
+  },
+  {
+    "recipe_id": "a33840eb191e5c000f579b554804224eefb5421bdf1cfeaa8611ae86648e6800",
+    "recipe_name": "Authentic Ilocano Dinakdakan (Warek-Warek)",
+    "line_number": 10,
+    "ingredient_line": "3 Thai chili peppers minced (siling labuyo)",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": null,
+    "basis": "The leading explicit name is Thai chili; the labuyo gloss remains a terminology-review item rather than a universal alias."
+  },
+  {
+    "recipe_id": "c6bf97b1a19995d165bda2f362968b7ec2667664b7d8a444dbf21a8410967e93",
+    "recipe_name": "Flipino-Spanish Callos (Ox Tripe Stew)",
+    "line_number": 13,
+    "ingredient_line": "2 pieces Thai chili peppers siling labuyo",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling labuyo",
+    "basis": "Retain the explicitly named main ingredient thai chili. The source gloss \"siling labuyo\" is not a universal identity alias or an authorized substitution. Its terminology discrepancy remains flagged for recipe/source review; quantities and original wording are preserved."
+  },
+  {
+    "recipe_id": "685893ec7c2c9f3ec06107041d3b79f45e6e798a0058420e75e5874bc8918414",
+    "recipe_name": "Authentic Ilocano Igado (Pork and Liver Stew)",
+    "line_number": 9,
+    "ingredient_line": "1 small red bell pepper pulang siling pang-ulam, cut into strips",
+    "requirement": {
+      "ingredient_id": "red_bell_pepper"
+    },
+    "source_gloss": null,
+    "basis": "The source identifies red bell pepper. Amounts and ordinary cutting/use wording remain in the original description; the named form and any explicit ingredient choices are retained."
+  },
+  {
+    "recipe_id": "ffbc417fd5135cf3084d4d8db44e6225dd32226868d9ae63aecd3b2b54bc2a58",
+    "recipe_name": "Manyaman Beef Asado (Kapampangan-Style Tomato-Braised Beef)",
+    "line_number": 11,
+    "ingredient_line": "2 teaspoon brown sugar Maskobado",
+    "requirement": {
+      "ingredient_id": "brown_sugar"
+    },
+    "source_gloss": "maskobado",
+    "basis": "Brown sugar is the stated ingredient; maskobado is its source gloss/example and does not create an additional sugar requirement."
+  },
+  {
+    "recipe_id": "5fc38d10dfe72fa392d0263655c2418b5094e4b963a2d726fd69c97e095f6d23",
+    "recipe_name": "Pinoy Pork Sisig",
+    "line_number": 3,
+    "ingredient_line": "6 Thai chili peppers [Siling pangsigang]",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": null,
+    "basis": "The leading name Thai chili is preserved; pangsigang is a conflicting source gloss and remains flagged for review."
+  },
+  {
+    "recipe_id": "f572e1d1809b0ef2ffa0594ee002c5857b248f11dcf501fa853b94fa01588918",
+    "recipe_name": "Modern Pinikpikan Recipe",
+    "line_number": 5,
+    "ingredient_line": "2 stalks celery kinchay, sliced",
+    "requirement": {
+      "ingredient_id": "celery"
+    },
+    "source_gloss": null,
+    "basis": "The source identifies celery. Amounts and ordinary cutting/use wording remain in the original description; the named form and any explicit ingredient choices are retained."
+  },
+  {
+    "recipe_id": "ba37696e5a6e38ab90cb8c7e95e36f9dcf7b4436ba28d956c702af2a4d882b0a",
+    "recipe_name": "Authentic Tarlac-Style Bagis (Spicy Citrus Beef)",
+    "line_number": 5,
+    "ingredient_line": "5 Thai chili peppers siling labuyo, chopped",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": null,
+    "basis": "Thai chili is the leading named ingredient; the conflicting labuyo gloss remains flagged instead of becoming a universal food equivalence."
+  },
+  {
+    "recipe_id": "126d8f8ce6acc52ba67091eeb7b6648f44f95d38e60e00200671e14edbd6a738",
+    "recipe_name": "Waknatoy (Marikina Menudo)",
+    "line_number": 10,
+    "ingredient_line": "1 tablespoon tomato paste Pino na Kamatis",
+    "requirement": {
+      "ingredient_id": "tomato_paste"
+    },
+    "source_gloss": "pino na kamatis",
+    "basis": "Tomato paste is explicitly named; the misleading pino-na-kamatis gloss does not turn it into fresh chopped tomato."
+  },
+  {
+    "recipe_id": "126d8f8ce6acc52ba67091eeb7b6648f44f95d38e60e00200671e14edbd6a738",
+    "recipe_name": "Waknatoy (Marikina Menudo)",
+    "line_number": 14,
+    "ingredient_line": "1 medium red bell pepper Pulang Paminta, cubed",
+    "requirement": {
+      "ingredient_id": "red_bell_pepper"
+    },
+    "source_gloss": null,
+    "basis": "The source identifies red bell pepper. Amounts and ordinary cutting/use wording remain in the original description; the named form and any explicit ingredient choices are retained."
+  },
+  {
+    "recipe_id": "53158dd088a54f14b9f608598b40f5d61bbfbe99e3c49832265713788593d8be",
+    "recipe_name": "Authentic Bangus Sisig (Milkfish Sisig)",
+    "line_number": 8,
+    "ingredient_line": "4 Thai chili peppers siling labuyo, finely chopped",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling labuyo",
+    "basis": "The explicit leading source food noun is thai chili; assign that identity only. Preserve the appended 'siling labuyo' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "80abc595eb69f3f50be0077b7021d4286511a0afd08dbeb74cf6733c91630393",
+    "recipe_name": "Chicken Kare-Kare (Kare-Kareng Manok)",
+    "line_number": 3,
+    "ingredient_line": "2 tablespoons rice flour galapong, toasted",
+    "requirement": {
+      "ingredient_id": "toasted_rice_flour"
+    },
+    "source_gloss": "galapong",
+    "basis": "Toasted rice flour is the explicit form; the loose galapong gloss does not change this into an obligatory wet dough."
+  },
+  {
+    "recipe_id": "add8375d49604d9ac3d25da2d57b2fd392d457d791f7e097a083371e6b8d80ea",
+    "recipe_name": "Creamy Chicken Pastel (Chicken Pot Pie Filipino Style)",
+    "line_number": 15,
+    "ingredient_line": "1 piece green bell pepper sliced (berdeng siling pangsigang)",
+    "requirement": {
+      "ingredient_id": "green_bell_pepper"
+    },
+    "source_gloss": null,
+    "basis": "The source identifies green bell pepper. Amounts and ordinary cutting/use wording remain in the original description; the named form and any explicit ingredient choices are retained."
+  },
+  {
+    "recipe_id": "12cbafa189ab627f2966e54d25f61307dc71cd4984502789dfcb15e880743cdd",
+    "recipe_name": "Binagoongan na Baboy (Filipino Pork in Shrimp Paste)",
+    "line_number": 6,
+    "ingredient_line": "5 Thai chili peppers chopped (siling pangsigang)",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling pangsigang",
+    "basis": "The explicit leading source food noun is thai chili; assign that identity only. Preserve the appended 'siling pangsigang' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "b51033c4037fcc3c3613d2ec3cb5b812fdf937d8a578fbb49ee244f6a7c498b0",
+    "recipe_name": "Authentic Chicken Halang-Halang (Manok Halang-Halang)",
+    "line_number": 8,
+    "ingredient_line": "5-7 Thai chili peppers siling labuyo, chopped",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": null,
+    "basis": "Thai chili is the leading named ingredient; the labuyo gloss remains a source-terminology warning."
+  },
+  {
+    "recipe_id": "b51033c4037fcc3c3613d2ec3cb5b812fdf937d8a578fbb49ee244f6a7c498b0",
+    "recipe_name": "Authentic Chicken Halang-Halang (Manok Halang-Halang)",
+    "line_number": 11,
+    "ingredient_line": "2 cups fresh spinach malunggay leaves",
+    "requirement": {
+      "ingredient_id": "fresh_spinach"
+    },
+    "source_gloss": null,
+    "basis": "The ingredient line conflicts between spinach and malunggay. The same recipe cooking step explicitly says to add spinach in the last minute; fresh spinach is retained and the conflicting gloss is flagged."
+  },
+  {
+    "recipe_id": "396a79c5b3022964d54e457be9238cd3ebfbc5fdd9837828391f7ac011297d06",
+    "recipe_name": "Filipino Beef Afritada (Afritadang Baka)",
+    "line_number": 12,
+    "ingredient_line": "1/2 green bell pepper Berdeng siling pangsigang, seeded and cut into 1-inch cubes",
+    "requirement": {
+      "ingredient_id": "green_bell_pepper"
+    },
+    "source_gloss": null,
+    "basis": "The source identifies green bell pepper. Amounts and ordinary cutting/use wording remain in the original description; the named form and any explicit ingredient choices are retained."
+  },
+  {
+    "recipe_id": "396a79c5b3022964d54e457be9238cd3ebfbc5fdd9837828391f7ac011297d06",
+    "recipe_name": "Filipino Beef Afritada (Afritadang Baka)",
+    "line_number": 13,
+    "ingredient_line": "1/2 red bell pepper Pulang siling pangsigang, seeded and cut into 1-inch cubes",
+    "requirement": {
+      "ingredient_id": "red_bell_pepper"
+    },
+    "source_gloss": null,
+    "basis": "The source identifies red bell pepper. Amounts and ordinary cutting/use wording remain in the original description; the named form and any explicit ingredient choices are retained."
+  },
+  {
+    "recipe_id": "6eec7df940bd35cc0857ae342c8d33564719f01d6483f42992224ce5396f25e4",
+    "recipe_name": "Filipino Chicken Menudo (Menudong Manok)",
+    "line_number": 6,
+    "ingredient_line": "1 red bell pepper pulang siling pangsigang, cubed",
+    "requirement": {
+      "ingredient_id": "red_bell_pepper"
+    },
+    "source_gloss": null,
+    "basis": "The source identifies red bell pepper. Amounts and ordinary cutting/use wording remain in the original description; the named form and any explicit ingredient choices are retained."
+  },
+  {
+    "recipe_id": "6eec7df940bd35cc0857ae342c8d33564719f01d6483f42992224ce5396f25e4",
+    "recipe_name": "Filipino Chicken Menudo (Menudong Manok)",
+    "line_number": 7,
+    "ingredient_line": "1 green bell pepper berdeng siling pangsigang, cubed",
+    "requirement": {
+      "ingredient_id": "green_bell_pepper"
+    },
+    "source_gloss": "berdeng siling pangsigang",
+    "basis": "The explicit leading source food noun is green bell pepper; assign that identity only. Preserve the appended 'berdeng siling pangsigang' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "bcc7006b01648993026d32633a264ebd6822fbebf73c37a33a8b3763f5587c74",
+    "recipe_name": "Ginataang Manok (Filipino Chicken in Spicy Coconut Milk)",
+    "line_number": 8,
+    "ingredient_line": "4 Thai chili peppers siling labuyo, chopped",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling labuyo",
+    "basis": "Retain the explicitly named main ingredient thai chili. The source gloss \"siling labuyo\" is not a universal identity alias or an authorized substitution. Its terminology discrepancy remains flagged for recipe/source review; quantities and original wording are preserved."
+  },
+  {
+    "recipe_id": "8d9fd23d299b66e4e1e9479dd27b7a67b6a12a3cb01db2dd22ba13349580213d",
+    "recipe_name": "Filipino Chicken Curry (Ginataang Manok sa Curry)",
+    "line_number": 7,
+    "ingredient_line": "1 red bell pepper pulang siling pangsigang",
+    "requirement": {
+      "ingredient_id": "red_bell_pepper"
+    },
+    "source_gloss": "pulang siling pangsigang",
+    "basis": "The explicit leading source food noun is red bell pepper; assign that identity only. Preserve the appended 'pulang siling pangsigang' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "7acbb0a48d9d5687746143227e1f34d78397e9d33a724fafb1f579d5a418c034",
+    "recipe_name": "Authentic Ginataang Alimasag (Filipino Crab in Coconut Milk)",
+    "line_number": 7,
+    "ingredient_line": "4 Thai chili peppers siling labuyo",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": null,
+    "basis": "The leading named ingredient is Thai chili, with a retained conflicting labuyo gloss that still requires terminology review."
+  },
+  {
+    "recipe_id": "09a5c002bb703cd3f21d042efd4765aeee79aade02db2c80f6251cc864b1c5b8",
+    "recipe_name": "Adobong Pusit sa Gata (Filipino Squid in Spicy Coconut Milk)",
+    "line_number": 8,
+    "ingredient_line": "2 siling pangsigang Thai chili peppers",
+    "requirement": {
+      "ingredient_id": "siling_pangsigang"
+    },
+    "source_gloss": "thai chili peppers",
+    "basis": "The explicit leading source food noun is siling pangsigang; assign that identity only. Preserve the appended 'thai chili peppers' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "d9e303358b9a3119c8007e4251091258d19c4c0a61802186855248a0ff9df8b5",
+    "recipe_name": "Authentic Bicol Express",
+    "line_number": 4,
+    "ingredient_line": "14 Thai red chilies siling labuyo, minced",
+    "requirement": {
+      "ingredient_id": "red_thai_chili"
+    },
+    "source_gloss": "siling labuyo",
+    "basis": "The explicit leading source food noun is red thai chili; assign that identity only. Preserve the appended 'siling labuyo' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "52d7e4673c38b3a60672a352b71c8d0f0402d44dfcb78b685d47319d9c30129a",
+    "recipe_name": "Filipino Bulalo (Bone Marrow Soup)",
+    "line_number": 14,
+    "ingredient_line": "Thai chili peppers chopped (siling labuyo)",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling labuyo",
+    "basis": "Retain the explicitly named main ingredient thai chili. The source gloss \"siling labuyo\" is not a universal identity alias or an authorized substitution. Its terminology discrepancy remains flagged for recipe/source review; quantities and original wording are preserved."
+  },
+  {
+    "recipe_id": "73abea191e475c2fb30c82122b5913cdd9aebe789e76968881ed637e28d18342",
+    "recipe_name": "Authentic Filipino Giniling na Baboy (Ground Pork Stew)",
+    "line_number": 8,
+    "ingredient_line": "1 red bell pepper diced (pulang siling pangsigang)",
+    "requirement": {
+      "ingredient_id": "red_bell_pepper"
+    },
+    "source_gloss": "pulang siling pangsigang",
+    "basis": "The explicit leading source food noun is red bell pepper; assign that identity only. Preserve the appended 'pulang siling pangsigang' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "73abea191e475c2fb30c82122b5913cdd9aebe789e76968881ed637e28d18342",
+    "recipe_name": "Authentic Filipino Giniling na Baboy (Ground Pork Stew)",
+    "line_number": 9,
+    "ingredient_line": "1 green bell pepper diced (berdeng siling pangsigang)",
+    "requirement": {
+      "ingredient_id": "green_bell_pepper"
+    },
+    "source_gloss": "berdeng siling pangsigang",
+    "basis": "The explicit leading source food noun is green bell pepper; assign that identity only. Preserve the appended 'berdeng siling pangsigang' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "12f57d1e22c807386dff990db3339598cab7354018e3995efc2e143fcbfc6db3",
+    "recipe_name": "Filipino Pork Barbecue",
+    "line_number": 9,
+    "ingredient_line": "10 Thai chili peppers (siling labuyo), minced",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling labuyo",
+    "basis": "The explicit leading source food noun is thai chili; assign that identity only. Preserve the appended 'siling labuyo' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "990a0b46d0894a39379ec92fcc02d004f73cabcb76a89e894d82cfa85193df44",
+    "recipe_name": "Paksiw na Pata",
+    "line_number": 11,
+    "ingredient_line": "1/2 cup dried banana blossoms (lily buds)",
+    "requirement": {
+      "ingredient_id": "dried_banana_blossom"
+    },
+    "source_gloss": null,
+    "basis": "The primary named ingredient is dried banana blossom. The parenthetical lily-bud terminology is retained as a source-gloss review flag, not approved as universal botanical equivalence."
+  },
+  {
+    "recipe_id": "4e78ce8222a6b63574ff4d207fdab6dedddd964cebc8aa54ca58a5f3d5e0cd33",
+    "recipe_name": "Tapsilog Sushi Bake Recipe",
+    "line_number": 1,
+    "ingredient_line": "1 Cup short grain rice (Dinorado) (rinsed)",
+    "requirement": {
+      "ingredient_id": "dinorado_rice"
+    },
+    "source_gloss": "short grain",
+    "basis": "Dinorado is the specifically named rice variety; retain that identity despite an imprecise short-grain gloss, without asserting all short-grain rice is Dinorado."
+  },
+  {
+    "recipe_id": "d76fc49d7434f002e1b2801894ab840df0ed90214dc318d1287b6f2ca19cbf52",
+    "recipe_name": "Spicy Pork Ribs Caldereta Recipe",
+    "line_number": 12,
+    "ingredient_line": "1/2 Cup Chinese parsley (kinchay) (chopped)",
+    "requirement": {
+      "ingredient_id": "kinchay"
+    },
+    "source_gloss": "Chinese parsley",
+    "basis": "Preserve the explicitly named Filipino kinchay; the Chinese-parsley gloss is not used to assert interchangeability with cilantro or Western parsley."
+  },
+  {
+    "recipe_id": "6c768a09ebe0bc5c97b60221ad0dcf0d5227a1112e2a2758c3f70b2745b34c9c",
+    "recipe_name": "Pork Meatball and Misua Soup Recipe - Paano Lutuin At Mga Sangkap",
+    "line_number": 16,
+    "ingredient_line": "130 Grams misua (fine rice noodles)",
+    "requirement": {
+      "ingredient_id": "misua"
+    },
+    "source_gloss": null,
+    "basis": "Misua is the explicit named noodle. The fine-rice-noodle gloss remains flagged for terminology review, not silently turned into generic rice noodles."
+  },
+  {
+    "recipe_id": "8ce811e8b443143d47225c6d67846b8dc6e229b2caedb9e2fb89dbc006bcac72",
+    "recipe_name": "Fish Escabeche Recipe (Tagalog Recipe)",
+    "line_number": 1,
+    "ingredient_line": "1 whole Maya-Maya (Grouper)",
+    "requirement": {
+      "ingredient_id": "maya_maya"
+    },
+    "source_gloss": "grouper",
+    "basis": "Retain the explicitly named main ingredient maya maya. The source gloss \"grouper\" is not a universal identity alias or an authorized substitution. Its terminology discrepancy remains flagged for recipe/source review; quantities and original wording are preserved."
+  },
+  {
+    "recipe_id": "2efcdb28dc44076d57c75ddd563b7480739b4efe59280282d81c277c1a3736bc",
+    "recipe_name": "Tokwang Adobo Sa Gata Recipe",
+    "line_number": 9,
+    "ingredient_line": "1/2 Cup coconut cream (gata)",
+    "requirement": {
+      "ingredient_id": "coconut_cream"
+    },
+    "source_gloss": "gata",
+    "basis": "Coconut cream is explicitly named; loose gata gloss does not remove its cream form."
+  },
+  {
+    "recipe_id": "aec0be7b0dfdaef2822f9058121eac07872a3475b78dc6eeea07de37180cf4d2",
+    "recipe_name": "Crispy Roast Pork Belly Recipe",
+    "line_number": 1,
+    "ingredient_line": "3 kilo slab pork face (use boneless pork belly)",
+    "requirement": {
+      "ingredient_id": "skin_on_boneless_pork_belly"
+    },
+    "source_gloss": null,
+    "basis": "The Crispy Roast Pork Belly title, the explicit instruction use boneless pork belly, and the skin-pricking/roasting method establish skin-on boneless pork belly; the erroneous pork-face label is flagged as a contextual source correction."
+  },
+  {
+    "recipe_id": "3ebc8fcd40fcb58bef7baabb2f984f1826f75f9829cca61f7addcb6458f7363b",
+    "recipe_name": "Pork Meatball and Misua Soup Recipe",
+    "line_number": 17,
+    "ingredient_line": "130 Grams misua (fine rice noodles)",
+    "requirement": {
+      "ingredient_id": "misua"
+    },
+    "source_gloss": null,
+    "basis": "Misua is the explicit named noodle. The fine-rice-noodle gloss remains flagged for terminology review, not silently turned into generic rice noodles."
+  },
+  {
+    "recipe_id": "c61e83a121dcc6f17e3a1d14489930a2333729c0ae6e6b791a7f578f040a42e6",
+    "recipe_name": "Seafood Aligue Fried Rice Recipe",
+    "line_number": 14,
+    "ingredient_line": "kinchay (parsley) (for garnish)",
+    "requirement": {
+      "ingredient_id": "kinchay"
+    },
+    "source_gloss": null,
+    "basis": "The source identifies kinchay. Amounts and ordinary cutting/use wording remain in the original description; the named form and any explicit ingredient choices are retained."
+  },
+  {
+    "recipe_id": "d5ff71ed1bf6c7c41319eb7b5e9daf43ca6c54bed428927a4b8f32a13dba8ea3",
+    "recipe_name": "Alimasag sa Hibe at Gata (Crab with Shrimp and Coconut Milk) Recipe",
+    "line_number": 1,
+    "ingredient_line": "500 to 600 grams, about 3 pieces Spider Crab (Alimasag) (washed and cleaned)",
+    "requirement": {
+      "ingredient_id": "spider_crab"
+    },
+    "source_gloss": "alimasag",
+    "basis": "Spider crab is explicitly named; the loose alimasag gloss is not used to universally equate spider crab with every blue crab."
+  },
+  {
+    "recipe_id": "8535c48fcd638c73bbc9d358e72236f508e6ff308ac8a3fc39af22e5ccdbadc8",
+    "recipe_name": "Shredded Beef Kaldereta Soft Tacos",
+    "line_number": 21,
+    "ingredient_line": "kinchay (parsley)",
+    "requirement": {
+      "ingredient_id": "kinchay"
+    },
+    "source_gloss": "parsley",
+    "basis": "Kinchay is preserved as the named local herb; the generic parsley gloss does not authorize substituting Western parsley or cilantro."
+  },
+  {
+    "recipe_id": "70d2c1d8a3485f1444a2a80ab6b834d3261bfb4a2d23137d0a85318d3f0cf02c",
+    "recipe_name": "Pesang Maya-Maya (Red Snapper Stew) Recipe",
+    "line_number": 4,
+    "ingredient_line": "500 Grams Maya-Maya (Grouper) (gutted, scaled, cleaned, and cut into serving pieces)",
+    "requirement": {
+      "ingredient_id": "maya_maya"
+    },
+    "source_gloss": null,
+    "basis": "Maya-maya is explicitly named. The conflicting grouper gloss is retained for terminology review, not turned into a universal fish-species alias."
+  },
+  {
+    "recipe_id": "68ce559fe2c3d52357a1da149e69acacb7578a2afe88fe0e67ca8434fc040577",
+    "recipe_name": "Misua with Sardines Recipe",
+    "line_number": 8,
+    "ingredient_line": "1/8 kilo misua (fine rice noodles)",
+    "requirement": {
+      "ingredient_id": "misua"
+    },
+    "source_gloss": "fine rice noodles",
+    "basis": "Misua is the specifically named noodle; retain that product identity rather than trusting the inaccurate rice-noodle gloss."
+  },
+  {
+    "recipe_id": "e0aec5dcdd07340bb53ff6a69e4213e2a90f3302c709309d30a29eca54f632c5",
+    "recipe_name": "Pork Hamonado Recipe",
+    "line_number": 4,
+    "ingredient_line": "1 kilo pork tenderloin or butt (pigue) (sliced into large, thin slices (tapa))",
+    "requirement": {
+      "any_of": [
+        {
+          "ingredient_id": "pork_tenderloin"
+        },
+        {
+          "ingredient_id": "pork_butt"
+        }
+      ]
+    },
+    "source_gloss": null,
+    "basis": "The source explicitly permits tenderloin or butt. The pigue parenthetical needs terminology review and is not a universal butt-to-ham equivalence."
+  },
+  {
+    "recipe_id": "824435f432e8e8d0af0b11afc3d7277baa68d830233653b4151e7be0eb2fa662",
+    "recipe_name": "Adobong Tokwa Recipe",
+    "line_number": 10,
+    "ingredient_line": "kinchay (parsley) (for garnish)",
+    "requirement": {
+      "ingredient_id": "kinchay"
+    },
+    "source_gloss": null,
+    "basis": "The source identifies kinchay. Amounts and ordinary cutting/use wording remain in the original description; the named form and any explicit ingredient choices are retained."
+  },
+  {
+    "recipe_id": "2c8792ccc8e0137718410f807c4d40e9742c32c66bf834800ddab7895777e3f7",
+    "recipe_name": "Fish Escabeche Recipe",
+    "line_number": 1,
+    "ingredient_line": "1 whole Maya-Maya (Grouper)",
+    "requirement": {
+      "ingredient_id": "maya_maya"
+    },
+    "source_gloss": "grouper",
+    "basis": "Retain the explicitly named main ingredient maya maya. The source gloss \"grouper\" is not a universal identity alias or an authorized substitution. Its terminology discrepancy remains flagged for recipe/source review; quantities and original wording are preserved."
+  },
+  {
+    "recipe_id": "f76cceb92106e0df38f914053a3f88bcb7ac3b6271a52ff1f6f65c5a5b98a6cf",
+    "recipe_name": "Hototay Soup Recipe",
+    "line_number": 16,
+    "ingredient_line": "kinchay (parsley) (for garnish)",
+    "requirement": {
+      "ingredient_id": "kinchay"
+    },
+    "source_gloss": null,
+    "basis": "The source identifies kinchay. Amounts and ordinary cutting/use wording remain in the original description; the named form and any explicit ingredient choices are retained."
+  },
+  {
+    "recipe_id": "e3cf02517f158d7c0dc2a49573d9a0cb66597fe0ea8b6264ae6fed3c2a37f189",
+    "recipe_name": "Almondigas Recipe",
+    "line_number": 12,
+    "ingredient_line": "1 250-gram pack misua (fine rice noodles)",
+    "requirement": {
+      "ingredient_id": "misua"
+    },
+    "source_gloss": null,
+    "basis": "The specifically named food is misua. The rice-noodle gloss is retained for terminology review, not used to equate all rice noodles with misua."
+  },
+  {
+    "recipe_id": "d8c9256a42d7e4cab1c1e8060e9f731bcf97f27f5bec156b3ad69377b72be595",
+    "recipe_name": "Sinigang na Salmon sa Miso Recipe (Salmon in Tamarind Miso Soup)",
+    "line_number": 4,
+    "ingredient_line": "1 Cup white miso (ground soy beans)",
+    "requirement": {
+      "ingredient_id": "white_miso"
+    },
+    "source_gloss": "ground soy beans",
+    "basis": "Named white miso is a fermented soybean seasoning; its ground-soybean gloss does not replace it with unfermented beans."
+  },
+  {
+    "recipe_id": "5e078f39a90f20585ee23e8d0a2a329331f9d15e5092021c1db0fd382e681236",
+    "recipe_name": "Batchoy Tagalog",
+    "line_number": 11,
+    "ingredient_line": "3 rolls misua (fine rice noodles)",
+    "requirement": {
+      "ingredient_id": "misua"
+    },
+    "source_gloss": null,
+    "basis": "Misua is the explicit noodle name; the rice-noodle gloss is retained for terminology review rather than treated as a general noodle equivalence."
+  },
+  {
+    "recipe_id": "5416aecfe228e2135849b2e68bc8e1410b0873009eccefc1048323b31f76646f",
+    "recipe_name": "Baked Lapu Lapu with Laguna Cheese (Kesong Puti) Topping",
+    "line_number": 2,
+    "ingredient_line": "2 teaspoons kinchay (parsley) (chopped)",
+    "requirement": {
+      "ingredient_id": "kinchay"
+    },
+    "source_gloss": null,
+    "basis": "The source identifies kinchay. Amounts and ordinary cutting/use wording remain in the original description; the named form and any explicit ingredient choices are retained."
+  },
+  {
+    "recipe_id": "1d174de906c8af002df5ee7f7d5761e832d3054876b6e495fe68980b695412f9",
+    "recipe_name": "Pancit Canton Recipe",
+    "line_number": 19,
+    "ingredient_line": "4 stalks Chinese parsley (kinchay) (coarsely chopped)",
+    "requirement": {
+      "ingredient_id": "kinchay"
+    },
+    "source_gloss": "Chinese parsley",
+    "basis": "Preserve the explicitly named kinchay rather than treating the Chinese-parsley gloss as universal equivalence with cilantro."
+  },
+  {
+    "recipe_id": "cc78cd4eecfd52b6fa06b697d06f9013af116cfa89a5451df742c5e7e94800b1",
+    "recipe_name": "Kari Kay (Nonya Chicken Curry)",
+    "line_number": 11,
+    "ingredient_line": "2 dried cloves (or 1 1/2 teaspoons ground cloves1 cinnamon stick or 1/2 teaspoon ground cinnamon(substitute with the)",
+    "requirement": {
+      "all_of": [
+        {
+          "any_of": [
+            {
+              "ingredient_id": "dried_clove"
+            },
+            {
+              "ingredient_id": "ground_clove"
+            }
+          ]
+        },
+        {
+          "any_of": [
+            {
+              "ingredient_id": "cinnamon_stick"
+            },
+            {
+              "ingredient_id": "ground_cinnamon"
+            }
+          ]
+        }
+      ]
+    },
+    "source_gloss": null,
+    "basis": "The merged line visibly gives clove and cinnamon substitutions. The recipe saute step confirms both cloves and cinnamon. Each whole/ground substitution stays in its own branch; the trailing truncated prose remains a source-note warning."
+  },
+  {
+    "recipe_id": "6ae91bb4edb470daa29c92fed4661fe90c3098f86f791f7bb2986a50e382d05c",
+    "recipe_name": "Parsley-Pork Balls in Curry Sauce",
+    "line_number": 3,
+    "ingredient_line": "3 teaspoons Pepper (freshly)",
+    "requirement": {
+      "ingredient_id": "pepper_unspecified"
+    },
+    "source_gloss": null,
+    "basis": "Pepper is explicit but freshly is an incomplete modifier. Pepper type and grinding are not invented; the incomplete modifier is flagged."
+  },
+  {
+    "recipe_id": "1639047039c4f4d46aa817f9d73e276fee53bee766dab409e6daacab0253f10e",
+    "recipe_name": "Lumpia Recipe",
+    "line_number": 8,
+    "ingredient_line": "4 stalks kinchay (parsley) (minced)",
+    "requirement": {
+      "ingredient_id": "kinchay"
+    },
+    "source_gloss": "parsley",
+    "basis": "Retain the explicitly named main ingredient kinchay. The source gloss \"parsley\" is not a universal identity alias or an authorized substitution. Its terminology discrepancy remains flagged for recipe/source review; quantities and original wording are preserved."
+  },
+  {
+    "recipe_id": "e6d3213805f4807d152d1e0bf4333bbe27190c48894656de2e10cc225364b104",
+    "recipe_name": "Lamb Tapa with Mint and Parsley Fried Rice",
+    "line_number": 12,
+    "ingredient_line": "1 teaspoon kinchay (parsley) (chopped)",
+    "requirement": {
+      "ingredient_id": "kinchay"
+    },
+    "source_gloss": null,
+    "basis": "The source identifies kinchay. Amounts and ordinary cutting/use wording remain in the original description; the named form and any explicit ingredient choices are retained."
+  },
+  {
+    "recipe_id": "445617fb2dcb4e21e151d7972cbc5b2d97d8f95ce361d8215b7a28a84dc5a5c9",
+    "recipe_name": "Adobong Mani (Filipino Garlic Fried Peanuts)",
+    "line_number": 6,
+    "ingredient_line": "Optional: 2-3 Thai chilies Siling Labuyo for spicy version",
+    "requirement": {
+      "ingredient_id": "thai_chili"
+    },
+    "source_gloss": "siling labuyo",
+    "basis": "Retain the explicitly named main ingredient thai chili. The source gloss \"siling labuyo\" is not a universal identity alias or an authorized substitution. Its terminology discrepancy remains flagged for recipe/source review; quantities and original wording are preserved."
+  },
+  {
+    "recipe_id": "81b385947baf77c5e721bdae790bc11c2ca823bf8a2b2c7cfe9ab9d3fbb9ac6c",
+    "recipe_name": "Authentic Filipino-Style Siomai Sauce (Chili Garlic Sauce)",
+    "line_number": 1,
+    "ingredient_line": "250 g siling labuyo Thai bird’s eye chilies",
+    "requirement": {
+      "ingredient_id": "siling_labuyo"
+    },
+    "source_gloss": "Thai bird’s eye chilies",
+    "basis": "The explicit leading source food noun is siling labuyo; assign that identity only. Preserve the appended 'Thai bird’s eye chilies' gloss for terminology review, without asserting botanical identity or allowing an unrequested substitute."
+  },
+  {
+    "recipe_id": "eb3dcdcad17b4392fdd8ee1b013f83474d4b981ebfeda6d195e3c33bf136856f",
+    "recipe_name": "Salabat (Traditional Filipino Ginger Tea)",
+    "line_number": 5,
+    "ingredient_line": "Optional: Lemon slices hiwa ng dayap",
+    "requirement": {
+      "ingredient_id": "lemon"
+    },
+    "source_gloss": "hiwa ng dayap",
+    "basis": "Retain the explicitly named main ingredient lemon. The source gloss \"hiwa ng dayap\" is not a universal identity alias or an authorized substitution. Its terminology discrepancy remains flagged for recipe/source review; quantities and original wording are preserved."
+  }
+]

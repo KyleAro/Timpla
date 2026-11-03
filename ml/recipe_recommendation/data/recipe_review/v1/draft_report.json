@@ -1,0 +1,23 @@
+{
+  "recipes": 2074,
+  "ingredient_line_occurrences": 23135,
+  "existing_owner_role_reviews_preserved": 4,
+  "proposed_role_leaf_counts": {
+    "essential": 10115,
+    "supporting": 13877,
+    "optional": 319
+  },
+  "partition_recipe_counts": [
+    691,
+    691,
+    692
+  ],
+  "partition_line_counts": [
+    7712,
+    7712,
+    7711
+  ],
+  "annotation_status": "draft_pending_semantic_review",
+  "ready_for_training": false,
+  "model_training_performed": false
+}

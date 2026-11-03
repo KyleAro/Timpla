@@ -1,0 +1,16 @@
+{
+  "snapshot_integrity": {
+    "ml\\recipe_recommendation\\data\\normalization\\v6": true,
+    "ml\\recipe_recommendation\\data\\preparation\\v6": true
+  },
+  "owner_mapping_records_unchanged": 3683,
+  "previous_group_decisions_unchanged": 615,
+  "original_deferrals_preserved": 16,
+  "previous_nonpending_requirements_unchanged": 10019,
+  "all_original_recipe_ingredient_lines_unchanged": true,
+  "all_original_source_references_preserved": true,
+  "recipes_retained": 2074,
+  "source_rows_retained": 2129,
+  "food_occurrences_resolved": 23094,
+  "model_training_performed": false
+}

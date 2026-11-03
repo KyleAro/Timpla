@@ -1,0 +1,5863 @@
+[
+  {
+    "available": [
+      "baby_bok_choy",
+      "brown_sugar",
+      "butter",
+      "calamansi_juice",
+      "canola_oil",
+      "fish",
+      "garlic",
+      "ginger",
+      "green_bell_pepper",
+      "jumbo_squid",
+      "leek",
+      "onion",
+      "pechay",
+      "pepper_unspecified",
+      "peppercorn",
+      "red_bell_pepper",
+      "rice_washing",
+      "salt",
+      "thai_chili",
+      "worcestershire_sauce"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "apple_cider_vinegar",
+      "birds_eye_chili",
+      "bone_in_pork",
+      "boneless_pork_belly",
+      "canned_pineapple_juice",
+      "canola_oil",
+      "coconut_milk",
+      "garlic",
+      "green_bean",
+      "ground_pork",
+      "onion",
+      "pepper_unspecified",
+      "pineapple_chunks",
+      "salt",
+      "shrimp_paste",
+      "siling_pangsigang",
+      "soy_sauce",
+      "winged_bean"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "garlic",
+      "peppercorn",
+      "pork",
+      "potato",
+      "salt",
+      "soy_sauce",
+      "water",
+      "white_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "cabbage",
+      "carrot",
+      "chicken",
+      "coconut_cream",
+      "cooking_oil",
+      "egg",
+      "garlic",
+      "ginger",
+      "green_finger_chili",
+      "magic_sarap_all_purpose_seasoning",
+      "onion",
+      "pepper_unspecified",
+      "red_onion",
+      "siling_labuyo",
+      "soy_sauce",
+      "sugar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "asian_long_eggplant",
+      "chicken_liver",
+      "cilantro_leaf",
+      "crabmeat",
+      "egg",
+      "garlic",
+      "garlic_powder",
+      "grilled_pork_belly",
+      "pepper_unspecified",
+      "salt",
+      "spring_onion",
+      "vegetable_oil",
+      "white_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "cooking_oil",
+      "fresh_coconut_milk",
+      "garlic",
+      "pork_shoulder",
+      "salt",
+      "shrimp_paste",
+      "siling_labuyo",
+      "unripe_jackfruit"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "fresh_coconut_milk",
+      "garlic",
+      "onion",
+      "pork_shoulder",
+      "shrimp_paste",
+      "siling_labuyo",
+      "unripe_jackfruit"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "annatto_powder",
+      "bihon_rice_noodle",
+      "black_pepper",
+      "boiled_cooked_shrimp",
+      "boiled_pork_belly",
+      "calamansi",
+      "chicharon",
+      "coconut_milk",
+      "cooking_oil",
+      "fish_sauce",
+      "fried_firm_tofu",
+      "garlic",
+      "ginger",
+      "ground_pork",
+      "hard_boiled_egg",
+      "lemon",
+      "pork",
+      "pork_broth",
+      "shrimp_bouillon",
+      "spinach",
+      "spring_onion",
+      "steamed_cooked_shrimp",
+      "thai_chili",
+      "tilapia",
+      "tinapa_flakes",
+      "toasted_garlic"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "beef_sirloin",
+      "black_pepper",
+      "cooking_oil",
+      "fresh_calamansi_juice",
+      "soy_sauce",
+      "water",
+      "white_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "fresh_kangkong_leaves",
+      "maggi_magic_sinigang_sa_sampaloc",
+      "milkfish",
+      "miso",
+      "okra",
+      "salt",
+      "string_bean",
+      "tomato"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "carrot",
+      "chili_garlic_sauce",
+      "cooking_oil",
+      "ground_pork",
+      "lumpia_wrapper",
+      "salt",
+      "siling_labuyo",
+      "vinegar_soy_dipping_sauce",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_peppercorn",
+      "brown_sugar",
+      "dried_kamias",
+      "garlic_fried_rice",
+      "ground_chicken",
+      "hot_sauce",
+      "pork_belly",
+      "pork_fat",
+      "rock_salt",
+      "sukang_irok",
+      "tulingan",
+      "water",
+      "worcestershire_sauce"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "cooking_oil",
+      "dried_bay_leaf",
+      "egg",
+      "garlic",
+      "lemon_lime_soda",
+      "maggi_magic_sarap",
+      "onion",
+      "pepper_unspecified",
+      "peppercorn",
+      "pork_belly",
+      "soy_sauce",
+      "very_ripe_roma_tomato",
+      "white_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "atsara",
+      "banana",
+      "bok_choy",
+      "calamansi",
+      "eggplant",
+      "finger_chili",
+      "ginger",
+      "lemongrass",
+      "long_bean",
+      "okra",
+      "onion",
+      "pepper_unspecified",
+      "pork_belly",
+      "radish",
+      "salt",
+      "sugar",
+      "tamarind_base_powder",
+      "tamarind_pod",
+      "tamarind_soup_base_mix",
+      "taro",
+      "tilapia",
+      "tomato",
+      "vegetable_oil",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "calamansi",
+      "cooked_white_rice",
+      "cooking_oil",
+      "garlic",
+      "hot_sauce",
+      "lemon",
+      "lemon_lime_soda",
+      "lemongrass",
+      "oyster_sauce",
+      "pork_belly",
+      "salt",
+      "soy_sauce",
+      "whole_chicken"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "annatto_seed",
+      "black_pepper",
+      "boiled_egg",
+      "calamansi",
+      "canola_oil",
+      "chicharon",
+      "cooked_bihon_noodle",
+      "cornstarch",
+      "dried_bay_leaf",
+      "dried_shrimp",
+      "ground_pork",
+      "hard_boiled_egg",
+      "light_soy_sauce",
+      "pork_bouillon_cube",
+      "pork_shoulder",
+      "salt",
+      "shrimp",
+      "shrimp_bouillon_cube",
+      "spring_onion",
+      "water",
+      "white_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "annatto_powder",
+      "bihon_noodle",
+      "bottle_gourd",
+      "garlic",
+      "onion",
+      "oyster_sauce",
+      "pork_belly",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_cream",
+      "all_purpose_flour",
+      "bay_leaf",
+      "black_pepper",
+      "calamansi_juice",
+      "carrot",
+      "celery",
+      "coconut_vinegar",
+      "cucumber",
+      "fish_sauce",
+      "fresh_milk",
+      "fresh_sashimi_grade_tuna",
+      "garlic",
+      "ginger",
+      "green_pea",
+      "mushroom",
+      "pepper_unspecified",
+      "pork_belly",
+      "pork_pigue",
+      "red_onion",
+      "red_siling_haba",
+      "salt",
+      "sugar",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "brown_sugar",
+      "butter",
+      "cheese",
+      "chicken",
+      "cooking_oil",
+      "dried_bay_leaf",
+      "garlic",
+      "green_olive",
+      "kinchay",
+      "oyster_sauce",
+      "pork_belly",
+      "pork_rib",
+      "red_onion",
+      "salt",
+      "siling_labuyo",
+      "soy_sauce",
+      "tomato",
+      "vegetable_oil",
+      "water",
+      "white_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bitter_gourd",
+      "boneless_bangus_belly",
+      "canola_oil",
+      "coconut_milk",
+      "eggplant",
+      "finger_chili",
+      "fish_bouillon_cube",
+      "fish_sauce",
+      "garlic",
+      "ginger",
+      "pepper_unspecified",
+      "salt",
+      "shrimp",
+      "soy_sauce",
+      "thai_chili",
+      "vinegar",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "calamansi_juice",
+      "canola_oil",
+      "chicken",
+      "chorizo_de_bilbao",
+      "cooking_oil",
+      "fish_sauce",
+      "garbanzo_bean",
+      "garlic",
+      "green_bean",
+      "ground_beef",
+      "napa_cabbage",
+      "onion",
+      "pechay",
+      "pepper_unspecified",
+      "potato",
+      "saba_banana",
+      "salt",
+      "thai_chili",
+      "tomato_sauce",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "cooking_oil",
+      "quick_melting_cheese",
+      "salt",
+      "unmarinated_boneless_bangus"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "black_pepper",
+      "quick_melting_cheese",
+      "unmarinated_boneless_bangus"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "chicken_liver",
+      "cooking_oil",
+      "egg",
+      "garlic",
+      "garlic_powder",
+      "grilled_pork_belly",
+      "margarine",
+      "mayonnaise",
+      "onion",
+      "pork_belly",
+      "pork_liver",
+      "radish",
+      "salt",
+      "spring_onion",
+      "vinegar",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bitter_gourd",
+      "cooking_oil",
+      "eggplant",
+      "okra",
+      "onion",
+      "pork_belly",
+      "shrimp_paste",
+      "sitaw",
+      "squash",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bitter_gourd",
+      "cooking_oil",
+      "egg",
+      "garlic",
+      "onion",
+      "roma_tomato",
+      "salt",
+      "shrimp"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "annatto_seed",
+      "black_pepper",
+      "bok_choy",
+      "canola_oil",
+      "coconut_milk",
+      "dried_thai_chili",
+      "eggplant",
+      "garlic",
+      "long_bean",
+      "mixed_seafood",
+      "onion",
+      "peanut",
+      "peanut_butter",
+      "pechay",
+      "red_onion",
+      "shrimp_paste",
+      "toasted_rice_flour",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "chili_leaves",
+      "garlic",
+      "ginger",
+      "green_papaya",
+      "onion",
+      "rice_washing",
+      "whole_chicken"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "cabbage",
+      "carrot",
+      "egg",
+      "fish_sauce",
+      "garlic",
+      "green_bean",
+      "lumpia_wrapper",
+      "orange_sweet_potato",
+      "red_onion",
+      "soy_sauce",
+      "sugar",
+      "sweet_potato",
+      "tofu",
+      "vegetable_oil",
+      "vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "atsara",
+      "ham",
+      "mixed_chicken_parts",
+      "peppercorn",
+      "prepared_stuffed_chicken_breast",
+      "quick_melting_cheese",
+      "skin_on_pork_belly",
+      "soy_sauce",
+      "water",
+      "white_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "calamansi_juice",
+      "cooking_oil",
+      "fish_sauce",
+      "garlic",
+      "honey",
+      "liver_unspecified_animal",
+      "mustard_leaves",
+      "onion",
+      "pepper_unspecified",
+      "pork",
+      "pork_heart",
+      "pork_lung",
+      "pork_shoulder",
+      "salt",
+      "steamed_mantou_bun",
+      "vegetable_oil",
+      "vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "beef_shank",
+      "cabbage",
+      "calamansi",
+      "fish_sauce",
+      "fresh_sweet_corn",
+      "green_bean",
+      "hot_water",
+      "knorr_beef_cube",
+      "marble_potatoes",
+      "napa_cabbage",
+      "native_pechay",
+      "peppercorn",
+      "pork_hock",
+      "saba_banana",
+      "siling_labuyo",
+      "sweet_corn",
+      "water",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "canola_oil",
+      "chicken_bouillon_cube",
+      "chicken_leg_quarter",
+      "chicken_stock",
+      "dried_shrimp",
+      "fish_sauce",
+      "garlic",
+      "ginger",
+      "green_papaya",
+      "malunggay_leaves",
+      "onion",
+      "rice",
+      "salt",
+      "squash",
+      "water",
+      "whole_chicken"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "banana_ketchup",
+      "black_pepper",
+      "black_peppercorn",
+      "brown_sugar",
+      "calamansi_juice",
+      "garlic",
+      "guava",
+      "kangkong",
+      "lemon_lime_soda",
+      "pork_shoulder",
+      "salt",
+      "shrimp",
+      "soy_sauce",
+      "spiced_vinegar",
+      "sriracha",
+      "vegetable_oil",
+      "water",
+      "whole_milkfish"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "cooking_oil",
+      "lemon_juice",
+      "onion",
+      "salt",
+      "tilapia"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bok_choy",
+      "fish_sauce",
+      "ground_pork",
+      "shrimp",
+      "tomato",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "coconut_milk",
+      "cooking_oil",
+      "fish_sauce",
+      "garlic",
+      "ground_pepper_unspecified",
+      "salt",
+      "siling_pangsigang",
+      "whole_chicken"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "black_pepper",
+      "chicharon",
+      "cooking_oil",
+      "garlic",
+      "kangkong",
+      "malunggay_leaves",
+      "milk",
+      "mussel",
+      "onion",
+      "pepper_unspecified",
+      "quick_melting_cheese",
+      "salt",
+      "sitaw",
+      "soy_sauce",
+      "vinegar",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "blue_crab",
+      "calamansi_juice",
+      "coconut_milk",
+      "cooking_oil",
+      "fish_sauce",
+      "garlic",
+      "ginger",
+      "honey",
+      "knorr_savorrich_pork",
+      "onion",
+      "shrimp_paste",
+      "spinach",
+      "thai_chili",
+      "whole_pork_belly"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "ginger",
+      "hot_chili",
+      "pepper_unspecified",
+      "salt",
+      "tanigue",
+      "tilapia",
+      "tuna",
+      "vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "black_pepper",
+      "cooking_oil",
+      "cornstarch",
+      "dry_sherry",
+      "garlic",
+      "head_on_shrimp",
+      "low_sodium_soy_sauce",
+      "onion",
+      "onion_powder",
+      "peppercorn",
+      "pork_belly",
+      "rum",
+      "salt",
+      "snake_bean",
+      "soy_sauce",
+      "vinegar",
+      "water",
+      "white_wine_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "beef",
+      "beef_stock",
+      "butter",
+      "carrot",
+      "celery",
+      "cooking_oil",
+      "flour",
+      "garlic",
+      "glutinous_white_corn",
+      "heavy_cream",
+      "mushroom",
+      "onion",
+      "parsley",
+      "peppercorn",
+      "salt",
+      "shrimp",
+      "shrimp_paste",
+      "soy_sauce",
+      "spinach",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "egg_plant",
+      "fish_sauce",
+      "kangkong",
+      "okra",
+      "siling_pangsigang",
+      "sinigang_mix",
+      "string_bean",
+      "thai_chili",
+      "tuna_jaw"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "baking_potato",
+      "brown_sugar",
+      "carrot",
+      "chicken",
+      "cooking_oil",
+      "dried_bay_leaf",
+      "garlic",
+      "ginger",
+      "honey",
+      "jumbo_squid",
+      "onion",
+      "pepper_unspecified",
+      "roma_tomato",
+      "salt",
+      "sugar",
+      "thai_chili",
+      "tomato_paste",
+      "vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bacon",
+      "black_pepper",
+      "brown_pinto_bean",
+      "cayenne_pepper_powder",
+      "coarse_sea_salt",
+      "cumin",
+      "dried_bay_leaf",
+      "garlic_powder",
+      "ginger",
+      "peppercorn",
+      "pig_large_intestine",
+      "vinegar",
+      "water",
+      "white_onion",
+      "white_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "annatto_seed",
+      "black_pepper",
+      "calamansi",
+      "cooking_oil",
+      "cornstarch_noodle",
+      "egg",
+      "firm_tofu",
+      "flour",
+      "fried_egg",
+      "garlic_fried_rice",
+      "garlic_powder",
+      "hard_boiled_egg",
+      "lemon",
+      "panko_bread_crumbs",
+      "pork_belly",
+      "pork_chop",
+      "pork_crackling",
+      "pork_tenderloin",
+      "rice_stick_noodle",
+      "salt",
+      "shrimp",
+      "shrimp_head",
+      "tinapa_flakes",
+      "tonkatsu_sauce",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "coconut_cream",
+      "coconut_milk",
+      "fresh_shrimp_paste",
+      "onion",
+      "pork_belly",
+      "siling_haba",
+      "thai_chili"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "banana_ketchup",
+      "boneless_skinless_chicken_leg_meat",
+      "boneless_skinless_chicken_thigh_meat",
+      "boneless_whole_bangus",
+      "cooking_oil",
+      "cracked_peppercorn",
+      "garlic",
+      "garlic_powder",
+      "pineapple_juice",
+      "salt",
+      "sugar",
+      "vinegar",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "coconut_vinegar",
+      "crushed_black_peppercorn",
+      "egg",
+      "pork_shoulder",
+      "soy_sauce",
+      "water",
+      "whole_garlic"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "garlic",
+      "onion",
+      "oyster_sauce",
+      "pork_belly",
+      "pork_butt",
+      "salt",
+      "sesame_oil",
+      "seven_up",
+      "soy_sauce",
+      "string_bean",
+      "sugar",
+      "thai_chili",
+      "vinegar",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "banana_ketchup",
+      "bean_sprout",
+      "black_pepper",
+      "boiled_pork",
+      "brown_sugar",
+      "carrot",
+      "fatty_pork_shoulder",
+      "garlic",
+      "ground_pork",
+      "jicama",
+      "lemon_lime_soda",
+      "long_bean",
+      "onion",
+      "orange_sweet_potato",
+      "pork_belly",
+      "siling_labuyo",
+      "soy_sauce",
+      "sriracha_hot_sauce"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bay_leaf",
+      "black_peppercorn",
+      "brown_sugar",
+      "canola_oil",
+      "chicken_parts",
+      "cooking_oil",
+      "cracked_peppercorn",
+      "garlic",
+      "hard_boiled_egg",
+      "onion",
+      "pork_belly",
+      "pork_shoulder",
+      "potato",
+      "salt",
+      "soy_sauce",
+      "vinegar",
+      "water",
+      "white_vinegar",
+      "whole_chicken"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "carrot",
+      "cooking_oil",
+      "crispy_fried_jeprox",
+      "garlic",
+      "hard_boiled_egg",
+      "hotdog",
+      "onion",
+      "pork",
+      "pork_adobo_paksiw",
+      "pork_broth",
+      "potato",
+      "red_bell_pepper",
+      "salt",
+      "shrimp_fried_rice",
+      "spicy_vinegar",
+      "tomato_sauce",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bell_pepper",
+      "birds_eye_chili",
+      "brown_sugar",
+      "carrot",
+      "chinese_sausage",
+      "cooked_rice",
+      "cooking_oil",
+      "crabmeat",
+      "curry_powder",
+      "dried_shrimp",
+      "fish_sauce",
+      "garlic",
+      "green_bell_pepper",
+      "onion",
+      "pineapple",
+      "pork",
+      "potato",
+      "red_chili",
+      "salt",
+      "shallot",
+      "shrimp",
+      "soy_sauce",
+      "vegetable_oil",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "calamansi_juice",
+      "carrot",
+      "cooking_oil",
+      "honey",
+      "mustard_leaves",
+      "pork",
+      "potato",
+      "red_onion",
+      "salt",
+      "soy_sauce",
+      "sriracha_hot_sauce",
+      "steamed_mantou_bun",
+      "tenderized_pork_belly",
+      "tomato",
+      "vegetable_oil"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "bread_crumbs",
+      "cilantro",
+      "coconut_cream",
+      "egg",
+      "fish_sauce",
+      "pepper_unspecified",
+      "salt",
+      "sinigang_sa_kamias_powder_mix",
+      "skin_on_tamarind_fruit",
+      "skinless_chicken_breast_fillet"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "garlic_powder",
+      "pork_shoulder",
+      "soy_sauce"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "beef_brisket",
+      "cooking_oil",
+      "cornstarch",
+      "dried_bay_leaf",
+      "dry_sherry",
+      "garlic",
+      "head_on_shrimp",
+      "low_sodium_soy_sauce",
+      "peppercorn",
+      "rum",
+      "salt",
+      "short_rib",
+      "sugar",
+      "turmeric",
+      "water",
+      "white_vinegar",
+      "white_wine_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "baking_powder",
+      "beer",
+      "black_pepper",
+      "cayenne_pepper_powder",
+      "cooking_oil",
+      "egg",
+      "garlic_powder",
+      "peeled_shrimp",
+      "salt"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bay_leaf",
+      "beef_sirloin",
+      "brown_sugar",
+      "cooking_oil",
+      "fried_egg",
+      "garlic",
+      "garlic_fried_rice",
+      "pepper_unspecified",
+      "pork_belly",
+      "pork_shoulder",
+      "red_cane_vinegar",
+      "salt",
+      "soy_sauce",
+      "thai_chili",
+      "thick_coconut_milk",
+      "vegetable_oil",
+      "water",
+      "white_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bean_sprout",
+      "black_pepper",
+      "calamansi",
+      "canola_oil",
+      "chicken_breast_fillet",
+      "dried_flat_rice_noodle",
+      "egg",
+      "fish_sauce",
+      "fried_firm_tofu",
+      "garlic",
+      "half_shell_mussel",
+      "panko_bread_crumbs",
+      "parmesan_cheese",
+      "peanut",
+      "peeled_suahe",
+      "red_onion",
+      "red_pepper_flakes",
+      "shrimp_shell",
+      "spring_onion",
+      "sweet_tamarind_pod",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "dried_banana_blossom",
+      "dried_bay_leaf",
+      "peppercorn",
+      "pineapple_juice",
+      "pork_belly",
+      "salted_black_bean",
+      "soy_sauce"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "cooking_oil",
+      "cornstarch",
+      "dashi_granules",
+      "egg",
+      "ginger",
+      "kangkong_leaves",
+      "mirin"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "coconut_cream",
+      "coconut_milk",
+      "cooking_oil",
+      "dried_taro_leaf",
+      "garlic",
+      "kalabasa",
+      "lemongrass_stalks",
+      "malunggay_leaves",
+      "pepper_unspecified",
+      "pork_belly",
+      "salt",
+      "shrimp",
+      "shrimp_paste",
+      "string_bean",
+      "thai_chili",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "beef_tenderloin",
+      "coconut_milk",
+      "cooking_oil",
+      "extra_virgin_olive_oil",
+      "green_bell_pepper",
+      "honey",
+      "onion",
+      "pepper_unspecified",
+      "pork_belly",
+      "red_wine_vinegar",
+      "roma_tomato",
+      "salt",
+      "sauteed_shrimp_paste",
+      "soy_sauce",
+      "thai_chili",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "beer",
+      "chicken_wing",
+      "coconut_milk",
+      "fried_dried_fish",
+      "garlic",
+      "garlic_powder",
+      "onion",
+      "onion_powder",
+      "paprika",
+      "red_chili",
+      "salt",
+      "shrimp_seasoning_cube",
+      "tomato",
+      "unripe_jackfruit",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bean_sprout",
+      "black_pepper",
+      "boneless_chicken_breast",
+      "boneless_chicken_thigh_meat",
+      "cabbage",
+      "canola_oil",
+      "carrot",
+      "chicken_broth",
+      "fish_sauce",
+      "garlic",
+      "onion",
+      "pepper_unspecified",
+      "pork_hamonado_sausage",
+      "salt",
+      "shrimp",
+      "sitaw"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "banana_ketchup",
+      "black_pepper",
+      "coconut_cream",
+      "cooking_oil",
+      "corn_oil",
+      "eggplant",
+      "garlic",
+      "knorr_liquid_seasoning",
+      "lime",
+      "pork_belly",
+      "pork_chop",
+      "shrimp_paste",
+      "sugar",
+      "tomato",
+      "vegetarian_bagoong",
+      "vinegar",
+      "white_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "canola_oil",
+      "coconut_cream",
+      "eggplant",
+      "garlic",
+      "pork_belly",
+      "thai_chili"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bitter_gourd",
+      "black_pepper",
+      "cooking_oil",
+      "egg",
+      "garlic",
+      "garlic_powder",
+      "shrimp",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "baguio_pechay",
+      "black_pepper",
+      "bone_in_pork_chop",
+      "cabbage",
+      "canola_oil",
+      "chili_garlic_sauce",
+      "firm_tofu",
+      "fish_sauce",
+      "garlic",
+      "red_native_tomato",
+      "rice_washing",
+      "salt",
+      "spring_onion",
+      "sugar",
+      "tahure",
+      "vegetable_oil",
+      "white_fish_steak"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "cabbage",
+      "carrot",
+      "chicken_broth",
+      "cooking_oil",
+      "flour",
+      "ground_pork",
+      "mapo_tofu_mix",
+      "pancit_bato",
+      "pork",
+      "salt",
+      "siling_labuyo",
+      "silken_tofu",
+      "snap_pea",
+      "spring_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "beef_sirloin",
+      "beef_stock",
+      "bell_pepper",
+      "black_pepper",
+      "canned_pineapple",
+      "carrot",
+      "egg",
+      "garlic",
+      "grouper_fillet",
+      "hotdog",
+      "panko_bread_crumbs",
+      "pickle_relish",
+      "potato",
+      "red_onion",
+      "salt",
+      "steamed_white_rice",
+      "tomato",
+      "tomato_paste"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "canola_oil",
+      "egg",
+      "pepper_unspecified",
+      "pompano",
+      "roma_tomato"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bay_leaf",
+      "black_peppercorn",
+      "egg",
+      "potato",
+      "soy_sauce",
+      "white_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "beef_tendon",
+      "black_pepper",
+      "bone_in_beef_shank",
+      "butternut_squash",
+      "cabbage",
+      "corn",
+      "fish_sauce",
+      "garlic",
+      "green_bean",
+      "kalabasa",
+      "onion",
+      "opo_squash",
+      "peppercorn",
+      "pork_belly",
+      "potato",
+      "spring_onion",
+      "tomato",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "asparagus_spear",
+      "black_pepper",
+      "butter",
+      "cilantro",
+      "grouper_fillet",
+      "mango_tamarind_jelly",
+      "milk",
+      "peanut",
+      "salt",
+      "sweet_potato"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bottled_crab_fat",
+      "celery",
+      "cooking_oil",
+      "fresh_basil_leaves",
+      "fresh_crabmeat",
+      "garlic",
+      "lime_wedge",
+      "mud_crab_claw",
+      "olive_oil",
+      "onion",
+      "red_bell_pepper",
+      "rock_salt",
+      "seafood_stock",
+      "shelled_headless_prawn",
+      "short_grain_rice",
+      "skin_on_whole_slab_pork_belly",
+      "squid",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "canola_oil",
+      "coconut_vinegar",
+      "cooking_oil",
+      "garlic",
+      "red_onion",
+      "salt",
+      "siling_labuyo",
+      "soy_sauce",
+      "squid",
+      "squid_ink",
+      "tomato",
+      "water",
+      "winged_bean"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "beef_broth",
+      "cabbage",
+      "cooking_oil",
+      "garlic",
+      "malunggay_leaves",
+      "onion",
+      "pepper_unspecified",
+      "pork",
+      "pork_chicharon",
+      "pork_strips",
+      "red_bell_pepper",
+      "salt",
+      "whole_green_mung_bean"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "japanese_rice",
+      "panko_bread_crumbs",
+      "tiger_prawn",
+      "vegetable_oil",
+      "wasabi_mayonnaise"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "carrot",
+      "dried_bay_leaf",
+      "pork_shoulder",
+      "potato",
+      "tomato_sauce"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "carrot",
+      "fish_sauce",
+      "onion",
+      "pork_heart",
+      "pork_lung",
+      "red_bell_pepper",
+      "thai_chili",
+      "vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "banana_blossom",
+      "black_pepper",
+      "brown_sugar",
+      "cane_vinegar",
+      "canola_oil",
+      "garlic",
+      "long_green_chili",
+      "salt",
+      "sashimi_grade_tuna",
+      "soy_sauce",
+      "vinegar",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "beef_ribeye_steak",
+      "beef_shank",
+      "black_pepper",
+      "bok_choy",
+      "brown_sugar",
+      "cabbage",
+      "cooked_bamboo_shoot",
+      "cooking_oil",
+      "crispy_fried_garlic_bits",
+      "fish_sauce",
+      "garlic",
+      "ginger",
+      "olive_oil",
+      "onion",
+      "red_chili_pepper_flake",
+      "saba_banana",
+      "salt",
+      "spring_onion",
+      "sweet_corn_on_the_cob",
+      "white_parts_lemongrass"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "cabbage",
+      "canton_noodle",
+      "carrot",
+      "chicken_breast",
+      "chicken_broth",
+      "garlic",
+      "green_bean",
+      "onion",
+      "pork_belly",
+      "raw_shrimp"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "cheddar_cheese",
+      "garlic",
+      "ground_beef",
+      "lumpia_wrapper",
+      "salt",
+      "siling_pangsigang",
+      "taco_seasoning_mix"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bay_leaf",
+      "chinese_five_spice_powder",
+      "garlic",
+      "ground_pepper_unspecified_type",
+      "olive_oil",
+      "sea_salt",
+      "soy_sauce",
+      "sugar",
+      "tilapia",
+      "white_vinegar",
+      "whole_button_mushroom"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "cornstarch",
+      "orange_sweet_potato",
+      "sitaw",
+      "sweet_potato"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "baking_powder",
+      "black_pepper",
+      "cabbage",
+      "calamansi_juice",
+      "cold_egg",
+      "cornstarch",
+      "fresh_ginger",
+      "frozen_green_pea",
+      "garlic",
+      "ground_pork",
+      "ice_cold_water",
+      "liquid_seasoning",
+      "malunggay_leaves",
+      "pork_broth",
+      "salt",
+      "sesame_oil",
+      "shrimp",
+      "spring_onion",
+      "vegetable_oil"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "boneless_bangus",
+      "carrot",
+      "cooking_oil",
+      "garlic",
+      "green_bell_pepper",
+      "green_olive",
+      "knorr_pork_cube",
+      "liver_spread",
+      "onion",
+      "pork",
+      "potato",
+      "red_bell_pepper",
+      "salt",
+      "thai_chili",
+      "tomato_sauce",
+      "water",
+      "whole_cracked_black_peppercorn"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "butter",
+      "chicharon",
+      "chicken_liver",
+      "chili_flakes",
+      "coconut_milk",
+      "cooking_oil",
+      "crushed_red_pepper",
+      "fish_sauce",
+      "garlic",
+      "ginger",
+      "onion",
+      "onion_powder",
+      "pork_belly",
+      "pork_face",
+      "sea_snails",
+      "shrimp_paste",
+      "spinach",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bottled_tamarind_pulp",
+      "cilantro",
+      "fish_sauce",
+      "garlic",
+      "ginger",
+      "miso_paste",
+      "mustard_leaves",
+      "native_tomato",
+      "onion",
+      "radish",
+      "salmon_steak",
+      "siling_pangsigang",
+      "sinigang_sa_sampaloc_mix"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "apple_cider_vinegar",
+      "beef_broth",
+      "black_pepper",
+      "cabbage",
+      "carrot",
+      "celery",
+      "cooking_oil",
+      "dried_bihon_noodle",
+      "fresh_shrimp",
+      "garlic",
+      "knorr_shrimp_cube",
+      "long_green_chili",
+      "parsley",
+      "pork_blood",
+      "pork_shoulder",
+      "red_onion",
+      "salt",
+      "snow_pea",
+      "water",
+      "white_vinegar",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "cooking_oil",
+      "cornstarch",
+      "dashi_granules",
+      "egg",
+      "ginger",
+      "ice_cold_water",
+      "kangkong_leaves",
+      "mirin",
+      "sesame_oil",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bean_sprout",
+      "black_pepper",
+      "blue_crab",
+      "calamansi",
+      "chicken_breast_fillet",
+      "dried_flat_rice_noodle",
+      "egg",
+      "fish_sauce",
+      "fried_firm_tofu",
+      "garlic",
+      "ice_cold_water",
+      "kangkong_leaves",
+      "okra",
+      "olive_oil",
+      "paella_rice",
+      "peanut",
+      "peeled_deveined_shrimp",
+      "prawn_head",
+      "prawn_with_heads_reserved",
+      "radish",
+      "red_onion",
+      "red_pepper_flake",
+      "salt",
+      "shrimp_shell",
+      "siling_pangsigang",
+      "sinigang_sa_sampalok_mix",
+      "string_bean",
+      "sweet_tamarind_pod",
+      "tomato"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bay_leaf",
+      "beef_tongue",
+      "button_mushroom",
+      "calamansi_juice",
+      "cooking_oil",
+      "cucumber",
+      "fish_sauce",
+      "garbanzo_bean",
+      "garlic",
+      "ground_cumin",
+      "onion",
+      "pepper_unspecified",
+      "peppercorn",
+      "potato",
+      "salt",
+      "skinless_pork_chop",
+      "sugar",
+      "tomato_sauce",
+      "vinegar",
+      "water",
+      "white_part_lemongrass"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "beef_broth",
+      "butternut_squash",
+      "coconut_milk",
+      "pork",
+      "salt",
+      "shrimp_paste",
+      "string_bean",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "beef_bottom_round",
+      "black_pepper",
+      "brown_sugar",
+      "carabao_meat",
+      "coconut_sap_vinegar",
+      "garlic",
+      "ginger",
+      "onion",
+      "pork_shoulder",
+      "salt",
+      "sugar",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "cooking_oil",
+      "cooking_wine",
+      "eggplant",
+      "fish_sauce",
+      "ginger",
+      "leaves_and_tender_stalks_kangkong_leaves",
+      "muscovado_sugar",
+      "native_tomato",
+      "pork_tenderloin",
+      "prawn",
+      "rock_salt",
+      "soy_sauce",
+      "string_bean",
+      "taiwan_garlic",
+      "tamarind",
+      "water",
+      "white_onion",
+      "white_radish"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "carrot",
+      "chicken_leg",
+      "coconut_cream",
+      "coconut_milk",
+      "cold_water",
+      "crushed_ice",
+      "curry_powder",
+      "garlic",
+      "honey",
+      "onion",
+      "potato",
+      "red_bell_pepper",
+      "ripe_mango",
+      "salt",
+      "siling_labuyo",
+      "siling_pangsigang",
+      "tomato_sauce",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "beef_broth",
+      "bell_pepper",
+      "boiled_quail_egg",
+      "cabbage",
+      "carrot",
+      "cooked_lechon_carajay",
+      "fish_sauce",
+      "fresh_miki_noodles",
+      "igado",
+      "parsley",
+      "pork_shoulder",
+      "scallion",
+      "soy_sauce"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "black_pepper",
+      "calamansi_juice",
+      "canned_button_mushroom",
+      "cilantro",
+      "crocodile_meat",
+      "evaporated_milk",
+      "garlic",
+      "ginger",
+      "lime_juice",
+      "mayonnaise",
+      "onion",
+      "pork_broth",
+      "pork_chop",
+      "raw_egg_yolk",
+      "salt",
+      "soy_sauce",
+      "spring_onion",
+      "sugar",
+      "thai_chili",
+      "vegetable_oil",
+      "vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "atsara",
+      "honey",
+      "peppercorn",
+      "pork_belly",
+      "rice_vinegar",
+      "salt",
+      "sesame_oil",
+      "soy_sauce",
+      "white_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "chayote",
+      "chicken_broth",
+      "fish_sauce",
+      "ginger",
+      "malunggay",
+      "papaya",
+      "salt",
+      "water",
+      "whole_chicken"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "bay_leaf",
+      "bell_pepper",
+      "black_pepper",
+      "brown_sugar",
+      "calamansi",
+      "cilantro",
+      "coconut_milk",
+      "curry_powder",
+      "fish_sauce",
+      "fried_garlic",
+      "garlic",
+      "ginger",
+      "onion",
+      "red_curry_paste",
+      "red_onion",
+      "roma_tomato",
+      "soy_sauce",
+      "tilapia_fillet",
+      "vegetable_oil",
+      "vinegar",
+      "whole_catfish",
+      "whole_star_anise"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "chili_sauce",
+      "coconut_cream",
+      "cornstarch",
+      "flour",
+      "glutinous_rice_flour",
+      "orange_sweet_potato",
+      "saba_banana",
+      "sago",
+      "salt",
+      "sugar",
+      "sweetened_jackfruit",
+      "tilapia_fillet",
+      "ube_flavoring",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bay_leaf",
+      "black_pepper",
+      "cabbage",
+      "carrot",
+      "cooking_oil",
+      "cornstarch",
+      "crab_aligue",
+      "flat_leaf_parsley",
+      "garlic",
+      "peppercorn",
+      "pork_shoulder",
+      "prawn",
+      "salt",
+      "soy_sauce",
+      "spring_onion",
+      "sweet_onion",
+      "vegetable_oil",
+      "vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bay_leaf",
+      "blanched_chayote",
+      "chicken",
+      "chicken_back_bone",
+      "chicken_feet",
+      "chili_leaves",
+      "cooking_oil",
+      "fish_sauce",
+      "garlic",
+      "ginger",
+      "japanese_rice",
+      "onion",
+      "oyster_sauce",
+      "rice_washing",
+      "rock_salt",
+      "salt",
+      "soy_sauce",
+      "spring_onion",
+      "thai_chili",
+      "vinegar",
+      "whole_cracked_peppercorn"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "banana_blossom",
+      "brown_sugar",
+      "fried_saba_banana",
+      "pork_hock",
+      "skin_on_garlic",
+      "soy_sauce",
+      "vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "bay_leaf",
+      "black_pepper",
+      "canola_oil",
+      "cooking_oil",
+      "cornstarch",
+      "cracked_peppercorn",
+      "fried_garlic",
+      "garlic",
+      "onion",
+      "pork_belly",
+      "salt",
+      "string_bean",
+      "sugar",
+      "vinegar",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bay_leaf",
+      "cooking_oil",
+      "dried_banana_blossom",
+      "garlic",
+      "pork_hock",
+      "white_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "kangkong_leaves_and_tender_stalks",
+      "okra",
+      "siling_haba",
+      "sinigang_sa_sampalok_mix",
+      "string_bean",
+      "tomato",
+      "vegetable_oil",
+      "whole_chicken"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "beef_broth",
+      "carrot",
+      "cheese",
+      "cooked_spaghetti",
+      "cooking_oil",
+      "eddo_taro",
+      "fish_sauce",
+      "garlic",
+      "ground_beef",
+      "ground_pork",
+      "kangkong",
+      "okra",
+      "onion",
+      "pepper_unspecified",
+      "pork_belly",
+      "red_bell_pepper",
+      "ripe_red_tomato",
+      "salt",
+      "siling_pangsigang",
+      "unripe_tamarind",
+      "water",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "eggplant",
+      "leaves_and_tender_stems_kangkong",
+      "okra",
+      "red_onion",
+      "siling_pangsigang",
+      "sinigang_sa_sampalok_mix",
+      "sitaw",
+      "tomato",
+      "white_radish"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "cooking_oil",
+      "fish_sauce",
+      "grilled_eggplant",
+      "lechon_liempo",
+      "milkfish",
+      "mustard_leaves",
+      "onion",
+      "salt",
+      "shrimp_paste",
+      "siling_labuyo",
+      "siling_pangsigang",
+      "tamarind_soup_mix",
+      "tomato",
+      "water",
+      "white_miso_paste",
+      "yellow_miso_soybean_paste",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "beef_broth",
+      "black_pepper",
+      "boiled_pork_ear",
+      "cooking_oil",
+      "dried_bay_leaf",
+      "lemongrass",
+      "long_green_pepper",
+      "onion",
+      "pork_blood",
+      "pork_shoulder",
+      "salt",
+      "sugar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "banana_ketchup",
+      "black_pepper",
+      "calamansi",
+      "calamansi_juice",
+      "cooking_oil",
+      "garlic",
+      "lemon",
+      "pork_belly",
+      "salt",
+      "soy_sauce",
+      "spring_onion",
+      "tomato",
+      "tuna_belly"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "calamansi_juice",
+      "canola_oil",
+      "cooked_long_grain_rice",
+      "cracked_peppercorn",
+      "fish_sauce",
+      "garlic",
+      "ginger",
+      "lemongrass",
+      "onion",
+      "pork_face",
+      "salt",
+      "soy_sauce",
+      "vegetable_oil",
+      "vinegar",
+      "water",
+      "white_vinegar",
+      "whole_chicken"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "coarse_sea_salt",
+      "cumin",
+      "garlic_powder",
+      "peppercorn",
+      "pig_large_intestine",
+      "vinegar",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "cooking_oil",
+      "onion",
+      "pork",
+      "shrimp_paste",
+      "tomato",
+      "vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "bottle_gourd",
+      "brown_sugar",
+      "calamansi_juice",
+      "cooking_oil",
+      "garlic",
+      "ground_pork",
+      "hot_sauce",
+      "ketchup",
+      "lemon_lime_soda",
+      "liquid_seasoning",
+      "onion",
+      "pork_shoulder",
+      "soy_sauce",
+      "vegetable_oil"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "annatto_oil",
+      "banana_blossom",
+      "bay_leaf",
+      "black_bean",
+      "black_pepper",
+      "brown_sugar",
+      "coconut_milk",
+      "cooking_oil",
+      "garlic",
+      "ginger",
+      "hard_boiled_egg",
+      "onion",
+      "peanut",
+      "salt",
+      "siling_pangsigang",
+      "soy_sauce",
+      "water",
+      "whole_chicken"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "adobo_flakes",
+      "brown_sugar",
+      "cilantro",
+      "coconut_milk",
+      "cooked_rice",
+      "garlic",
+      "glutinous_rice_flour",
+      "heated_flour_tortilla",
+      "salted_egg",
+      "salted_egg_salsa",
+      "tomato",
+      "water",
+      "young_coconut_strip"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "calamansi",
+      "garlic",
+      "ginger",
+      "onion",
+      "pork_jowl",
+      "salt",
+      "siling_pangsigang",
+      "soy_sauce",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "barbecue_sauce",
+      "boneless_skinless_chicken_breast",
+      "butter",
+      "cabbage",
+      "carrot",
+      "cilantro_leaf",
+      "fresh_thin_flat_miki_noodle",
+      "garlic",
+      "green_bean",
+      "ground_pork",
+      "mango_flesh",
+      "onion",
+      "oyster_sauce",
+      "salt",
+      "sesame_oil",
+      "shrimp",
+      "snow_pea",
+      "sotanghon",
+      "young_corn"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "canola_oil",
+      "chicken_liver",
+      "chili_leaves",
+      "corn_kernel",
+      "cornstarch",
+      "fish_sauce",
+      "flour",
+      "garlic",
+      "lemon_juice",
+      "onion",
+      "pepper_unspecified",
+      "pork_belly",
+      "salt",
+      "soy_sauce",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "birds_eye_chili",
+      "cabbage",
+      "calamansi",
+      "cooking_oil",
+      "fish_sauce",
+      "garlic",
+      "ginger",
+      "green_bean",
+      "green_papaya",
+      "malunggay_leaf",
+      "onion",
+      "pepper_unspecified",
+      "pork_ham",
+      "potato",
+      "salt",
+      "siling_pangsigang",
+      "spinach",
+      "water",
+      "whole_chicken"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "beef_sirloin",
+      "black_pepper",
+      "calamansi",
+      "chicken_fillet",
+      "dried_shiitake_mushroom",
+      "fish_sauce",
+      "garlic",
+      "kalabasa",
+      "knorr_sinigang_na_may_miso_recipe_mix",
+      "long_green_pepper",
+      "low_sodium_soy_sauce",
+      "mustard_leaves",
+      "okra",
+      "salmon_head",
+      "salt",
+      "tomato",
+      "violet_sticky_rice",
+      "water",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_cream",
+      "bacon",
+      "black_pepper",
+      "chicken_bouillon_cube",
+      "chicken_stock",
+      "chili_flakes",
+      "cooking_oil",
+      "crouton",
+      "egg",
+      "garlic",
+      "ginger",
+      "ground_pork",
+      "kalabasa",
+      "misua",
+      "mustard_leaves",
+      "red_onion",
+      "salt",
+      "sesame_oil",
+      "soy_sauce",
+      "vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "carrot",
+      "cooking_oil",
+      "garlic",
+      "green_pea",
+      "liver_spread",
+      "pork_belly",
+      "potato",
+      "thai_chili"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "cooked_japanese_rice",
+      "cucumber",
+      "garlic",
+      "mango",
+      "nori",
+      "pork_shoulder",
+      "shrimp_paste",
+      "soy_calamansi_dip",
+      "vinegar",
+      "wasabi",
+      "white_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "cooking_oil",
+      "fried_galunggong",
+      "garlic",
+      "ginger",
+      "hoisin_sauce",
+      "okra",
+      "pepper_unspecified",
+      "rice_vinegar",
+      "salmon_fillet",
+      "salt",
+      "sesame_oil",
+      "sriracha_hot_chili_sauce"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "baking_potato",
+      "beef_bouillon_cube",
+      "beef_powder",
+      "bone_in_center_cut_pork_loin_rib_chop",
+      "cabbage",
+      "calamansi_juice",
+      "canola_oil",
+      "garlic",
+      "onion",
+      "pepper_unspecified",
+      "pork_bouillon_cube",
+      "pork_shoulder",
+      "soy_sauce",
+      "spring_onion",
+      "squash",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "chicharon",
+      "cooking_oil",
+      "kangkong",
+      "onion",
+      "sitaw",
+      "soy_sauce",
+      "vinegar",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bay_leaf",
+      "chili_pepper",
+      "fish_sauce",
+      "garlic",
+      "garlic_powder",
+      "ginger",
+      "ginger_powder",
+      "mayonnaise",
+      "napa_cabbage",
+      "pechay",
+      "pepper_unspecified",
+      "peppercorn",
+      "pig_ear",
+      "pork_face",
+      "pork_liver",
+      "potato",
+      "red_onion",
+      "salt",
+      "spring_onion",
+      "water",
+      "white_vinegar",
+      "whole_mudfish"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "chicken_broth",
+      "cooking_oil",
+      "garlic_powder",
+      "ginger",
+      "malunggay_leaves",
+      "mussel",
+      "mustard_leaves",
+      "okra",
+      "pepper_unspecified",
+      "salt",
+      "sinigang_mix",
+      "tomato",
+      "water",
+      "whole_kernel_corn",
+      "whole_tilapia",
+      "yellow_miso_paste",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "calamansi_juice",
+      "chicken_adobo_cut",
+      "chicken_thigh",
+      "chicken_wing",
+      "cooking_oil",
+      "salt",
+      "soy_sauce",
+      "white_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "alugbati_leaves",
+      "beef_shank",
+      "beef_stock",
+      "bok_choy",
+      "brown_sugar",
+      "eggplant",
+      "fish_sauce",
+      "ginger",
+      "kamias",
+      "lemongrass",
+      "long_bean",
+      "okra",
+      "onion",
+      "red_onion",
+      "salmon_belly",
+      "siling_pangsigang",
+      "sweet_potato",
+      "turmeric",
+      "vegetable_oil",
+      "white_radish"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "eddo_taro",
+      "eggplant",
+      "kamias",
+      "kangkong",
+      "long_green_pepper",
+      "okra",
+      "onion",
+      "plum_tomato",
+      "pork_belly",
+      "string_bean"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "cooking_oil",
+      "fennel_bulb",
+      "fish_sauce",
+      "fresh_baby_spinach",
+      "freshly_squeezed_tamarind_juice",
+      "ginger",
+      "kangkong",
+      "manila_clam",
+      "mild_green_chili_pepper",
+      "mussel",
+      "okra",
+      "onion",
+      "plum_tomato",
+      "red_pepper_flakes",
+      "salt",
+      "shell_head_on_shrimp",
+      "spinach",
+      "water",
+      "white_radish",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "bread_crumbs",
+      "cilantro",
+      "coconut_cream",
+      "cooking_oil",
+      "egg",
+      "eggplant",
+      "garlic",
+      "ginger",
+      "milkfish",
+      "onion",
+      "pepper_unspecified",
+      "peppercorn",
+      "salt",
+      "siling_pangsigang",
+      "sinigang_sa_kamias_powder_mix",
+      "skin_on_tamarind_fruit",
+      "skinless_chicken_breast_fillet",
+      "vegetable_oil",
+      "water",
+      "white_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "black_pepper",
+      "bread_crumbs",
+      "carrot",
+      "cilantro",
+      "coconut_cream",
+      "cooking_oil",
+      "egg",
+      "fish_sauce",
+      "garlic",
+      "green_bell_pepper",
+      "green_olive",
+      "knorr_pork_cube",
+      "liver_spread",
+      "onion",
+      "pepper_unspecified",
+      "pork",
+      "potato",
+      "red_bell_pepper",
+      "salt",
+      "sinigang_sa_kamias_powder_mix",
+      "skin_on_tamarind_fruit",
+      "skinless_chicken_breast_fillet",
+      "tomato_sauce",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "carrot",
+      "cooking_oil",
+      "pork",
+      "pork_liver",
+      "potato",
+      "soy_sauce",
+      "sugar",
+      "white_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "beef_chuck",
+      "black_pepper",
+      "bone_in_pork_chop",
+      "canned_crushed_tomato",
+      "carrot",
+      "cooking_oil",
+      "fish_sauce",
+      "garlic",
+      "green_bell_pepper",
+      "onion",
+      "pepper_unspecified",
+      "potato",
+      "red_bell_pepper",
+      "salt",
+      "sugar",
+      "tomato_paste",
+      "vegetable_oil",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "balaw",
+      "chicken",
+      "coconut_cream",
+      "coconut_milk",
+      "dried_taro_leaf",
+      "garlic",
+      "ginger",
+      "onion",
+      "pork_shoulder",
+      "red_chili",
+      "shrimp_paste",
+      "siling_tagalog",
+      "turmeric",
+      "vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "coconut_milk",
+      "cooking_oil",
+      "crab",
+      "fish_sauce",
+      "garlic",
+      "onion",
+      "squash",
+      "string_bean",
+      "vegetable_oil",
+      "whole_peppercorn",
+      "whole_pork"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bay_leaf",
+      "black_peppercorn",
+      "chicken",
+      "cooking_oil",
+      "garlic",
+      "liver_spread",
+      "pepper_unspecified",
+      "pork_belly",
+      "rock_salt",
+      "salt",
+      "soy_sauce",
+      "water",
+      "white_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "boneless_chicken_breast",
+      "butternut_squash",
+      "canola_oil",
+      "chicken_broth",
+      "cooking_oil",
+      "garlic",
+      "malunggay_leaves",
+      "red_onion",
+      "salt",
+      "shrimp",
+      "sitaw",
+      "soy_sauce",
+      "string_bean",
+      "tomato",
+      "vinegar",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "beef_shank",
+      "coconut_vinegar",
+      "cooking_oil",
+      "fish_sauce",
+      "garlic",
+      "green_bean",
+      "knorr_beef_cube",
+      "napa_cabbage",
+      "peppercorn",
+      "pork_belly_strips",
+      "sweet_corn",
+      "water",
+      "white_vinegar",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "brown_sugar",
+      "cane_vinegar",
+      "carrot",
+      "celery",
+      "coconut_milk",
+      "cooking_oil",
+      "egg",
+      "flour",
+      "garlic",
+      "head_and_shell_on_shrimp",
+      "jicama",
+      "kinchay",
+      "lean_ground_pork",
+      "lumpia_wrapper",
+      "onion",
+      "salt",
+      "shrimp",
+      "soy_sauce",
+      "vinegar",
+      "water",
+      "white_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "beef_brisket",
+      "beef_chuck",
+      "bok_choy",
+      "boneless_country_style_pork_rib",
+      "cabbage",
+      "chayote",
+      "chicken",
+      "chili_leaves",
+      "coconut_milk",
+      "cooking_oil",
+      "fish_sauce",
+      "garlic",
+      "grilled_eggplant",
+      "pork_belly",
+      "potato",
+      "saba_banana",
+      "salt",
+      "tomato",
+      "tomato_sauce",
+      "water",
+      "white_onion",
+      "whole_chicken"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bottle_gourd",
+      "canola_oil",
+      "chicken_liver",
+      "cornstarch",
+      "fish_sauce",
+      "flour",
+      "garlic",
+      "head_on_shrimp",
+      "lemon_juice",
+      "onion",
+      "pepper_unspecified",
+      "salt",
+      "soy_sauce",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "birds_eye_chili",
+      "black_pepper",
+      "cabbage",
+      "carrot",
+      "chicken_broth",
+      "chicken_stock",
+      "coconut_milk_powder",
+      "cooking_oil",
+      "fish_sauce",
+      "ginger",
+      "kangkong_leaves",
+      "kuhol",
+      "pancit_bato",
+      "pepper_unspecified",
+      "pork",
+      "red_onion",
+      "salt",
+      "siling_pangsigang",
+      "snap_pea",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "black_pepper",
+      "cooking_oil",
+      "egg",
+      "ground_pork",
+      "misua",
+      "onion",
+      "sponge_gourd",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bay_leaf",
+      "black_peppercorn",
+      "blue_crab",
+      "brown_sugar",
+      "chicken_parts",
+      "coconut_cream",
+      "coconut_milk",
+      "cooking_oil",
+      "garlic",
+      "hard_boiled_egg",
+      "long_bean",
+      "onion",
+      "pork_belly",
+      "pork_shoulder",
+      "potato",
+      "salt",
+      "soy_sauce",
+      "squash",
+      "thai_chili",
+      "water",
+      "white_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "barbecue_marinade",
+      "barbecue_sauce",
+      "boneless_chicken_thigh_fillet",
+      "fish_sauce",
+      "garlic",
+      "ginger",
+      "green_papaya",
+      "mango_nectar",
+      "onion",
+      "pepper_unspecified",
+      "red_pepper_flakes",
+      "salt",
+      "sesame_oil",
+      "water",
+      "whole_chicken"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bay_leaf",
+      "bicol_chili",
+      "black_pepper",
+      "chicken",
+      "coconut_cream",
+      "fish_sauce",
+      "garlic",
+      "ginger",
+      "green_bell_pepper",
+      "lechon_kawali",
+      "onion",
+      "siling_pangsigang",
+      "soy_sauce",
+      "thai_chili",
+      "white_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "black_pepper",
+      "cornstarch",
+      "egg",
+      "pork_chop"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "calamansi",
+      "chicken",
+      "chicken_adobo_cut",
+      "chicken_bouillon_cube",
+      "chicken_liver",
+      "cooking_oil",
+      "fish_sauce",
+      "garlic",
+      "ginger",
+      "jasponica_rice",
+      "kangkong_leaves",
+      "kasubha",
+      "kesong_puti",
+      "miponica_rice",
+      "native_red_tomatoes",
+      "red_onion",
+      "salted_egg",
+      "soy_sauce",
+      "spring_onion",
+      "vinegar",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bay_leaf",
+      "black_peppercorn",
+      "brown_sugar",
+      "canola_oil",
+      "carrot",
+      "cooking_oil",
+      "crushed_pineapple",
+      "egg",
+      "garlic",
+      "ground_pork",
+      "hard_boiled_egg",
+      "onion",
+      "palm_vinegar",
+      "pepper_unspecified",
+      "potato",
+      "raisin",
+      "salt",
+      "soy_sauce",
+      "vienna_sausage",
+      "water",
+      "white_vinegar",
+      "whole_chicken"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "cooking_oil",
+      "mustard_leaves",
+      "okra",
+      "sinigang_mix",
+      "whole_tilapia",
+      "yellow_miso_paste",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "chili_leaves",
+      "chili_powder",
+      "coconut_cream",
+      "coconut_milk",
+      "deep_fried_flour_tortilla",
+      "garlic",
+      "ginger",
+      "grilled_pineapple",
+      "red_finger_chili",
+      "red_onion",
+      "shrimp",
+      "shrimp_paste"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "garlic",
+      "ginger",
+      "onion",
+      "pork_shoulder",
+      "sugar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "cabbage",
+      "garlic",
+      "ground_pork",
+      "pork_stock",
+      "salt"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bihon_noodle",
+      "black_pepper",
+      "boiled_chicken_breast",
+      "boiled_peeled_shrimp",
+      "cabbage",
+      "calamansi",
+      "chicharon",
+      "cooking_oil",
+      "fish_sauce",
+      "flour",
+      "garlic",
+      "grilled_pork_belly",
+      "pork_broth",
+      "sesame_oil",
+      "shrimp",
+      "spring_onion",
+      "white_onion",
+      "white_pepper",
+      "white_wine"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "boneless_chicken_breast",
+      "chayote",
+      "chicken_broth",
+      "pepper_unspecified",
+      "shrimp",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_peppercorn",
+      "brown_sugar",
+      "chorizo_de_bilbao",
+      "garlic",
+      "littleneck_clam",
+      "long_grain_rice",
+      "mussel",
+      "olive_oil",
+      "onion",
+      "pepper_unspecified",
+      "pork_belly",
+      "potato",
+      "saffron_threads",
+      "salt",
+      "shrimp",
+      "soy_sauce",
+      "sweet_paprika",
+      "thai_chili",
+      "tomato_sauce",
+      "warm_water",
+      "white_vinegar",
+      "whole_chicken",
+      "whole_garlic"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "alugbati",
+      "bay_leaf",
+      "black_pepper",
+      "canola_oil",
+      "coconut_milk",
+      "cooking_oil",
+      "dry_mung_bean",
+      "fish_sauce",
+      "fresh_spinach",
+      "garlic",
+      "kangkong",
+      "lechon_sauce",
+      "pepper_unspecified",
+      "pork_belly",
+      "pork_butt",
+      "pork_shoulder",
+      "soy_sauce",
+      "vinegar",
+      "water",
+      "white_sugar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "coconut_milk",
+      "eggplant",
+      "ginger",
+      "green_chili_unspecified_variety",
+      "salt",
+      "tulingan",
+      "vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "annatto_powder",
+      "bay_leaf",
+      "black_pepper",
+      "boiled_and_shredded_chicken_breast",
+      "brown_sugar",
+      "cabbage",
+      "canola_oil",
+      "carrot",
+      "cooking_oil",
+      "garlic",
+      "ginger",
+      "green_bean",
+      "knorr_shrimp_cube",
+      "onion",
+      "pancit_bihon",
+      "pancit_canton_noodle",
+      "parsley",
+      "pepper_unspecified",
+      "pork_belly_with_ribs",
+      "pork_shoulder",
+      "salt",
+      "shrimp",
+      "soy_sauce",
+      "spare_rib",
+      "vinegar",
+      "water",
+      "white_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bay_leaf",
+      "dried_bay_leaf",
+      "pork_belly",
+      "rock_salt",
+      "vegetable_oil",
+      "water",
+      "whole_peppercorn",
+      "whole_pork"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "crushed_black_peppercorn",
+      "garlic",
+      "pork_adobo",
+      "soy_sauce",
+      "vinegar",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "beef_broth",
+      "eddo_taro",
+      "fish_sauce",
+      "kangkong",
+      "okra",
+      "pork_belly",
+      "ripe_red_tomato",
+      "siling_pangsigang",
+      "unripe_tamarind",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bay_leaf",
+      "canola_oil",
+      "chicken",
+      "liver_spread",
+      "potato",
+      "salt",
+      "tomato_sauce"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "banana_blossom",
+      "coconut_milk",
+      "ginger",
+      "salt",
+      "siling_pangsigang"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "achuete_unspecified_form",
+      "annatto_oil",
+      "black_pepper",
+      "blue_crab",
+      "calamansi",
+      "chicken_thigh_leg_quarter",
+      "coconut_milk",
+      "cooking_oil",
+      "garlic",
+      "ginger",
+      "lemongrass",
+      "margarine",
+      "native_vinegar",
+      "onion",
+      "rock_salt",
+      "shrimp_paste",
+      "spinach",
+      "thai_chili",
+      "vegetable_oil"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "annatto_oil",
+      "chicken_leg",
+      "lemongrass",
+      "salt",
+      "sinamak_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "brown_sugar",
+      "canola_oil",
+      "carabao_meat",
+      "garlic"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "bottle_gourd",
+      "chili_leaves",
+      "cooking_oil",
+      "fish_sauce",
+      "garlic",
+      "ginger",
+      "long_green_pepper",
+      "mussel",
+      "onion",
+      "plum_tomato",
+      "pork_belly",
+      "spinach",
+      "water",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "banana_ketchup",
+      "birds_eye_chili",
+      "black_pepper",
+      "brown_sugar",
+      "butter",
+      "cooking_oil",
+      "cucumber",
+      "fresh_sashimi_grade_tuna",
+      "garlic",
+      "ground_pepper_unspecified",
+      "lemon_lime_soda",
+      "orange_soda",
+      "pepper_unspecified",
+      "pork_belly",
+      "red_onion",
+      "red_siling_haba",
+      "salt",
+      "shrimp",
+      "soy_sauce",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "beef_broth",
+      "black_pepper",
+      "butter",
+      "chicken_stock",
+      "cooked_shrimp_paste",
+      "cooking_oil",
+      "cream",
+      "eggplant",
+      "garlic",
+      "grouper_fillet",
+      "milk",
+      "plum_tomato",
+      "pork_shoulder",
+      "saffron",
+      "white_wine",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "canola_oil",
+      "eggplant",
+      "garlic",
+      "head_on_shrimp",
+      "onion",
+      "pork_belly",
+      "ripe_mango",
+      "salt",
+      "sauteed_shrimp_paste",
+      "seven_up",
+      "spring_onion",
+      "sprite",
+      "tomato",
+      "vinegar",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bitter_gourd",
+      "black_pepper",
+      "daikon_radish",
+      "eggplant",
+      "fish_sauce",
+      "kangkong_leaves",
+      "knorr_sinigang_sa_sampaloc_mix_original",
+      "long_green_chili",
+      "okra",
+      "onion",
+      "pepper_unspecified",
+      "pork_belly",
+      "shrimp_paste",
+      "sitaw",
+      "snake_bean",
+      "squash",
+      "taro",
+      "tomato",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bitter_gourd",
+      "cooking_oil",
+      "eggplant",
+      "garlic",
+      "okra",
+      "salt",
+      "squash",
+      "string_bean",
+      "vegetable_broth",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "basil_leaf",
+      "bitter_gourd",
+      "black_pepper",
+      "cooked_mini_meatball",
+      "cooking_oil",
+      "dried_shrimp",
+      "egg",
+      "firm_tofu",
+      "fish_sauce",
+      "garlic",
+      "misua_noodles",
+      "red_onion",
+      "shiitake_mushroom",
+      "shrimp_bouillon_cube",
+      "sponge_gourd",
+      "spring_onion",
+      "tomato",
+      "vegetable_oil",
+      "water",
+      "white_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "canola_oil",
+      "coconut_milk",
+      "fish_sauce",
+      "garlic",
+      "ginger",
+      "miso_paste",
+      "mustard_leaves",
+      "onion",
+      "pepper_unspecified",
+      "pork_belly",
+      "radish",
+      "salt",
+      "sauteed_shrimp_paste",
+      "tamarind_base",
+      "thai_chili",
+      "tomato",
+      "vinegar",
+      "water",
+      "whole_catfish"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "carrot",
+      "garlic",
+      "ground_pork",
+      "mung_bean_sprout",
+      "oyster_sauce",
+      "quail_egg",
+      "red_onion",
+      "snow_pea",
+      "tofu",
+      "young_corn"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "carrot",
+      "celery",
+      "egg",
+      "flour",
+      "jicama",
+      "kinchay",
+      "lean_ground_pork",
+      "lumpia_wrapper",
+      "salt",
+      "shrimp",
+      "vinegar",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "annatto_oil",
+      "bacon",
+      "bay_leaf",
+      "beef_short_rib",
+      "boiled_egg",
+      "chicken",
+      "chicken_stock",
+      "fish_sauce",
+      "garlic",
+      "green_peppercorns",
+      "peppercorn",
+      "red_peppercorns",
+      "salt",
+      "siling_labuyo",
+      "soy_sauce",
+      "vinegar",
+      "water",
+      "white_peppercorns",
+      "white_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "cooking_oil",
+      "siling_pangsigang",
+      "soy_sauce",
+      "squid",
+      "tomato",
+      "vinegar",
+      "water",
+      "white_onion",
+      "whole_garlic"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "beef_sirloin",
+      "black_pepper",
+      "calamansi",
+      "chicken_fillet",
+      "coconut_cream",
+      "coconut_oil",
+      "cooking_oil",
+      "dried_shiitake_mushroom",
+      "garlic",
+      "ginger",
+      "kalabasa",
+      "red_onion",
+      "salt",
+      "shrimp",
+      "siling_haba",
+      "soy_sauce",
+      "violet_sticky_rice",
+      "water",
+      "white_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "brown_sugar",
+      "chicken",
+      "cooking_oil",
+      "curry_powder",
+      "garlic",
+      "ginger",
+      "green_pea",
+      "ground_turmeric",
+      "knorr_ginataang_gulay_mix",
+      "long_green_pepper",
+      "onion",
+      "pork_belly",
+      "pork_blood",
+      "potato",
+      "vinegar",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "canola_oil",
+      "coconut_vinegar",
+      "pork_belly",
+      "shiitake_mushroom",
+      "soy_sauce",
+      "star_anise"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "beef",
+      "beef_stock",
+      "black_pepper",
+      "carrot",
+      "chicken_broth",
+      "corn",
+      "green_bell_pepper",
+      "green_finger_chili",
+      "malunggay_leaves",
+      "onion",
+      "potato",
+      "quickmelt_cheese",
+      "red_bell_pepper",
+      "salt",
+      "soy_sauce",
+      "tomato_sauce",
+      "vegetable_oil",
+      "white_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "canola_oil",
+      "coconut_milk",
+      "cooking_oil",
+      "dried_anchovy",
+      "egg",
+      "eggplant",
+      "frozen_young_green_jackfruit",
+      "garlic_fried_rice",
+      "green_bean",
+      "kalabasa",
+      "pork_belly",
+      "shrimp",
+      "shrimp_paste",
+      "young_green_jackfruit"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "black_pepper",
+      "calamansi",
+      "carrot",
+      "cooking_oil",
+      "egg",
+      "garlic",
+      "green_pea",
+      "lemon_juice",
+      "onion",
+      "oyster_sauce",
+      "raisin",
+      "salt",
+      "tilapia",
+      "tomato",
+      "water",
+      "whole_milkfish"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "banana_blossom",
+      "coconut_cream",
+      "coconut_milk",
+      "dried_shrimp",
+      "fish_sauce",
+      "garlic",
+      "ginger",
+      "kangkong_leaves",
+      "maggi_magic_sarap",
+      "pork_belly",
+      "salt",
+      "spider_crab",
+      "vegetable_oil",
+      "water",
+      "white_onion",
+      "white_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "annatto_water",
+      "black_pepper",
+      "boiled_egg",
+      "cooking_oil",
+      "fish_sauce",
+      "ginger",
+      "knorr_shrimp_cube",
+      "lemon",
+      "lemongrass",
+      "malunggay_leaves",
+      "napa_cabbage",
+      "palabok_noodle",
+      "pork_rind",
+      "pork_shoulder",
+      "red_snapper_fillet",
+      "scallion",
+      "shrimp",
+      "tinapa_flakes",
+      "water",
+      "whiting_fillet"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bok_choy",
+      "cooking_oil",
+      "dried_bay_leaf",
+      "garlic",
+      "hungarian_sausage",
+      "pepper_unspecified",
+      "potato",
+      "salt",
+      "soy_sauce",
+      "white_sugar",
+      "white_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "black_pepper",
+      "carrot",
+      "cooking_oil",
+      "egg",
+      "fried_egg",
+      "garlic",
+      "garlic_fried_rice",
+      "goat_meat",
+      "onion",
+      "pandan_leaf",
+      "papaya_atsara",
+      "pepper_unspecified",
+      "pineapple_juice",
+      "pork_chop",
+      "potato",
+      "red_bell_pepper",
+      "reno_liver_spread",
+      "salt",
+      "spanish_olive",
+      "sweet_gherkin_pickle",
+      "thai_chili",
+      "white_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bottled_tamarind_pulp",
+      "cilantro",
+      "garlic",
+      "ginger",
+      "miso_paste",
+      "mustard_leaves",
+      "native_tomato",
+      "radish",
+      "salmon_steak",
+      "siling_pangsigang",
+      "sinigang_sa_sampaloc_mix"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "coconut_milk",
+      "crabmeat",
+      "fish_sauce",
+      "garlic",
+      "ginger",
+      "kangkong_stalk",
+      "pepper_unspecified",
+      "shelled_mussel",
+      "shrimp",
+      "siling_pangsigang",
+      "soy_sauce",
+      "string_bean",
+      "vegetable_oil",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "baking_potato",
+      "barbecue_sauce",
+      "beef_bouillon_cube",
+      "black_pepper",
+      "cooking_oil",
+      "dried_bay_leaf",
+      "garlic",
+      "pepper_unspecified",
+      "pork_shoulder",
+      "red_bell_pepper",
+      "salt",
+      "thick_cut_pork_chop",
+      "tomato",
+      "tomato_paste",
+      "water",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "cooking_oil",
+      "fresh_pork_blood",
+      "garlic",
+      "ginger",
+      "heart_unspecified_animal",
+      "intestines_unspecified_animal",
+      "kidney_unspecified_animal",
+      "onion",
+      "pork_belly",
+      "pork_ear",
+      "siling_pangsigang",
+      "vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "baby_bok_choy",
+      "bay_leaf",
+      "cabbage",
+      "chicken",
+      "chickpea",
+      "chorizo_de_bilbao",
+      "cooking_oil",
+      "dried_banana_blossom",
+      "fish_sauce",
+      "garlic",
+      "knorr_chicken_cube",
+      "long_green_bean",
+      "onion",
+      "peppercorn",
+      "pork_hock",
+      "potato",
+      "saba_banana",
+      "tomato",
+      "tomato_sauce",
+      "water",
+      "white_vinegar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "coconut_milk",
+      "fried_egg",
+      "fried_saba_banana",
+      "frozen_green_pea",
+      "garlic",
+      "ginger",
+      "ground_beef",
+      "ground_pork",
+      "hot_steamed_white_rice",
+      "light_soy_sauce",
+      "onion",
+      "raisin",
+      "red_chili",
+      "salt",
+      "siling_pangsigang",
+      "tilapia",
+      "tomato",
+      "tomato_paste",
+      "worcestershire_sauce",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "baguio_pechay",
+      "bay_leaf",
+      "beef_shank",
+      "black_olive",
+      "black_pepper",
+      "carrot",
+      "cooked_rice",
+      "cooking_oil",
+      "garlic",
+      "green_bell_pepper",
+      "knorr_pork_cube",
+      "kolikot_chili",
+      "liver_spread",
+      "native_ginger",
+      "native_red_bell_pepper",
+      "pork_rib",
+      "potato",
+      "salt",
+      "spanish_chorizo",
+      "spring_onion",
+      "tomato_sauce",
+      "water",
+      "white_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "atsara",
+      "calamansi",
+      "calamansi_juice",
+      "chicken_fillet",
+      "ginger",
+      "knorr_savorrich_chicken",
+      "lemongrass",
+      "liquid_seasoning",
+      "onion",
+      "salt",
+      "sugar",
+      "tamarind_soup_base_mix",
+      "tilapia",
+      "tomato",
+      "vegetable_oil",
+      "water"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "cabbage",
+      "cooking_oil",
+      "corned_beef",
+      "eggplant",
+      "red_native_tomato",
+      "sugar"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "baby_bok_choy",
+      "butternut_squash",
+      "cabbage",
+      "eggplant",
+      "fish_sauce",
+      "kalabasa",
+      "okra",
+      "pork_chop",
+      "siling_pangsigang",
+      "sinigang_mix",
+      "skinless_chicken_thigh",
+      "snake_bean",
+      "spinach",
+      "tomato",
+      "water",
+      "white_onion",
+      "yellow_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "cabbage",
+      "calamansi",
+      "first_press_coconut_milk",
+      "fish_sauce",
+      "ginger",
+      "malunggay_leaves",
+      "onion",
+      "pechay",
+      "peppercorn",
+      "rice_washing",
+      "salmon_belly",
+      "salmon_head",
+      "salt",
+      "siling_labuyo",
+      "siling_pangsigang",
+      "tanigue",
+      "vinegar",
+      "white_onion"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "canned_chunky_corned_beef",
+      "canola_oil",
+      "egg",
+      "frozen_sweet_pea",
+      "onion",
+      "pepper_unspecified",
+      "potato"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "beef_bone_with_marrow",
+      "carrot",
+      "cooking_oil",
+      "extra_firm_tofu",
+      "fresh_miki_noodles",
+      "fried_garlic",
+      "garlic",
+      "green_bell_pepper",
+      "monosodium_glutamate",
+      "mung_bean_sprout",
+      "onion",
+      "pepper_unspecified",
+      "pork_bones",
+      "pork_crackling",
+      "pork_intestine",
+      "pork_liver",
+      "pork_shoulder",
+      "red_bell_pepper",
+      "red_onion",
+      "rock_salt",
+      "sauteed_shrimp_paste",
+      "shrimp_head",
+      "spring_onion",
+      "sugar",
+      "tomato",
+      "water",
+      "whole_egg"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "chicken_breast",
+      "coconut_milk",
+      "curry_powder",
+      "fish_sauce",
+      "garlic",
+      "lemongrass"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "bay_leaf",
+      "beef_short_rib",
+      "black_pepper",
+      "brown_sugar",
+      "cooked_tocino",
+      "cooked_white_rice",
+      "finger_chili",
+      "fresh_coconut_cream",
+      "garlic",
+      "liver_spread",
+      "mango_relish",
+      "mashed_chicken_liver",
+      "salted_egg",
+      "soy_sauce",
+      "spring_onion",
+      "vegetable_oil",
+      "water",
+      "white_onion",
+      "whole_smoked_bangus"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "coconut",
+      "egg",
+      "fresh_coconut_milk",
+      "melted_butter",
+      "salt",
+      "vegetable_oil"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "canned_pineapple",
+      "canola_oil",
+      "chicken_drumsticks",
+      "chicken_stock",
+      "cornstarch",
+      "egg",
+      "five_spice_powder",
+      "garlic",
+      "garlic_powder",
+      "heavy_cream",
+      "leftover_coating_mix",
+      "monosodium_glutamate",
+      "onion_powder",
+      "pork_ham",
+      "pork_tenderloin",
+      "roast_chicken_drippings",
+      "salt",
+      "shortening",
+      "soy_sauce",
+      "water",
+      "whole_milk"
+    ],
+    "split": "train"
+  },
+  {
+    "available": [
+      "boneless_skinless_chicken_thigh_meat",
+      "canned_diced_tomato",
+      "carrot",
+      "cooking_oil",
+      "filipino_hotdog",
+      "pepper_unspecified",
+      "pineapple_juice",
+      "potato",
+      "raisin",
+      "soy_sauce",
+      "tomato_paste"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "coconut_milk",
+      "fish_sauce",
+      "kalabasa",
+      "shrimp",
+      "string_bean"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "coconut_milk",
+      "egg",
+      "garlic",
+      "green_bean",
+      "lean_ground_pork",
+      "onion",
+      "pepper_unspecified",
+      "pompano",
+      "roma_tomato",
+      "salt",
+      "siling_labuyo",
+      "vegetable_oil",
+      "water"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "calamansi",
+      "fresh_ginger",
+      "siling_labuyo",
+      "sugar",
+      "tanigue_fillet",
+      "thai_chili"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "beef_shank",
+      "birds_eye_chili",
+      "bok_choy",
+      "celery",
+      "fish_sauce",
+      "fried_garlic",
+      "garlic",
+      "ginger",
+      "napa_cabbage",
+      "onion",
+      "peppercorn",
+      "potato",
+      "salt",
+      "vegetable_oil",
+      "water",
+      "whole_chicken"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "brown_sugar",
+      "garlic",
+      "natural_food_coloring_unspecified",
+      "onion_powder",
+      "pineapple_juice",
+      "pork_belly",
+      "pork_loin",
+      "pork_shoulder",
+      "soy_sauce",
+      "table_salt"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "annatto_powder",
+      "annatto_seed",
+      "black_pepper",
+      "cane_vinegar",
+      "carrot",
+      "corn_kernel",
+      "fish_sauce",
+      "frozen_green_pea",
+      "garlic",
+      "ground_pork",
+      "hot_water",
+      "iloko_vinegar",
+      "pork_fat",
+      "potato",
+      "raisin",
+      "red_onion",
+      "salt",
+      "tomato",
+      "vegetable_oil",
+      "water"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "cooled_cooked_rice",
+      "fish_sauce",
+      "garlic",
+      "salt",
+      "shrimp",
+      "spring_onion",
+      "squid",
+      "thai_shrimp_paste"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "brown_sugar",
+      "canned_pineapple",
+      "canola_oil",
+      "garlic_powder",
+      "liquid_seasoning",
+      "pepper_unspecified",
+      "pork_ham",
+      "pork_tenderloin",
+      "salt",
+      "skin_on_whole_pork_shoulder",
+      "soy_sauce",
+      "vinegar",
+      "water"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "calamansi",
+      "cooking_oil",
+      "dried_bay_leaf",
+      "garlic",
+      "ginger",
+      "lemongrass",
+      "lemongrass_bottom_part",
+      "pork_chop",
+      "red_onion",
+      "salted_egg",
+      "seven_up",
+      "soy_sauce",
+      "spicy_bagoong_alamang",
+      "spring_onion",
+      "tomato",
+      "whole_chicken"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "bok_choy",
+      "chicken_bouillon_cube",
+      "egg",
+      "fish_sauce",
+      "fresh_ginger_root",
+      "garlic",
+      "pepper_unspecified",
+      "sesame_oil",
+      "soy_sauce",
+      "spring_onion",
+      "water",
+      "white_sugar",
+      "white_vinegar"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "black_pepper",
+      "calamansi",
+      "calamansi_juice",
+      "chicken_liver",
+      "cornstarch",
+      "crispy_garlic_bits",
+      "dried_bay_leaf",
+      "dry_sherry",
+      "garlic",
+      "green_chili_unspecified_variety",
+      "grilled_chicken",
+      "head_on_shrimp",
+      "lime_juice",
+      "low_sodium_soy_sauce",
+      "mayonnaise",
+      "pepper_unspecified",
+      "peppercorn",
+      "rum",
+      "salt",
+      "soy_sauce",
+      "spring_onion",
+      "thai_chili",
+      "white_onion",
+      "white_wine_vinegar"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "calamansi",
+      "fresh_ginger",
+      "lime",
+      "red_onion",
+      "siling_labuyo",
+      "sugar",
+      "thai_chili",
+      "wahoo_fillet"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "achuete_unspecified_form",
+      "annatto_oil",
+      "black_pepper",
+      "calamansi",
+      "carrot",
+      "chicken_thigh_leg_quarter",
+      "cooking_oil",
+      "garlic",
+      "green_bell_pepper",
+      "green_pea",
+      "lemongrass",
+      "native_vinegar",
+      "pork_shoulder",
+      "potato",
+      "red_bell_pepper",
+      "red_onion",
+      "rock_salt",
+      "salt",
+      "soy_sauce",
+      "tomato_sauce",
+      "water"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "dried_shrimp",
+      "fish_sauce",
+      "garlic",
+      "rice",
+      "squash",
+      "water",
+      "whole_chicken"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "beef_sirloin",
+      "beef_stock",
+      "black_pepper",
+      "boiled_carrot",
+      "boiled_chayote",
+      "boiled_potato",
+      "bone_in_beef_shank",
+      "butter",
+      "cheddar_cheese",
+      "dried_thyme_leaf",
+      "egg",
+      "egg_yolk",
+      "fresh_button_mushroom",
+      "garlic",
+      "lemon_juice",
+      "pepper_unspecified",
+      "salt",
+      "spring_onion",
+      "sugar",
+      "toasted_pandesal",
+      "whipping_cream",
+      "white_onion"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "all_purpose_cream",
+      "chicken",
+      "chicken_bouillon",
+      "coconut_meat",
+      "cooking_oil",
+      "eggplant",
+      "fish_sauce",
+      "garlic",
+      "lemongrass",
+      "long_green_bean",
+      "onion",
+      "sinigang_mix",
+      "spinach",
+      "string_bean",
+      "tamarind_leaf",
+      "tomato",
+      "water"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "batuan",
+      "batwan",
+      "green_finger_chili",
+      "jackfruit",
+      "lemongrass",
+      "pork_hock",
+      "soaked_kadyos",
+      "water"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "cooking_oil",
+      "garlic",
+      "soy_sauce",
+      "squid",
+      "squid_ink",
+      "white_onion"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "beef_broth",
+      "black_pepper",
+      "boiled_and_shredded_chicken_breast",
+      "button_mushroom",
+      "cabbage",
+      "carrot",
+      "cooking_oil",
+      "garlic",
+      "green_bean",
+      "miki_lucban_noodle",
+      "onion",
+      "pancit_bihon",
+      "pancit_canton_noodle",
+      "parsley",
+      "pork_belly",
+      "pork_shoulder",
+      "shiitake_mushroom",
+      "shrimp",
+      "soy_sauce",
+      "vinegar",
+      "water"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "cabbage",
+      "calamansi",
+      "carrot",
+      "chicken_stock",
+      "chinese_rice_wine",
+      "chive",
+      "cilantro",
+      "cooked_miki_lucban_noodle",
+      "fresh_ginger",
+      "garlic",
+      "mixed_seafood_with_fish_ball_and_crabstick",
+      "prawn",
+      "red_onion",
+      "shaoxing_wine",
+      "shrimp",
+      "soy_sauce",
+      "spring_onion",
+      "vegetable_oil",
+      "vinegar",
+      "water",
+      "white_onion",
+      "whole_tilapia"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "brown_sugar",
+      "calamansi_juice",
+      "canola_oil",
+      "carrot",
+      "eden_cheese",
+      "fish_sauce",
+      "garlic",
+      "green_bell_pepper",
+      "green_olive",
+      "kaffir_lime_leaf",
+      "lemongrass",
+      "liver_spread",
+      "onion",
+      "pepper_unspecified",
+      "pineapple_juice",
+      "potato",
+      "quick_melt_cheese",
+      "red_bell_pepper",
+      "salt",
+      "shallot",
+      "soy_sauce",
+      "thai_chili",
+      "tomato_sauce",
+      "water",
+      "whole_chicken"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "bay_leaf",
+      "coconut_milk",
+      "fish_sauce",
+      "ginger",
+      "pepper_unspecified",
+      "roma_tomato",
+      "squid",
+      "thai_chili",
+      "vinegar",
+      "water"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "beef_sirloin",
+      "fried_egg",
+      "garlic_fried_rice",
+      "pepper_unspecified",
+      "soy_sauce"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "aligue_paste",
+      "bell_pepper",
+      "egg",
+      "garlic",
+      "ginger",
+      "peeled_prawn_head_tail_on",
+      "siling_pangsigang",
+      "sotanghon_noodles",
+      "tomato_sauce"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "birds_eye_chili",
+      "kamias",
+      "mackerel",
+      "pepper_unspecified",
+      "salt",
+      "siling_pangsigang",
+      "tomato"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "black_pepper",
+      "boneless_skin_on_pork_belly",
+      "canola_oil",
+      "evaporated_milk",
+      "fermented_black_bean",
+      "fish_sauce",
+      "garlic",
+      "ginger",
+      "lemongrass",
+      "onion",
+      "pepper_unspecified",
+      "peppercorn",
+      "roma_tomato",
+      "salt",
+      "siling_labuyo",
+      "soy_sauce",
+      "star_anise",
+      "water",
+      "whole_milkfish"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "baking_potato",
+      "beef_broth",
+      "beef_chuck",
+      "black_pepper",
+      "bone_in_pork_belly_slab",
+      "canned_applesauce",
+      "carrot",
+      "celery",
+      "cooking_oil",
+      "dried_bay_leaf",
+      "garlic",
+      "lemon",
+      "lemongrass",
+      "red_bell_pepper",
+      "red_onion",
+      "ripe_tomato_cube",
+      "salt",
+      "soy_sauce",
+      "tomato_sauce",
+      "vegetable_oil",
+      "white_onion"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "chicken",
+      "chicken_liver",
+      "dried_bay_leaf",
+      "egg",
+      "fish_sauce",
+      "garlic",
+      "kesong_puti",
+      "orange",
+      "pork_shoulder",
+      "potato",
+      "soy_sauce",
+      "vinegar",
+      "water",
+      "wheat_bread",
+      "whole_garlic"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "apple_cider_vinegar",
+      "bay_leaf",
+      "brown_sugar",
+      "garlic",
+      "honey",
+      "kinchay",
+      "low_sodium_soy_sauce",
+      "peppercorn",
+      "potato_starch",
+      "regular_soy_sauce",
+      "rice_vinegar",
+      "skinless_boneless_chicken_thigh",
+      "soy_sauce",
+      "tofu",
+      "water",
+      "white_vinegar"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "cooking_oil",
+      "dried_bay_leaf",
+      "egg",
+      "eggplant",
+      "ground_pork",
+      "peppercorn",
+      "pig_large_intestine",
+      "salt",
+      "vinegar",
+      "water",
+      "yellow_onion"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "canola_oil",
+      "dried_munggo",
+      "fish_sauce",
+      "garlic",
+      "onion",
+      "pepper_unspecified",
+      "shrimp",
+      "sotanghon",
+      "spinach",
+      "tomato"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "canned_pineapple",
+      "egg",
+      "fish_sauce",
+      "garlic",
+      "grouper_fillet",
+      "onion",
+      "panko_bread_crumbs",
+      "pechay",
+      "pepper_unspecified",
+      "pork_spare_rib",
+      "red_bell_pepper",
+      "roma_tomato",
+      "salt",
+      "siling_haba",
+      "steamed_white_rice",
+      "vegetable_oil",
+      "water"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "annatto_oil",
+      "baby_corn",
+      "birds_eye_chili",
+      "black_pepper",
+      "calamansi_juice",
+      "calrose_rice",
+      "chicharon",
+      "chicken_bouillon_cube",
+      "chicken_breast",
+      "chicken_thigh",
+      "chive",
+      "clear_soda",
+      "crushed_black_pepper",
+      "dry_white_wine",
+      "fresh_basil_leaves",
+      "freshly_grated_coconut",
+      "garlic",
+      "green_papaya",
+      "lemon",
+      "lemongrass",
+      "liquid_seasoning",
+      "long_green_chili",
+      "monosodium_glutamate",
+      "native_chicken",
+      "olive_oil",
+      "pimiento",
+      "pork",
+      "pork_belly",
+      "pork_chop",
+      "prawn",
+      "red_finger_chili",
+      "salt",
+      "salted_egg",
+      "sauteed_cherry_tomato",
+      "soy_sauce",
+      "spanish_bomba_rice",
+      "spanish_paprika",
+      "squid",
+      "steamed_clam",
+      "steamed_mussel",
+      "sugar",
+      "tomato",
+      "vinegar",
+      "warm_water",
+      "white_onion",
+      "whole_onion"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "butterflied_whole_chicken",
+      "calamansi_juice",
+      "chicken",
+      "cooking_oil",
+      "onion",
+      "pepper_unspecified",
+      "potato",
+      "red_bell_pepper",
+      "salt",
+      "soy_sauce",
+      "tomato",
+      "tomato_sauce"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "annatto_seed",
+      "calamansi_juice",
+      "coconut_sap_vinegar",
+      "cooking_oil",
+      "dried_banana_blossom",
+      "dried_bay_leaf",
+      "garlic",
+      "ginger",
+      "lemongrass_bulb",
+      "onion",
+      "peppercorn",
+      "pork_belly",
+      "salt",
+      "salted_black_bean",
+      "siling_labuyo",
+      "soy_sauce",
+      "vinegar",
+      "whole_chicken"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "carrot",
+      "cauliflower",
+      "coconut_cream",
+      "cooking_oil",
+      "curry_powder",
+      "dried_bay_leaf",
+      "eggplant",
+      "garlic",
+      "garlic_powder",
+      "lechon",
+      "lechon_sauce",
+      "maggi_magic_sarap",
+      "onion",
+      "onion_powder",
+      "peppercorn",
+      "pompano",
+      "potato",
+      "salt",
+      "siling_labuyo",
+      "siling_pangsigang",
+      "sugar",
+      "vinegar",
+      "water"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "cooking_oil",
+      "garlic",
+      "ground_pork",
+      "lemon_soda",
+      "opo_squash",
+      "parsley",
+      "pork_belly",
+      "salt",
+      "shrimp",
+      "thai_chili",
+      "vinegar",
+      "water",
+      "white_sugar",
+      "yellow_onion"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "blanched_kangkong_leaves",
+      "butter",
+      "canola_oil",
+      "fish_sauce",
+      "garlic",
+      "ginger",
+      "kangkong_leaves",
+      "napa_cabbage",
+      "onion",
+      "pechay",
+      "pepper_unspecified",
+      "potato",
+      "red_onion",
+      "ripe_native_tomato",
+      "salt",
+      "shrimp",
+      "siling_pangsigang",
+      "spring_onion",
+      "taro",
+      "uncooked_red_rice",
+      "unripe_tamarind",
+      "water",
+      "whole_mudfish"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "beef_sirloin",
+      "birds_eye_chili",
+      "calamansi",
+      "chinese_sausage",
+      "cold_day_old_cooked_rice",
+      "cooking_oil",
+      "cooking_wine",
+      "egg",
+      "frozen_sweet_pea",
+      "garlic",
+      "lemon",
+      "long_green_chili",
+      "maggi_savor",
+      "mayonnaise",
+      "onion",
+      "pepper_unspecified",
+      "reno_liver_spread",
+      "salt",
+      "shrimp",
+      "soy_sauce",
+      "spring_onion",
+      "worcestershire_sauce"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "bay_leaf",
+      "fish_sauce",
+      "green_part_leek",
+      "salt",
+      "whole_chicken"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "coconut_cream",
+      "cooking_oil",
+      "santol",
+      "siling_pangsigang",
+      "tiger_prawn"
+    ],
+    "split": "validation"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "cilantro_leaf",
+      "cooking_oil",
+      "dark_soy_sauce",
+      "flour",
+      "freshly_cracked_peppercorn",
+      "garlic",
+      "long_green_chili",
+      "pepper_unspecified",
+      "pork_shoulder",
+      "red_tomato",
+      "saba_banana",
+      "salt",
+      "thai_chili",
+      "vinegar",
+      "water",
+      "whole_milkfish"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "baby_bok_choy",
+      "black_pepper",
+      "cane_vinegar",
+      "dried_bay_leaf",
+      "fish_fillet",
+      "fresh_coconut_milk",
+      "fried_garlic",
+      "garlic",
+      "salt",
+      "scallion",
+      "spring_onion",
+      "squid",
+      "sugar",
+      "tapioca_starch",
+      "vegetable_broth",
+      "vegetable_oil"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "beef_stock",
+      "beef_tripe",
+      "black_pepper",
+      "butternut_squash",
+      "calamansi",
+      "coconut_cream",
+      "cooking_oil",
+      "crab",
+      "fish_sauce",
+      "garlic",
+      "ginger",
+      "hard_boiled_egg",
+      "kasubha",
+      "lemon",
+      "malunggay_leaves",
+      "onion",
+      "pork_rind",
+      "rice",
+      "shrimp_paste",
+      "spring_onion",
+      "water",
+      "yellow_onion"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "baby_bok_choy",
+      "baking_potato",
+      "beef_broth",
+      "beef_sirloin",
+      "cabbage",
+      "celery",
+      "fresh_pork_blood",
+      "garlic",
+      "heart_unspecified_animal",
+      "intestines_unspecified_animal",
+      "kidney_unspecified_animal",
+      "pechay",
+      "pepper_unspecified",
+      "pork_belly",
+      "pork_ear",
+      "saba_banana",
+      "salt",
+      "siling_pangsigang",
+      "star_anise",
+      "vinegar",
+      "water",
+      "white_onion"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "coconut_cream",
+      "crab",
+      "garlic",
+      "ginger",
+      "hoisin_sauce",
+      "mussel",
+      "pepper_unspecified",
+      "rice_vinegar",
+      "salmon_fillet",
+      "salt",
+      "sesame_oil",
+      "shrimp",
+      "shrimp_paste",
+      "squid",
+      "sriracha_hot_chili_sauce"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "asparagus_spear",
+      "black_pepper",
+      "cilantro",
+      "grouper_fillet",
+      "mango_tamarind_jelly",
+      "milk",
+      "peanut",
+      "salt",
+      "sweet_potato"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "button_mushroom",
+      "canola_oil",
+      "carrot",
+      "fish_sauce",
+      "fresh_ginger",
+      "fresh_spinach_leaf",
+      "garlic",
+      "green_papaya",
+      "onion",
+      "pepper_unspecified",
+      "pork_heart",
+      "pork_lung",
+      "pork_spleen",
+      "radish",
+      "red_bell_pepper",
+      "salt",
+      "siling_labuyo",
+      "vinegar",
+      "water",
+      "whole_chicken"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "black_pepper",
+      "cooking_oil",
+      "egg",
+      "fried_egg",
+      "garlic_fried_rice",
+      "papaya_atsara",
+      "pork_chop"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "beef_sirloin",
+      "black_pepper",
+      "cooking_oil",
+      "garlic",
+      "garlic_powder",
+      "knorr_liquid_seasoning",
+      "knorr_shrimp_cube",
+      "mung_bean",
+      "pork_belly",
+      "salt",
+      "shrimp",
+      "soy_sauce",
+      "spinach",
+      "sugar",
+      "tomato",
+      "vegetable_oil",
+      "water",
+      "yellow_onion"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "brown_rice",
+      "calamansi",
+      "coconut_cream",
+      "cracked_peppercorn",
+      "cumin",
+      "curry_powder",
+      "fish_fillet",
+      "garlic",
+      "margarine",
+      "salt",
+      "shrimp",
+      "taba_ng_talangka",
+      "unsalted_butter",
+      "vegetable_oil",
+      "white_vinegar",
+      "young_okra"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "boneless_bangus_belly_fillet",
+      "canola_oil",
+      "carrot",
+      "chicken_powder",
+      "egg",
+      "garlic",
+      "garlic_powder",
+      "ground_chicken",
+      "salt",
+      "shrimp",
+      "siling_pangsigang",
+      "soy_sauce",
+      "spanish_paprika",
+      "toasted_garlic",
+      "white_mushroom",
+      "wonton_wrappers",
+      "worcestershire_sauce"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "chicken",
+      "coconut_milk",
+      "cooking_oil",
+      "dried_bay_leaf",
+      "garlic",
+      "maggi_magic_sarap",
+      "peppercorn",
+      "pork_belly",
+      "soy_sauce",
+      "water",
+      "white_vinegar"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "brown_sugar",
+      "carrot",
+      "cooking_oil",
+      "dried_banana_blossom",
+      "dried_bay_leaf",
+      "fish_sauce",
+      "frozen_sweet_pea",
+      "garlic",
+      "peppercorn",
+      "pork_hock",
+      "potato",
+      "red_bell_pepper",
+      "roma_tomato",
+      "salt",
+      "soy_sauce",
+      "vinegar",
+      "water",
+      "whole_chicken"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "birds_eye_chili",
+      "calamansi_juice",
+      "canola_oil",
+      "ginger",
+      "knorr_savorrich_pork",
+      "peanut",
+      "pork_belly",
+      "red_onion",
+      "shrimp_paste",
+      "vinegar",
+      "white_vinegar"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "canola_oil",
+      "eggplant",
+      "finger_chili",
+      "garlic",
+      "milkfish",
+      "okra",
+      "onion",
+      "peppercorn",
+      "shrimp_paste",
+      "vinegar",
+      "water"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "annatto_oil",
+      "bay_leaf",
+      "brown_sugar",
+      "calamansi",
+      "calamansi_juice",
+      "chicken_leg",
+      "chicken_liver",
+      "chicken_thigh",
+      "chicken_wing",
+      "crispy_garlic_bits",
+      "garlic",
+      "garlic_chip",
+      "green_chili_unspecified_variety",
+      "grilled_chicken",
+      "lime_juice",
+      "mayonnaise",
+      "parsley",
+      "pepper_unspecified",
+      "peppercorn",
+      "pork_belly",
+      "salt",
+      "soy_sauce",
+      "thai_chili",
+      "white_vinegar"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "annatto_seed",
+      "black_pepper",
+      "butter",
+      "calamansi_juice",
+      "canola_oil",
+      "chicken_leg_quarter",
+      "fish_sauce",
+      "garlic",
+      "ginger",
+      "lemongrass_bulb",
+      "onion",
+      "red_onion",
+      "salt",
+      "shucked_oyster",
+      "siling_labuyo",
+      "soy_sauce",
+      "thai_chili",
+      "white_vinegar"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "baked_chicken_meat",
+      "cabbage",
+      "carrot",
+      "chinese_sausage",
+      "flat_leaf_parsley",
+      "pork",
+      "salt",
+      "snap_pea",
+      "sotanghon_noodles",
+      "soy_sauce"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "chicken",
+      "coconut_milk",
+      "garlic",
+      "ginger",
+      "green_finger_chili",
+      "shrimp_paste",
+      "white_onion"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "bagoong_unspecified_type",
+      "bone_in_skin_on_pork_belly",
+      "canola_oil",
+      "cilantro",
+      "eggplant",
+      "garlic",
+      "ginger",
+      "lemongrass_bulb",
+      "lime_leaf",
+      "native_tomato",
+      "siling_pangsigang",
+      "white_onion"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "calamansi",
+      "cassava_starch",
+      "chicharon",
+      "cold_water",
+      "crushed_black_pepper",
+      "egg",
+      "fresh_lomi_noodles",
+      "fried_garlic",
+      "kikiam",
+      "meatball",
+      "pork_belly",
+      "pork_bouillon_cube",
+      "pork_liver",
+      "salt",
+      "siling_labuyo",
+      "soy_sauce",
+      "spring_onion",
+      "tiger_prawn",
+      "vegetable_oil",
+      "water",
+      "white_onion"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "banana_ketchup",
+      "garlic",
+      "knorr_liquid_seasoning",
+      "lime",
+      "pork_chop"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "annatto_seed",
+      "beef_brisket",
+      "beef_broth",
+      "birds_eye_chili",
+      "boiled_pork_belly",
+      "cooked_rice",
+      "garlic",
+      "ground_freshly_ground_black_pepper",
+      "peanut_butter",
+      "salt",
+      "soy_sauce",
+      "spring_onion",
+      "sugar",
+      "toasted_glutinous_rice",
+      "vegetable_oil",
+      "vinegar"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "canned_chunky_corned_beef",
+      "canola_oil",
+      "cooking_oil",
+      "egg",
+      "frozen_sweet_pea",
+      "garlic",
+      "green_chili",
+      "onion",
+      "oyster_sauce",
+      "pepper_unspecified",
+      "potato",
+      "salt",
+      "siling_labuyo",
+      "tofu",
+      "water"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "brown_sugar",
+      "honey",
+      "jumbo_squid",
+      "onion",
+      "roma_tomato",
+      "salt",
+      "thai_chili"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "chicken_liver",
+      "clam_stock",
+      "cooked_clams",
+      "cooked_mussel",
+      "cooking_oil",
+      "fish_fillet",
+      "fish_sauce",
+      "garlic",
+      "green_finger_chili",
+      "native_vinegar",
+      "olive_oil",
+      "onion",
+      "paella_rice",
+      "paprika",
+      "parsley",
+      "pork_belly",
+      "pork_blood",
+      "red_bell_pepper",
+      "salt",
+      "scallion",
+      "shrimp",
+      "tomato"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "beef_brisket",
+      "bok_choy",
+      "butter",
+      "cabbage",
+      "chicken",
+      "cooking_oil",
+      "fish_sauce",
+      "garlic",
+      "parsley",
+      "pork_and_beans",
+      "pork_shoulder",
+      "potato",
+      "red_onion",
+      "saba_banana",
+      "salt",
+      "shrimp",
+      "tomato",
+      "tomato_sauce",
+      "water"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "baby_bok_choy",
+      "baguio_bean",
+      "baking_potato",
+      "bay_leaf",
+      "beef_chuck",
+      "birds_eye_chili",
+      "cabbage",
+      "chickpea",
+      "chorizo_de_bilbao",
+      "cooking_oil",
+      "garlic",
+      "onion",
+      "peppercorn",
+      "pork_leg",
+      "ripe_plantain",
+      "rock_salt",
+      "saba_banana",
+      "soy_sauce",
+      "vinegar"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "basil_leaf",
+      "calamansi",
+      "canola_oil",
+      "chicken_bouillon_cube",
+      "chicken_feet",
+      "cooked_mini_meatball",
+      "cooking_oil",
+      "dried_shrimp",
+      "fish_sauce",
+      "fried_garlic",
+      "garlic",
+      "ginger",
+      "lemon",
+      "misua_noodles",
+      "onion",
+      "pepper_unspecified",
+      "salt",
+      "shiitake_mushroom",
+      "shrimp_bouillon_cube",
+      "sponge_gourd",
+      "spring_onion",
+      "uncooked_glutinous_rice",
+      "water"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "all_purpose_flour",
+      "bean_sprout",
+      "black_pepper",
+      "boiled_pork",
+      "carrot",
+      "egg",
+      "garlic",
+      "ground_beef",
+      "ground_pork",
+      "jicama",
+      "long_bean",
+      "orange_sweet_potato",
+      "pork_belly",
+      "salt",
+      "soy_sauce"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "brown_sugar",
+      "carrot",
+      "cassava_flour",
+      "chili_flakes",
+      "clear_soda",
+      "cooked_tocino",
+      "cooked_white_rice",
+      "cornstarch",
+      "egg",
+      "fish_fillet",
+      "fish_stock",
+      "garlic",
+      "mango_relish",
+      "potato",
+      "salted_egg",
+      "soy_sauce",
+      "spring_onion",
+      "vegetable_oil",
+      "vinegar",
+      "water",
+      "white_onion",
+      "whole_smoked_bangus"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "black_pepper",
+      "egg",
+      "eggplant",
+      "salt"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "bay_leaf",
+      "boneless_milkfish",
+      "brown_sugar",
+      "cooking_oil",
+      "garlic",
+      "kamias",
+      "kangkong_leaves",
+      "lechon",
+      "lechon_kawali",
+      "leftover_lechon",
+      "liver_spread",
+      "onion",
+      "ripe_guava",
+      "rock_salt",
+      "salt",
+      "siling_pangsigang",
+      "string_bean",
+      "tomato",
+      "vinegar",
+      "water"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "bay_leaf",
+      "beef_seasoning_cube",
+      "birds_eye_chili",
+      "brown_sugar",
+      "coconut_milk",
+      "cooking_oil",
+      "dried_banana_blossom",
+      "garlic",
+      "ham_hock",
+      "leek",
+      "panutsa",
+      "peppercorn",
+      "pineapple_chunks",
+      "pompano",
+      "pork_hock",
+      "red_onion",
+      "salt",
+      "siling_pangsigang",
+      "soy_sauce",
+      "water",
+      "white_vinegar"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "beef_sirloin",
+      "black_pepper",
+      "carrot",
+      "cheddar_cheese",
+      "chicken_powder",
+      "egg",
+      "egg_yolk",
+      "garlic_powder",
+      "ground_chicken",
+      "lemon_juice",
+      "olive_oil",
+      "pepper_unspecified",
+      "salt",
+      "sesame_oil",
+      "shrimp",
+      "toasted_pandesal",
+      "vinegar",
+      "water",
+      "white_mushroom",
+      "wonton_wrappers",
+      "yellow_onion"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "asian_long_eggplant",
+      "black_peppercorn",
+      "cilantro_leaf",
+      "cooking_oil",
+      "crabmeat",
+      "egg",
+      "garlic",
+      "red_bell_pepper",
+      "red_onion",
+      "salt",
+      "sugar",
+      "white_vinegar",
+      "whole_grouper",
+      "whole_red_snapper",
+      "whole_tilapia"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "annatto_oil",
+      "boiled_chicken_breast",
+      "chicken_stock",
+      "fresh_miki_noodles",
+      "fried_garlic_chip",
+      "pork_shoulder",
+      "spring_onion"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "birds_eye_chili",
+      "black_pepper",
+      "chicken",
+      "chili_flakes",
+      "cilantro",
+      "coconut_milk",
+      "cooking_oil",
+      "fish_sauce",
+      "garlic",
+      "ginger",
+      "ground_turmeric",
+      "mussel",
+      "onion",
+      "spinach"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "annatto_powder",
+      "bagnet",
+      "beef_broth",
+      "boiled_egg",
+      "chicken_bouillon_cube",
+      "cooked_chicken_breast",
+      "cooking_oil",
+      "eddo_taro",
+      "fish_sauce",
+      "flat_rice_noodle",
+      "garlic",
+      "kangkong",
+      "okra",
+      "pork_belly",
+      "ripe_red_tomato",
+      "siling_pangsigang",
+      "unripe_tamarind",
+      "water",
+      "yellow_onion"
+    ],
+    "split": "test"
+  },
+  {
+    "available": [
+      "cooking_oil",
+      "egg",
+      "potato",
+      "salt",
+      "soy_sauce",
+      "vinegar"
+    ],
+    "split": "test"
+  }
+]

@@ -9,14 +9,19 @@ DATA_DIR = MODEL_DIR / "data" / "processed"
 
 # Handles quantities such as 3, 1/4, and 1 1/2.
 NUMBER = r"(?:\d+/\d+|\d+(?:\.\d+)?)"
-AMOUNT = rf"{NUMBER}(?:\s+{NUMBER})?"
+SINGLE_AMOUNT = rf"{NUMBER}(?:\s+\d+/\d+)?"
+AMOUNT = (
+    rf"{SINGLE_AMOUNT}"
+    rf"(?:\s*(?:to|[-–])\s*{SINGLE_AMOUNT})?"
+)
 
 UNIT = (
-    r"(?:tablespoons?|teaspoons?|cups?|"
+    r"(?:table\s*spoons?|tea\s*spoons?|cups?|"
     r"tbsp\.?|tsp\.?|cloves?|heads?|pieces?|"
     r"ounces?|oz\.?|pounds?|lbs?\.?|"
     r"kilograms?|kilogrammes?|kilos?|kg\.?|"
-    r"grams?|g\.?|quarts?|bunches|bunch)"
+    r"grams?|g\.?|quarts?|"
+    r"liters?|litres?|bunches|bunch)"
 )
 
 QUANTITY_PREFIX = re.compile(
@@ -230,6 +235,84 @@ ALIASES.update({
     "pineapple juice": ["pineapple_juice"],
     "star anise": ["star_anise"],
 })
+ALIASES.update({
+    # Vegetables and herbs
+    "okra": ["okra"],
+    "chinese eggplant sliced": ["chinese_eggplant"],
+    "onion diced": ["onion"],
+    "red onion (quartered)": ["red_onion"],
+    "yellow onion diced": ["yellow_onion"],
+    "onion sibuyas, finely chopped": ["onion"],
+    "onion sibuyas, chopped": ["onion"],
+    "onion sibuyas, peeled and chopped": ["onion"],
+    "baby bok choy": ["baby_bok_choy"],
+    "green finger chili (siling pangsigang)": ["siling_pangsigang"],
+    "potatoes patatas, peeled and quartered": ["potato"],
+    "fresh spinach, stems trimmed": ["spinach"],
+    "tomato, chopped": ["tomato"],
+    "carrot (julienned)": ["carrot"],
+    "carrot cubed": ["carrot"],
+    "plum tomato diced": ["plum_tomato"],
+    "chopped parsley": ["parsley"],
+    "chopped cabbage": ["cabbage"],
+    "potatoes (cubed)": ["potato"],
+    "potatoes, peeled and cubed": ["potato"],
+    "tomato wedged": ["tomato"],
+    "tomatoes (quartered)": ["tomato"],
+    "spring onions": ["spring_onion"],
+
+    # Garlic and ginger preparation variants
+    "garlic bawang, peeled and minced": ["garlic"],
+    "garlic crushed and minced": ["garlic"],
+    "garlic (tinadtad)": ["garlic"],
+    "garlic, peeled and crushed": ["garlic"],
+    "ginger (grated)": ["ginger"],
+    "ginger (chopped)": ["ginger"],
+    "ginger (julienned)": ["ginger"],
+    "fried garlic bits": ["fried_garlic"],
+
+    # Sauces, seasonings, and oils
+    "mayonnaise": ["mayonnaise"],
+    "peanut butter": ["peanut_butter"],
+    "lechon sauce": ["lechon_sauce"],
+    "curry powder": ["curry_powder"],
+    "liquid seasoning": ["liquid_seasoning"],
+    "paprika": ["paprika"],
+    "white sugar": ["white_sugar"],
+    "worcestershire sauce": ["worcestershire_sauce"],
+    "patis (fish sauce)": ["fish_sauce"],
+    "rock salt": ["rock_salt"],
+    "onion powder": ["onion_powder"],
+    "vinegar suka": ["vinegar"],
+    "extra virgin olive oil": ["extra_virgin_olive_oil"],
+    "brown sugar asukal na pula": ["brown_sugar"],
+    "bay leaf dahon ng laurel": ["bay_leaf"],
+
+    # Preserve these forms as separate identities.
+    "pineapple chunks": ["pineapple_chunks"],
+    "coconut cream (kakang gata)": ["coconut_cream"],
+    "chicken stock": ["chicken_stock"],
+    "chicken bouillon cube": ["chicken_bouillon_cube"],
+    "ground beef": ["ground_beef"],
+    "chicken, cut into serving parts": ["chicken"],
+    "calamansi": ["calamansi"],
+    "lemon (to serve)": ["lemon"],
+    "lemon juice": ["lemon_juice"],
+
+    # Explicit usage notes
+    "cooking oil (for deep frying)": ["cooking_oil"],
+    "cooking oil (for frying)": ["cooking_oil"],
+    "oil (for sauteing)": ["cooking_oil"],
+    "oil (as needed)": ["cooking_oil"],
+    "canola oil for frying": ["canola_oil"],
+    "ground black pepper (ayon sa panlasa)": ["black_pepper"],
+    "black pepper (ayon sa panlasa)": ["black_pepper"],
+    "ground black pepper paminta": ["black_pepper"],
+    "black pepper paminta": ["black_pepper"],
+    "ground black pepper (or to taste)": ["black_pepper"],
+    "salt (or to taste)": ["salt"],
+    "water (or as needed)": ["water"],
+})
 def prepare_for_lookup(line):
     text = line.casefold().strip()
     text = QUANTITY_PREFIX.sub("", text)
@@ -237,7 +320,7 @@ def prepare_for_lookup(line):
     # Remove a leading size description after the quantity.
     # Meaningful varieties such as "yellow" or "roma" stay.
     text = re.sub(
-        r"^(?:small|medium|large)\s+",
+        r"^(?:small|medium|large)(?:-sized)?\s+",
         "",
         text,
     )

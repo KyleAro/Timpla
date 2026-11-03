@@ -2,6 +2,7 @@ import { initialScanState, RecentScan, scanReducer, SelectedDish } from './scanH
 import { createContext, PropsWithChildren, useContext, useEffect, useReducer, useRef, useState } from 'react';
 import { detectIngredients } from '../services/detection';
 import { useSavedRecipes } from '../hooks/useSavedRecipes';
+import { useCookingHistory } from '../hooks/useCookingHistory';
 import { useAuth } from '../auth/AuthContext';
 import { useAccountSettings } from '../hooks/useAccountSettings';
 import type { Recipe } from '../types/recipe';
@@ -9,7 +10,7 @@ import { destinations } from '../data/cookingStyles';
 
 const recipes: Recipe[] = [];
 
-type CookingState = ReturnType<typeof useAccountSettings> & {
+type CookingState = ReturnType<typeof useAccountSettings> & ReturnType<typeof useCookingHistory> & {
   recipes: Recipe[];
   destinations: typeof destinations;
   detecting: boolean;
@@ -43,6 +44,7 @@ export function CookingProvider({ children }: PropsWithChildren) {
     });
   }
   const savedRecipes = useSavedRecipes(accountId);
+  const cookingHistory = useCookingHistory(accountId);
   const [scanState, dispatchScan] = useReducer(scanReducer, initialScanState);
   const { ingredients, photo, recentScans } = scanState;
   const [detection, setDetection] = useState({ id: '', status: 'idle', error: '' });
@@ -88,7 +90,7 @@ export function CookingProvider({ children }: PropsWithChildren) {
   const scanIngredients = recentScans.find(item => item.id === scanState.activeId)?.ingredients ?? [];
   function selectDish(dish: SelectedDish) { dispatchScan({ type: 'select', dish }); }
   return (
-    <CookingContext.Provider value={{ ...account, recipes, destinations, detecting: activeDetection && detection.status === 'pending', detectionComplete: activeDetection && detection.status === 'complete', detectionError: activeDetection ? detection.error : '', retryDetection, scanIngredients, huntIngredients, toggleHuntIngredient, ...savedRecipes, selectDish, recentScans, openRecentScan, ingredients, setIngredients, photo, setPhoto }}>
+    <CookingContext.Provider value={{ ...account, ...cookingHistory, recipes, destinations, detecting: activeDetection && detection.status === 'pending', detectionComplete: activeDetection && detection.status === 'complete', detectionError: activeDetection ? detection.error : '', retryDetection, scanIngredients, huntIngredients, toggleHuntIngredient, ...savedRecipes, selectDish, recentScans, openRecentScan, ingredients, setIngredients, photo, setPhoto }}>
       {children}
     </CookingContext.Provider>
   );

@@ -1,0 +1,112 @@
+[
+  {
+    "ingredient_line": "2 to 4 cups cooking",
+    "recipe_ids": [
+      "b0966bf2ebf49e457ba2609a5bdb40d157e69a92864c665412d9f6a0f597ec80"
+    ],
+    "recipe_ingredient_sha256": {
+      "b0966bf2ebf49e457ba2609a5bdb40d157e69a92864c665412d9f6a0f597ec80": "f09010cce8fc77cdd601a16f5fe4b7f190f798a68d56900fec334e5e0798f57d"
+    },
+    "requirement": {
+      "all_of": [
+        {
+          "ingredient_id": "cooking_oil"
+        }
+      ]
+    },
+    "basis": "Original page retains the truncated ingredient word, but matching frying steps explicitly identify the oil. Amount text is retained.",
+    "source_url": "https://panlasangpinoy.com/deep-fried-breaded-pork-chops/",
+    "method": "agent_contextual_correction",
+    "reviewer": "Codex (user-authorized; not independent human review)",
+    "checked_on": "2026-10-29",
+    "quantity_review_pending": false
+  },
+  {
+    "ingredient_line": "2 pieces alter duck eggs sliced",
+    "recipe_ids": [
+      "a4649a049684bf22d5aa46289402e6dd8ef76df5d9001635054c060c87e843d7"
+    ],
+    "recipe_ingredient_sha256": {
+      "a4649a049684bf22d5aa46289402e6dd8ef76df5d9001635054c060c87e843d7": "26e20a0a0fef7a05e0d31f47d853aabae2a88941ccf967f2a6a9defc4fce8432"
+    },
+    "requirement": {
+      "all_of": [
+        {
+          "ingredient_id": "salted_duck_egg"
+        }
+      ]
+    },
+    "basis": "Matching author page introduction and serving step explicitly identify salted eggs; the original ingredient field identifies duck eggs but has a spelling error.",
+    "source_url": "https://panlasangpinoy.com/tinapa-fried-rice-smoked-fish-fried-rice/",
+    "method": "agent_contextual_correction",
+    "reviewer": "Codex (user-authorized; not independent human review)",
+    "checked_on": "2026-10-29",
+    "quantity_review_pending": false
+  },
+  {
+    "ingredient_line": "2 tablespoons vegetables",
+    "recipe_ids": [
+      "73b2e80970c2e0c325f56d3884d37c97cf80ccb71addc199214178d6f14ec8f6"
+    ],
+    "recipe_ingredient_sha256": {
+      "73b2e80970c2e0c325f56d3884d37c97cf80ccb71addc199214178d6f14ec8f6": "711ae737f2b853f431d7ec3c13e05a44177ca633f694a91f51ae21f944adedb4"
+    },
+    "requirement": {
+      "all_of": [
+        {
+          "ingredient_id": "vegetable_oil"
+        }
+      ]
+    },
+    "basis": "Dataset instruction 1 explicitly says to warm vegetable oil. The ingredient list has no other vegetable-oil entry; only the identity is repaired, not the amount.",
+    "source_url": null,
+    "method": "agent_contextual_correction",
+    "reviewer": "Codex (user-authorized; not independent human review)",
+    "checked_on": "2026-10-29",
+    "quantity_review_pending": false
+  },
+  {
+    "ingredient_line": "4 pieces",
+    "recipe_ids": [
+      "aa17c8cd0f251d701cdd681a17e814f4d79799fbb1f6c2cecb39ab87ac25fdf9"
+    ],
+    "recipe_ingredient_sha256": {
+      "aa17c8cd0f251d701cdd681a17e814f4d79799fbb1f6c2cecb39ab87ac25fdf9": "1a3bf63f3e1c65cde8b780879d57f51a7fa73baf4370de27bde44ee9f5bef1c0"
+    },
+    "requirement": {
+      "all_of": [
+        {
+          "ingredient_id": "siling_pangsigang"
+        }
+      ]
+    },
+    "basis": "Dataset instruction 3 explicitly adds siling pangsigang, absent elsewhere from the ingredient list. The missing name is recovered from the same recipe; four pieces is retained.",
+    "source_url": null,
+    "method": "agent_contextual_correction",
+    "reviewer": "Codex (user-authorized; not independent human review)",
+    "checked_on": "2026-10-29",
+    "quantity_review_pending": false
+  },
+  {
+    "ingredient_line": "5 grams, about 5 cups",
+    "recipe_ids": [
+      "f18d33010067cda8dea7e0648cd85bf313e74d62be0e884b91eb530723c36849"
+    ],
+    "recipe_ingredient_sha256": {
+      "f18d33010067cda8dea7e0648cd85bf313e74d62be0e884b91eb530723c36849": "e122123d87c3d594af4bb97878d4eb2896a024f688ad50a6504c9563d4564daa"
+    },
+    "requirement": {
+      "all_of": [
+        {
+          "ingredient_id": "water"
+        }
+      ]
+    },
+    "basis": "Dataset instruction 2 explicitly adds water and the list otherwise lacks water. The contradictory quantity is retained and flagged, not corrected or used to assess portions.",
+    "source_url": null,
+    "method": "agent_contextual_correction",
+    "reviewer": "Codex (user-authorized; not independent human review)",
+    "checked_on": "2026-10-29",
+    "quantity_review_pending": true
+  }
+]

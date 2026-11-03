@@ -1,0 +1,27 @@
+{
+  "recipes": 2074,
+  "ingredient_line_occurrences": 23135,
+  "occurrence_counts": {
+    "resolved": 23094,
+    "non_ingredient": 41
+  },
+  "semantic_annotation_distinct_lines": 2679,
+  "semantic_annotation_occurrences": 2738,
+  "frozen_inputs_verified": true,
+  "prior_resolutions_preserved": 10019,
+  "baseline_occurrence_counts": {
+    "resolved": 20376,
+    "unresolved": 2738,
+    "non_ingredient": 21
+  },
+  "review_disposition_percent": 100.0,
+  "identity_resolution_percent_of_all_lines": 99.82,
+  "note": "Review disposition includes explicit source issues and non-food fragments; it is not training readiness or independent human validation.",
+  "ready_for_training": false,
+  "model_training_performed": false,
+  "recipes_with_source_issues": 0,
+  "terminology_flag_occurrences": 93,
+  "recipes_with_terminology_flags": 80,
+  "food_identity_resolution_percent": 100.0,
+  "complete_requirement_representations": 2074
+}

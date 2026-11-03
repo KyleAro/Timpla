@@ -1,0 +1,577 @@
+[
+  {
+    "id": "84abd2290d987ab59ad77039aaf8a1ebcaa385fe0057a11179fa59a2c8674e20",
+    "name": "Basic Tortang Talong Recipe",
+    "full_ingredients": [
+      "1 Chinese eggplant",
+      "1 egg",
+      "1/4 teaspoon salt",
+      "1/8 teaspoon ground black pepper",
+      "1/4 cup cooking oil"
+    ],
+    "instructions": [
+      "Heat the eggplant directly over fire in a stovetop until the skin of the eggplant turns brown to black, Rotate after a few minutes until all parts of are almost burnt.",
+      "Let the eggplant cooldown and then peel the skin off using your fingers. The inside part of the eggplant should be steamed just right at this point.",
+      "Arrange the peeled eggplant in a plate and then flatten using a fork. Set aside.",
+      "Beat the egg in a bowl and add salt and pepper. Continue beating until the salt and pepper are well blended.",
+      "Dip the eggplant in the egg mixture.",
+      "Heat oil in a pan. Once the oil gets hot, start to fry one side of the eggplant until it gets medium brown.",
+      "Pour the remaining egg mixture on top of the eggplant. Turn it over and fry the other side until it gets light to medium brown.",
+      "Remove from the pan and arrange in a wide plate. Serve with banana ketchup.",
+      "Share and enjoy!"
+    ],
+    "review_flags": [
+      "provided_names_shorter_than_full_ingredient_list"
+    ],
+    "ingredient_review_status": "pending",
+    "sources": [
+      {
+        "collection": "filipino_recipes_2k",
+        "csv_record_number": 185,
+        "source_url": "",
+        "provided_ingredient_names": [
+          "chinese eggplant",
+          "egg"
+        ],
+        "raw_record": {
+          "recipe_name": "Basic Tortang Talong Recipe",
+          "prep_time": "5 minutes",
+          "cook_time": "6 minutes",
+          "total_time": "11 minutes",
+          "servings": "1.0",
+          "ingredients": "1 Chinese eggplant | 1 egg | 1/4 teaspoon salt | 1/8 teaspoon ground black pepper | 1/4 cup cooking oil",
+          "instructions": "Heat the eggplant directly over fire in a stovetop until the skin of the eggplant turns brown to black, Rotate after a few minutes until all parts of are almost burnt. | Let the eggplant cooldown and then peel the skin off using your fingers. The inside part of the eggplant should be steamed just right at this point. | Arrange the peeled eggplant in a plate and then flatten using a fork. Set aside. | Beat the egg in a bowl and add salt and pepper. Continue beating until the salt and pepper are well blended. | Dip the eggplant in the egg mixture. | Heat oil in a pan. Once the oil gets hot, start to fry one side of the eggplant until it gets medium brown. | Pour the remaining egg mixture on top of the eggplant. Turn it over and fry the other side until it gets light to medium brown. | Remove from the pan and arrange in a wide plate. Serve with banana ketchup. | Share and enjoy!",
+          "ingredient_names": "chinese eggplant | egg"
+        }
+      },
+      {
+        "collection": "filtered_filipino_recipes",
+        "csv_record_number": 80,
+        "source_url": "",
+        "provided_ingredient_names": [
+          "Chinese eggplant",
+          "egg",
+          "salt",
+          "black pepper",
+          "cooking oil"
+        ],
+        "raw_record": {
+          "recipe_name": "Basic Tortang Talong Recipe",
+          "prep_time": "5 minutes",
+          "cook_time": "6 minutes",
+          "total_time": "11 minutes",
+          "servings": "1",
+          "ingredient_names": "Chinese eggplant, egg, salt, black pepper, cooking oil",
+          "full_ingredients": "1 Chinese eggplant\r\n1 egg\r\n1/4 teaspoon salt\r\n1/8 teaspoon ground black pepper\r\n1/4 cup cooking oil",
+          "instructions": "Heat the eggplant directly over fire in a stovetop until the skin of the eggplant turns brown to black, Rotate after a few minutes until all parts of are almost burnt.\r\nLet the eggplant cooldown and then peel the skin off using your fingers. The inside part of the eggplant should be steamed just right at this point.\r\nArrange the peeled eggplant in a plate and then flatten using a fork. Set aside.\r\nBeat the egg in a bowl and add salt and pepper. Continue beating until the salt and pepper are well blended.\r\nDip the eggplant in the egg mixture.\r\nHeat oil in a pan. Once the oil gets hot, start to fry one side of the eggplant until it gets medium brown.\r\nPour the remaining egg mixture on top of the eggplant. Turn it over and fry the other side until it gets light to medium brown.\r\nRemove from the pan and arrange in a wide plate. Serve with banana ketchup.\r\nShare and enjoy!",
+          "tools_used": "['blender', 'pan', 'bowl']",
+          "description": "",
+          "url": "",
+          "time_guidelines": "1",
+          "ingredient_number_guidelines": "1"
+        }
+      }
+    ],
+    "ingredient_annotations": [
+      {
+        "original_line": "1 Chinese eggplant",
+        "canonical_ingredients": [
+          "chinese_eggplant"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "1 egg",
+        "canonical_ingredients": [
+          "egg"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "1/4 teaspoon salt",
+        "canonical_ingredients": [
+          "salt"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "1/8 teaspoon ground black pepper",
+        "canonical_ingredients": [
+          "black_pepper"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "1/4 cup cooking oil",
+        "canonical_ingredients": [
+          "cooking_oil"
+        ],
+        "status": "approved"
+      }
+    ],
+    "approved_ingredient_ids": [
+      "black_pepper",
+      "chinese_eggplant",
+      "cooking_oil",
+      "egg",
+      "salt"
+    ],
+    "unresolved_ingredient_count": 0,
+    "ingredient_mapping_complete": true,
+    "ready_for_training": false,
+    "major": [
+      "chinese_eggplant",
+      "egg"
+    ],
+    "supporting": [
+      "salt",
+      "black_pepper",
+      "cooking_oil"
+    ],
+    "optional": [],
+    "ingredient_role_review": {
+      "status": "approved",
+      "reviewed_by": "Kyle",
+      "reviewed_at": "2026-10-28T16:51:22.665116+00:00",
+      "basis": "Timpla pilot ingredient roles approved by the project owner."
+    },
+    "source_completeness_review_status": "pending"
+  },
+  {
+    "id": "235b588902241cc7f1477406904fc3a8033909e1af5b9327370cf10684af8afc",
+    "name": "Ginisang Repolyo with Chicken",
+    "full_ingredients": [
+      "1/2 head cabbage chopped",
+      "4 ounces boneless chicken breast sliced thinly",
+      "1 piece Knorr Chicken Cube",
+      "1 small red bell pepper sliced into strips",
+      "1 small green bell pepper sliced into strips",
+      "1 1/2 tablespoons oyster sauce",
+      "1 piece onion sliced",
+      "4 cloves garlic crushed",
+      "1 1/4 cups water",
+      "3 tablespoons cooking oil",
+      "Salt and ground black pepper to taste"
+    ],
+    "instructions": [
+      "Heat oil in a cooking pot.",
+      "Saute onion and garlic. Once the onion gets soft, add chicken. Cook until color turns light brown.",
+      "Pour 3/4 cups water. Let boil.",
+      "Add Knorr Chicken Cube. Cover the pot and continue to cook until the water evaporates.",
+      "Put the oyster sauce and cabbage into the cooking pot. Stir. Saute for 1 minute.",
+      "Add 1/2 cup water. Stir and cook for 5 minutes.",
+      "Put the bell peppers into the pot. Season with salt and ground black pepper. Continue to cook for 2 minutes.",
+      "Transfer to a serving plate. Serve.",
+      "Share and enjoy!"
+    ],
+    "review_flags": [
+      "provided_names_shorter_than_full_ingredient_list"
+    ],
+    "ingredient_review_status": "pending",
+    "sources": [
+      {
+        "collection": "filipino_recipes_2k",
+        "csv_record_number": 54,
+        "source_url": "",
+        "provided_ingredient_names": [
+          "cabbage",
+          "chicken",
+          "bell pepper",
+          "oyster sauce"
+        ],
+        "raw_record": {
+          "recipe_name": "Ginisang Repolyo with Chicken",
+          "prep_time": "5 minutes",
+          "cook_time": "25 minutes",
+          "total_time": "30 minutes",
+          "servings": "4.0",
+          "ingredients": "1/2 head cabbage chopped | 4 ounces boneless chicken breast sliced thinly | 1 piece Knorr Chicken Cube | 1 small red bell pepper sliced into strips | 1 small green bell pepper sliced into strips | 1 1/2 tablespoons oyster sauce | 1 piece onion sliced | 4 cloves garlic crushed | 1 1/4 cups water | 3 tablespoons cooking oil | Salt and ground black pepper to taste",
+          "instructions": "Heat oil in a cooking pot. | Saute onion and garlic. Once the onion gets soft, add chicken. Cook until color turns light brown. | Pour 3/4 cups water. Let boil. | Add Knorr Chicken Cube. Cover the pot and continue to cook until the water evaporates. | Put the oyster sauce and cabbage into the cooking pot. Stir. Saute for 1 minute. | Add  1/2 cup water. Stir and cook for 5 minutes. | Put the bell peppers into the pot. Season with salt and ground black pepper. Continue to cook for 2 minutes. | Transfer to a serving plate. Serve. | Share and enjoy!",
+          "ingredient_names": "cabbage | chicken | bell pepper | oyster sauce"
+        }
+      }
+    ],
+    "ingredient_annotations": [
+      {
+        "original_line": "1/2 head cabbage chopped",
+        "canonical_ingredients": [
+          "cabbage"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "4 ounces boneless chicken breast sliced thinly",
+        "canonical_ingredients": [
+          "chicken_breast"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "1 piece Knorr Chicken Cube",
+        "canonical_ingredients": [
+          "knorr_chicken_cube"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "1 small red bell pepper sliced into strips",
+        "canonical_ingredients": [
+          "red_bell_pepper"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "1 small green bell pepper sliced into strips",
+        "canonical_ingredients": [
+          "green_bell_pepper"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "1 1/2 tablespoons oyster sauce",
+        "canonical_ingredients": [
+          "oyster_sauce"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "1 piece onion sliced",
+        "canonical_ingredients": [
+          "onion"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "4 cloves garlic crushed",
+        "canonical_ingredients": [
+          "garlic"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "1 1/4 cups water",
+        "canonical_ingredients": [
+          "water"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "3 tablespoons cooking oil",
+        "canonical_ingredients": [
+          "cooking_oil"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "Salt and ground black pepper to taste",
+        "canonical_ingredients": [
+          "salt",
+          "black_pepper"
+        ],
+        "status": "approved"
+      }
+    ],
+    "approved_ingredient_ids": [
+      "black_pepper",
+      "cabbage",
+      "chicken_breast",
+      "cooking_oil",
+      "garlic",
+      "green_bell_pepper",
+      "knorr_chicken_cube",
+      "onion",
+      "oyster_sauce",
+      "red_bell_pepper",
+      "salt",
+      "water"
+    ],
+    "unresolved_ingredient_count": 0,
+    "ingredient_mapping_complete": true,
+    "ready_for_training": false,
+    "major": [
+      "cabbage",
+      "chicken_breast"
+    ],
+    "supporting": [
+      "onion",
+      "garlic",
+      "red_bell_pepper",
+      "green_bell_pepper",
+      "oyster_sauce",
+      "knorr_chicken_cube",
+      "water",
+      "cooking_oil",
+      "salt",
+      "black_pepper"
+    ],
+    "optional": [],
+    "ingredient_role_review": {
+      "status": "approved",
+      "reviewed_by": "Kyle",
+      "reviewed_at": "2026-10-28T16:51:22.665116+00:00",
+      "basis": "Timpla pilot ingredient roles approved by the project owner."
+    },
+    "source_completeness_review_status": "pending"
+  },
+  {
+    "id": "775e199c8fca1310a5d0189e49c94dc114dab8e901ca4306d6cf36b49ec2616a",
+    "name": "Ginisang Repolyo with Giniling Recipe",
+    "full_ingredients": [
+      "1 small head cabbage chopped",
+      "6 ounces ground pork",
+      "1 small red bell pepper sliced into strips",
+      "1 small green bell pepper sliced into strips",
+      "4 ripe tomatoes cubed",
+      "1 small yellow onion sliced",
+      "4 cloves garlic chopped",
+      "1 cup chicken broth",
+      "2 tablespoons fish sauce",
+      "1/4 teaspoon ground black pepper",
+      "3 tablespoons cooking oil"
+    ],
+    "instructions": [
+      "Heat oil in a cooking pot.",
+      "Saute garlic until it turns light brown.",
+      "Add the onion and tomato. Continue to cook until soft.",
+      "Put the ground pork into the pot. Cook until the color turns light brown.",
+      "Pour chicken broth and let boil. Cover and cook for 15 minutes.",
+      "Add the bell peppers and cabbage. Cover and cook for 5 to 8 minutes.",
+      "Add fish sauce and ground black pepper. Cook for 2 minutes.",
+      "Transfer to serving bowl. Serve.",
+      "Share and enjoy!"
+    ],
+    "review_flags": [
+      "provided_names_shorter_than_full_ingredient_list"
+    ],
+    "ingredient_review_status": "pending",
+    "sources": [
+      {
+        "collection": "filipino_recipes_2k",
+        "csv_record_number": 132,
+        "source_url": "",
+        "provided_ingredient_names": [
+          "cabbage",
+          "pork",
+          "bell pepper",
+          "tomato",
+          "chicken broth"
+        ],
+        "raw_record": {
+          "recipe_name": "Ginisang Repolyo with Giniling Recipe",
+          "prep_time": "5 minutes",
+          "cook_time": "35 minutes",
+          "total_time": "40 minutes",
+          "servings": "4.0",
+          "ingredients": "1 small head cabbage chopped | 6 ounces ground pork | 1 small red bell pepper sliced into strips | 1 small green bell pepper sliced into strips | 4 ripe tomatoes cubed | 1 small yellow onion sliced | 4 cloves garlic chopped | 1 cup chicken broth | 2 tablespoons fish sauce | 1/4 teaspoon ground black pepper | 3 tablespoons cooking oil",
+          "instructions": "Heat oil in a cooking pot. | Saute garlic until it turns light brown. | Add the onion and tomato. Continue to cook until soft. | Put the ground pork into the pot. Cook until the color turns light brown. | Pour chicken broth and let boil. Cover and cook for 15 minutes. | Add the bell peppers and cabbage. Cover and cook for 5 to 8 minutes. | Add fish sauce and ground black pepper. Cook for 2 minutes. | Transfer to serving bowl. Serve. | Share and enjoy!",
+          "ingredient_names": "cabbage | pork | bell pepper | tomato | chicken broth"
+        }
+      }
+    ],
+    "ingredient_annotations": [
+      {
+        "original_line": "1 small head cabbage chopped",
+        "canonical_ingredients": [
+          "cabbage"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "6 ounces ground pork",
+        "canonical_ingredients": [
+          "ground_pork"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "1 small red bell pepper sliced into strips",
+        "canonical_ingredients": [
+          "red_bell_pepper"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "1 small green bell pepper sliced into strips",
+        "canonical_ingredients": [
+          "green_bell_pepper"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "4 ripe tomatoes cubed",
+        "canonical_ingredients": [
+          "tomato"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "1 small yellow onion sliced",
+        "canonical_ingredients": [
+          "yellow_onion"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "4 cloves garlic chopped",
+        "canonical_ingredients": [
+          "garlic"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "1 cup chicken broth",
+        "canonical_ingredients": [
+          "chicken_broth"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "2 tablespoons fish sauce",
+        "canonical_ingredients": [
+          "fish_sauce"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "1/4 teaspoon ground black pepper",
+        "canonical_ingredients": [
+          "black_pepper"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "3 tablespoons cooking oil",
+        "canonical_ingredients": [
+          "cooking_oil"
+        ],
+        "status": "approved"
+      }
+    ],
+    "approved_ingredient_ids": [
+      "black_pepper",
+      "cabbage",
+      "chicken_broth",
+      "cooking_oil",
+      "fish_sauce",
+      "garlic",
+      "green_bell_pepper",
+      "ground_pork",
+      "red_bell_pepper",
+      "tomato",
+      "yellow_onion"
+    ],
+    "unresolved_ingredient_count": 0,
+    "ingredient_mapping_complete": true,
+    "ready_for_training": false,
+    "major": [
+      "cabbage",
+      "ground_pork"
+    ],
+    "supporting": [
+      "red_bell_pepper",
+      "green_bell_pepper",
+      "tomato",
+      "yellow_onion",
+      "garlic",
+      "chicken_broth",
+      "fish_sauce",
+      "black_pepper",
+      "cooking_oil"
+    ],
+    "optional": [],
+    "ingredient_role_review": {
+      "status": "approved",
+      "reviewed_by": "Kyle",
+      "reviewed_at": "2026-10-28T16:51:22.665116+00:00",
+      "basis": "Timpla pilot ingredient roles approved by the project owner."
+    },
+    "source_completeness_review_status": "pending"
+  },
+  {
+    "id": "5ec8181526ce8b5ed2482dca738d4b4ebd2352f54657283b05854f93a6a44d2d",
+    "name": "Halabos na Hipon Recipe",
+    "full_ingredients": [
+      "2 lbs. fresh shrimp with head washed",
+      "1/2 teaspoon sea salt",
+      "3/4 cup lemon soda 7-Up, Sprite, or Sierra Mist"
+    ],
+    "instructions": [
+      "Heat a wide pan or wok.",
+      "Once the pot is hot, put-in the shrimp. Gently toss every few seconds.",
+      "Add the salt. Continue to toss for 1 minute.",
+      "Pour-in the lemon soda; stir and continue to cook until the liquid evaporates.",
+      "Transfer to a serving plate.",
+      "Serve. Share and enjoy!"
+    ],
+    "review_flags": [],
+    "ingredient_review_status": "pending",
+    "sources": [
+      {
+        "collection": "filipino_recipes_2k",
+        "csv_record_number": 329,
+        "source_url": "",
+        "provided_ingredient_names": [
+          "shrimp",
+          "sea salt",
+          "lemon soda 7 up"
+        ],
+        "raw_record": {
+          "recipe_name": "Halabos na Hipon Recipe",
+          "prep_time": "5 minutes",
+          "cook_time": "15 minutes",
+          "total_time": "20 minutes",
+          "servings": "4.0",
+          "ingredients": "2 lbs. fresh shrimp with head washed | 1/2 teaspoon sea salt | 3/4 cup lemon soda 7-Up, Sprite, or Sierra Mist",
+          "instructions": "Heat a wide pan or wok. | Once the pot is hot, put-in the shrimp. Gently toss every few seconds. | Add the salt. Continue to toss for 1 minute. | Pour-in the lemon soda; stir and continue to cook until the liquid evaporates. | Transfer to a serving plate. | Serve. Share and enjoy!",
+          "ingredient_names": "shrimp | sea salt | lemon soda 7 up"
+        }
+      }
+    ],
+    "ingredient_annotations": [
+      {
+        "original_line": "2 lbs. fresh shrimp with head washed",
+        "canonical_ingredients": [
+          "shrimp"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "1/2 teaspoon sea salt",
+        "canonical_ingredients": [
+          "sea_salt"
+        ],
+        "status": "approved"
+      },
+      {
+        "original_line": "3/4 cup lemon soda 7-Up, Sprite, or Sierra Mist",
+        "canonical_ingredients": [
+          "lemon_lime_soda"
+        ],
+        "status": "approved"
+      }
+    ],
+    "approved_ingredient_ids": [
+      "lemon_lime_soda",
+      "sea_salt",
+      "shrimp"
+    ],
+    "unresolved_ingredient_count": 0,
+    "ingredient_mapping_complete": true,
+    "ready_for_training": false,
+    "major": [
+      "shrimp",
+      "lemon_lime_soda"
+    ],
+    "supporting": [
+      "sea_salt"
+    ],
+    "optional": [],
+    "ingredient_role_review": {
+      "status": "approved",
+      "reviewed_by": "Kyle",
+      "reviewed_at": "2026-10-28T16:51:22.665116+00:00",
+      "basis": "Timpla pilot ingredient roles approved by the project owner."
+    },
+    "source_completeness_review_status": "pending"
+  }
+]

@@ -8,7 +8,7 @@ import { scanDate } from './RecentsScreen';
 
 export default function ScanDetailsScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { recentScans, openRecentScan } = useCooking();
+  const { recentScans } = useCooking();
   const { palette } = useTheme();
   const scan = recentScans.find((item) => item.id === id);
   const back = () => router.canGoBack() ? router.back() : router.replace('/recents');
@@ -24,7 +24,6 @@ export default function ScanDetailsScreen() {
         </> : <Text style={[styles.body, { color: palette.muted }]}>No ingredients added</Text>}
         <Text style={[styles.dishLabel, { color: palette.muted }]}>Selected dish</Text>
         <Text style={[styles.dish, { color: palette.text }]}>{scan.selectedDish?.name ?? 'Not selected'}</Text>
-        <Pressable accessibilityRole="button" onPress={() => { openRecentScan(scan.id); router.push('/ingredients'); }} style={[styles.resultsButton, { borderColor: palette.text }]}><Text style={[styles.resultsText, { color: palette.text }]}>View results</Text></Pressable>
       </>}
     </ScrollView>
   </SafeAreaView>;

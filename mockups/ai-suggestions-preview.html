@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Timpla — AI suggestion screen mockup</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #302b29; color: #faf6f0; }
+    .phone { width: min(100vw, 410px); min-height: 100vh; max-height: 920px; overflow: auto; background: #191816; position: relative; box-shadow: 0 20px 70px #0008; }
+    .status { height: 36px; padding: 9px 24px 0; display: flex; justify-content: space-between; font-size: 12px; font-weight: 650; }
+    header { height: 58px; padding: 11px 22px 12px; display: flex; gap: 16px; align-items: center; }
+    .back { font-size: 28px; line-height: 1; font-weight: 300; color: #f4eee7; transform: translateY(-2px); }
+    h1 { font-size: 20px; margin: 0; font-weight: 750; letter-spacing: -.35px; }
+    main { padding: 6px 21px 108px; }
+    .eyebrow { margin: 0 0 5px; color: #aaa19a; font-size: 12px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 27px; }
+    .chip { border: 1px solid #59433a; border-radius: 30px; padding: 7px 11px; font-size: 12px; color: #f4e7dd; background: #342823; white-space: nowrap; }
+    .title-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
+    h2 { margin: 0; font-size: 22px; line-height: 1.18; letter-spacing: -.45px; }
+    .badge { border-radius: 20px; padding: 6px 9px; background: #d94f36; color: white; font-size: 10px; font-weight: 800; letter-spacing: .55px; white-space: nowrap; }
+    .sub { margin: 0 0 15px; color: #aaa19a; font-size: 12px; }
+    .card { border: 1px solid #4b403b; background: #24211e; border-radius: 17px; padding: 14px 14px 13px; margin-bottom: 12px; }
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 9px; }
+    .tag { color: #eba089; font-size: 10px; letter-spacing: .65px; text-transform: uppercase; font-weight: 800; }
+    .arrow { color: #e05a3f; font-size: 23px; line-height: 18px; }
+    h3 { margin: 0 0 8px; font-size: 16px; line-height: 1.25; letter-spacing: -.2px; }
+    .uses-label { margin: 0 0 6px; color: #c9bfb7; font-size: 11px; font-weight: 700; }
+    .uses { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+    .uses span { color: #f2e6de; background: #3b302b; border-radius: 20px; padding: 5px 8px; font-size: 10px; }
+    .desc { margin: 0 0 9px; color: #bcb4ad; font-size: 12px; line-height: 1.45; }
+    .leftover { display: inline-flex; align-items: center; gap: 6px; background: #312a24; border-radius: 20px; padding: 5px 9px; color: #e9b597; font-size: 10px; }
+    .leftover::before { content: "↗"; font-size: 12px; color: #ee845e; }
+    .view { display: inline-flex; float: right; margin-top: 2px; border: 1px solid #645047; border-radius: 18px; padding: 6px 10px; color: #f4a28b; font-size: 10px; font-weight: 700; }
+    .footnote { margin: 15px 1px 0; color: #9e958e; font-size: 11px; line-height: 1.45; }
+    .bottom { position: sticky; bottom: 0; padding: 12px 21px 17px; background: linear-gradient(180deg, #19181600, #191816 20%); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .bottom small { max-width: 225px; color: #a9a099; font-size: 10px; line-height: 1.4; }
+    .rescan { background: #d94f36; border: 0; border-radius: 24px; padding: 11px 17px; color: white; font-size: 12px; font-weight: 700; }
+    @media (min-width: 600px) { .phone { min-height: 844px; border-radius: 26px; margin: 24px 0; } body { padding: 24px; } }
+  </style>
+</head>
+<body>
+  <div class="phone">
+    <div class="status"><span>9:41</span><span>● ● &nbsp; Wi-Fi &nbsp; ▰</span></div>
+    <header><span class="back">‹</span><h1>Your ingredients</h1></header>
+    <main>
+      <p class="eyebrow">What you scanned or added</p>
+      <div class="chips"><span class="chip">Egg</span><span class="chip">Chicken breast</span><span class="chip">Soy sauce</span><span class="chip">Sayote</span></div>
+
+      <div class="title-row"><h2>What you can make</h2><span class="badge">AI IDEAS</span></div>
+      <p class="sub">Flexible meal ideas using what you have</p>
+
+      <article class="card">
+        <div class="card-top"><span class="tag">Timpla idea</span><span class="arrow">›</span></div>
+        <h3>Ginisang Sayote with Chicken</h3>
+        <p class="uses-label">Uses these ingredients</p>
+        <div class="uses"><span>Chicken breast</span><span>Sayote</span><span>Soy sauce</span></div>
+        <p class="desc">Cook chicken and sayote together; season with soy sauce.</p>
+        <span class="leftover">Egg left for another dish</span><span class="view">View steps</span>
+      </article>
+
+      <article class="card">
+        <div class="card-top"><span class="tag">Timpla idea</span><span class="arrow">›</span></div>
+        <h3>Tortang Sayote with Chicken</h3>
+        <p class="uses-label">Uses these ingredients</p>
+        <div class="uses"><span>Egg</span><span>Chicken breast</span><span>Sayote</span></div>
+        <p class="desc">Mix cooked chicken and shredded sayote with egg, then pan-cook.</p>
+        <span class="leftover">Soy sauce left for another dish</span><span class="view">View steps</span>
+      </article>
+
+      <article class="card">
+        <div class="card-top"><span class="tag">Timpla idea</span><span class="arrow">›</span></div>
+        <h3>Chicken &amp; Sayote Soy Skillet</h3>
+        <p class="uses-label">Uses these ingredients</p>
+        <div class="uses"><span>Chicken breast</span><span>Sayote</span><span>Soy sauce</span></div>
+        <p class="desc">A simple one-pan option from your ingredient list.</p>
+        <span class="leftover">Egg left for another dish</span><span class="view">View steps</span>
+      </article>
+
+      <p class="footnote">AI cooking ideas — check the steps and cook meat thoroughly.</p>
+    </main>
+    <div class="bottom"><small>These are flexible ideas, separate from recipes in the collection.</small><button class="rescan">Rescan</button></div>
+  </div>
+</body>
+</html>

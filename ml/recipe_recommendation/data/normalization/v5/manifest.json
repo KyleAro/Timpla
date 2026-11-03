@@ -1,0 +1,17 @@
+{
+  "input_sha256": {
+    "data\\processed\\recipes.cleaned.json": "bfb1725f6b3c0a16f3949cc827cb68a62263cd06d3a24e3cea1b28dc8cda3a78",
+    "data\\processed\\ingredient_mapping.approved.json": "1791363409b24b0eea7c5b8b89c4b2e530aa89a76e6fb4342b537a429f58a9d4",
+    "data\\processed\\ingredient_groups.review.csv": "2fb7f3677a4ee5d13c53c184466fbd461de59749a06a5621da17b2f66bf3e088"
+  },
+  "rule_sha256": {
+    "resolve_ingredient_requirements.py": "5c5b33d1a37f35d9fa76ad007a84f5e81c099550c65d58d7a1c9ef69e9dd9284",
+    "contextual_normalization.py": "98e78136825f0ad23fc5a5dde24942a46a7dda3a84d242d4eccc3b8a80dbfef9",
+    "propose_batch_mappings.py": "aad2248e1ea290c31edd757e336b49027580da2309ece918c294b8ab9bcbb299"
+  },
+  "output_sha256": {
+    "report.json": "1c2d1441c70ded87a1571951d1ee55f2c59d00696d74c5d45c822f9f9b97f319",
+    "requirements.json": "3dd1107dbb8b6ada640b3fa82887638e387ff350530b71f59c8600301ae05125",
+    "unresolved.csv": "6c6c846c32786978825733a8cc26c77e461d2901010d444e749b66fe5772760c"
+  }
+}

@@ -16,6 +16,9 @@ def main(argv=None):
     parser.add_argument('--aliases', type=Path, default=ROOT/'data/aliases.json')
     commands = parser.add_subparsers(dest='command', required=True)
     commands.add_parser('audit', help='Validate proposed records and report pending human reviews')
+    preflight = commands.add_parser('preflight', help='Read-only full-corpus checks; never train a model')
+    preflight.add_argument('--preparation-dir', type=Path, default=ROOT/'data/preparation/v6')
+    preflight.add_argument('--recipe-review-dir', type=Path, help='Optional full-corpus Step 4 proposal snapshot; never implies human approval')
     queue = commands.add_parser('review-queue', help='Create blank human relevance-label CSV; never overwrites')
     queue.add_argument('--queries', type=Path, default=ROOT/'data/queries.review.json')
     queue.add_argument('--output', type=Path, default=ROOT/'data/relevance.review.csv')
@@ -35,6 +38,9 @@ def main(argv=None):
             sub.add_argument('--limit', type=int, default=5)
     args = parser.parse_args(argv)
     try:
+        if args.command == 'preflight':
+            from preflight import print_preflight
+            return print_preflight(args.preparation_dir, args.recipe_review_dir)
         recipes, aliases = read_json(args.recipes), read_json(args.aliases)
         if args.command == 'audit':
             validate_recipes(recipes, aliases, require_review=False)

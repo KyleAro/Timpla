@@ -10,6 +10,8 @@ import { useTheme } from '../theme/ThemeContext';
 import { recipeQuantity } from '../utils/recipeQuantity';
 import * as Linking from 'expo-linking';
 import { useState } from 'react';
+import dataset from '../data/recipeDataset.json';
+import { DatasetRecipeDetail } from './DatasetRecipeDetail';
 
 export default function RecipeDetailScreen() {
   const [sourceError, setSourceError] = useState('');
@@ -19,6 +21,8 @@ export default function RecipeDetailScreen() {
   const { palette } = useTheme();
   const hunt = mode === 'hunt';
   const back = () => router.canGoBack() ? router.back() : router.replace(hunt ? '/reverse-cooking' : '/recipes');
+  const datasetRecipe = dataset.find(item => item.id === id);
+  if (datasetRecipe) return <DatasetRecipeDetail key={datasetRecipe.id} recipe={datasetRecipe} />;
   if (!recipe) return <SafeAreaView style={[styles.screen, { backgroundColor: palette.background }]}><Text style={[styles.title, { color: palette.text }]}>Recipe unavailable</Text><Pressable accessibilityRole="button" accessibilityLabel="Go back" onPress={back} style={styles.back}><AppIcon name="back" /></Pressable></SafeAreaView>;
   const available = hunt ? huntIngredients[recipe.id] ?? [] : [];
   return <SafeAreaView style={[styles.screen, { backgroundColor: palette.background }]}>

@@ -1,5 +1,5 @@
-import { router } from 'expo-router';
-import { useRef, useState } from 'react';
+import { Redirect, router } from 'expo-router';
+import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Image, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { AppIcon } from '../components/AppIcon';
@@ -8,17 +8,45 @@ import { useCooking } from '../state/CookingContext';
 import { useTheme } from '../theme/ThemeContext';
 import { normalizeIngredient } from '../utils/normalizeIngredient';
 import { canonicalIngredientName, ingredientCategories, IngredientCategory, ingredientSuggestions } from '../utils/ingredientSuggestions';
+import { getRecommendations, type Recommendation } from '../services/recommendations';
+import { recipeImage } from '../utils/recipeImages';
+import recipeDataset from '../data/recipeDataset.json';
 
 export default function ResultsScreen() {
   const bottomPadding = useBottomNavPadding();
   const { palette } = useTheme();
-  const { ingredients, setIngredients, photo, detecting, detectionError, detectionComplete, retryDetection, scanIngredients } = useCooking();
+  const { ingredients, exclusions, allergies, diet, setIngredients, photo, detecting, detectionError, retryDetection, scanIngredients } = useCooking();
   const [editing, setEditing] = useState(false);
   const [entry, setEntry] = useState('');
   const [ingredientCategory, setIngredientCategory] = useState<IngredientCategory>('All');
   const [error, setError] = useState('');
   const input = useRef<TextInput>(null);
-  const suggestions = ingredientSuggestions(entry, ingredients, entry.trim() ? 6 : Number.MAX_SAFE_INTEGER, ingredientCategory);
+  const [retry, setRetry] = useState(0);
+  const requestKey = JSON.stringify([ingredients, exclusions, detecting, retry]);
+  const [recipeState, setRecipeState] = useState<{ key: string; items: Recommendation[]; loading: boolean; error: string }>({ key: '', items: [], loading: false, error: '' });
+  const recommendations = recipeState.key === requestKey ? recipeState.items : [];
+  const recipeError = recipeState.key === requestKey ? recipeState.error : '';
+  const recipeLoading = ingredients.length > 0 && !detecting && (recipeState.key !== requestKey || recipeState.loading);
+  const coveredIngredientNames = new Set(recommendations.flatMap(recipe => recipe.used_ingredients ?? []).map(normalizeIngredient));
+  const coveredIngredients = ingredients.filter(name => coveredIngredientNames.has(normalizeIngredient(name)));
+  const uncoveredIngredients = ingredients.filter(name => !coveredIngredientNames.has(normalizeIngredient(name)));
+  const coverageAvailable = recommendations.length > 0 && recommendations.every(recipe => Array.isArray(recipe.used_ingredients));
+  useEffect(() => {
+    const controller = new AbortController();
+    let active = true;
+    if (!photo || !ingredients.length || detecting) return () => controller.abort();
+    const timeout = setTimeout(() => controller.abort(), 30000);
+    const debounce = setTimeout(() => {
+      setRecipeState({ key: requestKey, items: [], loading: true, error: '' });
+      void getRecommendations(ingredients, exclusions, controller.signal).then(items => {
+        if (active) setRecipeState({ key: requestKey, items, loading: false, error: '' });
+      }).catch(reason => {
+        if (active) setRecipeState({ key: requestKey, items: [], loading: false, error: controller.signal.aborted ? 'Recipe request timed out. Retry.' : reason instanceof Error ? reason.message : 'Could not load recipes.' });
+      }).finally(() => { clearTimeout(timeout); });
+    }, 350);
+    return () => { active = false; clearTimeout(debounce); clearTimeout(timeout); controller.abort(); };
+  }, [ingredients, exclusions, detecting, retry, requestKey, photo]);
+  const suggestions = ingredientSuggestions(entry, ingredients, entry.trim() ? Number.MAX_SAFE_INTEGER : 50, ingredientCategory);
   function addIngredient(value = entry) {
     const name = canonicalIngredientName(value);
     if (!name) return;
@@ -27,6 +55,7 @@ export default function ResultsScreen() {
     input.current?.focus();
   }
   function openEditor() { setEditing(true); }
+  if (!photo) return <Redirect href="/scan" />;
   return <SafeAreaView edges={['top', 'left', 'right']} style={[styles.screen, { backgroundColor: palette.background }]}>
     <View style={styles.header}>
       <Pressable accessibilityRole="button" accessibilityLabel="Back to Home" onPress={() => router.replace('/home')} style={styles.iconButton}><AppIcon name="back" size={25} /></Pressable>
@@ -50,9 +79,8 @@ export default function ResultsScreen() {
             </View>
           </View>
         </View>
-        {detecting && <View style={styles.scanStatus} accessibilityLiveRegion="polite"><ActivityIndicator color={palette.accent} /><Text style={{ color: palette.muted, flex: 1 }}>Identifying ingredients... You can add anything missed.</Text></View>}
+        {detecting && <View style={styles.scanStatus} accessibilityLiveRegion="polite"><ActivityIndicator color={palette.accent} /><Text style={{ color: palette.muted, flex: 1 }}>Scanning...</Text></View>}
         {detectionError ? <View style={styles.scanStatus}><Text accessibilityRole="alert" style={{ color: palette.error, flex: 1 }}>{detectionError}</Text><Pressable accessibilityRole="button" onPress={retryDetection} style={styles.iconButton}><Text style={{ color: palette.accent }}>Retry</Text></Pressable></View> : null}
-        {detectionComplete && <View style={styles.scanStatus}><Text style={{ color: palette.muted, flex: 1 }}>{ingredients.length ? 'Review the detected ingredients. Percentages show model confidence, not accuracy.' : 'No ingredients to review. Try another photo or add ingredients manually.'}</Text></View>}
         {photo && <Pressable accessibilityRole="button" accessibilityLabel="Rescan: take or upload another photo" onPress={() => router.replace('/scan')} style={[styles.rescanButton, { borderColor: palette.border }]}><Text style={{ color: palette.accent }}>Rescan</Text></Pressable>}
         {editing && <View style={styles.ingredientEditor}>
           <View accessibilityLabel="Ingredient category filters" style={styles.filterRow}>
@@ -71,9 +99,26 @@ export default function ResultsScreen() {
           {(Boolean(entry.trim()) || ingredientCategory !== 'All') && !suggestions.length && <Text style={{ color: palette.muted, marginTop: 8 }}>No suggestions in this category. Try All, or add a custom ingredient using the check button.</Text>}
         </View>}
         {error ? <Text accessibilityLiveRegion="polite" style={{ color: palette.error, marginBottom: 12 }}>{error}</Text> : null}
+        <Text accessibilityRole="header" style={[styles.sectionTitle, { color: palette.text, marginTop: 12, marginBottom: 12 }]}>Recipes</Text>
+        {(allergies.length > 0 || diet !== 'No preference') && <Text accessibilityRole="alert" style={{ color: palette.error, marginBottom: 12 }}>Saved allergy and diet preferences are not verified for these scan suggestions yet. Review every recipe ingredient before cooking.</Text>}
+        {recipeLoading && <View style={styles.scanStatus}><ActivityIndicator color={palette.accent} /><Text style={{ color: palette.muted }}>Finding recipes...</Text></View>}
+        {recipeError ? <View style={styles.scanStatus}><Text accessibilityRole="alert" style={{ color: palette.error, flex: 1 }}>{recipeError}</Text><Pressable accessibilityRole="button" onPress={() => setRetry(value => value + 1)} style={styles.iconButton}><Text style={{ color: palette.accent }}>Retry</Text></Pressable></View> : null}
+        {!detecting && !recipeLoading && !recipeError && !recommendations.length && <Text style={{ color: palette.muted }}>{!ingredients.length ? 'Add ingredients with +.' : 'No matching recipes yet.'}</Text>}
+        {recommendations.length > 0 && <View style={[styles.coverageCard, { backgroundColor: palette.surface, borderColor: palette.border }]}>
+          <Text style={{ color: palette.text, fontWeight: '700', marginBottom: 5 }}>Scanned ingredient coverage</Text>
+          {coverageAvailable ? <>
+            <Text style={{ color: palette.muted }}>{coveredIngredients.length} of {ingredients.length} scanned ingredients appear across these recipe suggestions.</Text>
+            {uncoveredIngredients.length > 0 && <Text style={{ color: palette.muted, marginTop: 5 }}>Not represented yet: {uncoveredIngredients.join(', ')}</Text>}
+          </> : <Text style={{ color: palette.muted }}>Restart the recipe recommendation service to see which scanned ingredients appear in these suggestions.</Text>}
+        </View>}
+        {recommendations.map(recipe => <View key={recipe.id} style={{ backgroundColor: palette.surface, borderColor: palette.border, borderWidth: 1, borderRadius: 14, padding: 16, marginBottom: 12 }}>
+          <Image source={recipeImage(recipeDataset.find(item => item.id === recipe.id)?.family ?? '')} accessibilityLabel="Recipe illustration" style={{ width: '100%', height: 170, borderRadius: 10, marginBottom: 12, resizeMode: 'cover' }} />
+          <Text style={{ color: palette.text, fontSize: 17, fontWeight: '700', marginBottom: 8 }}>{recipe.name}</Text>
+          <Text style={{ color: palette.muted }}>{recipe.missing_supporting.length ? `Confirm supporting items: ${recipe.missing_supporting.map(x => x.replace(/_/g, ' ')).join(', ')}` : 'No missing supporting ingredients reported.'}</Text>
+        </View>)}
       </ScrollView>
     </KeyboardAvoidingView>
-    <BottomNav active="recipes" />
+    <BottomNav active="scan" />
   </SafeAreaView>;
 }
 const styles = StyleSheet.create({
@@ -86,6 +131,7 @@ const styles = StyleSheet.create({
   suggestionName: { fontSize: 15, flex: 1 },
   rescanButton: { alignSelf: 'flex-end', minHeight: 44, justifyContent: 'center', paddingHorizontal: 16, borderWidth: 1, borderRadius: 12, marginBottom: 14 },
   scanStatus: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 14 },
+  coverageCard: { borderWidth: 1, borderRadius: 14, padding: 14, marginBottom: 14 },
   screen: { flex: 1 }, header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%', maxWidth: 480, alignSelf: 'center', paddingHorizontal: 12, minHeight: 62 },
   iconButton: { width: 44, height: 44, alignItems: 'center', justifyContent: 'center' }, pageTitle: { fontSize: 22, fontWeight: '700' },
   content: { width: '100%', maxWidth: 480, alignSelf: 'center', paddingHorizontal: 20, paddingBottom: 20 }, ingredientSummary: { flexDirection: 'row', gap: 14, marginBottom: 18, marginTop: 8 },

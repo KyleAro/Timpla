@@ -1,0 +1,41 @@
+{
+  "supervision": "synthetic rule-generated relevance; no human labels",
+  "held_out_no_essential_requirement": [
+    {
+      "id": "817ab162bea960c6a38b360c7f26dc9062c83173029112adaf613584af7917e8",
+      "name": "Crispy Adobo Flakes Recipe"
+    },
+    {
+      "id": "c417413b5d4c8ff8d875ed261c8dbf7960118f35c7322bf53f797205c29e8df9",
+      "name": "Ginisang Tuna Rice Recipe"
+    }
+  ],
+  "recipes": 2072,
+  "inventory_groups": {
+    "train": 218,
+    "validation": 42,
+    "test": 40
+  },
+  "features": [
+    "inventory_use",
+    "supporting_coverage",
+    "missing_supporting",
+    "essential_count"
+  ],
+  "seed": 42,
+  "source_sha256": "b5d095880e2b0ed1b9c41de2ec9e2d440d05f80d49963e88ae2e2249637d6c26",
+  "limitations": [
+    "Draft ingredient roles and cuisine scope need review.",
+    "Exact inventories and nonpantry signatures stay together; similar inventories may still cross splits.",
+    "Metrics measure reproduction of automatic rules, not real-user recommendation quality.",
+    "No quantity, dependency, transformation or food-safety validation."
+  ],
+  "validation": {
+    "synthetic_ndcg_at_5": 0.9995914816168272,
+    "rule_teacher_ndcg_at_5": 1.0
+  },
+  "test": {
+    "synthetic_ndcg_at_5": 0.9900864430446609,
+    "rule_teacher_ndcg_at_5": 1.0
+  }
+}

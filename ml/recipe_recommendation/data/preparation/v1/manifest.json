@@ -1,0 +1,21 @@
+{
+  "created_at": "2026-10-28T16:59:36.687264+00:00",
+  "script": "prepare_full_dataset.py",
+  "script_sha256": "d0665e3ac051fce87052c54474fce85985ad1f31f537b8188747e4c9f9df378c",
+  "input_sha256": {
+    "data\\processed\\recipes.cleaned.json": "bfb1725f6b3c0a16f3949cc827cb68a62263cd06d3a24e3cea1b28dc8cda3a78",
+    "data\\processed\\ingredient_mapping.proposed.json": "1bf00fb525d274b94dcd96b5d8d141c041e8a02fb5dfe382641249cedee4b9ec",
+    "data\\processed\\ingredient_mapping.approved.json": "3306a6386ff0a00a02b5d55f2cba19f36d700a74bafda37ca718955cfb2589f3",
+    "data\\processed\\recipes.pilot.roles.json": "e81f4178e60095ce16ad757cbeaec29f128b0d4a4cebfbe4f92f279e25d48aa3",
+    "data\\source_checks.json": "4c9509d8c98bf9463f1752cb13481e92f0f95f61b063aabaacf9fb3190cdd589",
+    "data\\processed\\ingredient_review.batch01.csv": "8732d5b74b00aadc3b04c46d19cc8464bd8d6d4b183d6ecccfbf4c9c86be689d"
+  },
+  "output_sha256": {
+    "ingredient_review.csv": "fdcf4ed1ae11e945cf8a3e07e857e736e1412200debad06b772a494a6b1ce5c7",
+    "readiness.json": "f47da5bfe8306ea1a2c889cc99a8ad8924bd312a7165b1819cec81dc5345e242",
+    "recipes.prepared.json": "e4a1065876a6ed0fc8510576e639d996c2839ecb59d34bf9a0741bf43b37e95b",
+    "recipe_roles.review.csv": "dd0a6325d63cbcb09f71eca42b2749f799df6c1782ce03dcdf2dd32c4a760acf",
+    "source_quality.review.csv": "41f74982e7fd13615c90d74a04cfbb7c28ce39a5b8f55fcfcc635b26257c87f2"
+  },
+  "policy": "No training. No fabricated human reviews or relevance labels. Preserve original data and review provenance."
+}

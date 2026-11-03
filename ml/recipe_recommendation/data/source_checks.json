@@ -1,0 +1,62 @@
+[
+  {
+    "recipe_id": "84abd2290d987ab59ad77039aaf8a1ebcaa385fe0057a11179fa59a2c8674e20",
+    "recipe_name": "Basic Tortang Talong Recipe",
+    "source_url": "https://panlasangpinoy.com/basic-tortang-talong-recipe/",
+    "source_author": "Vanjo Merano",
+    "source_publisher": "Panlasang Pinoy",
+    "checked_at": "2026-10-28T16:54:24.707994+00:00",
+    "checked_by": "Codex (assistant source comparison; not an independent human review)",
+    "status": "ingredient_list_matches_recipe_card",
+    "ingredient_line_count": 5,
+    "ingredient_lines_sha256": "d3c9bc1a571c3bd9e4ecd605ca8def67ee3d5da6865fb2a7de6a5e6d1ab98523",
+    "minutes_from_source": 11,
+    "scope": "Ingredient identities, quantities and list completeness compared with recipe card. Does not approve Timpla ingredient roles, substitutions, licensing or nutrition.",
+    "notes": ""
+  },
+  {
+    "recipe_id": "235b588902241cc7f1477406904fc3a8033909e1af5b9327370cf10684af8afc",
+    "recipe_name": "Ginisang Repolyo with Chicken",
+    "source_url": "https://panlasangpinoy.com/ginisang-repolyo-with-chicken-knr-cc/",
+    "source_author": "Vanjo Merano",
+    "source_publisher": "Panlasang Pinoy",
+    "checked_at": "2026-10-28T16:54:24.708995+00:00",
+    "checked_by": "Codex (assistant source comparison; not an independent human review)",
+    "status": "ingredient_list_matches_recipe_card",
+    "ingredient_line_count": 11,
+    "ingredient_lines_sha256": "393e05eef094964ba29cc3667a44dfc06149ac3b74fe0dac2abbed62781f514f",
+    "minutes_from_source": 30,
+    "scope": "Ingredient identities, quantities and list completeness compared with recipe card. Does not approve Timpla ingredient roles, substitutions, licensing or nutrition.",
+    "notes": ""
+  },
+  {
+    "recipe_id": "775e199c8fca1310a5d0189e49c94dc114dab8e901ca4306d6cf36b49ec2616a",
+    "recipe_name": "Ginisang Repolyo with Giniling Recipe",
+    "source_url": "https://panlasangpinoy.com/ginisang-repolyo-with-giniling/",
+    "source_author": "Vanjo Merano",
+    "source_publisher": "Panlasang Pinoy",
+    "checked_at": "2026-10-28T16:54:24.708995+00:00",
+    "checked_by": "Codex (assistant source comparison; not an independent human review)",
+    "status": "ingredient_list_matches_recipe_card",
+    "ingredient_line_count": 11,
+    "ingredient_lines_sha256": "1a6f485a337327dd2221569620dd45707eb41166b7da96fb22645ea85bb5ca5f",
+    "minutes_from_source": 40,
+    "scope": "Ingredient identities, quantities and list completeness compared with recipe card. Does not approve Timpla ingredient roles, substitutions, licensing or nutrition.",
+    "notes": ""
+  },
+  {
+    "recipe_id": "5ec8181526ce8b5ed2482dca738d4b4ebd2352f54657283b05854f93a6a44d2d",
+    "recipe_name": "Halabos na Hipon Recipe",
+    "source_url": "https://panlasangpinoy.com/halabos-na-hipon-recipe/",
+    "source_author": "Vanjo Merano",
+    "source_publisher": "Panlasang Pinoy",
+    "checked_at": "2026-10-28T16:54:24.708995+00:00",
+    "checked_by": "Codex (assistant source comparison; not an independent human review)",
+    "status": "ingredient_list_matches_recipe_card",
+    "ingredient_line_count": 3,
+    "ingredient_lines_sha256": "1e5601341dde1ddcba0e4c58c3521b72012e81edf7ba7f56afde3dc298255d7c",
+    "minutes_from_source": 20,
+    "scope": "Ingredient identities, quantities and list completeness compared with recipe card. Does not approve Timpla ingredient roles, substitutions, licensing or nutrition.",
+    "notes": "Source also mentions a water-based variation; retained the existing soda version without changing the approved roles."
+  }
+]

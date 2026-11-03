@@ -1,0 +1,11 @@
+{
+  "input_sha256": {
+    "data\\processed\\recipes.cleaned.json": "bfb1725f6b3c0a16f3949cc827cb68a62263cd06d3a24e3cea1b28dc8cda3a78",
+    "data\\processed\\ingredient_mapping.approved.json": "d8dffe553e7f355ea4e8ecb1ee60ef2f3e3d0c36d799afa635b079a588a851e9",
+    "data\\processed\\ingredient_groups.review.csv": "153d518caa2e04ea68d097c712d0b72bd4ad6eba896ac098922fc8a26c270db4"
+  },
+  "rule_sha256": {
+    "resolve_ingredient_requirements.py": "6d88fab26143706f4508285723f96a249916cbe4df25a9ecddcd8cb6e0c9ad7d",
+    "contextual_normalization.py": "843c68289eacc5e05a120bd890aa105f0c86da90eacaa2fd3d6d2f14a1d8ecfb"
+  }
+}

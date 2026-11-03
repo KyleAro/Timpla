@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Timpla recipe phonebook styles</title>
+<style>
+  :root { color-scheme: dark; --bg:#1d1b19; --surface:#272420; --line:#45403a; --text:#fff8ed; --muted:#bcb4aa; --accent:#df4b35; --cream:#fff8ed; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:28px; color:var(--text); background:#111; font:15px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; }
+  h1 { margin:0 auto 8px; max-width:1100px; font-size:25px; }
+  .intro { max-width:1100px; margin:0 auto 24px; color:#bdb7b0; }
+  .options { display:grid; grid-template-columns:repeat(2,minmax(320px,1fr)); gap:28px; max-width:1100px; margin:auto; }
+  .option h2 { font-size:17px; margin:0 0 8px; }
+  .option p { color:#bdb7b0; font-size:13px; margin:0 0 12px; min-height:38px; }
+  .phone { height:790px; max-width:430px; margin:auto; border:1px solid #625b52; border-radius:28px; overflow:hidden; position:relative; background:var(--bg); box-shadow:0 22px 60px #0009; }
+  .status { height:32px; padding:9px 20px 0; font-size:11px; color:#ddd5ca; background:var(--bg); }
+  .sticky { position:sticky; top:0; z-index:3; background:var(--bg); }
+  .top { padding:11px 18px 13px; border-bottom:1px solid var(--line); }
+  .titleline { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+  .titleline strong { font-size:21px; letter-spacing:-.5px; }
+  .count { font-size:11px; color:var(--muted); }
+  .search { height:40px; border:1px solid var(--line); border-radius:12px; padding:0 12px; display:flex; align-items:center; gap:9px; color:var(--muted); background:#282521; font-size:13px; }
+  .search b { color:#d8d0c6; font-size:16px; }
+  .filters { display:flex; gap:7px; overflow:hidden; white-space:nowrap; margin-top:9px; }
+  .chip { border:1px solid var(--line); border-radius:18px; padding:6px 10px; color:#d1c9be; font-size:11px; }
+  .chip.on { color:white; border-color:var(--accent); background:var(--accent); font-weight:700; }
+  .body { height:calc(100% - 154px); overflow:auto; padding:3px 48px 20px 18px; scrollbar-width:none; }
+  .body::-webkit-scrollbar { display:none; }
+  .letterhead { position:sticky; top:0; z-index:1; padding:12px 0 7px; font-size:18px; font-weight:800; color:var(--accent); background:linear-gradient(var(--bg) 75%,transparent); }
+  .dish { min-height:49px; display:flex; align-items:center; justify-content:space-between; gap:8px; border-bottom:1px solid #38342f; font-size:14px; font-weight:600; }
+  .dish span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .arrow { color:#aaa196; font-size:18px; font-weight:400; }
+  .az { position:absolute; z-index:4; right:7px; top:170px; bottom:30px; width:31px; display:flex; flex-direction:column; justify-content:space-around; align-items:center; pointer-events:none; }
+  .az i { font-style:normal; font-size:9px; line-height:1; color:#a9a198; height:12px; }
+  .az i.active { color:var(--accent); font-size:12px; font-weight:900; transform:scale(1.15); }
+  .a .az { top:28%; bottom:28%; }
+  /* Option B */
+  .b .top { padding:13px 18px 15px; background:#24211e; }
+  .b .titleline strong { font-size:23px; }
+  .b .search { background:#302c27; border-radius:22px; height:43px; }
+  .b .filters { margin-top:11px; }
+  .b .chip { border-radius:8px; padding:6px 9px; }
+  .b .chip.on { background:#392923; color:#ff927d; border-color:#6c392f; }
+  .b .body { padding-left:14px; }
+  .b .letterhead { display:flex; align-items:center; gap:10px; padding-top:15px; font-size:14px; letter-spacing:1px; }
+  .b .letterhead:after { content:""; height:1px; flex:1; background:#4b443d; }
+  .b .dish { min-height:54px; padding:0 4px; font-weight:500; }
+  .b .az { right:5px; width:29px; }
+  @media(max-width:760px) { body{padding:18px 12px;} .options{grid-template-columns:1fr;gap:28px;} .option p{min-height:0;} .phone{height:730px;} }
+</style>
+</head>
+<body>
+  <h1>Recipe page · phone-book layout</h1>
+  <div class="intro">Two text-only directions for Timpla. Search and filters stay pinned at the top; the letter index stays on the right while the dish list scrolls.</div>
+  <main class="options">
+    <section class="option">
+      <h2>Style 1 — Clean directory</h2>
+      <p>Compact rows, clear separators, and bold letter breaks. Best for scanning lots of dishes quickly.</p>
+      <div class="phone a">
+        <div class="status">9:41　●●●　Wi-Fi　▰</div>
+        <div class="sticky"><div class="top"><div class="titleline"><strong>Recipes</strong><span class="count">2,074 dishes</span></div><div class="search"><b>⌕</b> Search Filipino dishes</div><div class="filters"><span class="chip on">All</span><span class="chip">Chicken</span><span class="chip">Vegetables</span><span class="chip">Seafood</span></div></div></div>
+        <div class="body">
+          <div class="letterhead">A</div>
+          <div class="dish"><span>Adobong Kangkong</span><b class="arrow">›</b></div><div class="dish"><span>Adobong Manok</span><b class="arrow">›</b></div><div class="dish"><span>Adobong Pusit</span><b class="arrow">›</b></div><div class="dish"><span>Arroz Caldo</span><b class="arrow">›</b></div>
+          <div class="letterhead">B</div><div class="dish"><span>Batchoy</span><b class="arrow">›</b></div><div class="dish"><span>Beef Mechado</span><b class="arrow">›</b></div><div class="dish"><span>Bicol Express</span><b class="arrow">›</b></div>
+          <div class="letterhead">C</div><div class="dish"><span>Chicken Afritada</span><b class="arrow">›</b></div><div class="dish"><span>Chicken Adobo</span><b class="arrow">›</b></div><div class="dish"><span>Crispy Pata</span><b class="arrow">›</b></div>
+          <div class="letterhead">D</div><div class="dish"><span>Dinuguan</span><b class="arrow">›</b></div><div class="dish"><span>Daing na Bangus</span><b class="arrow">›</b></div>
+          <div class="letterhead">F</div><div class="dish"><span>Fish Sinigang</span><b class="arrow">›</b></div><div class="dish"><span>Fried Lumpia</span><b class="arrow">›</b></div>
+          <div style="display:flex;align-items:center;gap:8px;padding:24px 0;color:#bcb4aa;font-size:11px;white-space:nowrap"><span style="height:1px;flex:1;background:#45403a"></span>1,864 dishes found<span style="height:1px;flex:1;background:#45403a"></span></div>
+        </div>
+        <div class="az"><i class="active">A</i><i>B</i><i>C</i><i>D</i><i>E</i><i>F</i><i>G</i><i>H</i><i>I</i><i>J</i><i>K</i><i>L</i><i>M</i><i>N</i><i>O</i><i>P</i><i>Q</i><i>R</i><i>S</i><i>T</i><i>U</i><i>V</i><i>W</i><i>X</i><i>Y</i><i>Z</i></div>
+      </div>
+    </section>
+    <section class="option">
+      <h2>Style 2 — Classic phone book</h2>
+      <p>Stronger section dividers and more breathing room. The list feels like a browsable directory.</p>
+      <div class="phone b">
+        <div class="status">9:41　●●●　Wi-Fi　▰</div>
+        <div class="sticky"><div class="top"><div class="titleline"><strong>Dish index</strong><span class="count">2,074</span></div><div class="search"><b>⌕</b> Find a Filipino dish</div><div class="filters"><span class="chip on">All dishes</span><span class="chip">Chicken</span><span class="chip">Vegetables</span><span class="chip">Seafood</span></div></div></div>
+        <div class="body">
+          <div class="letterhead">A</div>
+          <div class="dish"><span>Adobong Kangkong</span><b class="arrow">›</b></div><div class="dish"><span>Adobong Manok</span><b class="arrow">›</b></div><div class="dish"><span>Adobong Pusit</span><b class="arrow">›</b></div><div class="dish"><span>Arroz Caldo</span><b class="arrow">›</b></div>
+          <div class="letterhead">B</div><div class="dish"><span>Batchoy</span><b class="arrow">›</b></div><div class="dish"><span>Beef Mechado</span><b class="arrow">›</b></div><div class="dish"><span>Bicol Express</span><b class="arrow">›</b></div>
+          <div class="letterhead">C</div><div class="dish"><span>Chicken Afritada</span><b class="arrow">›</b></div><div class="dish"><span>Chicken Adobo</span><b class="arrow">›</b></div><div class="dish"><span>Crispy Pata</span><b class="arrow">›</b></div>
+          <div class="letterhead">D</div><div class="dish"><span>Dinuguan</span><b class="arrow">›</b></div><div class="dish"><span>Daing na Bangus</span><b class="arrow">›</b></div>
+          <div class="letterhead">F</div><div class="dish"><span>Fish Sinigang</span><b class="arrow">›</b></div><div class="dish"><span>Fried Lumpia</span><b class="arrow">›</b></div>
+        </div>
+        <div class="az"><i class="active">A</i><i>B</i><i>C</i><i>D</i><i>E</i><i>F</i><i>G</i><i>H</i><i>I</i><i>J</i><i>K</i><i>L</i><i>M</i><i>N</i><i>O</i><i>P</i><i>Q</i><i>R</i><i>S</i><i>T</i><i>U</i><i>V</i><i>W</i><i>X</i><i>Y</i><i>Z</i></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

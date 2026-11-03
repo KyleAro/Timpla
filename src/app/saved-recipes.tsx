@@ -1,2 +1,2 @@
-import RecipeLibraryScreen from '../screens/RecipeLibraryScreen';
-export default function SavedRecipes() { return <RecipeLibraryScreen saved />; }
+import RecipesScreen from '../screens/RecipesScreen';
+export default function SavedRecipes() { return <RecipesScreen saved />; }

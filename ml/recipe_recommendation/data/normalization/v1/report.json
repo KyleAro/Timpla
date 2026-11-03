@@ -1,0 +1,17 @@
+{
+  "created_at": "2026-10-29T07:52:49.910267+00:00",
+  "recipes": 2074,
+  "total_distinct_lines": 12698,
+  "total_occurrences": 23135,
+  "occurrence_status_counts": {
+    "resolved": 18785,
+    "unresolved": 4341,
+    "non_ingredient": 9
+  },
+  "resolved_ingredient_occurrence_percent": 81.2,
+  "unresolved_recipe_count": 1710,
+  "model_training_performed": false,
+  "ready_for_training": false,
+  "note": "Superseded development trial; use the latest normalization and preparation snapshot. A parser correction was made during this trial.",
+  "superseded_trial": true
+}

@@ -73,3 +73,5 @@ __pycache__/
 /Ultralytics/
 
 /datasets/**/reports/previews/
+ml/recipe_recommendation/data/recipe_review/v1/partition_01.decisions.json
+ml/recipe_recommendation/data/recipe_review/v1/partition_01_work/annotations.json

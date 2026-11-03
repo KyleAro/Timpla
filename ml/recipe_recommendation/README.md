@@ -2,15 +2,56 @@
 
 This standalone Python workspace is separate from the mobile app and the team's YOLO detector. It prepares and trains a LightGBM LambdaRank model to order real Filipino recipes from a confirmed ingredient inventory.
 
+Follow [ROADMAP.md](ROADMAP.md) for the agreed sequence through data preparation,
+training, evaluation, and integration. Ingredient normalization now covers the
+entire corpus. The current checkpoint is Step 4: review recipe completeness,
+Filipino cuisine scope, and essential/supporting/optional ingredient roles.
+
 ## Current state
+
+**Full-corpus preparation (30 October 2026):** All 2,074 cleaned recipes and
+2,129 source-row references remain included. The latest snapshot is
+`data/preparation/v6/`, with structured resolution data from
+`data/normalization/v6/`.
+
+- Flat accepted mappings: 8,646 distinct lines, covering 18,505 / 23,135
+  occurrences (79.99%); 293 recipes have completely mapped flat ingredients.
+- Structured identities, including either/or choices: **23,094 food occurrences
+  resolved out of 23,094 (100%)**. All **2,074 recipes** have complete ingredient
+  representations at this annotation stage; **zero unresolved descriptions remain**.
+- The other 41 source occurrences are headings, equipment, or detached notes.
+  Every one is accounted for; they are not counted as food matches. Food identities
+  represent 99.82% of all 23,135 source occurrences because the denominator includes
+  these non-food entries.
+- Ninety-three terminology flags across 80 recipes remain visible for source and
+  recipe review. Normalization coverage does not mean independent human validation.
+- Only four recipes have owner-reviewed roles and recorded source comparisons.
+  Automated acceptance is identified separately from owner review. The full
+  corpus is **not ready for training**, and no model was trained.
+
+Read [the preparation methodology and progress history](DATA_PREPARATION.md) and
+[the remaining-work roadmap](ROADMAP.md). Earlier snapshots are historical.
+
+Check full-corpus training prerequisites without fitting a model:
+
+```powershell
+.\ml\recipe_recommendation\.venv\Scripts\python.exe ml/recipe_recommendation/cli.py preflight --preparation-dir ml/recipe_recommendation/data/preparation/v6
+```
+
+This reads the full preparation snapshot, verifies its output hashes, reports
+pending annotations and missing supervised training exports, and checks installed
+package versions without importing LightGBM. An exit code of 1 means prerequisites
+are incomplete. It does not use the six-record seed catalog. Passing this check
+would validate input structure, not establish model accuracy or package API
+compatibility. The existing ranker remains untrained on the full recipe corpus.
 
 The additional 141-row filtered Filipino collection is also downloaded. Both source collections total 2,129 raw records and are indexed in `data/external/collections.json`. The overlap audit found 67 additional normalized titles and 56 matching normalized content records; see `data/external/README.md`. Raw rows are preserved separately rather than blindly concatenated.
 
-An existing external Filipino recipe dataset has now been downloaded at `data/external/filipino_recipes_2k/`. The actual Parquet audit found 1,988 records and 1,890 unique recipe names, with full ingredients and instructions. This is the larger candidate collection to prepare next. It has not been assigned major/supporting roles or incorporated into training; publisher license metadata is unspecified. See its README, provenance manifest and audit. The six-record JSON below remains a small reviewed-workflow demonstration, not a substitute for the external collection.
+The external collection at `data/external/filipino_recipes_2k/` contains 1,988 records and 1,890 unique recipe names, with full ingredients and instructions. Both external collections are now included in the cleaned and normalized corpus. Full recipe-role review and ranking supervision remain pending; publisher license metadata is unspecified. See its README, provenance manifest and audit. The six-record JSON below is historical workflow material.
 
 Six source-backed recipe records are proposed for review, along with eight draft ingredient-inventory scenarios. This is a small seed collection, not a comprehensive or validated recipe dataset. No relevance labels have been invented. No production model has been trained and nothing is connected to the app.
 
-Only ingredient facts, source links and proposed categories are stored. Full source instructions and photos are not copied. Source pages retain their rights; the JSON is not a license grant. This metadata alone is not a complete cooking-instruction catalog.
+The six-record seed JSON stores ingredient facts, source links and proposed categories, without full source instructions or photos. The separate downloaded collections and their cleaned derivatives do contain the instructions supplied by those datasets. Source rights are not assumed; normalization is not a license grant. Review provenance and source metadata before relying on or redistributing the collection.
 
 ## Behavior
 
@@ -40,7 +81,12 @@ Audit/preview/review-queue commands and unit tests use Python's standard library
 
 `preview` is clearly labeled an unranked eligibility preview; it never claims to be model inference. It does not populate the app with placeholder recipes.
 
-## Review workflow
+## Historical seed review workflow
+
+The commands in this section default to the six-record seed files. They do not
+train or evaluate the full 2,074-recipe corpus. Full-corpus work follows the
+roadmap and the `v6` review queues; its reviewed training exports do not yet
+exist. Do not run `train` against seed defaults and report it as full-corpus work.
 
 1. Open `data/recipes.review.json`. Visit each source and review the major/supporting/optional assignments and recipe timing. Then fill `reviewed_by` and `reviewed_at` for each approved record. Revise uncertain records instead of guessing. All records must be reviewed before training.
 2. Review `data/queries.review.json`. These are constructed research scenarios, not observed users. Replace/expand them with realistic cases and fill `reviewed_by`. Assign each query to `train`, `validation`, or `test`. Give related inventories the same `leakage_group`, and keep that group in one split. Exact inventories may not cross splits. The catalog itself stays available in all splits; these experiments evaluate ranking new inventory queries, not recognition of unseen recipes.

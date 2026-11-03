@@ -1,0 +1,71 @@
+[
+  {
+    "id": "inventory_001",
+    "available": [
+      "cabbage",
+      "chicken_breast",
+      "ground_pork",
+      "onion",
+      "garlic",
+      "cooking_oil",
+      "salt",
+      "black_pepper"
+    ],
+    "use_first": [
+      "chicken_breast"
+    ],
+    "excluded": [],
+    "max_minutes": null,
+    "preferred_region": "",
+    "split": "",
+    "leakage_group": "cabbage_chicken_pork_001",
+    "origin": "Constructed research scenario; not observed user data",
+    "reviewed_by": ""
+  },
+  {
+    "id": "inventory_002",
+    "available": [
+      "cabbage",
+      "chicken_breast",
+      "ground_pork",
+      "onion",
+      "garlic",
+      "cooking_oil",
+      "salt",
+      "black_pepper"
+    ],
+    "use_first": [
+      "ground_pork"
+    ],
+    "excluded": [],
+    "max_minutes": null,
+    "preferred_region": "",
+    "split": "",
+    "leakage_group": "cabbage_chicken_pork_001",
+    "origin": "Constructed research scenario; not observed user data",
+    "reviewed_by": ""
+  },
+  {
+    "id": "inventory_003",
+    "available": [
+      "chinese_eggplant",
+      "egg",
+      "shrimp",
+      "lemon_lime_soda",
+      "cooking_oil",
+      "salt",
+      "sea_salt",
+      "black_pepper"
+    ],
+    "use_first": [
+      "shrimp"
+    ],
+    "excluded": [],
+    "max_minutes": null,
+    "preferred_region": "",
+    "split": "",
+    "leakage_group": "eggplant_egg_shrimp_001",
+    "origin": "Constructed research scenario; not observed user data",
+    "reviewed_by": ""
+  }
+]

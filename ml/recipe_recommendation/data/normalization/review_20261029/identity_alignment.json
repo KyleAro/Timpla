@@ -1,0 +1,24 @@
+{
+  "basis": "Explicit ID alignment for synonymous names and singular/plural spellings of the same food, part and state. This does not equate cuts, cooking states, or substitute ingredients. Applied only to the new semantic annotations; previous accepted records remain unchanged.",
+  "aliases": {
+    "taro_root": "taro",
+    "cow_liver": "beef_liver",
+    "beef_bones": "beef_bone",
+    "daikon": "daikon_radish",
+    "mustard_leaves": "mustard_leaf",
+    "patola": "sponge_gourd",
+    "sayote": "chayote",
+    "upo": "bottle_gourd",
+    "chili": "chili_unspecified_variety",
+    "cooked_linguine_noodle": "cooked_linguine",
+    "cooked_linguine_noodles": "cooked_linguine",
+    "spring_onion_leaves": "spring_onion_leaf",
+    "sweet_basil_leaves": "sweet_basil_leaf",
+    "thai_basil_leaves": "thai_basil_leaf",
+    "ground_lean_pork": "lean_ground_pork",
+    "warmed_flour_tortilla": "heated_flour_tortilla",
+    "warmed_wheat_flour_tortilla": "heated_flour_tortilla"
+  },
+  "reviewer": "Codex consistency adjudication; not independent human review",
+  "annotation_type": "ai_semantic_annotation"
+}

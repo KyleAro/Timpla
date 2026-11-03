@@ -1,0 +1,43 @@
+{
+  "algorithm": "LightGBM LambdaRank",
+  "scope": "full prepared recipe corpus",
+  "preparation_directory": "ml\\recipe_recommendation\\data\\preparation\\v6",
+  "feature_names": [
+    "inventory_utilization",
+    "major_count",
+    "supporting_available_fraction",
+    "missing_supporting_count",
+    "optional_available_fraction",
+    "use_first_coverage",
+    "minutes",
+    "minutes_unknown",
+    "within_time_preference",
+    "region_match"
+  ],
+  "model_training_performed": false,
+  "recipes": 2074,
+  "pending_recipe_counts": {
+    "recipe_roles_unreviewed": 2070,
+    "source_comparison_pending": 2070,
+    "ingredient_requirement_resolution_incomplete": 0,
+    "ingredient_source_issues": 0
+  },
+  "missing_supervised_training_files": [
+    "recipes.training.json",
+    "aliases.json",
+    "queries.review.json",
+    "relevance.review.csv"
+  ],
+  "installed_training_packages": {
+    "lightgbm": "4.7.0",
+    "numpy": "2.4.6",
+    "scikit-learn": "1.9.1"
+  },
+  "data_and_dependency_checks_passed": false,
+  "blockers": [
+    "recipe_roles_unreviewed: 2070 recipes",
+    "source_comparison_pending: 2070 recipes",
+    "Reviewed supervised training files are not yet prepared"
+  ],
+  "note": "Passing preflight validates inputs, not model quality or package API compatibility. It does not start training."
+}

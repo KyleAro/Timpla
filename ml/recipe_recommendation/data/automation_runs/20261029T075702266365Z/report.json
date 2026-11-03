@@ -1,0 +1,27 @@
+{
+  "created_at": "2026-10-29T07:57:02.266365+00:00",
+  "total_groups": 8606,
+  "total_distinct_lines": 12698,
+  "total_occurrences": 23135,
+  "before_mapping_entries": 8152,
+  "after_mapping_entries": 8152,
+  "new_automated_mapping_entries": 0,
+  "new_accepted_groups": 0,
+  "before_mapped_occurrences": 18005,
+  "after_mapped_occurrences": 18005,
+  "after_combined_coverage_percent": 77.83,
+  "exception_groups": 4399,
+  "human_review_claimed_for_new_records": false,
+  "model_training_performed": false,
+  "scope": "Entire 8,606-group vocabulary; original text and all owner decisions retained.",
+  "passes_including_convergence_check": 1,
+  "rules_converged": true,
+  "rule_sha256": "aad2248e1ea290c31edd757e336b49027580da2309ece918c294b8ab9bcbb299",
+  "additional_rule_sha256": "7bd69e08190469b8f6294def04ed936a2f11450d46c122caf2e9396afd215f7d",
+  "input_sha256": {
+    "ingredient_groups.review.csv": "2ba5a556a9629cf8c8473e19af94ca0095a237c61c46576a580c329a4bb8194a",
+    "ingredient_mapping.approved.json": "4411b5d8cbc57674ef3341cf5795d5e27df0f62737d77143d77805a15db69a84",
+    "ingredient_groups.members.json": "85423935a85d6b125a0a62e87796561a7a4da85d2b238041d1e71b3b1d05eea8",
+    "ingredient_mapping.proposed.json": "1bf00fb525d274b94dcd96b5d8d141c041e8a02fb5dfe382641249cedee4b9ec"
+  }
+}

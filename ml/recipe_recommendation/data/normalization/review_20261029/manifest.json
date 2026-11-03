@@ -1,0 +1,11 @@
+{
+  "unresolved_distinct_lines": 2679,
+  "unresolved_occurrences": 2738,
+  "input_sha256": {
+    "data\\processed\\recipes.cleaned.json": "bfb1725f6b3c0a16f3949cc827cb68a62263cd06d3a24e3cea1b28dc8cda3a78",
+    "data\\processed\\ingredient_mapping.approved.json": "1791363409b24b0eea7c5b8b89c4b2e530aa89a76e6fb4342b537a429f58a9d4",
+    "data\\processed\\ingredient_groups.review.csv": "2fb7f3677a4ee5d13c53c184466fbd461de59749a06a5621da17b2f66bf3e088",
+    "data\\ingredient_context_corrections.json": "983e220dde7ff64a6c6c9a0dcd184ed8a110922f2e64a4066938fdc59c1ffc32"
+  },
+  "model_training_performed": false
+}
