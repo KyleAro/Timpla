@@ -47,9 +47,13 @@ export async function detectIngredients(uri: string, signal: AbortSignal): Promi
     const reason = error instanceof Error ? error.message : 'Unknown upload error';
     throw new Error(`Scanner upload failed: ${reason}. Check your network connection and detector service status.`);
   }
+  const rawResponse = await response.text();
   let payload: { detail?: unknown; ingredients?: unknown };
-  try { payload = await response.json(); }
-  catch { throw new Error('The detector returned an unreadable response. Try again.'); }
+  try { payload = JSON.parse(rawResponse) as { detail?: unknown; ingredients?: unknown }; }
+  catch {
+    const excerpt = rawResponse.replace(/\s+/g, ' ').trim().slice(0, 240) || '(empty response body)';
+    throw new Error(`Scanner returned non-JSON HTTP ${response.status}${response.statusText ? ` ${response.statusText}` : ''}: ${excerpt}`);
+  }
   if (!payload || typeof payload !== 'object') throw new Error('The detector returned an invalid response.');
   if (!response.ok) throw new Error(typeof payload.detail === 'string' ? payload.detail : 'Could not detect ingredients in this photo.');
   if (!Array.isArray(payload.ingredients)) throw new Error('The detector returned an invalid ingredient list.');
