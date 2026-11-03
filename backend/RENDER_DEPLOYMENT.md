@@ -2,6 +2,8 @@
 
 The detector API is a separate Python web service. It serves the existing team YOLOv12n checkpoint together with the fruit and vegetable YOLOv8m checkpoint. It does not train models or run recipe recommendations.
 
+The same Render Blueprint also defines a separate `timpla-recipe-recommendation` service for the experimental LightGBM ranker. It runs only the already-trained inference artifact; its synthetic-label limitations are documented in [the recipe deployment notes](../ml/recipe_recommendation/RENDER_DEPLOYMENT.md).
+
 ## Render configuration
 
 The repository-root `render.yaml` defines the service, health check, dependency installation, and startup command. During the build, `ml/ingredient_detector/prepare_render_models.py` downloads both public checkpoint files and verifies their expected byte size and SHA-256 before the service starts. Model weights stay out of Git.

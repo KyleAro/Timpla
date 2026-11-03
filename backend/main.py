@@ -17,7 +17,6 @@ from ml.ingredient_detector.detector import IngredientDetector, MAX_BYTES, ROOT,
 async def lifespan(app):
     app.state.detector=IngredientDetector()
     app.state.inference_lock=Lock()
-    await run_in_threadpool(app.state.detector.warmup)
     yield
 
 
