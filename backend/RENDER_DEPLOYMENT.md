@@ -8,7 +8,7 @@ The same Render Blueprint also defines a separate `timpla-recipe-recommendation`
 
 The repository-root `render.yaml` defines the service, health check, dependency installation, and startup command. During the build, `ml/ingredient_detector/prepare_render_models.py` downloads both public checkpoint files and verifies their expected byte size and SHA-256 before the service starts. Model weights stay out of Git.
 
-Connect this repository to Render and create the Blueprint from `render.yaml`. Once the deploy is live, verify `https://<service>.onrender.com/health` reports `"ready": true` and lists both model files. The service listens on Render's injected `$PORT` and exposes `POST /detect` for multipart field `image`.
+Connect this repository to Render and create the Blueprint from `render.yaml`. Render probes `/health`; the Expo app reads `/status`, which returns `active` while inference holds the detector lock and `idle` when it is ready for a scan. The service listens on Render's injected `$PORT` and exposes `POST /detect` for multipart field `image`. Inference start, completion, and failure are logged with `DETECTOR_STATUS` markers; routine `/health` access-log lines are filtered to keep the Render log readable.
 
 ## Configure the Expo app
 

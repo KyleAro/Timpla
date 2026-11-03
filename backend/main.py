@@ -13,10 +13,20 @@ from PIL import Image, UnidentifiedImageError
 from ml.ingredient_detector.detector import IngredientDetector, MAX_BYTES, ROOT, FUSION_POLICY
 
 
+class HealthCheckAccessLogFilter(logging.Filter):
+    """Keep Render's frequent health probes from drowning useful logs."""
+    def filter(self, record):
+        return '"GET /health HTTP/' not in record.getMessage()
+
+
+logging.getLogger('uvicorn.access').addFilter(HealthCheckAccessLogFilter())
+
+
 @asynccontextmanager
 async def lifespan(app):
     app.state.detector=IngredientDetector()
     app.state.inference_lock=Lock()
+    logging.getLogger(__name__).info('DETECTOR_STATUS=idle event=ready models=%s', len(app.state.detector.models))
     yield
 
 
@@ -65,10 +75,21 @@ def upload_test():
 @app.get('/health')
 def health():
     detector=app.state.detector
-    return {'ready':True,'model':'YOLOv12n_Best.pt','architecture':'YOLOv12n + YOLOv8m',
+    status='active' if app.state.inference_lock.locked() else 'idle'
+    return {'ready':True,'status':status,'model':'YOLOv12n_Best.pt','architecture':'YOLOv12n + YOLOv8m',
             'classes':len(detector.names),'class_names':detector.names,'models':detector.models,
             'supported_ingredients':len(detector.supported_names),'ingredient_names':detector.supported_names,
             'fusion_policy':FUSION_POLICY}
+
+
+@app.get('/status')
+def status():
+    """Human-readable scanner state for the Expo app and manual checks."""
+    detector=app.state.detector
+    inference_active=app.state.inference_lock.locked()
+    return {'status':'active' if inference_active else 'idle',
+            'ready':True,'inference_active':inference_active,
+            'models':detector.models,'supported_ingredients':len(detector.supported_names)}
 
 
 @app.post('/detect')
@@ -81,7 +102,17 @@ async def detect(image: UploadFile=File(...)):
             raise HTTPException(413,'Photo must be nonempty and 5 MB or smaller.')
         def predict():
             with app.state.inference_lock:
-                return app.state.detector.predict(content)
+                logger=logging.getLogger(__name__)
+                logger.info('DETECTOR_STATUS=active event=inference_started bytes=%s',len(content))
+                try:
+                    result=app.state.detector.predict(content)
+                    logger.info('DETECTOR_STATUS=idle event=inference_complete seconds=%s ingredients=%s',
+                                result.get('inference_seconds'),len(result.get('ingredients',[])))
+                    return result
+                except Exception as error:
+                    logger.error('DETECTOR_STATUS=idle event=inference_failed error_type=%s error=%s',
+                                 type(error).__name__,error)
+                    raise
         try:
             return await run_in_threadpool(predict)
         except (ValueError,OSError,UnidentifiedImageError,Image.DecompressionBombError,Image.DecompressionBombWarning) as error:
