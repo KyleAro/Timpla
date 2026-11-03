@@ -23,6 +23,7 @@ export default function LiveScanScreen() {
   const [error, setError] = useState('');
   const [scannerStatus, setScannerStatus] = useState<'checking' | 'active' | 'idle' | 'stopped'>('checking');
   const [scannerMessage, setScannerMessage] = useState('Waking the scanner on Render…');
+  const scannerHttpStatus = scannerMessage.match(/\bHTTP\s+(\d{3})\b/i)?.[1];
   const healthRequest = useRef<AbortController | null>(null);
   const scannerOnline = scannerStatus === 'idle';
   const scannerLight = scannerStatus === 'idle' ? '#31B765' : scannerStatus === 'stopped' ? '#D94A43' : '#E9B949';
@@ -156,7 +157,7 @@ export default function LiveScanScreen() {
           <View style={styles.topRight}>
             <View accessibilityLiveRegion="polite" style={styles.connectionBadge}>
               {scannerStatus === 'checking' ? <ActivityIndicator size="small" color={scannerLight} /> : <View style={[styles.connectionDot, { backgroundColor: scannerLight }]} />}
-              <Text style={styles.connectionText}>{scannerStatus === 'checking' ? 'Waking scanner' : scannerStatus === 'active' ? 'Scanner active' : scannerStatus === 'idle' ? 'Scanner idle · ready' : 'Scanner stopped'}</Text>
+              <Text style={styles.connectionText}>{scannerStatus === 'checking' ? 'Waking scanner' : scannerStatus === 'active' ? 'Scanner active' : scannerStatus === 'idle' ? 'Scanner idle · ready' : `Scanner stopped${scannerHttpStatus ? ` · HTTP ${scannerHttpStatus}` : ''}`}</Text>
             </View>
             {scannerOnline && <Pressable accessibilityRole="switch" accessibilityLabel="Flashlight" accessibilityState={{ checked: torchOn, disabled: !ready || busy || capturing }} disabled={!ready || busy || capturing} onPress={() => setTorchOn((value) => !value)} style={[styles.close, torchOn && { backgroundColor: palette.accent }, (!ready || busy || capturing) && styles.disabled]}><AppIcon name={torchOn ? 'flash' : 'flash-off'} size={25} color="#FFFFFF" /></Pressable>}
           </View>
@@ -165,7 +166,7 @@ export default function LiveScanScreen() {
           {scannerOnline && permission?.granted && isFocused && !busy ? <View ref={guide} collapsable={false} onLayout={measureGuide} pointerEvents="none" accessible={false} style={styles.scanGuide} /> : null}
           {scannerStatus === 'checking' ? <View style={styles.message}><ActivityIndicator color={scannerLight} size="large" /><Text style={styles.title}>Waking up scanner</Text><Text style={styles.body}>{scannerMessage}</Text></View> : scannerStatus === 'stopped' ? <View style={styles.message}>
             <View style={[styles.connectionDot, { backgroundColor: scannerLight, width: 14, height: 14 }]} />
-            <Text style={styles.title}>Scanner stopped / unavailable</Text>
+            <Text style={styles.title}>{scannerHttpStatus ? `Scanner unavailable · HTTP ${scannerHttpStatus}` : 'Scanner stopped / unavailable'}</Text>
             <Text style={styles.body}>{scannerMessage}</Text>
             <Pressable accessibilityRole="button" onPress={() => void checkScanner()} style={[styles.permissionButton, { backgroundColor: palette.accent }]}><Text style={styles.buttonText}>Wake / retry</Text></Pressable>
           </View> : scannerStatus === 'active' ? <View style={styles.message}><ActivityIndicator color={scannerLight} /><Text style={styles.title}>Scanner active</Text><Text style={styles.body}>{scannerMessage}</Text></View> : !permission ? <View style={styles.message}><ActivityIndicator color="#FFFFFF" /><Text style={styles.body}>Preparing camera…</Text></View> : !permission.granted ? <View style={styles.message}>

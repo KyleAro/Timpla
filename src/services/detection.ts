@@ -58,7 +58,10 @@ export async function detectIngredients(uri: string, signal: AbortSignal): Promi
     throw new Error(`Scanner returned non-JSON HTTP ${response.status}${response.statusText ? ` ${response.statusText}` : ''}: ${excerpt}`);
   }
   if (!payload || typeof payload !== 'object') throw new Error('The detector returned an invalid response.');
-  if (!response.ok) throw new Error(typeof payload.detail === 'string' ? payload.detail : 'Could not detect ingredients in this photo.');
+  if (!response.ok) {
+    const detail = typeof payload.detail === 'string' ? payload.detail : 'Could not detect ingredients in this photo.';
+    throw new Error(`Scanner returned HTTP ${response.status}: ${detail}`);
+  }
   if (!Array.isArray(payload.ingredients)) throw new Error('The detector returned an invalid ingredient list.');
   const found = new Map<string, ScanIngredient>();
   for (const value of payload.ingredients) {
