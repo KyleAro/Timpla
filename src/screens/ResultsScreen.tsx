@@ -15,7 +15,7 @@ import recipeDataset from '../data/recipeDataset.json';
 export default function ResultsScreen() {
   const bottomPadding = useBottomNavPadding();
   const { palette } = useTheme();
-  const { ingredients, exclusions, allergies, diet, setIngredients, photo, detecting, detectionError, retryDetection, scanIngredients } = useCooking();
+  const { ingredients, exclusions, allergies, diet, setIngredients, photo, detecting, detectionComplete, detectionError, retryDetection, scanIngredients } = useCooking();
   const [editing, setEditing] = useState(false);
   const [entry, setEntry] = useState('');
   const [ingredientCategory, setIngredientCategory] = useState<IngredientCategory>('All');
@@ -79,8 +79,9 @@ export default function ResultsScreen() {
             </View>
           </View>
         </View>
-        {detecting && <View style={styles.scanStatus} accessibilityLiveRegion="polite"><ActivityIndicator color={palette.accent} /><Text style={{ color: palette.muted, flex: 1 }}>Scanning...</Text></View>}
+        {detecting && <View style={[styles.scanStatus, { borderColor: palette.border, borderWidth: 1, borderRadius: 14, padding: 14 }]} accessibilityLiveRegion="polite"><ActivityIndicator color={palette.accent} /><View style={{ flex: 1, gap: 3 }}><Text style={{ color: palette.text, fontWeight: '700' }}>Scanning your photo</Text><Text style={{ color: palette.muted }}>The scanner is analyzing the image. This may take a little while while Render wakes up.</Text></View></View>}
         {detectionError ? <View style={styles.scanStatus}><Text accessibilityRole="alert" style={{ color: palette.error, flex: 1 }}>{detectionError}</Text><Pressable accessibilityRole="button" onPress={retryDetection} style={styles.iconButton}><Text style={{ color: palette.accent }}>Retry</Text></Pressable></View> : null}
+        {detectionComplete && !detectionError && <View style={[styles.scanStatus, { borderColor: palette.oliveText, borderWidth: 1, borderRadius: 14, padding: 14 }]} accessibilityLiveRegion="polite"><View style={[styles.resultDot, { backgroundColor: palette.oliveText }]} /><View style={{ flex: 1, gap: 3 }}><Text style={{ color: palette.text, fontWeight: '700' }}>Scan results ready</Text><Text style={{ color: palette.muted }}>{scanIngredients.length ? `${scanIngredients.length} ingredient${scanIngredients.length === 1 ? '' : 's'} detected. Review them below.` : 'No ingredients detected. Add ingredients manually or try another photo.'}</Text></View></View>}
         {photo && <Pressable accessibilityRole="button" accessibilityLabel="Rescan: take or upload another photo" onPress={() => router.replace('/scan')} style={[styles.rescanButton, { borderColor: palette.border }]}><Text style={{ color: palette.accent }}>Rescan</Text></Pressable>}
         {editing && <View style={styles.ingredientEditor}>
           <View accessibilityLabel="Ingredient category filters" style={styles.filterRow}>
@@ -122,6 +123,7 @@ export default function ResultsScreen() {
   </SafeAreaView>;
 }
 const styles = StyleSheet.create({
+  resultDot: { width: 10, height: 10, borderRadius: 5 },
   filterRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginBottom: 10 },
   filterChip: { minHeight: 44, paddingHorizontal: 12, justifyContent: 'center', borderRadius: 22, borderWidth: 1 },
   suggestionList: { maxHeight: 240 },

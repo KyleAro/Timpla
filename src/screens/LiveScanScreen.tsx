@@ -11,6 +11,7 @@ import { useIngredientPhoto } from '../hooks/useIngredientPhoto';
 import { AppIcon } from '../components/AppIcon';
 import { useCooking } from '../state/CookingContext';
 import { useTheme } from '../theme/ThemeContext';
+import { checkDetectorHealth } from '../services/detection';
 
 export default function LiveScanScreen() {
   const { palette } = useTheme();
@@ -20,12 +21,17 @@ export default function LiveScanScreen() {
   const isFocused = useIsFocused();
   const { pick, busy, error: uploadError } = useIngredientPhoto();
   const [error, setError] = useState('');
+  const [scannerStatus, setScannerStatus] = useState<'checking' | 'online' | 'offline'>('checking');
+  const [scannerMessage, setScannerMessage] = useState('Waking the scanner on Render…');
+  const healthRequest = useRef<AbortController | null>(null);
+  const scannerOnline = scannerStatus === 'online';
+  const scannerLight = scannerStatus === 'online' ? '#31B765' : scannerStatus === 'checking' ? '#E9B949' : '#D94A43';
   const askedPermission = useRef(false);
   useEffect(() => {
-    if (!isFocused || !permission || permission.granted || permission.status !== 'undetermined' || askedPermission.current) return;
+    if (!isFocused || !scannerOnline || !permission || permission.granted || permission.status !== 'undetermined' || askedPermission.current) return;
     askedPermission.current = true;
     void requestPermission().catch(() => setError('Could not request camera access. Try again or upload a photo.'));
-  }, [isFocused, permission, requestPermission]);
+  }, [isFocused, permission, requestPermission, scannerOnline]);
   const camera = useRef<CameraView>(null);
   const preview = useRef<View>(null);
   const guide = useRef<View>(null);
@@ -43,6 +49,45 @@ export default function LiveScanScreen() {
   const [pendingPhoto, setPendingPhoto] = useState<string | null>(null);
   const captureLock = useRef(false);
   const confirmLock = useRef(false);
+
+  const checkScanner = useCallback(async () => {
+    healthRequest.current?.abort();
+    const controller = new AbortController();
+    healthRequest.current = controller;
+    setScannerStatus('checking');
+    setScannerMessage('Waking the scanner on Render… this can take up to a minute.');
+    const timeout = setTimeout(() => controller.abort(), 90_000);
+    try {
+      await checkDetectorHealth(controller.signal);
+      if (healthRequest.current !== controller) return;
+      setScannerStatus('online');
+      setScannerMessage('Scanner available. Camera and upload are ready.');
+    } catch (reason) {
+      if (healthRequest.current !== controller) return;
+      setScannerStatus('offline');
+      setScannerMessage(reason instanceof Error && reason.name !== 'AbortError'
+        ? `Scanner unavailable: ${reason.message}`
+        : 'No response from the scanner. Check the service and retry.');
+    } finally {
+      clearTimeout(timeout);
+      if (healthRequest.current === controller) healthRequest.current = null;
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!isFocused || pendingPhoto) return;
+    const startupCheck = setTimeout(() => { void checkScanner(); }, 0);
+    const keepAlive = setInterval(() => {
+      if (!healthRequest.current) void checkScanner();
+    }, 60_000);
+    return () => {
+      clearTimeout(startupCheck);
+      clearInterval(keepAlive);
+      const activeRequest = healthRequest.current;
+      healthRequest.current = null;
+      activeRequest?.abort();
+    };
+  }, [checkScanner, isFocused, pendingPhoto]);
 
   const assignCamera = useCallback((instance: CameraView | null) => {
     camera.current = instance;
@@ -99,16 +144,27 @@ export default function LiveScanScreen() {
 
   return (
     <View ref={preview} collapsable={false} onLayout={measureGuide} style={styles.screen}>
-      {permission?.granted && isFocused && !busy ? <CameraView ref={assignCamera} style={StyleSheet.absoluteFill} facing="back" enableTorch={torchOn} onCameraReady={() => { setReady(true); setError(''); }} onMountError={() => { setReady(false); setError('Could not open the camera. Try uploading a photo.'); }} /> : null}
-      {permission?.granted && isFocused && !busy && captureFrame ? <Svg pointerEvents="none" accessible={false} width="100%" height="100%" style={StyleSheet.absoluteFill}><Path d={captureMask(captureFrame)} fill="#000000" fillOpacity={0.65} fillRule="evenodd" /></Svg> : null}
+      {scannerOnline && permission?.granted && isFocused && !busy ? <CameraView ref={assignCamera} style={StyleSheet.absoluteFill} facing="back" enableTorch={torchOn} onCameraReady={() => { setReady(true); setError(''); }} onMountError={() => { setReady(false); setError('Could not open the camera. Try again or upload a photo.'); }} /> : null}
+      {scannerOnline && permission?.granted && isFocused && !busy && captureFrame ? <Svg pointerEvents="none" accessible={false} width="100%" height="100%" style={StyleSheet.absoluteFill}><Path d={captureMask(captureFrame)} fill="#000000" fillOpacity={0.65} fillRule="evenodd" /></Svg> : null}
       <SafeAreaView pointerEvents="box-none" style={styles.overlay}>
         <View pointerEvents="box-none" style={styles.topControls}>
           <Pressable accessibilityRole="button" accessibilityLabel="Close camera" disabled={capturing} onPress={() => router.replace('/home')} style={styles.close}><AppIcon name="back" size={26} color="#FFFFFF" /></Pressable>
-          <Pressable accessibilityRole="switch" accessibilityLabel="Flashlight" accessibilityState={{ checked: torchOn, disabled: !ready || busy || capturing }} disabled={!ready || busy || capturing} onPress={() => setTorchOn((value) => !value)} style={[styles.close, torchOn && { backgroundColor: palette.accent }, (!ready || busy || capturing) && styles.disabled]}><AppIcon name={torchOn ? 'flash' : 'flash-off'} size={25} color="#FFFFFF" /></Pressable>
+          <View style={styles.topRight}>
+            <View accessibilityLiveRegion="polite" style={styles.connectionBadge}>
+              {scannerStatus === 'checking' ? <ActivityIndicator size="small" color={scannerLight} /> : <View style={[styles.connectionDot, { backgroundColor: scannerLight }]} />}
+              <Text style={styles.connectionText}>{scannerStatus === 'checking' ? 'Waking scanner' : scannerStatus === 'online' ? 'Scanner available' : 'Scanner unavailable'}</Text>
+            </View>
+            {scannerOnline && <Pressable accessibilityRole="switch" accessibilityLabel="Flashlight" accessibilityState={{ checked: torchOn, disabled: !ready || busy || capturing }} disabled={!ready || busy || capturing} onPress={() => setTorchOn((value) => !value)} style={[styles.close, torchOn && { backgroundColor: palette.accent }, (!ready || busy || capturing) && styles.disabled]}><AppIcon name={torchOn ? 'flash' : 'flash-off'} size={25} color="#FFFFFF" /></Pressable>}
+          </View>
         </View>
         <View pointerEvents="box-none" style={styles.middle}>
-          {permission?.granted && isFocused && !busy ? <View ref={guide} collapsable={false} onLayout={measureGuide} pointerEvents="none" accessible={false} style={styles.scanGuide} /> : null}
-          {!permission ? <View style={styles.message}><ActivityIndicator color="#FFFFFF" /><Text style={styles.body}>Preparing camera…</Text></View> : !permission.granted ? <View style={styles.message}>
+          {scannerOnline && permission?.granted && isFocused && !busy ? <View ref={guide} collapsable={false} onLayout={measureGuide} pointerEvents="none" accessible={false} style={styles.scanGuide} /> : null}
+          {scannerStatus === 'checking' ? <View style={styles.message}><ActivityIndicator color={scannerLight} size="large" /><Text style={styles.title}>Waking up scanner</Text><Text style={styles.body}>{scannerMessage}</Text></View> : scannerStatus === 'offline' ? <View style={styles.message}>
+            <View style={[styles.connectionDot, { backgroundColor: scannerLight, width: 14, height: 14 }]} />
+            <Text style={styles.title}>Scanner unavailable</Text>
+            <Text style={styles.body}>{scannerMessage}</Text>
+            <Pressable accessibilityRole="button" onPress={() => void checkScanner()} style={[styles.permissionButton, { backgroundColor: palette.accent }]}><Text style={styles.buttonText}>Wake / retry</Text></Pressable>
+          </View> : !permission ? <View style={styles.message}><ActivityIndicator color="#FFFFFF" /><Text style={styles.body}>Preparing camera…</Text></View> : !permission.granted ? <View style={styles.message}>
             <AppIcon name="camera" size={48} color="#FFFFFF" />
             <Text style={styles.title}>Camera access needed</Text>
             <Text style={styles.body}>{permission.canAskAgain ? 'Allow camera access to capture ingredients.' : 'Enable camera access in your phone settings, or upload a photo.'}</Text>
@@ -117,11 +173,12 @@ export default function LiveScanScreen() {
         </View>
         <View style={styles.bottomControls}>
           {error || uploadError ? <Text accessibilityLiveRegion="polite" style={styles.error}>{error || uploadError}</Text> : null}
+          <Text style={styles.cameraHint}>{scannerOnline ? 'Frame your ingredients inside the guide' : 'Camera and upload unlock when the scanner is available'}</Text>
           <View style={styles.actions}>
-            <Pressable accessibilityRole="button" accessibilityLabel="Upload ingredient photo" disabled={busy || capturing} onPress={() => void pick('library')} style={[styles.upload, (busy || capturing) && styles.disabled]}>
+            <Pressable accessibilityRole="button" accessibilityLabel="Upload ingredient photo" disabled={!scannerOnline || busy || capturing} onPress={() => void pick('library')} style={[styles.upload, (!scannerOnline || busy || capturing) && styles.disabled]}>
               {busy ? <ActivityIndicator color="#FFFFFF" /> : <AppIcon name="upload" size={27} color="#FFFFFF" />}<Text style={styles.uploadText}>Upload</Text>
             </Pressable>
-            <Pressable accessibilityRole="button" accessibilityLabel="Capture ingredients photo" disabled={!ready || !captureFrame || capturing || busy || !permission?.granted} onPress={() => void capture()} style={[styles.shutter, (!ready || !captureFrame || capturing || busy || !permission?.granted) && styles.disabled]}>
+            <Pressable accessibilityRole="button" accessibilityLabel="Capture ingredients photo" disabled={!scannerOnline || !ready || !captureFrame || capturing || busy || !permission?.granted} onPress={() => void capture()} style={[styles.shutter, (!scannerOnline || !ready || !captureFrame || capturing || busy || !permission?.granted) && styles.disabled]}>
               {capturing ? <ActivityIndicator color="#FFFFFF" /> : <View style={styles.shutterInner} />}
             </Pressable>
             <View style={styles.spacer} />
@@ -139,6 +196,10 @@ const styles = StyleSheet.create({
   reviewButton: { width: 64, height: 64, borderRadius: 32, backgroundColor: '#333333', alignItems: 'center', justifyContent: 'center' },
   overlay: { position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, justifyContent: 'space-between' },
   topControls: { paddingHorizontal: 10, paddingTop: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  topRight: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  connectionBadge: { minHeight: 42, flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 12, borderRadius: 22, backgroundColor: '#00000099' },
+  connectionDot: { width: 10, height: 10, borderRadius: 5 },
+  connectionText: { color: '#FFFFFF', fontSize: 12, fontWeight: '700' },
   close: { width: 48, height: 48, borderRadius: 24, backgroundColor: '#00000080', alignItems: 'center', justifyContent: 'center' },
   middle: { flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 30 },
   scanGuide: { position: 'absolute', top: '3%', bottom: '12%', left: '8%', right: '8%', borderWidth: 1.5, borderColor: '#FFFFFF', borderRadius: 20 },
@@ -148,6 +209,7 @@ const styles = StyleSheet.create({
   permissionButton: { minHeight: 50, paddingHorizontal: 24, borderRadius: 25, justifyContent: 'center' },
   buttonText: { color: '#FFFFFF', fontWeight: '700', fontSize: 16 },
   bottomControls: { backgroundColor: 'transparent', paddingTop: 18, paddingBottom: 22, paddingHorizontal: 24 },
+  cameraHint: { alignSelf: 'center', color: '#FFFFFF', backgroundColor: '#00000080', fontSize: 13, paddingHorizontal: 12, paddingVertical: 7, borderRadius: 14, overflow: 'hidden', marginBottom: 12 },
   actions: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', maxWidth: 440, width: '100%', alignSelf: 'center' },
   upload: { width: 76, minHeight: 64, alignItems: 'center', justifyContent: 'center', gap: 6 },
   uploadText: { color: '#FFFFFF', fontSize: 12, fontWeight: '600' },

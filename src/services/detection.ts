@@ -13,6 +13,15 @@ export function getDetectorBaseUrl() {
   return baseUrl;
 }
 
+export async function checkDetectorHealth(signal: AbortSignal): Promise<void> {
+  const baseUrl = getDetectorBaseUrl();
+  if (!baseUrl) throw new Error('Scanner address is not configured.');
+  const response = await fetch(`${baseUrl}/health`, { signal });
+  if (!response.ok) throw new Error(`Scanner returned HTTP ${response.status}.`);
+  const payload = await response.json() as { ready?: unknown };
+  if (payload?.ready !== true) throw new Error('Scanner is responding but not ready yet.');
+}
+
 export async function detectIngredients(uri: string, signal: AbortSignal): Promise<ScanIngredient[]> {
   const baseUrl = getDetectorBaseUrl();
   if (!baseUrl) throw new Error('Ingredient detector is not configured. Add ingredients manually or set the detector address.');
