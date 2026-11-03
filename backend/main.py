@@ -87,7 +87,13 @@ async def detect(image: UploadFile=File(...)):
         except (ValueError,OSError,UnidentifiedImageError,Image.DecompressionBombError,Image.DecompressionBombWarning) as error:
             raise HTTPException(422,'Choose a valid supported still image under 40 megapixels.') from error
         except Exception as error:
-            logging.getLogger(__name__).exception('Ingredient detection failed')
-            raise HTTPException(500,'The detector could not process this photo. Try another photo or retry.') from error
+            logging.getLogger(__name__).exception(
+                'Ingredient detection failed (%s): %s', type(error).__name__, error
+            )
+            diagnostic = f'{type(error).__name__}: {error}'[:400]
+            raise HTTPException(
+                500,
+                f'Detector inference failed: {diagnostic}. Check the Render service logs for the full traceback.',
+            ) from error
     finally:
         await image.close()
