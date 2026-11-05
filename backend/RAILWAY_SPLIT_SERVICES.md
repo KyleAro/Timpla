@@ -44,9 +44,9 @@ Open `http://localhost:8007/health` to confirm both model services are ready, th
 
 ## Railway setup steps
 
-The project has an Expo `package.json` at its root, so `railpack.json` pins Railpack to Python 3.11 for these backend services. Keep the service root directory at the repository root so each service can access the shared `backend/`, `ml/`, and `models/` files. Use custom build and start commands for each Railway service.
+The project has an Expo `package.json` and an existing Node service at its root, so leave root language detection alone. For each of the three Python detector services, set the service variable `RAILPACK_CONFIG_FILE=railway/railpack-python.json`; this selects Python 3.11 only for those services. Keep their root directory at the repository root so they can access the shared `backend/`, `ml/`, and `models/` files. Use custom build and start commands for each Railway service.
 
-1. Commit and push `railpack.json`, `backend/split_model_service.py`, `backend/detector_gateway.py`, `backend/requirements-model-service.txt`, `backend/requirements-gateway.txt`, `ml/ingredient_detector/prepare_split_models.py`, `backend/RAILWAY_SPLIT_SERVICES.md`, and `models/ingredient_detector/YOLOv8n_merged_best.manifest.json`. Do not use `git add .`: the workspace also contains local training and output files. Do not commit model `.pt` weights.
+1. Commit and push `railway/railpack-python.json`, `backend/split_model_service.py`, `backend/detector_gateway.py`, `backend/requirements-model-service.txt`, `backend/requirements-gateway.txt`, `ml/ingredient_detector/prepare_split_models.py`, `backend/RAILWAY_SPLIT_SERVICES.md`, and `models/ingredient_detector/YOLOv8n_merged_best.manifest.json`. Do not use `git add .`: the workspace also contains local training and output files. Do not commit model `.pt` weights.
 2. Create one Railway project from the TIMPLA GitHub repository. Keep the repository root as the root directory.
 3. Create the **general model** service from the same repository. Set its build command to:
 
@@ -60,8 +60,8 @@ The project has an Expo `package.json` at its root, so `railpack.json` pins Rail
    uvicorn backend.split_model_service:app --host 0.0.0.0 --port $PORT
    ```
 
-   Add variable `MODEL_ROLE=general` and set its health check path to `/health`.
-4. Create the **produce model** service from the same repository. Use the same build command but change the last argument to `--role produce`. Use the same start command, set `MODEL_ROLE=produce`, and set health check path to `/health`.
+   Add variables `MODEL_ROLE=general` and `RAILPACK_CONFIG_FILE=railway/railpack-python.json`; set its health check path to `/health`.
+4. Create the **produce model** service from the same repository. Use the same build command but change the last argument to `--role produce`. Use the same start command, set `MODEL_ROLE=produce` and `RAILPACK_CONFIG_FILE=railway/railpack-python.json`, and set health check path to `/health`.
 5. Keep both model services on Railway's private network. Do not generate public domains for them.
 6. Wait until both model services report healthy in Railway before creating the coordinator.
 7. Create the **coordinator** service from the same repository. Set its build command to:
@@ -76,7 +76,7 @@ The project has an Expo `package.json` at its root, so `railpack.json` pins Rail
    uvicorn backend.detector_gateway:app --host 0.0.0.0 --port $PORT
    ```
 
-   Set health check path to `/health`. Add these service-reference variables, changing the service names only if you named the two model services differently:
+   Set health check path to `/health`. Add `RAILPACK_CONFIG_FILE=railway/railpack-python.json` and these service-reference variables, changing the service names only if you named the two model services differently:
 
    ```text
    GENERAL_MODEL_URL=http://${{timpla-general-model.RAILWAY_PRIVATE_DOMAIN}}:${{timpla-general-model.PORT}}
