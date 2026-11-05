@@ -1,0 +1,14 @@
+{
+  "source_repository": "https://github.com/rainbowmole/timpla",
+  "release_url": "https://github.com/rainbowmole/timpla/releases/tag/YOLOv12n",
+  "download_url": "https://github.com/rainbowmole/timpla/releases/download/YOLOv12n/YOLOv8n_merged_best.pt",
+  "role": "Single-model checkpoint currently connected to the TIMPLA scanner",
+  "file": "YOLOv8n_merged_best.pt",
+  "bytes": 6552234,
+  "sha256": "93b271aa58c8841167fe1c244dd4c3f2d40babfe9164f740a1383d1ecb5e23d0",
+  "verified_class_count": 68,
+  "inference_image_size": 640,
+  "confidence_threshold": 0.1,
+  "iou_threshold": 0.5,
+  "notes": "This is the released merged checkpoint used by the comparison page. Its identity as the classmate's exact Train07 YOLOv8 merged v2 file has not been verified."
+}
