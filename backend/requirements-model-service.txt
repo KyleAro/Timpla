@@ -4,7 +4,7 @@ torchvision==0.20.1+cpu
 fastapi==0.121.2
 uvicorn==0.38.0
 python-multipart==0.0.20
-ultralytics==8.4.182
+ultralytics-opencv-headless==8.4.182
 Pillow==11.2.1
 pillow-heif==1.1.1
 pillow-avif-plugin==1.5.5
