@@ -6,6 +6,7 @@ from pathlib import Path
 import random
 import re
 from functools import lru_cache
+from preference_filters import eligible, contains_excluded
 
 ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT/'data/recipe_review/v1/recipes.draft.json'
@@ -184,7 +185,7 @@ def load_model(model_dir):
             lgb.Booster(model_file=str(model_dir/'ranker.txt')))
 
 
-def recommend(model_dir, ingredients, limit=5, excluded=()):
+def recommend(model_dir, ingredients, limit=5, excluded=(), allergies=(), diet='No preference'):
     display_by_id={}
     for value in ingredients:
         if isinstance(value,str) and value.strip():
@@ -194,7 +195,8 @@ def recommend(model_dir, ingredients, limit=5, excluded=()):
         return []
     excluded_ids = {norm(value) for value in excluded if isinstance(value, str) and value.strip()}
     recipes,booster=load_model(model_dir)
-    selected=[r for r in recipes if not (set(r['all_food']) & excluded_ids) and matches(r['essential'],available)]
+    selected=[r for r in recipes if not contains_excluded(r['all_food'], excluded_ids)
+              and eligible(r, allergies, diet) and matches(r['essential'],available)]
     if not selected:
         return []
     scores=booster.predict([vector(r,available) for r in selected])
@@ -209,7 +211,11 @@ def recommend(model_dir, ingredients, limit=5, excluded=()):
             continue
         seen.add(family)
         missing=sorted(set(r['supporting'])-available)
+        total = len(set(r['all_food']))
+        matched = len(available & set(r['all_food']))
         result.append({'id':r['id'],'name':r['name'],'ranking_score':float(score),
+                       'ingredient_match': {'matched': matched, 'total': total,
+                                            'percentage': int(100 * matched / total + 0.5) if total else 0},
                        'used_ingredients':[display_by_id.get(x,x.replace('_',' ')) for x in sorted(available & set(r['all_food']))],
                        'missing_supporting':missing,'supporting_confirmation_needed':bool(missing),
                        'quantity_and_preparation_check_needed':True,'source_urls':r['source_urls'],

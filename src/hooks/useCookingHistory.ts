@@ -35,5 +35,17 @@ export function useCookingHistory(accountId: string) {
     writes.current = operation;
     await operation;
   }
-  return { cookingHistory, recordCookedRecipe, historyError };
+  async function deleteCookedRecipe(id: string) {
+    if (!ready.current) throw new Error('Cooking history is still loading. Please try again.');
+    const operation = writes.current.catch(() => {}).then(async () => {
+      const rows = current.current.filter(row => row.id !== id);
+      await AsyncStorage.setItem(key, JSON.stringify(rows));
+      current.current = rows;
+      setHistory(rows);
+      setError('');
+    });
+    writes.current = operation;
+    await operation;
+  }
+  return { cookingHistory, recordCookedRecipe, deleteCookedRecipe, historyError };
 }
