@@ -6,7 +6,6 @@ export type Recommendation = {
   ranking_score: number;
   used_ingredients?: string[];
   ingredient_match?: { matched: number; total: number; percentage: number };
-  missing_essential?: string[];
   missing_supporting: string[];
   quantity_and_preparation_check_needed: boolean;
 };
@@ -19,7 +18,7 @@ export async function getRecommendations(available: string[], excluded: string[]
   try {
     response = await fetch(`${base}/recommendations`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' }, signal,
-      body: JSON.stringify({ available, excluded, ...preferences, limit: 20 }),
+      body: JSON.stringify({ available, excluded, ...preferences, limit: 5 }),
     });
   } catch (error) {
     if (signal.aborted) throw error;
@@ -41,7 +40,6 @@ export async function getRecommendations(available: string[], excluded: string[]
       if (!match || !Number.isInteger(match.matched) || !Number.isInteger(match.total) || match.total <= 0 || match.matched < 0 || match.matched > match.total || match.percentage !== Math.round(100 * match.matched / match.total)) throw new Error('Invalid ingredient match percentage.');
     }
     if (typeof item.id !== 'string' || typeof item.name !== 'string' || !Array.isArray(item.missing_supporting) || item.missing_supporting.some(x => typeof x !== 'string') || typeof item.ranking_score !== 'number' || !Number.isFinite(item.ranking_score)) throw new Error('Invalid recipe response.');
-    if (item.missing_essential !== undefined && (!Array.isArray(item.missing_essential) || item.missing_essential.some(x => typeof x !== 'string'))) throw new Error('Invalid missing ingredient response.');
     if (item.used_ingredients !== undefined && (!Array.isArray(item.used_ingredients) || item.used_ingredients.some(x => typeof x !== 'string'))) throw new Error('Invalid recipe ingredient-coverage response.');
     // Older running API instances omit coverage. Use the same serving catalog's
     // ingredient totals, never its ranking score, to calculate their percentage.

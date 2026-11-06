@@ -6,7 +6,7 @@ import { AuthProvider, useAuth } from '../auth/AuthContext';
 import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 import { useAuthAction } from '../auth/useAuthAction';
 
-const privateScreens = ['home', 'settings', 'scan', 'scan-details', 'saved-recipes', 'reverse-cooking', 'recipes', 'recipe', 'recents', 'profile', 'profile-details', 'photo', 'live-scan', 'ingredients', 'explore', 'cooking-preferences', 'allergies', 'suggestions-preview', 'recommendations'] as const;
+const privateScreens = ['home', 'settings', 'scan', 'scan-details', 'saved-recipes', 'reverse-cooking', 'recipes', 'recipe', 'recents', 'profile', 'profile-details', 'photo', 'live-scan', 'ingredients', 'explore', 'cooking-preferences', 'allergies', 'suggestions-preview'] as const;
 
 function AppStack() {
   const { mode, palette } = useTheme();

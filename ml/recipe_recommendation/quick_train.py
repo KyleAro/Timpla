@@ -16,17 +16,11 @@ ALIASES = {'itlog':'egg','eggs':'egg','talong':'eggplant','chinese_eggplant':'eg
            'kanin':'cooked_rice','oil':'cooking_oil','mantika':'cooking_oil',
            'asin':'salt','toyo':'soy_sauce','suka':'vinegar','repolyo':'cabbage',
            'sayote':'chayote','upo':'bottle_gourd','patola':'sponge_gourd',
-           'taro_root':'taro','gabi':'taro','ampalaya':'bitter_gourd',
-           'baboy':'pork','manok':'chicken','chicken_generic':'chicken','liempo':'pork_belly','pork_spare_ribs':'pork_spare_rib',
-           'labanos':'radish','white_radish':'radish','daikon_radish':'radish','daikon':'radish',
-           'sitaw':'long_bean','snake_bean':'long_bean','string_bean':'long_bean',
-           'siling_haba':'long_green_chili','siling_pangsigang':'long_green_chili',
-           'kangkong':'kangkong_leaves','water_spinach':'kangkong_leaves',
-           'sampalok':'tamarind','sampaloc':'tamarind','patis':'fish_sauce'}
+           'taro_root':'taro','ampalaya':'bitter_gourd'}
 
 
 def norm(value):
-    value = re.sub(r'[^a-z0-9]+', '_', value.strip().lower()).strip('_')
+    value = re.sub(r'\s+', '_', value.strip().lower())
     return ALIASES.get(value, value)
 
 
@@ -62,16 +56,6 @@ def matches(tree, available):
     if 'any_of' in tree:
         return any(matches(child,available) for child in tree['any_of'])
     return all(matches(child,available) for child in tree.get('all_of',[]))
-
-
-def discovery_overlap(recipe, available):
-    """Generic meat finds cuts for browsing, without confirming a specific cut."""
-    foods = set(recipe['all_food'])
-    generic_meats = {'chicken', 'pork', 'beef', 'fish', 'shrimp'}
-    processed = {'stock', 'broth', 'bouillon', 'cube', 'cubes', 'powder', 'flavor', 'flavour', 'seasoning'}
-    return {value for value in available if value in foods or (
-        value in generic_meats and any(food.startswith(value + '_')
-            and not (set(food.split('_')) & processed) for food in foods))}
 
 
 def catalog():
@@ -211,15 +195,8 @@ def recommend(model_dir, ingredients, limit=5, excluded=(), allergies=(), diet='
         return []
     excluded_ids = {norm(value) for value in excluded if isinstance(value, str) and value.strip()}
     recipes,booster=load_model(model_dir)
-    recipes=[{**r, 'all_food': sorted({norm(x) for x in r['all_food']}),
-              'supporting': sorted({norm(x) for x in r['supporting']})} for r in recipes]
     selected=[r for r in recipes if not contains_excluded(r['all_food'], excluded_ids)
               and eligible(r, allergies, diet) and matches(r['essential'],available)]
-    complete_ids={r['id'] for r in selected}
-    partial=[r for r in recipes if r['id'] not in complete_ids
-             and not contains_excluded(r['all_food'], excluded_ids) and eligible(r, allergies, diet)
-             and discovery_overlap(r, available)]
-    selected += partial
     if not selected:
         return []
     scores=booster.predict([vector(r,available) for r in selected])
@@ -227,10 +204,7 @@ def recommend(model_dir, ingredients, limit=5, excluded=(), allergies=(), diet='
     families = json.loads(family_path.read_text(encoding='utf-8')) if family_path.exists() else {}
     result=[]
     seen=set()
-    proteins = available & {'pork', 'beef', 'chicken', 'fish', 'shrimp'}
-    def protein_overlap(recipe):
-        return sum(any(food == protein or food.startswith(protein + '_') for food in recipe['all_food']) for protein in proteins)
-    ranked=sorted(zip(selected,scores),key=lambda pair:(-protein_overlap(pair[0]), -len(discovery_overlap(pair[0], available)), pair[0]['id'] not in complete_ids, -len(ids(pair[0]['essential']) & available)/max(1,len(ids(pair[0]['essential']))), -float(pair[1]),len(set(pair[0]['supporting'])-available),pair[0]['id']))
+    ranked=sorted(zip(selected,scores),key=lambda pair:(-float(pair[1]),len(set(pair[0]['supporting'])-available),pair[0]['id']))
     for r,score in ranked:
         family=families.get(r['id'],r['id'])
         if family in seen:
@@ -243,7 +217,6 @@ def recommend(model_dir, ingredients, limit=5, excluded=(), allergies=(), diet='
                        'ingredient_match': {'matched': matched, 'total': total,
                                             'percentage': int(100 * matched / total + 0.5) if total else 0},
                        'used_ingredients':[display_by_id.get(x,x.replace('_',' ')) for x in sorted(available & set(r['all_food']))],
-                       'missing_essential':sorted(ids(r['essential'])-available) if r['id'] not in complete_ids else [],
                        'missing_supporting':missing,'supporting_confirmation_needed':bool(missing),
                        'quantity_and_preparation_check_needed':True,'source_urls':r['source_urls'],
                        'note':'Experimental model trained on automatic labels; score is not a probability.'})
