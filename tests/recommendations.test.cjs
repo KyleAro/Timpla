@@ -22,7 +22,7 @@ test('requires server acknowledgement of saved restrictions', async () => {
   const preferences = { allergies: ['Peanuts'], diet: 'Vegetarian' };
   try {
     global.fetch = async (_, request) => {
-      assert.deepEqual(JSON.parse(request.body), { available: ['eggplant'], excluded: ['garlic'], ...preferences, limit: 5 });
+      assert.deepEqual(JSON.parse(request.body), { available: ['eggplant'], excluded: ['garlic'], ...preferences, limit: 20 });
       return { ok: true, json: async () => ({ recommendations: [] }) };
     };
     await assert.rejects(getRecommendations(['eggplant'], ['garlic'], new AbortController().signal, preferences), /saved restrictions/);
@@ -42,7 +42,7 @@ test('sends confirmed inventory and returns model suggestions', async () => {
   try {
     global.fetch = async (url, request) => {
       assert.equal(url, 'http://localhost:8001/recommendations');
-      assert.deepEqual(JSON.parse(request.body), { available: ['egg', 'eggplant'], excluded: [], allergies: [], diet: 'No preference', limit: 5 });
+      assert.deepEqual(JSON.parse(request.body), { available: ['egg', 'eggplant'], excluded: [], allergies: [], diet: 'No preference', limit: 20 });
       return { ok: true, json: async () => ({ recommendations: [{ id: catalogId, name: 'Tortang Talong', ranking_score: 0.3, used_ingredients: ['egg'], missing_supporting: ['salt'] }] }) };
     };
     const result = await getRecommendations(['egg', 'eggplant'], [], new AbortController().signal);

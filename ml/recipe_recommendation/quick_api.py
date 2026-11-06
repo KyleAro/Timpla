@@ -36,10 +36,15 @@ def main():
                 data=json.loads(self.rfile.read(length))
                 values=data.get('available');limit=data.get('limit',5)
                 excluded=data.get('excluded',[])
+                allergies=data.get('allergies',[])
+                diet=data.get('diet','No preference')
                 if not isinstance(values,list) or any(not isinstance(x,str) for x in values):raise ValueError('available must be a list of ingredient names')
                 if not isinstance(excluded,list) or any(not isinstance(x,str) for x in excluded):raise ValueError('excluded must be a list of ingredient names')
+                if not isinstance(allergies,list) or any(not isinstance(x,str) for x in allergies):raise ValueError('allergies must be a list of names')
+                if diet not in ('No preference','Vegetarian','Halal'):raise ValueError('Invalid diet')
                 if isinstance(limit,bool) or not isinstance(limit,int) or not 1<=limit<=20:raise ValueError('limit must be1 to20')
-                self.reply(200,{'recommendations':recommend(args.model,values,limit,excluded)})
+                self.reply(200,{'recommendations':recommend(args.model,values,limit,excluded,allergies,diet),
+                               'applied_preferences':{'excluded':excluded,'allergies':allergies,'diet':diet}})
             except (ValueError,TypeError,AttributeError) as error:
                 self.reply(400,{'error':str(error)})
             except Exception:
