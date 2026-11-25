@@ -1,3 +1,4 @@
+import { typography } from '../theme/tokens';
 import { router } from 'expo-router';
 
 import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
@@ -55,4 +56,4 @@ export default function RecipeLibraryScreen({ saved = false }: { saved?: boolean
 
 }
 
-const styles = StyleSheet.create({ screen: { flex: 1 }, content: { width: '100%', maxWidth: 480, alignSelf: 'center', padding: 20 }, heading: { flexDirection: 'row', gap: 8, alignItems: 'center', marginBottom: 22 }, back: { width: 44, height: 44, justifyContent: 'center', alignItems: 'center' }, title: { flex: 1, fontSize: 26, fontWeight: '700' }, card: { borderWidth: 1, borderRadius: 18, overflow: 'hidden', marginBottom: 16 }, image: { width: '100%', height: 165, resizeMode: 'cover' }, copy: { padding: 16, flexDirection: 'row', alignItems: 'center', gap: 10 }, name: { fontSize: 19, fontWeight: '700' }, meta: { marginTop: 7, fontSize: 13 } });
+const styles = StyleSheet.create({ screen: { flex: 1 }, content: { width: '100%', maxWidth: 480, alignSelf: 'center', padding: 20 }, heading: { flexDirection: 'row', gap: 8, alignItems: 'center', marginBottom: 22 }, back: { width: 48, minHeight: 48, justifyContent: 'center', alignItems: 'center' }, title: { flex: 1, fontSize: 26, fontWeight: '700' }, card: { borderWidth: 1, borderRadius: 16, overflow: 'hidden', marginBottom: 16 }, image: { width: '100%', height: 165, resizeMode: 'cover' }, copy: { padding: 16, flexDirection: 'row', alignItems: 'center', gap: 10 }, name: { fontSize: typography.section, fontWeight: '700' }, meta: { marginTop: 7, fontSize: typography.label } });

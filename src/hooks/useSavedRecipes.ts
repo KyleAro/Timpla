@@ -13,16 +13,21 @@ export function useSavedRecipes(accountId: string) {
   }, [key]);
   useEffect(() => {
     let mounted = true;
-    void AsyncStorage.getItem(key).then((raw) => {
+    void Promise.all([
+      AsyncStorage.getItem(key),
+      accountId !== 'preview' && accountId !== 'signed-out' ? AsyncStorage.getItem('timpla.pending-recipe') : Promise.resolve(null),
+    ]).then(([raw, pending]) => {
       if (!mounted) return;
       let stored: unknown;
       try { stored = raw ? JSON.parse(raw) : []; } catch { stored = []; }
       const merged = new Set<string>(Array.isArray(stored) ? stored.filter((id): id is string => typeof id === 'string') : []);
+      if (pending) merged.add(pending);
       edits.current.forEach((saved, id) => { if (saved) merged.add(id); else merged.delete(id); });
       current.current = [...merged];
       setIds(current.current);
       hydrated.current = true;
-      if (edits.current.size) persist(current.current);
+      if (edits.current.size || pending) persist(current.current);
+      if (pending) void writes.current.then(() => AsyncStorage.removeItem('timpla.pending-recipe'));
       edits.current.clear();
     }).catch(() => {
       if (!mounted) return;
@@ -31,7 +36,7 @@ export function useSavedRecipes(accountId: string) {
       edits.current.clear();
     });
     return () => { mounted = false; };
-  }, [key, persist]);
+  }, [key, persist, accountId]);
   function toggleSavedRecipe(id: string) {
     const saved = !current.current.includes(id);
     current.current = saved ? [...current.current, id] : current.current.filter((item) => item !== id);

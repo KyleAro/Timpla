@@ -7,7 +7,13 @@ const path = require('node:path');
 const filename = path.resolve('src/services/recommendations.ts');
 const mod = new Module(filename, module);
 mod.filename = filename;
-mod.require = Module.createRequire(filename);
+const requireFromService = Module.createRequire(filename);
+mod.require = id => {
+  if (id === 'react-native') return { Platform: { OS: 'web' } };
+  if (id === 'expo') return { isRunningInExpoGo: () => true };
+  if (id === './offlineRecommendations') return { getOfflineRecommendations: () => { throw new Error('Unexpected offline request in web test.'); } };
+  return requireFromService(id);
+};
 mod._compile(ts.transpileModule(fs.readFileSync(filename, 'utf8'), {
   compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
 }).outputText, filename);

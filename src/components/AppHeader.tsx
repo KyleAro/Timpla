@@ -1,3 +1,4 @@
+import { typography } from '../theme/tokens';
 import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTheme } from '../theme/ThemeContext';
@@ -20,13 +21,13 @@ export function AppHeader() {
 }
 const styles = StyleSheet.create({
   background: { width: '100%' },
-  header: { width: '100%', maxWidth: 480, alignSelf: 'center', height: 76, paddingHorizontal: 20, paddingVertical: 12, gap: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', borderBottomWidth: StyleSheet.hairlineWidth },
+  header: { width: '100%', maxWidth: 480, alignSelf: 'center', minHeight: 76, paddingHorizontal: 20, paddingVertical: 12, gap: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', borderBottomWidth: StyleSheet.hairlineWidth },
   brand: { height: 48, flexDirection: 'row', alignItems: 'center', gap: 7, flexShrink: 1 },
   logoFrame: { width: 48, height: 48, alignItems: 'center', justifyContent: 'center' },
   // Anchor the wordmark to the logo frame's base instead of centering it vertically.
   wordmarkFrame: { height: 48, justifyContent: 'flex-end' },
-  help: { height: 44, minWidth: 82, flexShrink: 0, paddingHorizontal: 12, borderRadius: 23, borderWidth: 1, flexDirection: 'row', gap: 6, alignItems: 'center', justifyContent: 'center' },
-  helpText: { fontSize: 14, lineHeight: 20, includeFontPadding: false, textAlignVertical: 'center', fontWeight: '600' },
+  help: { minHeight: 48, minWidth: 82, flexShrink: 0, paddingHorizontal: 12, borderRadius: 23, borderWidth: 1, flexDirection: 'row', gap: 6, alignItems: 'center', justifyContent: 'center' },
+  helpText: { fontSize: typography.label, lineHeight: 20, includeFontPadding: false, textAlignVertical: 'center', fontWeight: '600' },
 });
 
 

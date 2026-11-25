@@ -1,7 +1,8 @@
 """Local testing API for the experimental recipe ranker; no additional web package."""
 import argparse
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
+import os
 from pathlib import Path
 from quick_train import load_model, recommend
 
@@ -10,7 +11,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--model',type=Path,required=True)
     parser.add_argument('--host',default='0.0.0.0')
-    parser.add_argument('--port',type=int,default=8001)
+    parser.add_argument('--port',type=int,default=int(os.environ.get('PORT', '8001')))
     args=parser.parse_args()
     load_model(args.model)
     class Handler(BaseHTTPRequestHandler):
@@ -36,17 +37,22 @@ def main():
                 data=json.loads(self.rfile.read(length))
                 values=data.get('available');limit=data.get('limit',5)
                 excluded=data.get('excluded',[])
+                allergies=data.get('allergies',[])
+                diet=data.get('diet','No preference')
+                if not isinstance(allergies,list) or any(not isinstance(x,str) or not x.strip() for x in allergies):raise ValueError('allergies must be a list of names')
+                if diet not in ('No preference','Vegetarian','Halal'):raise ValueError('Unsupported diet')
                 if not isinstance(values,list) or any(not isinstance(x,str) for x in values):raise ValueError('available must be a list of ingredient names')
                 if not isinstance(excluded,list) or any(not isinstance(x,str) for x in excluded):raise ValueError('excluded must be a list of ingredient names')
                 if isinstance(limit,bool) or not isinstance(limit,int) or not 1<=limit<=20:raise ValueError('limit must be1 to20')
-                self.reply(200,{'recommendations':recommend(args.model,values,limit,excluded)})
+                self.reply(200,{'recommendations':recommend(args.model,values,limit,excluded,allergies,diet),
+                                'applied_preferences':{'allergies':allergies,'diet':diet,'excluded':excluded}})
             except (ValueError,TypeError,AttributeError) as error:
                 self.reply(400,{'error':str(error)})
             except Exception:
                 self.reply(500,{'error':'Recommendation failed; check server terminal'})
                 raise
     print(f'Local testing API on port {args.port}; GET /health, POST /recommendations')
-    HTTPServer((args.host,args.port),Handler).serve_forever()
+    ThreadingHTTPServer((args.host,args.port),Handler).serve_forever()
 
 
 if __name__=='__main__':main()

@@ -1,3 +1,4 @@
+import { typography } from '../theme/tokens';
 import { router } from 'expo-router';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -17,5 +18,5 @@ const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: '#000000', alignItems: 'center', justifyContent: 'center' },
   overlay: { position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, alignItems: 'flex-start', paddingHorizontal: 12 },
   close: { width: 48, height: 48, borderRadius: 24, backgroundColor: '#00000099', alignItems: 'center', justifyContent: 'center', marginTop: 12 },
-  empty: { color: '#FFFFFF', fontSize: 16 },
+  empty: { color: '#FFFFFF', fontSize: typography.body },
 });

@@ -6,13 +6,13 @@ import { cleanEmail, emailError, passwordError } from '../auth/validation';
 import { useAuthAction } from '../auth/useAuthAction';
 
 export default function SignUpScreen() {
-  const { session, recovery, signUp } = useAuth();
+  const { session, recovery, onboardingComplete, signUp } = useAuth();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmation, setConfirmation] = useState('');
   const { busy, error, setError, run } = useAuthAction();
-  if (session && !recovery) return <Redirect href="/home" />;
+  if (session && !recovery) return <Redirect href={onboardingComplete ? '/home' : '/'} />;
   function submit() {
     const invalid = (!name.trim() ? 'Enter your name.' : '') || emailError(email) || passwordError(password) || (password !== confirmation ? 'Passwords do not match.' : '');
     if (invalid) { setError(invalid); return; }
@@ -28,6 +28,6 @@ export default function SignUpScreen() {
     <AuthInput password accessibilityLabel="Password" placeholder="Password · at least 8 characters" value={password} onChangeText={setPassword} autoComplete="new-password" textContentType="newPassword" autoCapitalize="none" autoCorrect={false} editable={!busy} />
     <AuthInput password accessibilityLabel="Confirm password" placeholder="Confirm password" value={confirmation} onChangeText={setConfirmation} autoComplete="new-password" textContentType="newPassword" autoCapitalize="none" autoCorrect={false} editable={!busy} returnKeyType="go" onSubmitEditing={submit} />
     <AuthButton title="Create account" onPress={submit} busy={busy} />
-    <AuthLink title="Already have an account? Log in" onPress={() => router.replace('/')} disabled={busy} />
+    <AuthLink title="Already have an account? Log in" onPress={() => router.replace('/login')} disabled={busy} />
   </AuthForm>;
 }

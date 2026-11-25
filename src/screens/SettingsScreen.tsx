@@ -1,3 +1,4 @@
+import { typography } from '../theme/tokens';
 import { Link } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -29,6 +30,12 @@ export default function SettingsScreen() {
           </View>
           <Text style={styles.caption}>Applies across Timpla</Text>
         </View>
+        <Link href="/onboarding" asChild>
+          <Pressable accessibilityRole="button" style={styles.row}>
+            <AppIcon name="chevron" size={24} color={palette.accent} />
+            <Text style={styles.rowText}>Go to onboarding</Text>
+          </Pressable>
+        </Link>
       </ScrollView>
     </SafeAreaView>
   );
@@ -39,18 +46,18 @@ function makeStyles(p: ThemePalette) {
     screen: { flex: 1, backgroundColor: p.background },
     content: { padding: 22, width: '100%', maxWidth: 488, alignSelf: 'center' },
     header: { flexDirection: 'row', alignItems: 'center', gap: 11, marginBottom: 34 },
-    back: { width: 40, minHeight: 46, alignItems: 'flex-start', justifyContent: 'center' },
-    title: { color: p.text, fontSize: 27, fontWeight: '700', letterSpacing: -0.5 },
-    appearance: { backgroundColor: p.surface, borderWidth: 1, borderColor: p.border, borderRadius: 19, padding: 18, marginBottom: 16 },
-    sectionTitle: { color: p.text, fontSize: 22, fontWeight: '700', marginBottom: 18 },
+    back: { width: 48, minHeight: 46, alignItems: 'flex-start', justifyContent: 'center' },
+    title: { color: p.text, fontSize: typography.title, fontWeight: '700', letterSpacing: -0.5 },
+    appearance: { backgroundColor: p.surface, borderWidth: 1, borderColor: p.border, borderRadius: 16, padding: 16, marginBottom: 16 },
+    sectionTitle: { color: p.text, fontSize: typography.section, fontWeight: '700', marginBottom: 18 },
     segment: { flexDirection: 'row', padding: 5, borderRadius: 16, borderWidth: 1, borderColor: p.border, backgroundColor: p.secondary },
     option: { flex: 1, minHeight: 54, borderRadius: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 },
-    selectedOption: { backgroundColor: p.accent },
-    optionText: { color: p.text, fontSize: 16, fontWeight: '600' },
+    selectedOption: { backgroundColor: p.buttonBackground },
+    optionText: { color: p.text, fontSize: typography.body, fontWeight: '600' },
     selectedText: { color: '#FFF8ED' },
-    caption: { color: p.muted, fontSize: 13, textAlign: 'center', marginTop: 13 },
-    row: { minHeight: 78, borderWidth: 1, borderColor: p.border, borderRadius: 18, backgroundColor: p.surface, flexDirection: 'row', alignItems: 'center', gap: 18, paddingHorizontal: 19, marginBottom: 12 },
-    rowText: { color: p.text, fontSize: 16, fontWeight: '600', flex: 1 },
+    caption: { color: p.muted, fontSize: typography.label, textAlign: 'center', marginTop: 13 },
+    row: { minHeight: 78, borderWidth: 1, borderColor: p.border, borderRadius: 16, backgroundColor: p.surface, flexDirection: 'row', alignItems: 'center', gap: 18, paddingHorizontal: 19, marginBottom: 12 },
+    rowText: { color: p.text, fontSize: typography.body, fontWeight: '600', flex: 1 },
   });
 }
 

@@ -1,3 +1,4 @@
+import { typography } from '../theme/tokens';
 import { router } from 'expo-router';
 import * as Linking from 'expo-linking';
 import { useState } from 'react';
@@ -30,7 +31,7 @@ export function DatasetRecipeDetail({ recipe: initialRecipe }: { recipe: Dataset
     <ScrollView style={styles.screen} showsVerticalScrollIndicator={false} contentContainerStyle={styles.content}>
       <View style={styles.photoSpacer} />
       <View style={[styles.sheet, { backgroundColor: palette.background }]}>
-      <View style={[styles.collectionBadge, { backgroundColor: palette.olive }]}><AppIcon name="leaf" size={15} color={palette.oliveText} /><Text style={{ color: palette.oliveText, fontSize: 12 }}>From your recipe collection</Text></View>
+      <View style={[styles.collectionBadge, { backgroundColor: palette.olive }]}><AppIcon name="leaf" size={15} color={palette.oliveText} /><Text style={{ color: palette.oliveText, fontSize: typography.label }}>From your recipe collection</Text></View>
       <Text accessibilityRole="header" style={[styles.title, { color: palette.text }]}>{recipe.dishName}</Text>
       {versions.length > 1 ? <View style={styles.versions}>
         <Text accessibilityRole="header" style={[styles.versionHeading, { color: palette.text }]}>Choose a recipe</Text>
@@ -41,14 +42,14 @@ export function DatasetRecipeDetail({ recipe: initialRecipe }: { recipe: Dataset
             if (selected) return;
             setVersionId(version.id); setSourceError('');
           }} style={({ pressed }) => [styles.versionCard, versions.length === 2 && styles.twoVersionCard, { borderColor: selected ? palette.accent : palette.border, backgroundColor: selected || pressed ? palette.chip : palette.surface }]}>
-            <View style={styles.versionTop}><Image source={recipeImage(version.family)} accessibilityLabel="Recipe illustration" style={styles.optionPhoto} />{selected ? <View style={[styles.selected, { backgroundColor: palette.accent }]}><AppIcon name="check" size={15} color="#FFF8ED" /></View> : <AppIcon name="chevron" size={18} color={palette.muted} />}</View>
+            <View style={styles.versionTop}><Image source={recipeImage(version.family)} accessibilityLabel="Recipe illustration" style={styles.optionPhoto} />{selected ? <View style={[styles.selected, { backgroundColor: palette.buttonBackground }]}><AppIcon name="check" size={15} color="#FFF8ED" /></View> : <AppIcon name="chevron" size={18} color={palette.muted} />}</View>
             <Text style={[styles.versionName, { color: palette.text }]}>Option {index + 1}</Text>
             <Text style={{ color: palette.muted }}>{version.sourceUrl ? `${version.sourceLabel} · ` : ''}{version.ingredients.length} ingredients</Text>
             <Text numberOfLines={2} style={[styles.versionPreview, { color: palette.muted }]}>{version.ingredients.filter(line => !versions.every(other => other.ingredients.includes(line))).slice(0, 3).join(' · ') || 'Same ingredient wording'}</Text>
           </Pressable>;
         })}
         </ScrollView>
-        <Text style={{ color: palette.muted, fontSize: 13, lineHeight: 20 }}>{recipe.name}</Text>
+        <Text style={{ color: palette.muted, fontSize: typography.label, lineHeight: 20 }}>{recipe.name}</Text>
       </View> : null}
       <Text accessibilityRole="header" style={[styles.section, { color: palette.text }]}>Ingredients</Text>
       {recipe.ingredients.map((line, index) => <View key={index} style={[styles.row, { borderColor: palette.border }]}>
@@ -64,7 +65,7 @@ export function DatasetRecipeDetail({ recipe: initialRecipe }: { recipe: Dataset
           if (savingCooked || cookedIds.includes(recipe.id)) return;
           setSavingCooked(true); setCookError('');
           void recordCookedRecipe(recipe.id, recipe.dishName).then(() => setCookedIds(current => [...current, recipe.id])).catch(() => setCookError('Could not save to history. Please try again.')).finally(() => setSavingCooked(false));
-        }} style={[styles.cookedButton, { backgroundColor: palette.accent }]}><Text style={{ color: '#FFF8ED', fontWeight: '700' }}>{cookedIds.includes(recipe.id) ? 'Added to cooking history' : savingCooked ? 'Saving…' : 'Yes, I cooked this'}</Text></Pressable>
+        }} style={[styles.cookedButton, { backgroundColor: palette.buttonBackground }]}><Text style={{ color: '#FFF8ED', fontWeight: '700' }}>{cookedIds.includes(recipe.id) ? 'Added to cooking history' : savingCooked ? 'Saving…' : 'Yes, I cooked this'}</Text></Pressable>
         {cookError ? <Text accessibilityRole="alert" style={{ color: palette.error }}>{cookError}</Text> : null}
       </View>
       </View>
@@ -84,20 +85,20 @@ const styles = StyleSheet.create({
   photoSpacer: { height: 300 },
   photo: { width: '100%', height: 300, resizeMode: 'cover' },
   sheet: { padding: 22, paddingTop: 20, marginTop: -24, borderTopLeftRadius: 28, borderTopRightRadius: 28, paddingBottom: 40 },
-  collectionBadge: { flexDirection: 'row', alignItems: 'center', gap: 6, alignSelf: 'flex-start', borderRadius: 18, paddingHorizontal: 11, paddingVertical: 7, marginBottom: 12 },
+  collectionBadge: { flexDirection: 'row', alignItems: 'center', gap: 6, alignSelf: 'flex-start', borderRadius: 16, paddingHorizontal: 11, paddingVertical: 7, marginBottom: 12 },
   versionList: { gap: 10, paddingBottom: 4 }, optionPhoto: { width: 64, height: 58, borderRadius: 10, resizeMode: 'cover' },
   twoVersionList: { flexGrow: 1, width: '100%' }, twoVersionCard: { flex: 1, width: 0, minWidth: 0 },
   stepNumber: { width: 30, height: 30, borderRadius: 15, alignItems: 'center', justifyContent: 'center' },
-  cookedCard: { marginTop: 28, padding: 18, borderWidth: 1, borderRadius: 18, gap: 14 }, cookedButton: { minHeight: 48, borderRadius: 24, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16 },
-  versions: { marginTop: 24, gap: 12 }, versionHeading: { fontSize: 18, fontWeight: '700' },
+  cookedCard: { marginTop: 28, padding: 18, borderWidth: 1, borderRadius: 16, gap: 14 }, cookedButton: { minHeight: 52, borderRadius: 12, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16, paddingVertical: 14 },
+  versions: { marginTop: 24, gap: 12 }, versionHeading: { fontSize: typography.subtitle, fontWeight: '700' },
   versionCard: { width: 200, borderWidth: 1.5, borderRadius: 16, padding: 12, gap: 8 },
   versionTop: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 },
   selected: { width: 24, height: 24, borderRadius: 12, alignItems: 'center', justifyContent: 'center' },
-  versionName: { fontSize: 17, fontWeight: '700', lineHeight: 23 }, versionPreview: { fontSize: 13, lineHeight: 20 },
+  versionName: { fontSize: typography.body, fontWeight: '700', lineHeight: 23 }, versionPreview: { fontSize: typography.label, lineHeight: 20 },
   screen: { flex: 1 }, headerOverlay: { position: 'absolute', top: 12, left: 0, right: 0, zIndex: 20 },
   header: { width: '100%', maxWidth: 520, alignSelf: 'center', paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
-  back: { width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
-  content: { width: '100%', maxWidth: 520, alignSelf: 'center' }, title: { fontSize: 32, lineHeight: 38, fontWeight: '800', letterSpacing: -.7 },
-  section: { fontSize: 21, fontWeight: '700', marginTop: 24, marginBottom: 14 }, row: { flexDirection: 'row', alignItems: 'center', gap: 12, minHeight: 56, paddingVertical: 12, borderBottomWidth: StyleSheet.hairlineWidth },
-  body: { flex: 1, fontSize: 15, lineHeight: 24 }, step: { flexDirection: 'row', gap: 12, marginBottom: 18 }, source: { minHeight: 48, justifyContent: 'center', marginTop: 12 },
+  back: { width: 48, minHeight: 48, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
+  content: { width: '100%', maxWidth: 520, alignSelf: 'center' }, title: { fontSize: typography.hero, lineHeight: 38, fontWeight: '800', letterSpacing: -.7 },
+  section: { fontSize: typography.section, fontWeight: '700', marginTop: 24, marginBottom: 14 }, row: { flexDirection: 'row', alignItems: 'center', gap: 12, minHeight: 56, paddingVertical: 12, borderBottomWidth: StyleSheet.hairlineWidth },
+  body: { flex: 1, fontSize: typography.body, lineHeight: 24 }, step: { flexDirection: 'row', gap: 12, marginBottom: 18 }, source: { minHeight: 48, justifyContent: 'center', marginTop: 12 },
 });

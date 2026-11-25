@@ -9,7 +9,7 @@ export default function VerifyEmailScreen() {
   const params = useLocalSearchParams<{ email?: string; mode?: string; resend?: string }>();
   const email = typeof params.email === 'string' ? params.email : '';
   const kind = params.mode === 'recovery' ? 'recovery' : 'signup';
-  const { session, recovery, verifyCode, resendConfirmation, sendReset } = useAuth();
+  const { session, recovery, onboardingComplete, verifyCode, resendConfirmation, sendReset } = useAuth();
   const [token, setToken] = useState('');
   const [seconds, setSeconds] = useState(params.resend === 'true' ? 0 : 60);
   const [notice, setNotice] = useState('');
@@ -18,9 +18,9 @@ export default function VerifyEmailScreen() {
     const timer = setInterval(() => setSeconds(current => Math.max(0, current - 1)), 1000);
     return () => clearInterval(timer);
   }, []);
-  if (emailError(email)) return <Redirect href="/" />;
+  if (emailError(email)) return <Redirect href="/login" />;
   if (session && recovery) return <Redirect href="/reset-password" />;
-  if (session && kind === 'signup') return <Redirect href="/home" />;
+  if (session && kind === 'signup') return <Redirect href={onboardingComplete ? '/home' : '/'} />;
   function submit() {
     if (!/^\d{8}$/.test(token)) { setError('Enter the 8-digit code from your email.'); return; }
     void run(async () => { await verifyCode(email, token, kind); setToken(''); });
@@ -37,6 +37,6 @@ export default function VerifyEmailScreen() {
     <AuthInput accessibilityLabel="Email verification code" placeholder="8-digit code" value={token} onChangeText={value => setToken(value.replace(/\D/g, '').slice(0, 8))} keyboardType="number-pad" autoComplete="one-time-code" textContentType="oneTimeCode" maxLength={8} editable={!busy} returnKeyType="go" onSubmitEditing={submit} />
     <AuthButton title="Verify code" onPress={submit} busy={busy} />
     <AuthLink title={seconds ? `Resend email in ${seconds}s` : 'Resend email'} onPress={resend} disabled={busy || seconds > 0} />
-    <AuthLink title="Back to log in" onPress={() => router.replace('/')} disabled={busy} />
+    <AuthLink title="Back to log in" onPress={() => router.replace('/login')} disabled={busy} />
   </AuthForm>;
 }

@@ -1,0 +1,10 @@
+{
+  "build": {
+    "offlineDemo": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      }
+    }
+  }
+}

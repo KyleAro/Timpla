@@ -1,4 +1,7 @@
 import ingredientCounts from '../data/recipeIngredientCounts.json';
+import { Platform } from 'react-native';
+import { isRunningInExpoGo } from 'expo';
+import { getOfflineRecommendations } from './offlineRecommendations';
 
 export type Recommendation = {
   id: string;
@@ -11,6 +14,10 @@ export type Recommendation = {
 };
 
 export async function getRecommendations(available: string[], excluded: string[], signal: AbortSignal, preferences: { allergies: string[]; diet: string } = { allergies: [], diet: 'No preference' }): Promise<Recommendation[]> {
+  if (Platform.OS === 'android' && !isRunningInExpoGo()) {
+    if (signal.aborted) throw new Error('Recipe request cancelled.');
+    return getOfflineRecommendations(available, excluded, preferences);
+  }
   const configured = process.env.EXPO_PUBLIC_RECOMMENDATION_URL?.trim().replace(/\/$/, '');
   const base = configured || (typeof window !== 'undefined' && window.location?.hostname ? `${window.location.protocol}//${window.location.hostname}:8001` : '');
   if (!base) throw new Error('Set EXPO_PUBLIC_RECOMMENDATION_URL to the recommendation server address.');

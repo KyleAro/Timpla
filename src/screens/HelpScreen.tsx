@@ -1,3 +1,4 @@
+import { typography } from '../theme/tokens';
 import { router } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -21,9 +22,9 @@ const styles = StyleSheet.create({
   screen: { flex: 1 },
   header: { flexDirection: 'row', alignItems: 'center', width: '100%', maxWidth: 480, alignSelf: 'center', paddingHorizontal: 16, minHeight: 72, gap: 8 },
   back: { width: 48, height: 48, alignItems: 'center', justifyContent: 'center' },
-  title: { fontSize: 27, fontWeight: '700' },
+  title: { fontSize: typography.title, fontWeight: '700' },
   content: { width: '100%', maxWidth: 480, alignSelf: 'center', padding: 20, gap: 14 },
-  card: { padding: 20, borderWidth: 1, borderRadius: 18 },
-  heading: { fontSize: 17, fontWeight: '700', marginBottom: 8 },
-  body: { fontSize: 15, lineHeight: 23 },
+  card: { padding: 20, borderWidth: 1, borderRadius: 16 },
+  heading: { fontSize: typography.body, fontWeight: '700', marginBottom: 8 },
+  body: { fontSize: typography.body, lineHeight: 23 },
 });

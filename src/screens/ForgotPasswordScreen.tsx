@@ -19,6 +19,6 @@ export default function ForgotPasswordScreen() {
   return <AuthForm title="Forgot password?" subtitle="Enter your email to reset your password." error={error}>
     <AuthInput accessibilityLabel="Email address" placeholder="Email" value={email} onChangeText={setEmail} keyboardType="email-address" autoComplete="email" textContentType="emailAddress" autoCapitalize="none" autoCorrect={false} editable={!busy} returnKeyType="send" onSubmitEditing={submit} />
     <AuthButton title="Send reset email" onPress={submit} busy={busy} />
-    <AuthLink title="Back to log in" onPress={() => router.replace('/')} disabled={busy} />
+    <AuthLink title="Back to log in" onPress={() => router.replace('/login')} disabled={busy} />
   </AuthForm>;
 }

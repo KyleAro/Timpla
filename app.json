@@ -21,7 +21,9 @@
           "recordAudioAndroid": false,
           "barcodeScannerEnabled": false
         }
-      ]
+      ],
+      "onnxruntime-react-native",
+      "expo-asset"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -31,6 +33,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.timpla.app",
       "adaptiveIcon": {
         "backgroundColor": "#C84B35",
         "foregroundImage": "./assets/brand/timpla-user-icon.png"

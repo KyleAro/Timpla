@@ -24,6 +24,6 @@ export default function ResetPasswordScreen() {
     <AuthInput password accessibilityLabel="New password" placeholder="New password · at least 8 characters" value={password} onChangeText={setPassword} autoComplete="new-password" textContentType="newPassword" autoCapitalize="none" autoCorrect={false} editable={!busy} />
     <AuthInput password accessibilityLabel="Confirm new password" placeholder="Confirm password" value={confirmation} onChangeText={setConfirmation} autoComplete="new-password" textContentType="newPassword" autoCapitalize="none" autoCorrect={false} editable={!busy} returnKeyType="go" onSubmitEditing={submit} />
     <AuthButton title="Save password" onPress={submit} busy={busy} />
-    <AuthLink title="Cancel" disabled={busy} onPress={() => { void run(async () => { await signOut(); router.replace('/'); }); }} />
+    <AuthLink title="Cancel" disabled={busy} onPress={() => { void run(async () => { await signOut(); router.replace('/login'); }); }} />
   </AuthForm>;
 }

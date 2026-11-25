@@ -1,0 +1,6 @@
+# Source datasets and generated training artifacts stay local.
+raw/**
+sources/**
+dataset/images/**
+dataset/labels/**
+runs/**

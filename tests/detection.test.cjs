@@ -43,7 +43,8 @@ test('late results cannot change a different active scan or reset account', () =
 
 function client(fetch) {
   return load('src/services/detection.ts', { 'react-native': { Platform: { OS: 'web' } },
-    'expo-file-system': { File: class {} }, 'expo/fetch': { fetch } }, {
+    'expo-file-system': { File: class {} }, 'expo/fetch': { fetch },
+    './offlineDetection': { supportsOfflineDetection: () => false } }, {
     process: { env: { EXPO_PUBLIC_DETECTOR_URL: 'http://localhost:8000/' } }, fetch, FormData, Blob,
   });
 }
@@ -53,21 +54,21 @@ test('web upload sends the actual photo and deduplicates valid model names by hi
     if (url === 'blob:photo') return { ok: true, blob: async () => new Blob(['photo'], { type: 'image/jpeg' }) };
     assert.equal(url, 'http://localhost:8000/detect');
     uploaded = options.body.get('image');
-    return { ok: true, json: async () => ({ ingredients: [
+    return { ok: true, status: 200, text: async () => JSON.stringify({ ingredients: [
       { label: 'egg', name: 'egg', confidence: 0.5 }, { label: 'egg', name: 'egg', confidence: 0.9 },
     ] }) };
   });
   const result = await api.detectIngredients('blob:photo', new AbortController().signal);
   assert.equal(await uploaded.text(), 'photo');
-  assert.equal(result.length, 1);
-  assert.equal(result[0].name, 'Egg');
-  assert.equal(result[0].confidence, 0.9);
+  assert.equal(result.ingredients.length, 1);
+  assert.equal(result.ingredients[0].name, 'Egg');
+  assert.equal(result.ingredients[0].confidence, 0.9);
 });
 
 test('invalid detections and failed server responses are surfaced rather than invented', async () => {
   for (const response of [
-    { ok: true, json: async () => ({ ingredients: [{ label: 'egg', name: 'egg', confidence: 2 }] }) },
-    { ok: false, json: async () => ({ detail: 'Photo is invalid.' }) },
+    { ok: true, status: 200, text: async () => JSON.stringify({ ingredients: [{ label: 'egg', name: 'egg', confidence: 2 }] }) },
+    { ok: false, status: 400, text: async () => JSON.stringify({ detail: 'Photo is invalid.' }) },
   ]) {
     const api = client(async url => url === 'blob:photo' ? { ok: true, blob: async () => new Blob(['x']) } : response);
     await assert.rejects(api.detectIngredients('blob:photo', new AbortController().signal), /invalid/i);
@@ -100,18 +101,19 @@ test('phone uploads use Expo File bytes compatible with the installed SDK multip
         assert.match(body, /name="image"; filename="photo.heic"/);
         assert.match(body, /content-type: image\/heic/);
         assert.match(body, /real-photo-bytes/);
-        return { ok: true, json: async () => ({ ingredients: [] }) };
+        return { ok: true, status: 200, text: async () => JSON.stringify({ ingredients: [] }) };
     };
     const api = load('src/services/detection.ts', {
       'react-native': { Platform: { OS: platform } },
       'expo-file-system': { File: NativeFile }, 'expo/fetch': { fetch: expoFetch },
+      './offlineDetection': { supportsOfflineDetection: () => false },
     }, {
       process: { env: { EXPO_PUBLIC_DETECTOR_URL: 'http://192.168.1.2:8081/timpla-detector' } },
       FormData: NativeFormData,
       fetch: () => assert.fail('Phone uploads must use Expo fetch'),
     });
     const result = await api.detectIngredients('file:///phone/cache/photo.heic', controller.signal);
-    assert.equal(result.length, 0);
+    assert.equal(result.ingredients.length, 0);
     assert.equal(parts[0][0], 'image');
     assert.equal(parts[0][1].uri, 'file:///phone/cache/photo.heic');
     assert.equal(parts[0][1].type, 'image/heic');
@@ -123,17 +125,34 @@ test('phone uploads use Expo File bytes compatible with the installed SDK multip
 
 test('browser development uploads through the current Expo origin', async () => {
   const api = load('src/services/detection.ts', { 'react-native': { Platform: { OS: 'web' } },
-    'expo-file-system': { File: class {} }, 'expo/fetch': { fetch: () => assert.fail('Web uses browser fetch') } }, {
+    'expo-file-system': { File: class {} }, 'expo/fetch': { fetch: () => assert.fail('Web uses browser fetch') },
+    './offlineDetection': { supportsOfflineDetection: () => false } }, {
     __DEV__: true, window: { location: { origin: 'http://localhost:8081' } },
     process: { env: { EXPO_PUBLIC_DETECTOR_URL: 'http://192.168.1.2:8081/timpla-detector' } },
     FormData, Blob,
     fetch: async url => {
       if (url === 'blob:photo') return { ok: true, blob: async () => new Blob(['photo']) };
       assert.equal(url, 'http://localhost:8081/timpla-detector/detect');
-      return { ok: true, json: async () => ({ ingredients: [] }) };
+      return { ok: true, status: 200, text: async () => JSON.stringify({ ingredients: [] }) };
     },
   });
-  assert.equal((await api.detectIngredients('blob:photo', new AbortController().signal)).length, 0);
+  assert.equal((await api.detectIngredients('blob:photo', new AbortController().signal)).ingredients.length, 0);
+});
+
+test('Android app uses bundled detector before any network request', async () => {
+  const expected = { ingredients: [{ name: 'Tomato', label: 'tomato', confidence: 0.8 }], detections: [], width: 512, height: 512 };
+  const api = load('src/services/detection.ts', {
+    'react-native': { Platform: { OS: 'android' } },
+    'expo-file-system': { File: class {} },
+    'expo/fetch': { fetch: () => assert.fail('Offline detection must not upload') },
+    './offlineDetection': {
+      supportsOfflineDetection: () => true,
+      prepareOfflineDetector: async () => ({}),
+      detectOffline: async () => expected,
+    },
+  }, { process: { env: {} }, fetch: () => assert.fail('Offline status must not fetch') });
+  assert.equal(await api.checkDetectorStatus(new AbortController().signal), 'idle');
+  assert.equal(await api.detectIngredients('file:///photo.jpg', new AbortController().signal), expected);
 });
 
 test('Expo proxy forwards multipart headers locally and explains a stopped detector', () => {
@@ -155,7 +174,7 @@ test('Expo proxy forwards multipart headers locally and explains a stopped detec
     on() {}, pipe(destination) { piped = destination; },
   }, response);
   assert.equal(options.hostname, '127.0.0.1');
-  assert.equal(options.port, 8000);
+  assert.equal(options.port, 8003);
   assert.equal(options.path, '/detect');
   assert.equal(options.headers['content-type'], 'multipart/form-data; boundary=test');
   assert.equal(options.headers.authorization, undefined);

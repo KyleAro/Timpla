@@ -1,9 +1,18 @@
 import { Platform } from 'react-native';
 import { File } from 'expo-file-system';
 import { fetch as expoFetch } from 'expo/fetch';
-import type { ScanIngredient } from '../state/scanHistory';
+import type { ScanDetection, ScanIngredient } from '../state/scanHistory';
+import { detectOffline, prepareOfflineDetector, supportsOfflineDetection } from './offlineDetection';
+
+export type DetectionResult = {
+  ingredients: ScanIngredient[];
+  detections: ScanDetection[];
+  width?: number;
+  height?: number;
+};
 
 export function getDetectorBaseUrl() {
+  if (process.env.EXPO_PUBLIC_DETECTOR_ENABLED === 'false') return undefined;
   const configuredUrl = process.env.EXPO_PUBLIC_DETECTOR_URL?.trim().replace(/\/$/, '');
   // In web development, route through Metro so browser and phone uploads share
   // the local detector proxy. Native builds use the configured detector URL.
@@ -16,6 +25,15 @@ export function getDetectorBaseUrl() {
 export type DetectorServiceStatus = 'active' | 'idle';
 
 export async function checkDetectorStatus(signal: AbortSignal): Promise<DetectorServiceStatus> {
+  if (supportsOfflineDetection()) {
+    try {
+      await prepareOfflineDetector();
+      if (signal.aborted) throw new Error('Scan cancelled.');
+      return 'idle';
+    } catch (error) {
+      if (!getDetectorBaseUrl()) throw error;
+    }
+  }
   const baseUrl = getDetectorBaseUrl();
   if (!baseUrl) throw new Error('Scanner address is not configured.');
   // /health is already allowed by the existing local Metro proxy and also
@@ -27,7 +45,13 @@ export async function checkDetectorStatus(signal: AbortSignal): Promise<Detector
   return payload.status === 'active' ? 'active' : 'idle';
 }
 
-export async function detectIngredients(uri: string, signal: AbortSignal): Promise<ScanIngredient[]> {
+export async function detectIngredients(uri: string, signal: AbortSignal): Promise<DetectionResult> {
+  if (supportsOfflineDetection()) {
+    try { return await detectOffline(uri, signal); }
+    catch (error) {
+      if (signal.aborted || !getDetectorBaseUrl()) throw error;
+    }
+  }
   const baseUrl = getDetectorBaseUrl();
   if (!baseUrl) throw new Error('Ingredient detector is not configured. Add ingredients manually or set the detector address.');
   const form = new FormData();
@@ -53,8 +77,8 @@ export async function detectIngredients(uri: string, signal: AbortSignal): Promi
     throw new Error(`Scanner upload failed: ${reason}. Check your network connection and detector service status.`);
   }
   const rawResponse = await response.text();
-  let payload: { detail?: unknown; ingredients?: unknown };
-  try { payload = JSON.parse(rawResponse) as { detail?: unknown; ingredients?: unknown }; }
+  let payload: { detail?: unknown; ingredients?: unknown; detections?: unknown; width?: unknown; height?: unknown };
+  try { payload = JSON.parse(rawResponse) as typeof payload; }
   catch {
     const excerpt = rawResponse.replace(/\s+/g, ' ').trim().slice(0, 240) || '(empty response body)';
     throw new Error(`Scanner returned non-JSON HTTP ${response.status}${response.statusText ? ` ${response.statusText}` : ''}: ${excerpt}`);
@@ -76,5 +100,39 @@ export async function detectIngredients(uri: string, signal: AbortSignal): Promi
     const previous = found.get(key);
     if (!previous || (previous.confidence ?? 0) < item.confidence) found.set(key, { name, confidence: item.confidence, label: item.label });
   }
-  return [...found.values()];
+  const detections: ScanDetection[] = [];
+  if (Array.isArray(payload.detections)) {
+    for (const value of payload.detections) {
+      if (!value || typeof value !== 'object') continue;
+      const item = value as {
+        name?: unknown;
+        label?: unknown;
+        confidence?: unknown;
+        bbox_xyxy?: unknown;
+        source_model?: unknown;
+      };
+      if (
+        typeof item.name !== 'string' || !item.name.trim() ||
+        typeof item.label !== 'string' || !item.label.trim() ||
+        typeof item.confidence !== 'number' || !Number.isFinite(item.confidence) ||
+        !Array.isArray(item.bbox_xyxy) || item.bbox_xyxy.length !== 4 ||
+        !item.bbox_xyxy.every((coordinate) => typeof coordinate === 'number' && Number.isFinite(coordinate))
+      ) continue;
+      const [x1, y1, x2, y2] = item.bbox_xyxy as number[];
+      if (x2 <= x1 || y2 <= y1) continue;
+      detections.push({
+        name: item.name.trim(),
+        label: item.label.trim(),
+        confidence: item.confidence,
+        bbox_xyxy: [x1, y1, x2, y2],
+        ...(typeof item.source_model === 'string' ? { source_model: item.source_model } : {}),
+      });
+    }
+  }
+  return {
+    ingredients: [...found.values()],
+    detections,
+    width: typeof payload.width === 'number' && Number.isFinite(payload.width) && payload.width > 0 ? payload.width : undefined,
+    height: typeof payload.height === 'number' && Number.isFinite(payload.height) && payload.height > 0 ? payload.height : undefined,
+  };
 }

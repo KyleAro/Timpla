@@ -1,16 +1,20 @@
+import { typography } from '../theme/tokens';
 import { router } from 'expo-router';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTheme } from '../theme/ThemeContext';
 import { AppIcon } from './AppIcon';
 
 export function useBottomNavPadding() {
-  return 96 + useSafeAreaInsets().bottom + 24;
+  const { fontScale } = useWindowDimensions();
+  return Math.max(96, 82 + Math.ceil(16 * fontScale)) + useSafeAreaInsets().bottom + 24;
 }
 
 export function BottomNav({ active, onNavigate }: { active: 'home' | 'recipes' | 'profile' | 'recents' | 'scan'; onNavigate?: (navigate: () => void) => void }) {
   const { palette } = useTheme();
   const { bottom } = useSafeAreaInsets();
+  const { fontScale } = useWindowDimensions();
+  const navHeight = Math.max(96, 82 + Math.ceil(16 * fontScale));
   const items = [
     { key: 'home', title: 'Home', icon: 'home', onPress: () => router.replace('/home') },
     { key: 'recipes', title: 'Recipes', icon: 'book', onPress: () => router.replace('/recipes') },
@@ -19,15 +23,15 @@ export function BottomNav({ active, onNavigate }: { active: 'home' | 'recipes' |
     { key: 'profile', title: 'Profile', icon: 'user', onPress: () => router.replace('/profile') },
   ] as const;
   return (
-    <View pointerEvents="box-none" style={[styles.nav, { paddingBottom: bottom }]}>
+    <View pointerEvents="box-none" style={[styles.nav, { paddingBottom: bottom, minHeight: navHeight + bottom }]}>
       <View pointerEvents="none" style={[styles.bar, { backgroundColor: palette.surface, borderColor: palette.border }]} />
-      <View pointerEvents="box-none" style={styles.items}>
+      <View pointerEvents="box-none" style={[styles.items, { minHeight: navHeight }]}>
       {items.map((item) => {
         const scan = item.key === 'scan';
         const selected = active === item.key;
         return (
           <Pressable key={item.key} accessibilityRole="button" accessibilityLabel={scan ? 'Scan ingredients' : item.title} accessibilityState={{ selected }} onPress={() => { if (onNavigate) onNavigate(item.onPress); else if (!selected) item.onPress(); }} style={styles.item}>
-            {scan ? <View style={[styles.scan, { backgroundColor: palette.accent, borderColor: palette.background }]}><AppIcon name="camera" size={22} color="#FFF8ED" /></View> : <AppIcon name={item.icon} size={20} color={selected ? palette.accent : palette.muted} />}
+            {scan ? <View style={[styles.scan, { backgroundColor: palette.buttonBackground, borderColor: palette.background }]}><AppIcon name="camera" size={22} color="#FFF8ED" /></View> : <AppIcon name={item.icon} size={20} color={selected ? palette.accent : palette.muted} />}
             <Text style={[styles.label, { color: selected ? palette.accent : palette.muted }, selected && styles.active]}>{item.title}</Text>
           </Pressable>
         );
@@ -42,7 +46,7 @@ const styles = StyleSheet.create({
   items: { flexDirection: 'row', width: '100%', maxWidth: 520, alignSelf: 'center', minHeight: 96 },
   item: { flex: 1, minWidth: 0, paddingTop: 42, paddingBottom: 10, alignItems: 'center', justifyContent: 'flex-end', gap: 9 },
   scan: { position: 'absolute', top: 0, width: 68, height: 68, borderRadius: 34, borderWidth: 6, alignItems: 'center', justifyContent: 'center' },
-  label: { fontSize: 11, lineHeight: 16, includeFontPadding: false, textAlign: 'center' },
+  label: { fontSize: typography.caption, lineHeight: 16, includeFontPadding: false, textAlign: 'center' },
   active: { fontWeight: '700' },
 });
 

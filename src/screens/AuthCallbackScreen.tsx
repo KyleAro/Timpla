@@ -9,7 +9,7 @@ import { useTheme } from '../theme/ThemeContext';
 
 export default function AuthCallbackScreen() {
   const url = Linking.useLinkingURL();
-  const { loading, handleCallback } = useAuth();
+  const { loading, onboardingComplete, handleCallback } = useAuth();
   const { palette } = useTheme();
   const [error, setError] = useState('');
   const handled = useRef('');
@@ -20,10 +20,10 @@ export default function AuthCallbackScreen() {
     handled.current = url;
     let mounted = true;
     void callback.current(url).then(destination => {
-      if (mounted) router.replace(destination === 'reset' ? '/reset-password' : '/home');
+      if (mounted) router.replace(destination === 'reset' ? '/reset-password' : onboardingComplete ? '/home' : '/');
     }).catch(cause => { if (mounted) setError(authError(cause)); });
     return () => { mounted = false; };
-  }, [url, loading]);
+  }, [url, loading, onboardingComplete]);
   return <AuthForm title={error ? 'Check your email link' : 'Verifying your email'} error={error}>
     {error ? <><AuthLink title="Request a new reset email" onPress={() => router.replace('/forgot-password')} /><AuthLink title="Back to log in" onPress={() => router.replace('/')} /></> : <ActivityIndicator size="large" color={palette.accent} />}
   </AuthForm>;

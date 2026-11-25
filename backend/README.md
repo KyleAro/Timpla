@@ -1,4 +1,4 @@
-# Local team ingredient detector API
+# Local TIMPLA FastAPI ingredient detector
 
 
 
@@ -10,7 +10,7 @@
 
 
 
-The model is downloaded and SHA-256 verified against the GitHub release. The actual checkpoint contains **66 classes**, despite the source README's 68-class claim. It is YOLOv12n, not YOLOv8. `model.names` is the source of truth.
+The current app scanner uses the released 68-class `YOLOv8n_merged_best.pt` checkpoint at 640 inference size, confidence 0.10 and IoU 0.50. Its manifest and SHA-256 are recorded in `models/ingredient_detector/YOLOv8n_merged_best.manifest.json`. The separate `backend.main:app` endpoint still contains the earlier dual-model experiment; the app proxy is pointed at the single-model service below.
 
 
 
@@ -31,7 +31,7 @@ From the project root:
 ```powershell
 
 
-.\.venv-model\Scripts\python.exe -m uvicorn backend.main:app --host 0.0.0.0 --port 8000
+.\.venv-model\Scripts\python.exe -m uvicorn backend.replica_v8:app --host 0.0.0.0 --port 8003
 
 
 ```
@@ -40,22 +40,22 @@ From the project root:
 
 
 
-Keep the service running while testing. The agent-started background instance logs to `tmp/ingredient-server-network.stderr.log` and `tmp/ingredient-server-network.stdout.log`. Avoid starting a second instance on the same port.
+Keep the service running while testing. The single-model FastAPI service loads the same checkpoint as the upload comparison page. Avoid starting a second instance on port 8003.
 
 
 
 
 
-- Browser upload tester: http://localhost:8000
+- Browser upload tester and comparison controls: http://localhost:8003
 
 
-- Health and actual class mapping: http://localhost:8000/health
+- Health and model settings: http://localhost:8003/health
 
 
-- API schema: http://localhost:8000/docs
+- API schema: http://localhost:8003/docs
 
 
-- Current PC LAN upload tester: http://192.168.1.2:8000
+- Current PC LAN upload tester: http://192.168.1.3:8003
 
 
 
@@ -67,7 +67,7 @@ Keep the service running while testing. The agent-started background instance lo
 
 
 
-The app's `.env.local` currently uses `EXPO_PUBLIC_DETECTOR_URL=http://192.168.1.2:8081/timpla-detector`. The phone and PC must be on the same reachable local network. If the PC address changes, update that variable and restart Expo. The IP address is not a credential. Preserve the Supabase settings.
+The app's `.env.local` currently enables detection and uses `EXPO_PUBLIC_DETECTOR_URL=http://192.168.1.3:8081/timpla-detector`. The phone and PC must be on the same reachable local network. If the PC address changes, update that variable and restart Expo. The IP address is not a credential. Preserve the Supabase settings.
 
 
 
@@ -85,7 +85,7 @@ npx expo start --clear --lan
 
 
 
-Use Scan or Upload photo. Camera captures are sent only after confirmation; library uploads are sent after selection/validation. The ingredient results show loading, model-confidence values, retry/rescan, and manual additions/removals. No ingredient predictions are planted and no placeholder recipes or local recipe-ranking rules are restored.
+Use Scan or Upload photo. Camera captures are sent only after confirmation; library uploads are sent after selection/validation. Results show editable ingredient names, with manual additions/removals. Model architecture and confidence scores stay off the app screen. Recipe requests and cards are paused while LightGBM work continues. No ingredient predictions are planted.
 
 
 
@@ -148,13 +148,13 @@ The Python integration checks use the actual checkpoint and two attributed publi
 
 
 
-The model weights must be downloaded separately on another computer; see `models/ingredient_detector/manifest.json` for the release URL and expected SHA-256. For a new Python environment, install CPU-compatible PyTorch plus `backend/requirements.txt`; keep model/package versions with test records. Do not copy virtual environments between machines.
+The current single-model weight and its checksum are recorded in `models/ingredient_detector/YOLOv8n_merged_best.manifest.json`. The prior YOLOv12n experiment's weight is documented separately in `models/ingredient_detector/manifest.json`. For a new Python environment, install CPU-compatible PyTorch plus `backend/requirements.txt`; keep model/package versions with test records. Do not copy virtual environments between machines.
 
 
 
-## Combined upload detector
+## Earlier dual-model experiment
 
-Each upload now runs the team YOLOv12n (66 classes) and the restored author-trained YOLOv8m produce model (63 original classes, 61 usable). Weights remain separate; this is inference with two models, not retraining or merged weights. The produce source is https://github.com/henningheyen/Fruits-And-Vegetables-Detection-Dataset and its exact digest is in `models/produce/baseline-manifest.json`.
+`backend.main:app` retains the earlier team YOLOv12n (66 classes) plus author-trained produce YOLOv8m (63 original classes, 61 usable) experiment. The current app proxy no longer targets that dual-model service. Its thresholds and fusion policy below describe that prior experiment, not the active single-model scanner.
 
 The API retains source model, raw label, and model-local class ID on boxes. Equivalent names are normalized (for example, eggplant to talong); ingredient names are deduplicated. Specialist routing assigns all labels covered by the old produce model to YOLOv8m, with a provisional confidence threshold of 0.50. The team model handles the other ingredient labels at 0.10, including meat, eggs, seafood and Filipino vegetables absent from the old model. There is no two-model agreement requirement. Team predictions for non-produce ingredients at 0.5 or above block conflicting produce boxes on the same area (IoU above 0.3); separate ingredients can coexist. Empty results remain valid. These thresholds are provisional and have not been calibrated on a held-out evaluation. Independent model confidence scores are not calibrated for direct comparison. The known invalid capitalized Tomato and Strawberry source classes are excluded. Distinct objects keep separate boxes. Users still review the results; this fusion policy can miss overlapping objects and does not guarantee correctness.
 
@@ -162,9 +162,9 @@ Restore the produce checkpoint on another computer with `.\.venv-model\Scripts\p
 
 ## Phone connection through Expo
 
-Expo Go now sends detection requests to `http://192.168.1.2:8081/timpla-detector/detect`. The Metro middleware in `metro.config.js` and `scripts/detectorProxy.cjs` forwards POST /detect and GET /health to the Python service at 127.0.0.1:8000. The `/health` response includes the detector's `active` or `idle` state, so browser and phone development use the existing local proxy route instead of Render.
+Expo Go now sends detection requests to `http://192.168.1.3:8081/timpla-detector/detect`. The Metro middleware in `metro.config.js` and `scripts/detectorProxy.cjs` forwards POST /detect and GET /health to the single-model FastAPI service at 127.0.0.1:8003. The `/health` response includes the detector's `active` or `idle` state, so browser and phone development use the local proxy route.
 
-Keep both Python and Expo running. After changing Metro configuration, restart Expo; after changing the public detector URL, reload the phone app. On the phone, `http://192.168.1.2:8081/timpla-detector/health` checks the complete route. If Python is stopped, the app receives an explicit service-unavailable message. This proxy is only part of the development server; production builds require a deployed detector URL.
+Keep both Python and Expo running. Restart Expo after the proxy or `.env.local` changes. On the phone, `http://192.168.1.3:8081/timpla-detector/health` checks the complete route. If Python is stopped, the app receives an explicit service-unavailable message. This proxy is only part of the development server; production builds require a deployed detector URL.
 
 ## SDK 57 phone photo uploads
 

@@ -56,7 +56,7 @@ def create_model_service(role: str) -> FastAPI:
 
     checkpoint = GENERAL_CHECKPOINT if role == 'general' else PRODUCE_CHECKPOINT
     expected_sha256 = GENERAL_SHA256 if role == 'general' else PRODUCE_SHA256
-    default_confidence = 0.10 if role == 'general' else 0.50
+    default_confidence = 0.10 if role == 'general' else 0.60
     source_model = ('general YOLOv8n (non-produce)' if role == 'general'
                     else 'produce YOLOv8m')
     excluded_labels = sorted(GENERAL_PRODUCE_LABELS if role == 'general'

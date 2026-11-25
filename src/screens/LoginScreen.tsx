@@ -4,22 +4,27 @@ import { AuthButton, AuthForm, AuthInput, AuthLink } from '../components/AuthFor
 import { useAuth } from '../auth/AuthContext';
 import { authError, cleanEmail, emailError } from '../auth/validation';
 import { useAuthAction } from '../auth/useAuthAction';
+import { defaultPreferences } from '../data/account';
 
 export default function LoginScreen() {
-  const { session, recovery, signIn, preview, enterPreview } = useAuth();
+  const { session, recovery, onboardingComplete, completeOnboarding, signIn, enterPreview } = useAuth();
   const { reset } = useLocalSearchParams<{ reset?: string }>();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [unconfirmed, setUnconfirmed] = useState(false);
   const { busy, error, setError, run } = useAuthAction();
-  if (preview || (session && !recovery)) return <Redirect href="/home" />;
+  if (session && !recovery) return <Redirect href={onboardingComplete ? '/home' : '/'} />;
   if (session && recovery) return <Redirect href="/reset-password" />;
   function submit() {
     setUnconfirmed(false);
     const invalid = emailError(email) || (!password ? 'Enter your password.' : '');
     if (invalid) { setError(invalid); return; }
     void run(async () => {
-      try { await signIn(email, password); setPassword(''); }
+      try {
+        await signIn(email, password);
+        if (!onboardingComplete) await completeOnboarding('', defaultPreferences, false);
+        setPassword('');
+      }
       catch (cause) {
         if (typeof cause === 'object' && cause && 'code' in cause && cause.code === 'email_not_confirmed') setUnconfirmed(true);
         throw new Error(authError(cause));
@@ -33,6 +38,6 @@ export default function LoginScreen() {
     {unconfirmed ? <AuthLink title="Resend confirmation email" onPress={() => router.push({ pathname: '/verify-email', params: { email: cleanEmail(email), mode: 'signup', resend: 'true' } })} disabled={busy} /> : null}
     <AuthButton title="Log in" onPress={submit} busy={busy} />
     <AuthLink title="New here? Sign up" onPress={() => router.push('/sign-up')} disabled={busy} />
-    {__DEV__ ? <AuthLink title="Skip for now" onPress={enterPreview} disabled={busy} /> : null}
+    <AuthLink title="Keep browsing" onPress={() => { if (onboardingComplete) { enterPreview(); router.replace('/home'); } else router.replace('/'); }} disabled={busy} />
   </AuthForm>;
 }

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Timpla recipe recommender tester</title>
+<style>
+:root{font:16px system-ui;color:#302a26;background:#fff8ed}*{box-sizing:border-box}body{max-width:1100px;margin:32px auto;padding:0 20px}h1{font-size:32px;margin-bottom:8px}p{line-height:1.5;color:#756e66}.panel,.recipe{background:#fffcf6;border:1px solid #ded8ce;border-radius:18px;padding:22px;margin:20px 0}label{display:block;font-weight:650;margin:14px 0 7px}input[type=text],input[type=url],textarea,select{font:inherit;width:100%;padding:12px;border:1px solid #ded8ce;border-radius:9px;background:white;color:#302a26}textarea{min-height:90px;resize:vertical}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.allergies{display:flex;flex-wrap:wrap;gap:12px}.allergies label{font-weight:400;display:flex;gap:6px}button{font:inherit;font-weight:650;padding:12px 18px;background:#c84b35;color:white;border:0;border-radius:10px;cursor:pointer;min-height:46px}button:disabled{opacity:.55;cursor:wait}.examples{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.examples button{background:#f5efe5;color:#302a26;font-size:14px}.badge{display:inline-block;border-radius:20px;background:#e5e6d3;padding:7px 12px;font-weight:750}.heading{display:flex;justify-content:space-between;align-items:center;gap:12px}.heading h2{margin:0;font-size:22px}.small{font-size:13px;color:#756e66}.chips{display:flex;gap:7px;flex-wrap:wrap}.chip{background:#f9e5dc;border-radius:16px;padding:6px 10px;font-size:14px}.missing{padding:12px;background:#f5efe5;border-radius:10px;margin:15px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px}#status{margin:16px 0;line-height:1.5}#status.error{color:#a63127}@media(max-width:650px){.grid{grid-template-columns:1fr}.heading{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<h1>Recipe recommender tester</h1>
+<p>Test the Timpla recipe model directly, without scanning a photo. Enter the ingredients you have and inspect its ranked recommendations.</p>
+<section class="panel">
+<h2>1. Scan an ingredient photo</h2>
+<label for="detector">Image scanner API</label><input id="detector" type="url" value="https://timpla-detector-gateway-production.up.railway.app">
+<label for="photo">Take or upload a photo</label><input id="photo" type="file" accept="image/*">
+<p><button type="button" id="scan">Scan image</button></p>
+<div id="scanStatus" role="status" aria-live="polite">Choose a photo, then scan it. Detected ingredients will fill the list below for you to review.</div>
+<canvas id="preview" style="display:none;max-width:100%;height:auto;margin-top:18px;border-radius:12px"></canvas>
+<details><summary>Raw scanner response</summary><pre id="scanResponse"></pre></details>
+</section>
+<form id="form" class="panel">
+<h2>2. Review ingredients and get recipe matches</h2>
+<label for="endpoint">Recipe API</label><input id="endpoint" type="url" required value="https://timpla-recipes-production.up.railway.app">
+<div class="grid"><div><label for="ingredients">Available ingredients</label><textarea id="ingredients" required>egg, eggplant, cooking oil, salt</textarea><span class="small">Separate ingredients with commas or new lines. Use specific names such as chicken breast or cooked rice.</span></div><div><label for="excluded">Excluded ingredients</label><textarea id="excluded" placeholder="e.g. pork, garlic"></textarea></div></div>
+<div class="grid"><div><label for="diet">Diet</label><select id="diet"><option>No preference</option><option>Vegetarian</option><option>Halal</option></select></div><div><label for="limit">Maximum results</label><select id="limit"><option>3</option><option selected>5</option><option>10</option><option>20</option></select></div></div>
+<label>Allergies</label><div class="allergies" id="allergies"></div>
+<p class="small">Vegetarian and Halal require verified catalog labels, so they may return no matches. Allergy filters are discovery checks; verify recipe and product labels.</p>
+<div class="examples"><button type="button" data-example="egg, eggplant, cooking oil, salt">Eggplant + egg</button><button type="button" data-example="egg, tilapia, onion, tomato, salt, cooking oil">Fish + vegetables</button><button type="button" data-example="egg, cooked rice, garlic, cooking oil, salt">Rice + egg</button></div>
+<button id="run" type="submit">Get recipe matches</button>
+</form>
+<div id="status" role="status" aria-live="polite">Ready to test.</div>
+<div id="results"></div>
+<details class="panel"><summary>Request and raw model response</summary><h3>Request</h3><pre id="request"></pre><h3>Response</h3><pre id="response"></pre></details>
+<p class="small">The model ranks eligible catalog recipes. Missing essential ingredients exclude a recipe; missing supporting ingredients are disclosed. Percent match measures ingredient presence, not quantities. Ranking score is a relative model score, not a percentage or confidence. This experimental model was trained on automatic labels.</p>
+<script>
+const $=id=>document.getElementById(id);
+let photoUrl;
+$('photo').addEventListener('change',()=>{
+  if(photoUrl)URL.revokeObjectURL(photoUrl);
+  const file=$('photo').files[0];if(!file)return;
+  photoUrl=URL.createObjectURL(file);const image=new Image();image.onload=()=>{const canvas=$('preview');canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;canvas.getContext('2d').drawImage(image,0,0);canvas.style.display='block'};image.src=photoUrl;
+  $('scanStatus').textContent='Photo selected. Tap Scan image.';$('scanResponse').textContent='';
+});
+$('scan').addEventListener('click',async()=>{
+  const file=$('photo').files[0];if(!file){$('scanStatus').textContent='Choose a photo first.';return}
+  if(file.size>15*1024*1024){$('scanStatus').textContent='Choose a photo smaller than 15 MB.';return}
+  $('scan').disabled=true;$('run').disabled=true;$('photo').disabled=true;$('scanStatus').textContent='Detecting ingredients…';
+  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),120000);
+  try{
+    const endpoint=new URL($('detector').value);if(!['http:','https:'].includes(endpoint.protocol))throw Error('Use an HTTP or HTTPS scanner URL.');
+    const form=new FormData();form.append('image',file);
+    const response=await fetch(endpoint.href.replace(/\/$/,'')+'/detect',{method:'POST',body:form,signal:controller.signal});
+    const data=await response.json();$('scanResponse').textContent=JSON.stringify(data,null,2);if(!response.ok)throw Error(typeof data.detail==='string'?data.detail:`Scanner returned HTTP ${response.status}`);
+    if(!Array.isArray(data.ingredients))throw Error('Scanner returned an invalid ingredient list.');
+    const names=[...new Set(data.ingredients.map(item=>typeof item==='string'?item:item.name).filter(name=>typeof name==='string'&&name.trim()))];
+    $('ingredients').value=names.join(', ');$('results').replaceChildren();$('status').textContent='Review the detected ingredients, then get recipe matches.';
+    $('scanStatus').textContent=names.length?`${names.length} ingredients detected. Review and edit the list below.`:'No ingredients found. Try a clearer photo or enter ingredients manually below.';
+    const bitmap=await createImageBitmap(file),canvas=$('preview');canvas.width=bitmap.width;canvas.height=bitmap.height;const ctx=canvas.getContext('2d');ctx.drawImage(bitmap,0,0);bitmap.close();
+    const sx=canvas.width/(data.width||canvas.width),sy=canvas.height/(data.height||canvas.height);ctx.lineWidth=Math.max(2,canvas.width/400);ctx.font=`${Math.max(16,canvas.width/48)}px system-ui`;
+    for(const box of data.detections||[]){if(!Array.isArray(box.bbox_xyxy))continue;const [x1,y1,x2,y2]=box.bbox_xyxy;ctx.strokeStyle='#16a34a';ctx.fillStyle='#16a34a';ctx.strokeRect(x1*sx,y1*sy,(x2-x1)*sx,(y2-y1)*sy);ctx.fillText(`${box.label||box.name} ${Math.round(box.confidence*100)}%`,x1*sx,Math.max(22,y1*sy-6))}canvas.style.display='block';
+  }catch(error){$('scanStatus').textContent=error.name==='AbortError'?'Scanner timed out. Try again.':`Detection failed: ${error.message}`}finally{clearTimeout(timeout);$('scan').disabled=false;$('run').disabled=false;$('photo').disabled=false}
+});
+for(const name of ['Peanuts','Shellfish','Eggs','Dairy','Soy','Wheat']){const label=document.createElement('label'),input=document.createElement('input');input.type='checkbox';input.value=name;label.append(input,document.createTextNode(name));$('allergies').append(label)}
+const split=value=>[...new Set(value.split(/[,\n]/).map(x=>x.trim()).filter(Boolean))];
+const display=value=>value.replaceAll('_',' ');
+function element(tag,text,className){const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node}
+document.querySelectorAll('[data-example]').forEach(button=>button.addEventListener('click',()=>{$('ingredients').value=button.dataset.example}));
+$('form').addEventListener('submit',async event=>{
+event.preventDefault();const available=split($('ingredients').value);if(!available.length){$('status').textContent='Add at least one ingredient.';return}
+const body={available,excluded:split($('excluded').value),allergies:[...document.querySelectorAll('#allergies input:checked')].map(input=>input.value),diet:$('diet').value,limit:Number($('limit').value)};
+$('request').textContent=JSON.stringify(body,null,2);$('response').textContent='';$('results').replaceChildren();$('status').className='';$('status').textContent='Running the recommender…';$('run').disabled=true;
+const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),45000),start=performance.now();
+try{const endpoint=new URL($('endpoint').value);if(!['https:','http:'].includes(endpoint.protocol))throw Error('Use an HTTP or HTTPS API URL.');const response=await fetch(endpoint.href.replace(/\/$/,'')+'/recommendations',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal:controller.signal});const data=await response.json();$('response').textContent=JSON.stringify(data,null,2);if(!response.ok)throw Error(data.error||'Recipe request failed.');if(!Array.isArray(data.recommendations))throw Error('Invalid recommendation response.');
+$('status').textContent=`${data.recommendations.length} recipe matches · ${Math.round(performance.now()-start)} ms`;
+if(!data.recommendations.length)$('results').append(element('p','No eligible recipes for this inventory and these restrictions. Try another inventory.'));
+data.recommendations.forEach((recipe,index)=>{const card=element('article',undefined,'recipe'),heading=element('div',undefined,'heading');heading.append(element('h2',`${index+1}. ${recipe.name}`));if(recipe.ingredient_match)heading.append(element('span',`${recipe.ingredient_match.percentage}% match`,'badge'));card.append(heading);if(recipe.ingredient_match)card.append(element('p',`${recipe.ingredient_match.matched} of ${recipe.ingredient_match.total} listed ingredients available`,'small'));const chips=element('div',undefined,'chips');for(const name of recipe.used_ingredients||[])chips.append(element('span',display(name),'chip'));card.append(chips);card.append(element('div',recipe.missing_supporting?.length?'Missing supporting ingredients: '+recipe.missing_supporting.map(display).join(', '):'Supporting ingredients matched. Review quantities before cooking.','missing'));card.append(element('p',`Ranking score: ${recipe.ranking_score} · Recipe ID: ${recipe.id}`,'small'));$('results').append(card)});
+}catch(error){$('status').className='error';$('status').textContent=error.name==='AbortError'?'The request timed out. Try again.':error.message}finally{clearTimeout(timeout);$('run').disabled=false}
+});
+</script>
+</body>
+</html>

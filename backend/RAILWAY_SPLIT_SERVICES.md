@@ -40,7 +40,7 @@ $env:PRODUCE_MODEL_URL = 'http://127.0.0.1:8006'
 .\.venv-model\Scripts\python.exe -m uvicorn backend.detector_gateway:app --host 0.0.0.0 --port 8007
 ```
 
-Open `http://localhost:8007/health` to confirm both model services are ready, then use `http://localhost:8007/docs` to send an image to `/detect`. The coordinator returns one JSON response with the merged `detections` and de-duplicated `ingredients`. Its defaults remain general confidence `0.10`, produce confidence `0.50`, image size `640`, and IoU `0.50`.
+Open `http://localhost:8007/health` to confirm both model services are ready, then use `http://localhost:8007/docs` to send an image to `/detect`. The coordinator returns one JSON response with the merged `detections` and de-duplicated `ingredients`. Its defaults are general non-produce confidence `0.10`, produce confidence `0.60`, image size `640`, and IoU `0.50`.
 
 ## Railway setup steps
 

@@ -1,3 +1,6 @@
+import { useDialogFocus } from '../hooks/useDialogFocus';
+import { useReducedMotion } from '../hooks/useReducedMotion';
+import { typography } from '../theme/tokens';
 import { Redirect, router, useFocusEffect } from 'expo-router';
 import { useCallback, useRef, useState } from 'react';
 import { ActivityIndicator, BackHandler, Image, KeyboardAvoidingView, Modal, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
@@ -5,6 +8,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { RecipeMatchesPreview } from '../components/RecipeMatchesPreview';
 import { AppIcon } from '../components/AppIcon';
 import { BottomNav, useBottomNavPadding } from '../components/BottomNav';
+import { useSwipeBack } from '../hooks/useSwipeBack';
 import { useCooking } from '../state/CookingContext';
 import { useTheme } from '../theme/ThemeContext';
 import { normalizeIngredient } from '../utils/normalizeIngredient';
@@ -13,6 +17,11 @@ import { canonicalIngredientName, ingredientCategories, IngredientCategory, ingr
 export default function ResultsScreen() {
   const bottomPadding = useBottomNavPadding();
   const { palette } = useTheme();
+  const reducedMotion = useReducedMotion();
+  const discardTitleRef = useRef<Text>(null);
+  const showDiscardDialog = useDialogFocus(discardTitleRef);
+  const leaveTitleRef = useRef<Text>(null);
+  const showLeaveDialog = useDialogFocus(leaveTitleRef);
   const { ingredients, setIngredients, photo, detecting, detectionError, retryDetection, saveScanResult, discardScanResult } = useCooking();
   const [leaveOpen, setLeaveOpen] = useState(false);
   const [discardOpen, setDiscardOpen] = useState(false);
@@ -24,6 +33,13 @@ export default function ResultsScreen() {
     setSaveError('');
     setLeaveOpen(true);
   }, []);
+  const requestSwipeBack = useCallback(() => {
+    requestLeave(() => {
+      if (router.canGoBack()) router.back();
+      else router.replace('/home');
+    });
+  }, [requestLeave]);
+  const swipeBack = useSwipeBack(!leaveOpen && !discardOpen && !saving, requestSwipeBack);
   useFocusEffect(useCallback(() => {
     const subscription = BackHandler.addEventListener('hardwareBackPress', () => {
       requestLeave(() => router.replace('/home'));
@@ -64,13 +80,13 @@ export default function ResultsScreen() {
     input.current?.blur();
   }
   if (!photo) return <Redirect href="/scan" />;
-  return <SafeAreaView edges={['top', 'left', 'right']} style={[styles.screen, { backgroundColor: palette.background }]}>
+  return <SafeAreaView {...swipeBack} edges={['top', 'left', 'right']} style={[styles.screen, { backgroundColor: palette.background }]}>
     <View style={styles.header}>
       <Pressable accessibilityRole="button" accessibilityLabel="Back to Home" onPress={() => requestLeave(() => router.replace('/home'))} style={styles.iconButton}><AppIcon name="back" size={25} /></Pressable>
       <Text accessibilityRole="header" style={[styles.pageTitle, { color: palette.text }]}>Results</Text><View style={styles.iconButton} />
     </View>
     <KeyboardAvoidingView style={styles.screen} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-      <ScrollView contentContainerStyle={[styles.content, { paddingBottom: bottomPadding }]} keyboardShouldPersistTaps="handled">
+      <ScrollView keyboardDismissMode="on-drag" contentContainerStyle={[styles.content, { paddingBottom: bottomPadding }]} keyboardShouldPersistTaps="handled">
         <View style={styles.ingredientSummary}>
           {photo ? <Pressable accessibilityRole="button" accessibilityLabel="View captured photo" onPress={() => router.push('/photo')}><Image source={{ uri: photo }} accessibilityLabel="Ingredient photo" style={styles.thumbnail} /></Pressable> : null}
           <View style={styles.summaryCopy}>
@@ -82,7 +98,7 @@ export default function ResultsScreen() {
                   {editing && <AppIcon name="close" size={16} color={palette.text} />}
                 </Pressable>;
               })}
-              {editing && <Pressable accessibilityRole="button" accessibilityLabel="Add ingredient" onPress={() => input.current?.focus()} style={[styles.plus, { backgroundColor: palette.accent }]}><AppIcon name="plus" size={23} color="#FFF8ED" /></Pressable>}
+              {editing && <Pressable accessibilityRole="button" accessibilityLabel="Add ingredient" onPress={() => input.current?.focus()} style={[styles.plus, { backgroundColor: palette.buttonBackground }]}><AppIcon name="plus" size={23} color="#FFF8ED" /></Pressable>}
             </View>
           </View>
         </View>
@@ -98,8 +114,8 @@ export default function ResultsScreen() {
             </Pressable>
           </View>
           <View accessibilityLabel="Ingredient category filters" style={styles.filterRow}>
-            {ingredientCategories.map(category => <Pressable key={category} accessibilityRole="button" accessibilityLabel={`Filter ingredients: ${category}`} accessibilityState={{ selected: ingredientCategory === category }} onPress={() => { setIngredientCategory(category); setError(''); }} style={[styles.filterChip, { backgroundColor: ingredientCategory === category ? palette.accent : palette.surface, borderColor: palette.border }]}>
-              <Text style={{ color: ingredientCategory === category ? '#FFF8ED' : palette.text, fontSize: 13 }}>{category}</Text>
+            {ingredientCategories.map(category => <Pressable key={category} accessibilityRole="button" accessibilityLabel={`Filter ingredients: ${category}`} accessibilityState={{ selected: ingredientCategory === category }} onPress={() => { setIngredientCategory(category); setError(''); }} style={[styles.filterChip, { backgroundColor: ingredientCategory === category ? palette.buttonBackground : palette.surface, borderColor: palette.border }]}>
+              <Text style={{ color: ingredientCategory === category ? '#FFF8ED' : palette.text, fontSize: typography.label }}>{category}</Text>
             </Pressable>)}
           </View>
           <View style={[styles.entryRow, { backgroundColor: palette.surface, borderColor: palette.border }]}><TextInput ref={input} autoFocus accessibilityLabel="Ingredient name" accessibilityHint="Type to see ingredient suggestions, then tap one to add it." placeholder="Ingredient name" placeholderTextColor={palette.muted} value={entry} onChangeText={(value) => { setEntry(value); setError(''); }} onSubmitEditing={() => addIngredient()} returnKeyType="done" autoCorrect={false} maxLength={60} style={[styles.input, { color: palette.text }]} /><Pressable accessibilityRole="button" accessibilityLabel="Save ingredient" disabled={!entry.trim()} onPress={() => addIngredient()} style={styles.iconButton}><AppIcon name="check" color={palette.accent} /></Pressable></View>
@@ -116,58 +132,58 @@ export default function ResultsScreen() {
         <RecipeMatchesPreview />
         {saveError && !leaveOpen && !discardOpen ? <Text accessibilityRole="alert" style={{ color: palette.error }}>{saveError}</Text> : null}
         <View style={styles.resultActions}>
-          <Pressable accessibilityRole="button" disabled={saving || detecting} onPress={() => { void finishResult(true, () => router.replace('/recents')); }} style={[styles.noticePrimary, { backgroundColor: palette.accent, opacity: saving || detecting ? 0.5 : 1 }]}><Text style={styles.noticePrimaryText}>{saving ? 'Saving…' : 'Save result'}</Text></Pressable>
+          <Pressable accessibilityRole="button" disabled={saving || detecting} onPress={() => { void finishResult(true, () => router.replace('/recents')); }} style={[styles.noticePrimary, { backgroundColor: palette.buttonBackground, opacity: saving || detecting ? 0.5 : 1 }]}><Text style={styles.noticePrimaryText}>{saving ? 'Saving…' : 'Save result'}</Text></Pressable>
           <Pressable accessibilityRole="button" disabled={saving} onPress={() => { setSaveError(''); setDiscardOpen(true); }} style={[styles.noticeSecondary, { borderColor: palette.border }]}><Text style={[styles.noticeSecondaryText, { color: palette.text }]}>Discard</Text></Pressable>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
     <BottomNav active="scan" onNavigate={requestLeave} />
-    <Modal visible={discardOpen} transparent animationType="fade" onRequestClose={() => { if (!saving) setDiscardOpen(false); }}>
-      <View style={styles.noticeBackdrop}><View accessibilityViewIsModal style={[styles.noticeCard, { backgroundColor: palette.surface, borderColor: palette.border }]}>
-        <Text accessibilityRole="header" style={[styles.noticeTitle, { color: palette.text }]}>Are you sure you want to discard this result?</Text>
+    <Modal onShow={showDiscardDialog} visible={discardOpen} transparent animationType={reducedMotion ? 'none' : 'fade'} onRequestClose={() => { if (!saving) setDiscardOpen(false); }}>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.noticeBackdrop}><View accessibilityViewIsModal style={[styles.noticeCard, { backgroundColor: palette.surface, borderColor: palette.border }]}>
+        <Text ref={discardTitleRef} accessible accessibilityRole="header" style={[styles.noticeTitle, { color: palette.text }]}>Are you sure you want to discard this result?</Text>
         {saveError ? <Text accessibilityRole="alert" style={{ color: palette.error }}>{saveError}</Text> : null}
-        <Pressable accessibilityRole="button" disabled={saving} onPress={() => { void finishResult(false, () => router.replace('/home')); }} style={[styles.noticePrimary, { backgroundColor: palette.accent, opacity: saving ? 0.5 : 1 }]}><Text style={styles.noticePrimaryText}>{saving ? 'Discarding…' : 'Yes'}</Text></Pressable>
+        <Pressable accessibilityRole="button" disabled={saving} onPress={() => { void finishResult(false, () => router.replace('/home')); }} style={[styles.noticePrimary, { backgroundColor: palette.buttonBackground, opacity: saving ? 0.5 : 1 }]}><Text style={styles.noticePrimaryText}>{saving ? 'Discarding…' : 'Yes'}</Text></Pressable>
         <Pressable accessibilityRole="button" disabled={saving} onPress={() => setDiscardOpen(false)} style={[styles.noticeSecondary, { borderColor: palette.border }]}><Text style={[styles.noticeSecondaryText, { color: palette.text }]}>No</Text></Pressable>
-      </View></View>
+      </View></ScrollView>
     </Modal>
-    <Modal visible={leaveOpen} transparent animationType="fade" onRequestClose={() => { if (!saving) setLeaveOpen(false); }}>
-      <View style={styles.noticeBackdrop}><View accessibilityViewIsModal style={[styles.noticeCard, { backgroundColor: palette.surface, borderColor: palette.border }]}>
-        <Text accessibilityRole="header" style={[styles.noticeTitle, { color: palette.text }]}>Save this result?</Text>
+    <Modal onShow={showLeaveDialog} visible={leaveOpen} transparent animationType={reducedMotion ? 'none' : 'fade'} onRequestClose={() => { if (!saving) setLeaveOpen(false); }}>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.noticeBackdrop}><View accessibilityViewIsModal style={[styles.noticeCard, { backgroundColor: palette.surface, borderColor: palette.border }]}>
+        <Text ref={leaveTitleRef} accessible accessibilityRole="header" style={[styles.noticeTitle, { color: palette.text }]}>Save this result?</Text>
         <Text style={[styles.noticeBody, { color: palette.muted }]}>Keep this scan in Recents, or discard it before leaving.</Text>
         {saveError ? <Text accessibilityRole="alert" style={{ color: palette.error }}>{saveError}</Text> : null}
-        <Pressable accessibilityRole="button" disabled={saving || detecting} onPress={() => { void finishResult(true); }} style={[styles.noticePrimary, { backgroundColor: palette.accent, opacity: saving || detecting ? 0.5 : 1 }]}><Text style={styles.noticePrimaryText}>{detecting ? 'Finishing scan…' : saving ? 'Saving…' : 'Save result'}</Text></Pressable>
+        <Pressable accessibilityRole="button" disabled={saving || detecting} onPress={() => { void finishResult(true); }} style={[styles.noticePrimary, { backgroundColor: palette.buttonBackground, opacity: saving || detecting ? 0.5 : 1 }]}><Text style={styles.noticePrimaryText}>{detecting ? 'Finishing scan…' : saving ? 'Saving…' : 'Save result'}</Text></Pressable>
         <Pressable accessibilityRole="button" disabled={saving} onPress={() => { void finishResult(false); }} style={[styles.noticeSecondary, { borderColor: palette.border }]}><Text style={[styles.noticeSecondaryText, { color: palette.text }]}>Discard</Text></Pressable>
         <Pressable accessibilityRole="button" disabled={saving} onPress={() => setLeaveOpen(false)} style={styles.noticeSecondary}><Text style={[styles.noticeSecondaryText, { color: palette.muted }]}>Keep editing</Text></Pressable>
-      </View></View>
+      </View></ScrollView>
     </Modal>
   </SafeAreaView>;
 }
 const styles = StyleSheet.create({
   resultActions: { gap: 10, marginTop: 12, marginBottom: 20 },
   filterRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginBottom: 10 },
-  filterChip: { minHeight: 44, paddingHorizontal: 12, justifyContent: 'center', borderRadius: 22, borderWidth: 1 },
+  filterChip: { minHeight: 48, paddingHorizontal: 12, justifyContent: 'center', borderRadius: 22, borderWidth: 1 },
   suggestionList: { maxHeight: 240 },
   ingredientEditor: { marginBottom: 14 },
-  editorClose: { minHeight: 44, paddingHorizontal: 8, flexDirection: 'row', alignItems: 'center', gap: 5 },
+  editorClose: { minHeight: 48, paddingHorizontal: 8, flexDirection: 'row', alignItems: 'center', gap: 5 },
   suggestions: { borderWidth: 1, borderRadius: 12, overflow: 'hidden', marginTop: 6 },
   suggestionRow: { minHeight: 48, paddingHorizontal: 14, paddingVertical: 10, flexDirection: 'row', alignItems: 'center', gap: 12 },
-  suggestionName: { fontSize: 15, flex: 1 },
-  rescanButton: { alignSelf: 'flex-end', minHeight: 44, justifyContent: 'center', paddingHorizontal: 16, borderWidth: 1, borderRadius: 12, marginBottom: 14 },
+  suggestionName: { fontSize: typography.body, flex: 1 },
+  rescanButton: { alignSelf: 'flex-end', minHeight: 52, justifyContent: 'center', paddingHorizontal: 16, borderWidth: 1, borderRadius: 12, marginBottom: 14, paddingVertical: 14 },
   scanStatus: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 14 },
   screen: { flex: 1 }, header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%', maxWidth: 480, alignSelf: 'center', paddingHorizontal: 12, minHeight: 62 },
-  iconButton: { width: 44, height: 44, alignItems: 'center', justifyContent: 'center' }, pageTitle: { fontSize: 22, fontWeight: '700' },
+  iconButton: { width: 48, minHeight: 48, alignItems: 'center', justifyContent: 'center' }, pageTitle: { fontSize: typography.title, fontWeight: '700' },
   content: { width: '100%', maxWidth: 480, alignSelf: 'center', paddingHorizontal: 20, paddingBottom: 20 }, ingredientSummary: { gap: 14, marginBottom: 18, marginTop: 8 },
-  thumbnail: { width: '100%', aspectRatio: 4 / 3, borderRadius: 18, resizeMode: 'cover' }, summaryCopy: { minWidth: 0 }, sectionRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }, sectionTitle: { fontSize: 18, fontWeight: '700' }, edit: { minHeight: 44, paddingLeft: 12, justifyContent: 'center' }, editText: { fontSize: 14, fontWeight: '600' },
-  chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 7 }, chip: { flexDirection: 'row', alignItems: 'center', gap: 10, minHeight: 44, paddingHorizontal: 11, borderRadius: 22 }, chipText: { fontSize: 13, flexShrink: 1 }, plus: { width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
-  entryRow: { flexDirection: 'row', alignItems: 'center', borderWidth: 1, borderRadius: 14, paddingLeft: 14 }, input: { flex: 1, minWidth: 0, minHeight: 48, fontSize: 16 },
-  noticeBackdrop: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 22, backgroundColor: 'rgba(0, 0, 0, 0.62)' },
-  noticeCard: { width: '100%', maxWidth: 420, borderWidth: 1, borderRadius: 20, padding: 22, gap: 14 },
+  thumbnail: { width: '100%', aspectRatio: 4 / 3, borderRadius: 16, resizeMode: 'cover' }, summaryCopy: { minWidth: 0 }, sectionRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }, sectionTitle: { fontSize: typography.subtitle, fontWeight: '700' }, edit: { minHeight: 48, paddingLeft: 12, justifyContent: 'center' }, editText: { fontSize: typography.label, fontWeight: '600' },
+  chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 7 }, chip: { flexDirection: 'row', alignItems: 'center', gap: 10, minHeight: 48, paddingHorizontal: 11, borderRadius: 22 }, chipText: { fontSize: typography.label, flexShrink: 1 }, plus: { width: 48, minHeight: 48, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
+  entryRow: { flexDirection: 'row', alignItems: 'center', borderWidth: 1, borderRadius: 14, paddingLeft: 14 }, input: { flex: 1, minWidth: 0, minHeight: 48, fontSize: typography.body },
+  noticeBackdrop: { flexGrow: 1, justifyContent: 'center', alignItems: 'center', padding: 22, backgroundColor: 'rgba(0, 0, 0, 0.62)' },
+  noticeCard: { width: '100%', maxWidth: 420, borderWidth: 1, borderRadius: 16, padding: 22, gap: 14 },
   noticeHeading: { minHeight: 42, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 },
-  noticeTitle: { fontSize: 21, lineHeight: 28, fontWeight: '700', flexShrink: 0 },
+  noticeTitle: { fontSize: typography.section, lineHeight: 28, fontWeight: '700', flexShrink: 0 },
   noticeClose: { width: 40, height: 40, alignItems: 'center', justifyContent: 'center' },
-  noticeBody: { fontSize: 15, lineHeight: 22 },
-  noticePrimary: { minHeight: 48, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16, borderRadius: 24 },
-  noticePrimaryText: { color: '#FFF8ED', fontSize: 15, fontWeight: '700' },
-  noticeSecondary: { minHeight: 48, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16, borderWidth: 1, borderRadius: 24 },
-  noticeSecondaryText: { fontSize: 15, fontWeight: '600' },
+  noticeBody: { fontSize: typography.body, lineHeight: 22 },
+  noticePrimary: { minHeight: 52, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16, borderRadius: 12, paddingVertical: 14 },
+  noticePrimaryText: { color: '#FFF8ED', fontSize: typography.body, fontWeight: '700' },
+  noticeSecondary: { minHeight: 52, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16, borderWidth: 1, borderRadius: 12, paddingVertical: 14 },
+  noticeSecondaryText: { fontSize: typography.body, fontWeight: '600' },
 });

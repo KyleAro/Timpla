@@ -1,3 +1,4 @@
+import { typography } from '../theme/tokens';
 import { PropsWithChildren, useState } from 'react';
 import { ActivityIndicator, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, TextInputProps, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -36,27 +37,27 @@ export function AuthInput({ password, ...props }: TextInputProps & { password?: 
 }
 export function AuthButton({ title, onPress, busy, disabled }: { title: string; onPress: () => void; busy?: boolean; disabled?: boolean }) {
   const { palette } = useTheme();
-  return <Pressable accessibilityRole="button" accessibilityState={{ busy, disabled: busy || disabled }} disabled={busy || disabled} onPress={onPress} style={({ pressed }) => [styles.button, { backgroundColor: pressed ? palette.accentPressed : palette.accent, opacity: busy || disabled ? 0.65 : 1 }]}>
+  return <Pressable accessibilityRole="button" accessibilityState={{ busy, disabled: busy || disabled }} disabled={busy || disabled} onPress={onPress} style={({ pressed }) => [styles.button, { backgroundColor: pressed ? palette.buttonPressed : palette.buttonBackground, opacity: busy || disabled ? 0.65 : 1 }]}>
     {busy ? <ActivityIndicator color="#FFF8ED" /> : <Text style={styles.buttonText}>{title}</Text>}
   </Pressable>;
 }
 export function AuthLink({ title, onPress, disabled }: { title: string; onPress: () => void; disabled?: boolean }) {
   const { palette } = useTheme();
-  return <Pressable accessibilityRole="button" disabled={disabled} onPress={onPress} style={[styles.link, { opacity: disabled ? 0.5 : 1 }]}><Text style={{ color: palette.accent, fontSize: 14, fontWeight: '600', textAlign: 'center' }}>{title}</Text></Pressable>;
+  return <Pressable accessibilityRole="button" disabled={disabled} onPress={onPress} style={[styles.link, { opacity: disabled ? 0.5 : 1 }]}><Text style={{ color: palette.accent, fontSize: typography.label, fontWeight: '600', textAlign: 'center' }}>{title}</Text></Pressable>;
 }
 const styles = StyleSheet.create({
   screen: { flex: 1 },
   scroll: { flexGrow: 1, justifyContent: 'center', paddingHorizontal: 28, paddingVertical: 36 },
   content: { width: '100%', maxWidth: 400, alignSelf: 'center' },
   brand: { flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'center', gap: 8, marginBottom: 48 },
-  heading: { fontSize: 29, fontWeight: '700', letterSpacing: -0.7, marginBottom: 20 },
-  subtitle: { fontSize: 15, lineHeight: 23, marginBottom: 22 },
-  message: { fontSize: 14, lineHeight: 21, marginBottom: 18 },
+  heading: { fontSize: typography.title, fontWeight: '700', letterSpacing: -0.7, marginBottom: 20 },
+  subtitle: { fontSize: typography.body, lineHeight: 23, marginBottom: 22 },
+  message: { fontSize: typography.label, lineHeight: 21, marginBottom: 18 },
   fields: { gap: 16 },
-  field: { minHeight: 58, borderWidth: 1, borderRadius: 13, flexDirection: 'row', alignItems: 'center', gap: 12, paddingLeft: 16, paddingRight: 4 },
-  input: { flex: 1, minWidth: 0, paddingVertical: 17, paddingRight: 12, fontSize: 16 },
+  field: { minHeight: 58, borderWidth: 1, borderRadius: 12, flexDirection: 'row', alignItems: 'center', gap: 12, paddingLeft: 16, paddingRight: 4 },
+  input: { flex: 1, minWidth: 0, paddingVertical: 17, paddingRight: 12, fontSize: typography.body },
   eye: { minWidth: 48, minHeight: 48, alignItems: 'center', justifyContent: 'center' },
-  button: { minHeight: 58, borderRadius: 13, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16 },
-  buttonText: { color: '#FFF8ED', fontSize: 17, fontWeight: '600' },
-  link: { minHeight: 44, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 8 },
+  button: { minHeight: 52, borderRadius: 12, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16, paddingVertical: 14 },
+  buttonText: { color: '#FFF8ED', fontSize: typography.body, fontWeight: '600' },
+  link: { minHeight: 48, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 8 },
 });

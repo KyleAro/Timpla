@@ -1,3 +1,4 @@
+import { typography } from '../theme/tokens';
 import { router, useLocalSearchParams } from 'expo-router';
 
 import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
@@ -70,11 +71,11 @@ const styles = StyleSheet.create({
 
   screen: { flex: 1 }, content: { width: '100%', maxWidth: 480, alignSelf: 'center', padding: 20, paddingBottom: 32 },
 
-  heading: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 22 }, back: { width: 44, height: 44, alignItems: 'center', justifyContent: 'center' }, title: { flex: 1, fontSize: 25, fontWeight: '700' },
+  heading: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 22 }, back: { width: 48, minHeight: 48, alignItems: 'center', justifyContent: 'center' }, title: { flex: 1, fontSize: 25, fontWeight: '700' },
 
-  card: { borderWidth: 1, borderRadius: 18, overflow: 'hidden', marginBottom: 16 }, photo: { width: '100%', height: 165, resizeMode: 'cover' }, copy: { padding: 16, flexDirection: 'row', gap: 10, alignItems: 'center' }, name: { fontSize: 18, fontWeight: '700' }, meta: { fontSize: 14, marginTop: 7 },
+  card: { borderWidth: 1, borderRadius: 16, overflow: 'hidden', marginBottom: 16 }, photo: { width: '100%', height: 165, resizeMode: 'cover' }, copy: { padding: 16, flexDirection: 'row', gap: 10, alignItems: 'center' }, name: { fontSize: typography.subtitle, fontWeight: '700' }, meta: { fontSize: typography.label, marginTop: 7 },
 
-  empty: { paddingVertical: 70, alignItems: 'center', gap: 18 }, emptyText: { fontSize: 16 },
+  empty: { paddingVertical: 70, alignItems: 'center', gap: 18 }, emptyText: { fontSize: typography.body },
 
   destination: { padding: 20, minHeight: 78, flexDirection: 'row', alignItems: 'center', gap: 14 },
 

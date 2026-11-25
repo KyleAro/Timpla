@@ -10,7 +10,7 @@ export function useAccountSettings() {
   const userId = session?.user.id;
   const cloud = Boolean(userId && session?.user.email_confirmed_at && !preview && !recovery);
   const [preferences, setPreferences] = useState<Preferences>(defaultPreferences);
-  const [displayName, setName] = useState(preview ? 'Juan Dela Cruz' : '');
+  const [displayName, setName] = useState('');
   const [loaded, setLoaded] = useState(false);
   const [accountError, setError] = useState('');
   const [attempt, setAttempt] = useState(0);
@@ -21,6 +21,12 @@ export function useAccountSettings() {
   useEffect(() => {
     let active = true;
     if (!cloud) {
+      if (preview) void AsyncStorage.getItem('timpla.onboarding').then(raw => {
+        if (!active || !raw) return;
+        const saved = JSON.parse(raw);
+        setName(typeof saved.name === 'string' ? saved.name : '');
+        setPreferences({ ...defaultPreferences, ...saved.preferences });
+      }).catch(() => {});
       if (preview) void AsyncStorage.getItem('timpla.preview.cooking-style').then(style => {
         if (active && isCookingStyle(style)) setPreferences(current => ({ ...current, cookingStyle: style }));
       }).catch(() => {});
@@ -41,6 +47,13 @@ export function useAccountSettings() {
       if (cloud && (accountLoading || accountError)) throw new Error('Load your profile before saving changes.');
       if (!cloud && !preview) throw new Error('Sign in before saving changes.');
       const result = cloud ? await saveAccountPreferences(userId!, patch) : null;
+      if (preview) {
+        const raw = await AsyncStorage.getItem('timpla.onboarding');
+        const saved = raw ? JSON.parse(raw) : {};
+        await AsyncStorage.setItem('timpla.onboarding', JSON.stringify({
+          ...saved, preferences: { ...defaultPreferences, ...saved.preferences, ...patch },
+        }));
+      }
       if (preview && patch.cookingStyle) await AsyncStorage.setItem('timpla.preview.cooking-style', patch.cookingStyle);
       if (mounted.current) setPreferences(current => result ?? ({ ...current, ...patch,
         ...(patch.allergies ? { allergies: cleanItems(patch.allergies) } : {}),
@@ -56,6 +69,11 @@ export function useAccountSettings() {
     const cleaned = name.trim();
     if (!cleaned || cleaned.length > 40) throw new Error('Enter a name of 1–40 characters.');
     const value = cloud ? await saveAccountName(userId!, cleaned) : cleaned;
+    if (preview) {
+      const raw = await AsyncStorage.getItem('timpla.onboarding');
+      const saved = raw ? JSON.parse(raw) : {};
+      await AsyncStorage.setItem('timpla.onboarding', JSON.stringify({ ...saved, name: value }));
+    }
     if (mounted.current) setName(value);
   }, [cloud, preview, userId, accountLoading, accountError]);
   return { ...preferences, displayName, saveProfile, savePreferences, accountLoading, accountError,

@@ -8,6 +8,7 @@ import { useAccountSettings } from '../hooks/useAccountSettings';
 import type { Recipe } from '../types/recipe';
 import { destinations } from '../data/cookingStyles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { router } from 'expo-router';
 
 const recipes: Recipe[] = [];
 
@@ -63,7 +64,30 @@ export function CookingProvider({ children }: PropsWithChildren) {
     }).catch(() => {}).finally(() => { if (active) setScansLoaded(true); });
     return () => { active = false; };
   }, [storageKey]);
+  useEffect(() => {
+    if (!scansLoaded || preview || !session?.user.email_confirmed_at) return;
+    let active = true;
+    void AsyncStorage.getItem('timpla.pending-scan').then(async raw => {
+      if (!active || !raw) return;
+      const pending: RecentScan = JSON.parse(raw);
+      if (!pending.id || !Array.isArray(pending.ingredients)) return;
+      const scans = [...recentScans.filter(scan => scan.id !== pending.id && scan.saved !== false), { ...pending, saved: true }];
+      await AsyncStorage.setItem(storageKey, JSON.stringify(scans));
+      if (active) dispatchScan({ type: 'restore', scans });
+      await AsyncStorage.removeItem('timpla.pending-scan');
+    }).catch(() => {});
+    return () => { active = false; };
+  // Import the guest result once after this account's history has loaded.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [scansLoaded, preview, session?.user.id]);
+
   async function saveScanResult() {
+    if (preview || !session?.user.email_confirmed_at) {
+      const active = recentScans.find(scan => scan.id === scanState.activeId);
+      if (active) await AsyncStorage.setItem('timpla.pending-scan', JSON.stringify(active));
+      router.push('/save-account');
+      throw new Error('Log in to save this result.');
+    }
     if (!scansLoaded) throw new Error('Your saved results are still loading. Please try again.');
     if (!scanState.activeId) throw new Error('No result to save.');
     const saved = recentScans.map(scan => scan.id === scanState.activeId ? { ...scan, saved: true } : scan).filter(scan => scan.saved !== false);
@@ -136,7 +160,13 @@ export function CookingProvider({ children }: PropsWithChildren) {
   const scanIngredients = recentScans.find(item => item.id === scanState.activeId)?.ingredients ?? [];
   function selectDish(dish: SelectedDish) { dispatchScan({ type: 'select', dish }); }
   return (
-    <CookingContext.Provider value={{ ...account, ...cookingHistory, recipes, destinations, detecting: activeDetection && detection.status === 'pending', detectionComplete: activeDetection && detection.status === 'complete', detectionError: activeDetection ? detection.error : '', retryDetection, saveScanResult, discardScanResult, deleteScanResult, scanIngredients, huntIngredients, toggleHuntIngredient, ...savedRecipes, selectDish, recentScans: recentScans.filter(scan => scan.saved !== false), activeScanId: scanState.activeId, openRecentScan, ingredients, setIngredients, photo, setPhoto }}>
+    <CookingContext.Provider value={{ ...account, ...cookingHistory, recipes, destinations, detecting: activeDetection && detection.status === 'pending', detectionComplete: activeDetection && detection.status === 'complete', detectionError: activeDetection ? detection.error : '', retryDetection, saveScanResult, discardScanResult, deleteScanResult, scanIngredients, huntIngredients, toggleHuntIngredient, ...savedRecipes, toggleSavedRecipe: (id: string) => {
+      if (preview || !session?.user.email_confirmed_at) {
+        void AsyncStorage.setItem('timpla.pending-recipe', id).then(() => router.push('/save-account'));
+        return;
+      }
+      savedRecipes.toggleSavedRecipe(id);
+    }, selectDish, recentScans: recentScans.filter(scan => scan.saved !== false), activeScanId: scanState.activeId, openRecentScan, ingredients, setIngredients, photo, setPhoto }}>
       {children}
     </CookingContext.Provider>
   );

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TIMPLA detector comparison · YOLOv8 merged</title>
+  <style>
+    :root{font:16px system-ui;color:#29241f;background:#f4efe7}body{max-width:1180px;margin:32px auto;padding:0 20px}h1{font-size:2.4rem;margin-bottom:4px}.intro{font-size:1.1rem;color:#655d54;line-height:1.5}.card{background:#fffdfa;border:1px solid #dacfc0;padding:24px;border-radius:8px;margin-top:24px}.controls{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.settings{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin:18px 0}.settings label{display:flex;gap:8px;align-items:center}button{border:0;background:#9e3b22;color:white;padding:14px 22px;font-size:1rem;cursor:pointer}button:disabled{opacity:.5}#status{margin:18px 0;color:#51483f}#preview{max-width:100%;height:auto;display:none}pre{white-space:pre-wrap;overflow-wrap:anywhere;color:#4d443b}.badge{display:inline-block;border:1px solid #d8cbbb;border-radius:20px;padding:6px 12px;margin:4px;color:#494139}
+  </style>
+</head>
+<body>
+  <h1>Timpla ingredient detector</h1>
+  <p class="intro">Single-model comparison page using the same 68-class YOLOv8 merged checkpoint as the app scanner. The app shows ingredient names for review; this page also shows model boxes and scores to help the team inspect results. Lower confidence may reveal weaker predictions and may add false detections.</p>
+  <section class="card">
+    <p><strong>Team model:</strong> <span id="model">Checking model…</span></p>
+    <div class="controls"><input id="photo" type="file" accept="image/*"><button id="run">Detect ingredients</button></div>
+    <div class="settings"><label>Confidence <input id="confidence" type="range" min="0.05" max="0.65" step="0.05" value="0.10"><output id="confidenceValue">0.10</output></label><label>Inference size <select id="imageSize"><option value="640">640 (classmate comparison)</option><option value="960">960</option><option value="1280">1280</option></select></label><span>IoU 0.50</span></div>
+    <p id="status" role="status">Choose an image to begin.</p>
+    <div id="labels"></div><img id="preview" alt="Uploaded image with model detections"><pre id="details"></pre>
+  </section>
+<script>
+const photo=document.querySelector('#photo'),run=document.querySelector('#run'),status=document.querySelector('#status'),preview=document.querySelector('#preview'),labels=document.querySelector('#labels'),details=document.querySelector('#details'),confidence=document.querySelector('#confidence'),confidenceValue=document.querySelector('#confidenceValue'),imageSize=document.querySelector('#imageSize');
+confidence.addEventListener('input',()=>confidenceValue.value=Number(confidence.value).toFixed(2));
+fetch('/health').then(r=>r.json()).then(x=>{document.querySelector('#model').textContent=`${x.model} · ${x.class_count} classes · ${x.device}`}).catch(()=>{document.querySelector('#model').textContent='Detector did not start; check its terminal.'});
+run.addEventListener('click',async()=>{const file=photo.files[0];if(!file)return;run.disabled=true;status.textContent='Running one YOLOv8 checkpoint…';labels.replaceChildren();details.textContent='';try{const form=new FormData();form.append('image',file);form.append('confidence',confidence.value);form.append('image_size',imageSize.value);const response=await fetch('/detect',{method:'POST',body:form});const body=await response.json();if(!response.ok)throw Error(body.detail||`HTTP ${response.status}`);const bitmap=await createImageBitmap(file);const canvas=document.createElement('canvas');canvas.width=bitmap.width;canvas.height=bitmap.height;const ctx=canvas.getContext('2d');ctx.drawImage(bitmap,0,0);bitmap.close();ctx.lineWidth=Math.max(2,canvas.width/450);ctx.font=`${Math.max(16,canvas.width/48)}px system-ui`;ctx.strokeStyle='#168344';ctx.fillStyle='#168344';for(const d of body.detections){const [x1,y1,x2,y2]=d.bbox_xyxy;ctx.strokeRect(x1,y1,x2-x1,y2-y1);ctx.fillText(`${d.label} ${Math.round(d.confidence*100)}%`,x1,Math.max(20,y1-5));}preview.src=canvas.toDataURL('image/jpeg',.9);preview.style.display='block';status.textContent=`${body.detections.length} detections · ${body.width}×${body.height} original image · imgsz ${body.image_size} · conf ${body.confidence_threshold}`;const unique=[...new Set(body.detections.map(d=>d.label))];for(const name of unique){const chip=document.createElement('span');chip.className='badge';chip.textContent=name;labels.append(chip)}details.textContent=JSON.stringify(body,null,2)}catch(error){status.textContent=`Detection failed: ${error.message}`}finally{run.disabled=false}});
+</script>
+</body></html>

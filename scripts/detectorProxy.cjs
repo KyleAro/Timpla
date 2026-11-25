@@ -24,7 +24,7 @@ function withDetectorProxy(next) {
     for (const name of ['content-type', 'content-length']) {
       if (request.headers[name]) headers[name] = request.headers[name];
     }
-    const upstream = http.request({ hostname: '127.0.0.1', port: 8000,
+    const upstream = http.request({ hostname: '127.0.0.1', port: 8003,
       path: target, method: request.method, headers }, upstreamResponse => {
       response.writeHead(upstreamResponse.statusCode || 502, {
         'Content-Type': upstreamResponse.headers['content-type'] || 'application/json',

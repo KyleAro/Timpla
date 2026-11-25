@@ -68,9 +68,15 @@ __pycache__/
 # Model environment, weights and prediction outputs
 /.venv-model/
 /models/**/*.pt
+/models/ingredient_detector/*.onnx
 /models/**/predictions/
 /training/runs/
 /Ultralytics/
+/output/
+/*.pt
+/yolov12-training/reports/
+/yolov12-training/source-inventory.csv
+/tools/fruit-annotator/.openai/
 
 /datasets/**/reports/previews/
 ml/recipe_recommendation/data/recipe_review/v1/partition_01.decisions.json

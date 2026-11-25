@@ -29,9 +29,9 @@ EXPECTED_SHA256 = '5eaa3205138c11d71cbbddda946a51aa92180bed8afeb7bbe0de23746aac9
 PRODUCE_WEIGHTS = ROOT/'models/produce/author-yolov8m.pt'
 PRODUCE_SHA256 = 'a18624d446e2fea08384949115de0b49446f0be2487fc954a37a9d962f71e5d3'
 TEAM_MIN_CONFIDENCE = 0.10
-PRODUCE_MIN_CONFIDENCE = 0.50
+PRODUCE_MIN_CONFIDENCE = 0.60
 INFERENCE_IMAGE_SIZE = 512
-FUSION_POLICY = ('Produce-model labels are handled by YOLOv8m at confidence >= 0.50; '
+FUSION_POLICY = ('Produce-model labels are handled by YOLOv8m at confidence >= 0.60; '
                  'the team model handles remaining labels at >= 0.10. No two-model agreement is required. '
                  'Overlapping non-produce team predictions >= 0.5 block conflicting produce boxes '
                  '(IoU > 0.3). Empty results are allowed. Thresholds are provisional, not calibrated.')

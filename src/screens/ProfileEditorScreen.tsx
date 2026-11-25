@@ -37,7 +37,7 @@ export default function ProfileEditorScreen({ section }: { section: Section }) {
   return <SafeAreaView style={styles.screen}>
     <AppHeader />
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
+      <ScrollView keyboardDismissMode="on-drag" contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
         <View style={[styles.row, { justifyContent: 'flex-start' }]}><Pressable accessibilityRole="button" accessibilityLabel="Back to profile" onPress={back} style={styles.settingsButton}><AppIcon name="back" /></Pressable><Text accessibilityRole="header" style={[styles.title, { flex: 1 }]}>{titles[section]}</Text></View>
         {section === 'details' && <><Text style={styles.label}>Name</Text><TextInput accessibilityLabel="Your name" value={name} onChangeText={setName} maxLength={40} autoCapitalize="words" returnKeyType="done" style={styles.nameInput} /></>}
         {section === 'cooking' && <><View style={styles.row}><Text style={styles.label}>Cooking for</Text><PeopleSelector value={people} onChange={setPeople} /></View><Text style={styles.label}>Diet</Text><View style={styles.chips}>{(['No preference', 'Vegetarian', 'Halal'] as const).map((value) => <Pressable key={value} accessibilityRole="button" accessibilityState={{ selected: diet === value }} onPress={() => setDiet(value)} style={[styles.chip, diet === value && styles.selected]}><Text style={[styles.chipText, diet === value && styles.selectedText]}>{value}</Text></Pressable>)}</View></>}

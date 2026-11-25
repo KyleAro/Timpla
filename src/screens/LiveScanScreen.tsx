@@ -1,3 +1,6 @@
+import { typography } from '../theme/tokens';
+import { PhotoScanNotice } from '../components/PhotoScanNotice';
+import { usePhotoSubmission } from '../hooks/usePhotoSubmission';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import { ImageManipulator, SaveFormat } from 'expo-image-manipulator';
 import Svg, { Path } from 'react-native-svg';
@@ -9,20 +12,21 @@ import { ActivityIndicator, Image, Pressable, StyleSheet, Text, View } from 'rea
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useIngredientPhoto } from '../hooks/useIngredientPhoto';
 import { AppIcon } from '../components/AppIcon';
-import { useCooking } from '../state/CookingContext';
+
 import { useTheme } from '../theme/ThemeContext';
 import { checkDetectorStatus } from '../services/detection';
+import { supportsOfflineDetection } from '../services/offlineDetection';
 
 export default function LiveScanScreen() {
   const { palette } = useTheme();
 
-  const { setPhoto } = useCooking();
+  const captureSubmission = usePhotoSubmission();
   const [permission, requestPermission] = useCameraPermissions();
   const isFocused = useIsFocused();
-  const { pick, busy, error: uploadError } = useIngredientPhoto();
+  const { pick, busy, error: uploadError, processing: uploadProcessing, notice: uploadNotice, dismiss: dismissUpload } = useIngredientPhoto();
   const [error, setError] = useState('');
   const [scannerStatus, setScannerStatus] = useState<'checking' | 'active' | 'idle' | 'stopped'>('checking');
-  const [scannerMessage, setScannerMessage] = useState('Waking the scanner on Render…');
+  const [scannerMessage, setScannerMessage] = useState('Preparing scanner…');
   const scannerHttpStatus = scannerMessage.match(/\bHTTP\s+(\d{3})\b/i)?.[1];
   const healthRequest = useRef<AbortController | null>(null);
   const scannerOnline = scannerStatus === 'idle';
@@ -56,19 +60,19 @@ export default function LiveScanScreen() {
     const controller = new AbortController();
     healthRequest.current = controller;
     setScannerStatus('checking');
-    setScannerMessage('Waking the scanner on Render… this can take up to a minute.');
+    setScannerMessage(supportsOfflineDetection() ? 'Loading the scanner on this phone…' : 'Connecting to the scanner…');
     const timeout = setTimeout(() => controller.abort(), 90_000);
     try {
       const status = await checkDetectorStatus(controller.signal);
       if (healthRequest.current !== controller) return;
       setScannerStatus(status);
-      setScannerMessage(status === 'active' ? 'Scanner is processing an image. Waiting for it to become idle.' : 'Scanner is idle and ready. Camera and upload are available.');
+      setScannerMessage(status === 'active' ? 'Scanner is processing an image. Waiting for it to become idle.' : supportsOfflineDetection() ? 'Scanner is ready on this phone, including offline.' : 'Scanner is idle and ready. Camera and upload are available.');
     } catch (reason) {
       if (healthRequest.current !== controller) return;
       setScannerStatus('stopped');
       setScannerMessage(reason instanceof Error && reason.name !== 'AbortError'
         ? `Scanner unavailable: ${reason.message}`
-        : 'No response from the scanner. Check the service and retry.');
+        : 'No response from the scanner. Please retry.');
     } finally {
       clearTimeout(timeout);
       if (healthRequest.current === controller) healthRequest.current = null;
@@ -138,12 +142,11 @@ export default function LiveScanScreen() {
           <Pressable accessibilityRole="button" accessibilityLabel="Use this photo" onPress={() => {
             if (confirmLock.current) return;
             confirmLock.current = true;
-            setPhoto(pendingPhoto);
-            setPendingPhoto(null);
-            router.push('/ingredients');
-          }} style={[styles.reviewButton, { backgroundColor: palette.accent }]}><AppIcon name="check" size={30} color="#FFFFFF" /></Pressable>
+            void captureSubmission.submit(pendingPhoto).finally(() => { confirmLock.current = false; setPendingPhoto(null); });
+          }} style={[styles.reviewButton, { backgroundColor: palette.buttonBackground }]}><AppIcon name="check" size={30} color="#FFFFFF" /></Pressable>
         </View>
       </SafeAreaView>
+      <PhotoScanNotice processing={uploadProcessing || captureSubmission.processing} notice={uploadNotice || captureSubmission.notice} onDismiss={() => { dismissUpload(); captureSubmission.dismiss(); setPendingPhoto(null); confirmLock.current = false; }} />
     </View>
   );
 
@@ -157,9 +160,9 @@ export default function LiveScanScreen() {
           <View style={styles.topRight}>
             <View accessibilityLiveRegion="polite" style={styles.connectionBadge}>
               {scannerStatus === 'checking' ? <ActivityIndicator size="small" color={scannerLight} /> : <View style={[styles.connectionDot, { backgroundColor: scannerLight }]} />}
-              <Text style={styles.connectionText}>{scannerStatus === 'checking' ? 'Waking scanner' : scannerStatus === 'active' ? 'Scanner active' : scannerStatus === 'idle' ? 'Scanner idle · ready' : `Scanner stopped${scannerHttpStatus ? ` · HTTP ${scannerHttpStatus}` : ''}`}</Text>
+              <Text style={styles.connectionText}>{scannerStatus === 'checking' ? 'Preparing scanner' : scannerStatus === 'active' ? 'Scanner active' : scannerStatus === 'idle' ? supportsOfflineDetection() ? 'Offline scanner ready' : 'Scanner idle · ready' : `Scanner stopped${scannerHttpStatus ? ` · HTTP ${scannerHttpStatus}` : ''}`}</Text>
             </View>
-            {scannerOnline && <Pressable accessibilityRole="switch" accessibilityLabel="Flashlight" accessibilityState={{ checked: torchOn, disabled: !ready || busy || capturing }} disabled={!ready || busy || capturing} onPress={() => setTorchOn((value) => !value)} style={[styles.close, torchOn && { backgroundColor: palette.accent }, (!ready || busy || capturing) && styles.disabled]}><AppIcon name={torchOn ? 'flash' : 'flash-off'} size={25} color="#FFFFFF" /></Pressable>}
+            {scannerOnline && <Pressable accessibilityRole="switch" accessibilityLabel="Flashlight" accessibilityState={{ checked: torchOn, disabled: !ready || busy || capturing }} disabled={!ready || busy || capturing} onPress={() => setTorchOn((value) => !value)} style={[styles.close, torchOn && { backgroundColor: palette.buttonBackground }, (!ready || busy || capturing) && styles.disabled]}><AppIcon name={torchOn ? 'flash' : 'flash-off'} size={25} color="#FFFFFF" /></Pressable>}
           </View>
         </View>
         <View pointerEvents="box-none" style={styles.middle}>
@@ -168,12 +171,12 @@ export default function LiveScanScreen() {
             <View style={[styles.connectionDot, { backgroundColor: scannerLight, width: 14, height: 14 }]} />
             <Text style={styles.title}>{scannerHttpStatus ? `Scanner unavailable · HTTP ${scannerHttpStatus}` : 'Scanner stopped / unavailable'}</Text>
             <Text style={styles.body}>{scannerMessage}</Text>
-            <Pressable accessibilityRole="button" onPress={() => void checkScanner()} style={[styles.permissionButton, { backgroundColor: palette.accent }]}><Text style={styles.buttonText}>Wake / retry</Text></Pressable>
+            <Pressable accessibilityRole="button" onPress={() => void checkScanner()} style={[styles.permissionButton, { backgroundColor: palette.buttonBackground }]}><Text style={styles.buttonText}>Wake / retry</Text></Pressable>
           </View> : scannerStatus === 'active' ? <View style={styles.message}><ActivityIndicator color={scannerLight} /><Text style={styles.title}>Scanner active</Text><Text style={styles.body}>{scannerMessage}</Text></View> : !permission ? <View style={styles.message}><ActivityIndicator color="#FFFFFF" /><Text style={styles.body}>Preparing camera…</Text></View> : !permission.granted ? <View style={styles.message}>
             <AppIcon name="camera" size={48} color="#FFFFFF" />
             <Text style={styles.title}>Camera access needed</Text>
             <Text style={styles.body}>{permission.canAskAgain ? 'Allow camera access to capture ingredients.' : 'Enable camera access in your phone settings, or upload a photo.'}</Text>
-            {permission.canAskAgain && <Pressable accessibilityRole="button" onPress={() => { void requestPermission().catch(() => setError('Could not request camera access. Try Upload photo.')); }} style={[styles.permissionButton, { backgroundColor: palette.accent }]}><Text style={styles.buttonText}>Allow camera</Text></Pressable>}
+            {permission.canAskAgain && <Pressable accessibilityRole="button" onPress={() => { void requestPermission().catch(() => setError('Could not request camera access. Try Upload photo.')); }} style={[styles.permissionButton, { backgroundColor: palette.buttonBackground }]}><Text style={styles.buttonText}>Allow camera</Text></Pressable>}
           </View> : null}
         </View>
         <View style={styles.bottomControls}>
@@ -190,6 +193,7 @@ export default function LiveScanScreen() {
           </View>
         </View>
       </SafeAreaView>
+      <PhotoScanNotice processing={uploadProcessing || captureSubmission.processing} notice={uploadNotice || captureSubmission.notice} onDismiss={() => { dismissUpload(); captureSubmission.dismiss(); setPendingPhoto(null); confirmLock.current = false; }} />
     </View>
   );
 }
@@ -204,25 +208,25 @@ const styles = StyleSheet.create({
   topRight: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   connectionBadge: { minHeight: 42, flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 12, borderRadius: 22, backgroundColor: '#00000099' },
   connectionDot: { width: 10, height: 10, borderRadius: 5 },
-  connectionText: { color: '#FFFFFF', fontSize: 12, fontWeight: '700' },
+  connectionText: { color: '#FFFFFF', fontSize: typography.label, fontWeight: '700' },
   close: { width: 48, height: 48, borderRadius: 24, backgroundColor: '#00000080', alignItems: 'center', justifyContent: 'center' },
   middle: { flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 30 },
   scanGuide: { position: 'absolute', top: '3%', bottom: '12%', left: '8%', right: '8%', borderWidth: 1.5, borderColor: '#FFFFFF', borderRadius: 20 },
   message: { alignItems: 'center', gap: 16, maxWidth: 340 },
-  title: { color: '#FFFFFF', fontSize: 22, fontWeight: '700', textAlign: 'center' },
-  body: { color: '#FFFFFF', fontSize: 15, lineHeight: 23, textAlign: 'center' },
+  title: { color: '#FFFFFF', fontSize: typography.section, fontWeight: '700', textAlign: 'center' },
+  body: { color: '#FFFFFF', fontSize: typography.body, lineHeight: 23, textAlign: 'center' },
   permissionButton: { minHeight: 50, paddingHorizontal: 24, borderRadius: 25, justifyContent: 'center' },
-  buttonText: { color: '#FFFFFF', fontWeight: '700', fontSize: 16 },
+  buttonText: { color: '#FFFFFF', fontWeight: '700', fontSize: typography.body },
   bottomControls: { backgroundColor: 'transparent', paddingTop: 18, paddingBottom: 22, paddingHorizontal: 24 },
-  cameraHint: { alignSelf: 'center', color: '#FFFFFF', backgroundColor: '#00000080', fontSize: 13, paddingHorizontal: 12, paddingVertical: 7, borderRadius: 14, overflow: 'hidden', marginBottom: 12 },
+  cameraHint: { alignSelf: 'center', color: '#FFFFFF', backgroundColor: '#00000080', fontSize: typography.label, paddingHorizontal: 12, paddingVertical: 7, borderRadius: 14, overflow: 'hidden', marginBottom: 12 },
   actions: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', maxWidth: 440, width: '100%', alignSelf: 'center' },
   upload: { width: 76, minHeight: 64, alignItems: 'center', justifyContent: 'center', gap: 6 },
-  uploadText: { color: '#FFFFFF', fontSize: 12, fontWeight: '600' },
+  uploadText: { color: '#FFFFFF', fontSize: typography.label, fontWeight: '600' },
   shutter: { width: 78, height: 78, borderRadius: 39, borderWidth: 4, borderColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center' },
   shutterInner: { width: 62, height: 62, borderRadius: 31, backgroundColor: '#FFFFFF' },
   spacer: { width: 76 },
   disabled: { opacity: 0.45 },
-  error: { color: '#FFFFFF', backgroundColor: '#00000099', fontSize: 14, lineHeight: 21, padding: 12, borderRadius: 10, textAlign: 'center', marginBottom: 14 },
+  error: { color: '#FFFFFF', backgroundColor: '#00000099', fontSize: typography.label, lineHeight: 21, padding: 12, borderRadius: 10, textAlign: 'center', marginBottom: 14 },
 });
 
 

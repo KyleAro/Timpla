@@ -1,0 +1,6 @@
+{
+  "name": "timpla-annotate",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node --test tests/*.test.js", "check": "node --check dist/app.js && node --check dist/core.js && node --check dist/zip.js" }
+}

@@ -5,6 +5,8 @@ import { AppState, Platform } from 'react-native';
 import { createContext, PropsWithChildren, useContext, useEffect, useRef, useState } from 'react';
 import { authClient, supabase } from './supabase';
 import { cleanEmail, readAuthCallback } from './validation';
+import { hasCompletedOnboarding, onboardingKey } from './onboarding';
+import type { Preferences } from '../data/account';
 
 const recoveryKey = 'timpla.auth.password-recovery';
 export function authRedirectUrl() {
@@ -15,6 +17,8 @@ type AuthState = {
   loading: boolean;
   recovery: boolean;
   preview: boolean;
+  onboardingComplete: boolean;
+  completeOnboarding: (name: string, preferences: Preferences, asGuest?: boolean) => Promise<void>;
   enterPreview: () => void;
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (name: string, email: string, password: string) => Promise<boolean>;
@@ -29,11 +33,26 @@ const AuthContext = createContext<AuthState | null>(null);
 
 export function AuthProvider({ children }: PropsWithChildren) {
   const [session, setSession] = useState<Session | null>(null);
-  const [loading, setLoading] = useState(Boolean(supabase));
+  const [loading, setLoading] = useState(true);
   const [recovery, setRecovery] = useState(false);
   const [preview, setPreview] = useState(false);
+  const [onboardingComplete, setOnboardingComplete] = useState<boolean | null>(null);
   const recoveryRef = useRef(false);
   const callbacks = useRef(new Map<string, Promise<'home' | 'reset'>>());
+
+  useEffect(() => {
+    let active = true;
+    void AsyncStorage.getItem(onboardingKey).then(raw => {
+      if (active) setOnboardingComplete(hasCompletedOnboarding(raw));
+    }).catch(() => { if (active) setOnboardingComplete(false); });
+    return () => { active = false; };
+  }, []);
+
+  async function completeOnboarding(name: string, preferences: Preferences, asGuest = true) {
+    await AsyncStorage.setItem(onboardingKey, JSON.stringify({ completed: true, name, preferences }));
+    setOnboardingComplete(true);
+    if (!session?.user.email_confirmed_at && asGuest) setPreview(true);
+  }
 
   async function markRecovery(value: boolean, publish = true) {
     // Set before verifyOtp/setSession emits SIGNED_IN, so recovery never opens private screens.
@@ -44,7 +63,10 @@ export function AuthProvider({ children }: PropsWithChildren) {
   }
 
   useEffect(() => {
-    if (!supabase) return;
+    if (!supabase) {
+      void AsyncStorage.getItem('timpla.onboarding').then(value => setPreview(hasCompletedOnboarding(value))).catch(() => {}).finally(() => setLoading(false));
+      return;
+    }
     const client = supabase;
     let mounted = true;
     let revision = 0;
@@ -57,14 +79,16 @@ export function AuthProvider({ children }: PropsWithChildren) {
         void AsyncStorage.setItem(recoveryKey, 'true').catch(() => {});
       }
       if (next && event !== 'INITIAL_SESSION') setRecovery(recoveryRef.current);
+      if (next && event !== 'INITIAL_SESSION') setPreview(false);
       setSession(next);
     });
     const startRevision = revision;
-    void Promise.all([client.auth.getSession(), AsyncStorage.getItem(recoveryKey)]).then(([result, recovering]) => {
+    void Promise.all([client.auth.getSession(), AsyncStorage.getItem(recoveryKey), AsyncStorage.getItem('timpla.onboarding')]).then(([result, recovering, onboarding]) => {
       if (!mounted || revision !== startRevision) return;
       recoveryRef.current = Boolean(result.data.session && recovering);
       setRecovery(recoveryRef.current);
       setSession(result.error ? null : result.data.session);
+      setPreview(!result.data.session && hasCompletedOnboarding(onboarding));
     }).catch(() => { if (mounted && revision === startRevision) setSession(null); }).finally(() => { if (mounted) setLoading(false); });
     const refresh = (state: string) => {
       if (Platform.OS === 'web') return;
@@ -155,7 +179,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
     callbacks.current.clear();
     await markRecovery(false);
   }
-  return <AuthContext.Provider value={{ session, loading, recovery, preview, enterPreview: () => { if (__DEV__) setPreview(true); }, signIn, signUp, sendReset, resendConfirmation, verifyCode, handleCallback, updatePassword, signOut }}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{ session, loading: loading || onboardingComplete === null, recovery, preview, onboardingComplete: onboardingComplete === true, completeOnboarding, enterPreview: () => { setPreview(true); }, signIn, signUp, sendReset, resendConfirmation, verifyCode, handleCallback, updatePassword, signOut }}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth() {
